@@ -31,7 +31,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"powerstatus": "OFF"
+                                "powerstatus": "OFF"
                             }
                         }
                     }
@@ -109,7 +109,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"operationpowersaving": "Normal"
+                                "operationpowersaving": "Normal"
                             }
                         }
                     }
@@ -169,7 +169,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"operationmodesetting": "Automatic"
+                                "operationmodesetting": "Automatic"
                             }
                         }
                     }
@@ -229,7 +229,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"roomtemperature": "25"
+                                "roomtemperature": "25"
                             }
                         }
                     }
@@ -257,7 +257,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"temperaturevalue": "20"
+                                "temperaturevalue": "20"
                             }
                         }
                     }
@@ -318,8 +318,8 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"airflowauto": "true",
-								"airflowvalue": "0.0"
+                                "airflowauto": "true",
+                                "airflowvalue": "0.0"
                             }
                         }
                     }
@@ -395,16 +395,16 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"properties": [
-									{
-										"epc": "OperationStatus",
-										"value": "49"
-									},
-									{
-										"epc": "InstallationLocation",
-										"value": "0"
-									}
-								]
+                                "properties": [
+                                    {
+                                        "epc": "OperationStatus",
+                                        "value": "49"
+                                    },
+                                    {
+                                        "epc": "InstallationLocation",
+                                        "value": "0"
+                                    }
+                                ]
                             }
                         }
                     }
@@ -442,8 +442,8 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"epc": "OperationStatus",
-								"value": "49"
+                                "epc": "OperationStatus",
+                                "value": "49"
                             }
                         }
                     }

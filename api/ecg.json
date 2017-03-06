@@ -31,16 +31,16 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"ecg": {
-									"typeCode": 663568,
-									"unitCode": 3328,
-									"type": "ecg beat",
-									"unit": "mVolt * milliSecond",
-									"timeStamp": 1483241696789,
-									"value": -172.40676879882812,
-									"timeStampString": "20170101123456.789+0900",
-									"mderFloat": "F68ED1CC"
-								}
+                                "ecg": {
+                                    "typeCode": 663568,
+                                    "unitCode": 3328,
+                                    "type": "ecg beat",
+                                    "unit": "mVolt * milliSecond",
+                                    "timeStamp": 1483241696789,
+                                    "value": -172.40676879882812,
+                                    "timeStampString": "20170101123456.789+0900",
+                                    "mderFloat": "F68ED1CC"
+                                }
                             }
                         }
                     }

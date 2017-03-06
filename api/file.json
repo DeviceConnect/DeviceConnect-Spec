@@ -88,8 +88,8 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"mimeType": "image/png",
-								"uri": "http://localhost:4035/gotapi/files?uri=content%3A%2F%2FTest.png"
+                                "mimeType": "image/png",
+                                "uri": "http://localhost:4035/gotapi/files?uri=content%3A%2F%2FTest.png"
                             }
                         }
                     }

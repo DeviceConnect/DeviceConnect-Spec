@@ -31,20 +31,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"touch": {
-									"touches": [
-										{
-											"x": 256,
-											"y": 128,
-											"id": 0
-										},
-										{
-											"x": 64,
-											"y": 32,
-											"id": 1
-										}
-									]
-								}
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 256,
+                                            "y": 128,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 64,
+                                            "y": 32,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
                             }
                         }
                     }
@@ -78,7 +78,7 @@
                                 "product": "Example System",
                                 "version": "1.0.0"
                             }
-                        }						
+                        }
                     }
                 }
             },
@@ -129,20 +129,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"touch": {
-									"touches": [
-										{
-											"x": 64,
-											"y": 32,
-											"id": 0
-										},
-										{
-											"x": 128,
-											"y": 256,
-											"id": 1
-										}
-									]
-								}
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 64,
+                                            "y": 32,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 128,
+                                            "y": 256,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
                             }
                         }
                     }
@@ -227,20 +227,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"touch": {
-									"touches": [
-										{
-											"x": 384,
-											"y": 512,
-											"id": 0
-										},
-										{
-											"x": 512,
-											"y": 768,
-											"id": 1
-										}
-									]
-								}
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 384,
+                                            "y": 512,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 512,
+                                            "y": 768,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
                             }
                         }
                     }
@@ -325,20 +325,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"touch": {
-									"touches": [
-										{
-											"x": 16,
-											"y": 32,
-											"id": 0
-										},
-										{
-											"x": 32,
-											"y": 64,
-											"id": 1
-										}
-									]
-								}
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 16,
+                                            "y": 32,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 32,
+                                            "y": 64,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
                             }
                         }
                     }
@@ -423,20 +423,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"touch": {
-									"touches": [
-										{
-											"x": 384,
-											"y": 192,
-											"id": 0
-										},
-										{
-											"x": 512,
-											"y": 256,
-											"id": 1
-										}
-									]
-								}
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 384,
+                                            "y": 192,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 512,
+                                            "y": 256,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
                             }
                         }
                     }
@@ -521,20 +521,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"touch": {
-									"touches": [
-										{
-											"x": 192,
-											"y": 168,
-											"id": 0
-										},
-										{
-											"x": 54,
-											"y": 200,
-											"id": 1
-										}
-									]
-								}
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 192,
+                                            "y": 168,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 54,
+                                            "y": 200,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
                             }
                         }
                     }

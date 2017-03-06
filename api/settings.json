@@ -39,7 +39,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"level": 1
+                                "level": 1
                             }
                         }
                     }
@@ -108,7 +108,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"date": "2017-01-01 12:34:56+0900"
+                                "date": "2017-01-01 12:34:56+0900"
                             }
                         }
                     }
@@ -168,7 +168,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"level": 0.5
+                                "level": 0.5
                             }
                         }
                     }
@@ -229,7 +229,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"time": 120000
+                                "time": 120000
                             }
                         }
                     }

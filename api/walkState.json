@@ -31,15 +31,15 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-							    "walk": {
-							        "step": 123456,
-							        "state": "Walking",
-							        "speed": 5.799,
-							        "distance": 12.3456,
-							        "balance": 0.16,
-							        "timeStamp": 1483241696789,
-						            "timeStampString": "20170101123456.789+0900"
-							    }
+                                "walk": {
+                                    "step": 123456,
+                                    "state": "Walking",
+                                    "speed": 5.799,
+                                    "distance": 12.3456,
+                                    "balance": 0.16,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                }
                             }
                         }
                     }

@@ -31,10 +31,10 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"keyevent": {
-									"config": "5",
-									"id": 149
-								}
+                                "keyevent": {
+                                    "config": "5",
+                                    "id": 149
+                                }
                             }
                         }
                     }
@@ -119,10 +119,10 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"keyevent": {
-									"config": "play",
-									"id": 672
-								}
+                                "keyevent": {
+                                    "config": "play",
+                                    "id": 672
+                                }
                             }
                         }
                     }
