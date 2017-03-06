@@ -66,7 +66,7 @@
                     },
                     {
                         "name": "interval",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "format": "double"
@@ -108,13 +108,13 @@
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "in": "query",
+                        "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "highAccuracy",
-                        "in": "query",
+                        "in": "formData",
                         "required": false,
                         "type": "boolean"
                     },

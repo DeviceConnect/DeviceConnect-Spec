@@ -24,7 +24,7 @@
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -32,7 +32,7 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -40,7 +40,7 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -48,7 +48,7 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -56,7 +56,7 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -64,7 +64,7 @@
                     },
                     {
                         "name": "eyeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -72,7 +72,7 @@
                     },
                     {
                         "name": "noseThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -80,7 +80,7 @@
                     },
                     {
                         "name": "mouthThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -88,7 +88,7 @@
                     },
                     {
                         "name": "blinkThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -96,7 +96,7 @@
                     },
                     {
                         "name": "ageThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -104,7 +104,7 @@
                     },
                     {
                         "name": "genderThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -112,7 +112,7 @@
                     },
                     {
                         "name": "faceDirectionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -120,7 +120,7 @@
                     },
                     {
                         "name": "gazeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -128,7 +128,7 @@
                     },
                     {
                         "name": "expressionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -286,7 +286,7 @@
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -294,7 +294,7 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -302,7 +302,7 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -310,7 +310,7 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -318,7 +318,7 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -326,7 +326,7 @@
                     },
                     {
                         "name": "eyeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -334,7 +334,7 @@
                     },
                     {
                         "name": "noseThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -342,7 +342,7 @@
                     },
                     {
                         "name": "mouthThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -350,7 +350,7 @@
                     },
                     {
                         "name": "blinkThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -358,7 +358,7 @@
                     },
                     {
                         "name": "ageThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -366,7 +366,7 @@
                     },
                     {
                         "name": "genderThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -374,7 +374,7 @@
                     },
                     {
                         "name": "faceDirectionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -382,7 +382,7 @@
                     },
                     {
                         "name": "gazeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -390,7 +390,7 @@
                     },
                     {
                         "name": "expressionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -520,7 +520,7 @@
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -528,7 +528,7 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -536,7 +536,7 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -544,7 +544,7 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -552,7 +552,7 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -560,7 +560,7 @@
                     },
                     {
                         "name": "eyeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -568,7 +568,7 @@
                     },
                     {
                         "name": "noseThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -576,7 +576,7 @@
                     },
                     {
                         "name": "mouthThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -584,7 +584,7 @@
                     },
                     {
                         "name": "blinkThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -592,7 +592,7 @@
                     },
                     {
                         "name": "ageThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -600,7 +600,7 @@
                     },
                     {
                         "name": "genderThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -608,7 +608,7 @@
                     },
                     {
                         "name": "faceDirectionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -616,7 +616,7 @@
                     },
                     {
                         "name": "gazeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -624,7 +624,7 @@
                     },
                     {
                         "name": "expressionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -826,7 +826,7 @@
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -834,7 +834,7 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -842,7 +842,7 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -850,7 +850,7 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -858,7 +858,7 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1013,7 +1013,7 @@
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1021,7 +1021,7 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1029,7 +1029,7 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1037,7 +1037,7 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1045,7 +1045,7 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1186,7 +1186,7 @@
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1194,7 +1194,7 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1202,7 +1202,7 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1210,7 +1210,7 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1218,7 +1218,7 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1226,7 +1226,7 @@
                     },
                     {
                         "name": "eyeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1234,7 +1234,7 @@
                     },
                     {
                         "name": "noseThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1242,7 +1242,7 @@
                     },
                     {
                         "name": "mouthThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1250,7 +1250,7 @@
                     },
                     {
                         "name": "blinkThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1258,7 +1258,7 @@
                     },
                     {
                         "name": "ageThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1266,7 +1266,7 @@
                     },
                     {
                         "name": "genderThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1274,7 +1274,7 @@
                     },
                     {
                         "name": "faceDirectionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1282,7 +1282,7 @@
                     },
                     {
                         "name": "gazeThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -1290,7 +1290,7 @@
                     },
                     {
                         "name": "expressionThreshold",
-                        "in": "formData",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,

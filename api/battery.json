@@ -206,7 +206,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "in": "query",
+                        "in": "formData",
                         "required": true,
                         "type": "string"
                     },
@@ -319,7 +319,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "in": "query",
+                        "in": "formData",
                         "required": true,
                         "type": "string"
                     },

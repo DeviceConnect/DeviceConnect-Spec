@@ -106,7 +106,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "in": "formData",
+                        "in": "query",
                         "required": true,
                         "type": "string"
                     }
