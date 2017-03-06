@@ -34,51 +34,51 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "heart": {
-                                    "device": {
-                                        "softwareRevision": "",
-                                        "batteryLevel": -1,
-                                        "productName": "DUMMY DEVICE",
-                                        "hardwareRevision": "",
-                                        "partNumber": "",
-                                        "manufacturerName": "",
-                                        "serialNumber": "",
-                                        "protocolRevision": "",
-                                        "modelNumber": "",
-                                        "firmwareRevision": "",
-                                        "systemId": "0x0"
-                                    },
-                                    "energy": {
-                                        "typeCode": 119,
-                                        "unitCode": 6784,
-                                        "type": "energy expended",
-                                        "unit": "Calories",
-                                        "timeStamp": 1483241696789,
-                                        "value": 0,
-                                        "timeStampString": "20170101123456.789+0900",
-                                        "mderFloat": "01000000"
-                                    },
-                                    "rr": {
-                                        "typeCode": 147240,
-                                        "unitCode": 264338,
-                                        "type": "RR interval",
-                                        "unit": "ms",
-                                        "timeStamp": 1483241696789,
-                                        "value": 909.1796875,
-                                        "timeStampString": "20170101123456.789+0900",
-                                        "mderFloat": "F9E9CF8B"
-                                    },
-                                    "rate": {
-                                        "typeCode": 147842,
-                                        "unitCode": 264864,
-                                        "type": "heart rate",
-                                        "unit": "beat per min",
-                                        "timeStamp": 1483241696789,
-                                        "value": 60,
-                                        "timeStampString": "20170101123456.789+0900",
-                                        "mderFloat": "00000042"
-                                    }
-                                }
+                                "heart": {
+                                    "rate": {
+                                        "value": 60,
+                                        "mderFloat": "00000042",
+                                        "type": "heart rate",
+                                        "typeCode": 147842,
+                                        "unit": "beat per min",
+                                        "unitCode": 264864,
+                                        "timeStamp": 1483241696789,
+                                        "timeStampString": "20170101123456.789+0900"
+                                    },
+                                    "rr": {
+                                        "value": 909.1796875,
+                                        "mderFloat": "F9E9CF8B",
+                                        "type": "RR interval",
+                                        "typeCode": 147240,
+                                        "unit": "ms",
+                                        "unitCode": 264338,
+                                        "timeStamp": 1483241696789,
+                                        "timeStampString": "20170101123456.789+0900"
+                                    },
+                                    "energy": {
+                                        "value": 0,
+                                        "mderFloat": "01000000",
+                                        "type": "energy expended",
+                                        "typeCode": 119,
+                                        "unit": "Calories",
+                                        "unitCode": 6784,
+                                        "timeStamp": 1483241696789,
+                                        "timeStampString": "20170101123456.789+0900"
+                                    },
+                                    "device": {
+                                        "productName": "DUMMY DEVICE",
+                                        "manufacturerName": "",
+                                        "modelNumber": "",
+                                        "firmwareRevision": "",
+                                        "serialNumber": "",
+                                        "softwareRevision": "",
+                                        "hardwareRevision": "",
+                                        "partNumber": "",
+                                        "protocolRevision": "",
+                                        "systemId": "0x0",
+                                        "batteryLevel": -1
+                                    }
+                                }
                             }
                         }
                     }
@@ -121,6 +121,58 @@
                 "x-event": {
                     "schema": {
                         "$ref": "#/definitions/HeartEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "health",
+                            "attribute": "heart",
+                            "heart": {
+                                "rate": {
+                                    "value": 60,
+                                    "mderFloat": "00000042",
+                                    "type": "heart rate",
+                                    "typeCode": 147842,
+                                    "unit": "beat per min",
+                                    "unitCode": 264864,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                },
+                                "rr": {
+                                    "value": 909.1796875,
+                                    "mderFloat": "F9E9CF8B",
+                                    "type": "RR interval",
+                                    "typeCode": 147240,
+                                    "unit": "ms",
+                                    "unitCode": 264338,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                },
+                                "energy": {
+                                    "value": 0,
+                                    "mderFloat": "01000000",
+                                    "type": "energy expended",
+                                    "typeCode": 119,
+                                    "unit": "Calories",
+                                    "unitCode": 6784,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                },
+                                "device": {
+                                    "productName": "DUMMY DEVICE",
+                                    "manufacturerName": "",
+                                    "modelNumber": "",
+                                    "firmwareRevision": "",
+                                    "serialNumber": "",
+                                    "softwareRevision": "",
+                                    "hardwareRevision": "",
+                                    "partNumber": "",
+                                    "protocolRevision": "",
+                                    "systemId": "0x0",
+                                    "batteryLevel": -1
+                                }
+                            }
+                        }
                     }
                 }
             },

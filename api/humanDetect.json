@@ -971,6 +971,38 @@
                             }
                         }
                     }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "humandetect",
+                            "attribute": "onbodydetection",
+                            "bodyDetects": [
+                                {
+                                    "x": 0.47291666666666665,
+                                    "y": 0.6712962962962963,
+                                    "width": 0.271875,
+                                    "height": 0.48333333333333334,
+                                    "confidence": 0.907
+                                },
+                                {
+                                    "x": 0.034375,
+                                    "y": 0.8925925925925926,
+                                    "width": 0.036458333333333336,
+                                    "height": 0.06481481481481481,
+                                    "confidence": 0.746
+                                },
+                                {
+                                    "x": 0.9515625,
+                                    "y": 0.9592592592592593,
+                                    "width": 0.03177083333333333,
+                                    "height": 0.05648148148148148,
+                                    "confidence": 0.619
+                                }
+                            ]
+                        }
+                    }
                 }
             },
             "delete": {
@@ -1142,6 +1174,24 @@
                                 "product": "Example System",
                                 "version": "1.0.0"
                             }
+                        }
+                    }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "humandetect",
+                            "attribute": "onhanddetection",
+                            "handDetects": [
+                                {
+                                    "x": 0.5114583333333333,
+                                    "y": 0.6018518518518519,
+                                    "width": 0.15833333333333333,
+                                    "height": 0.2814814814814815,
+                                    "confidence": 0.962
+                                }
+                            ]
                         }
                     }
                 }
@@ -1459,6 +1509,24 @@
                                 "product": "Example System",
                                 "version": "1.0.0"
                             }
+                        }
+                    }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "humandetect",
+                            "attribute": "onhanddetection",
+                            "faceDetects": [
+                                {
+                                    "x": 0.47760416666666666,
+                                    "y": 0.5425925925925926,
+                                    "width": 0.15729166666666666,
+                                    "height": 0.2796296296296296,
+                                    "confidence": 0.739
+                                }
+                            ]
                         }
                     }
                 }

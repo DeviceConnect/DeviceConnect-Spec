@@ -597,6 +597,15 @@
                             }
                         }
                     }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "mediaplayer",
+                            "attribute": "onstatuschange",
+                        }
+                    }
                 }
             },
             "delete": {

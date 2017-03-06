@@ -210,9 +210,9 @@
                                 "product": "Example System",
                                 "version": "1.0.0",
                                 "file": {
+                                    "path": "Test1.png",
                                     "curr": "2017-01-01T12:34:56+0900",
-                                    "prev": "2017-01-01T01:23:45+0900",
-                                    "path": "Test1.png"
+                                    "prev": "2017-01-01T01:23:45+0900"
                                 }
                             }
                         }
@@ -246,6 +246,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "filedescriptor",
+                            "attribute": "onwatchfile",
+                            "file": {
+                                "path": "Test1.png",
+                                "curr": "2017-01-01T12:34:56+0900",
+                                "prev": "2017-01-01T01:23:45+0900"
                             }
                         }
                     }

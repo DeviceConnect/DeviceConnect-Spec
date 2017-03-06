@@ -70,6 +70,19 @@
                             }
                         }
                     }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "keyevent",
+                            "attribute": "ondown",
+                            "keyevent": {
+                                "config": "5",
+                                "id": 149
+                            }
+                        }
+                    }
                 }
             },
             "delete": {
@@ -155,6 +168,19 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "keyevent",
+                            "attribute": "onup",
+                            "keyevent": {
+                                "config": "play",
+                                "id": 672
                             }
                         }
                     }

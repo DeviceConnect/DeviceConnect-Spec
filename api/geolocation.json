@@ -251,17 +251,17 @@
                         "coordinates": {
                             "type": "object",
                             "title": "座標",
-                            "description": "座標のオブジェクト。",
+                            "description": "座標のオブジェクト",
                             "properties": {
                                 "latitude": {
                                     "type": "number",
                                     "title": "緯度",
-                                    "description": "-180～180 単位：degree"
+                                    "description": "-180～180<br>単位：degree"
                                 },
                                 "longitude": {
                                     "type": "number",
                                     "title": "経度",
-                                    "description": "-90～90 単位：degree"
+                                    "description": "-90～90<br>単位：degree"
                                 },
                                 "altitude": {
                                     "type": "number",
@@ -281,7 +281,7 @@
                                 "heading": {
                                     "type": "number",
                                     "title": "方角",
-                                    "description": "0～359 単位：degree 真北に対して右回りで 0 ≦ heading ＜ 360"
+                                    "description": "0～359<br>単位：degree<br>真北に対して右回りで 0 ≦ heading ＜ 360"
                                 },
                                 "speed": {
                                     "type": "number",
@@ -298,7 +298,7 @@
                         "timeStampString": {
                             "type": "string",
                             "title": "測位時刻 (文字列)",
-                            "description": "測位時刻を文字列表記。[YYYYMMDDHHMMSS.sss+/-HHMM]形式"
+                            "description": "測位時刻を文字列表記<br>[YYYYMMDDHHMMSS.sss+/-HHMM]形式"
                         }
                     }
                 }
