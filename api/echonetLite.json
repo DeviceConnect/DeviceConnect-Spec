@@ -116,19 +116,26 @@
                     ],
                     "properties": {
                         "properties": {
-                            "type": "object",
-                            "required": [
-                                "epc",
-                                "value"
-                            ],
-                            "properties": {
-                                "epc": {
-                                    "type": "string",
-                                    "description": "ECHONET Property Code。"
-                                },
-                                "value": {
-                                    "type": "string",
-                                    "description": "ECHONET Property Codeの設定値。"
+                            "type": "array",
+                            "title": "EPCのリスト",
+                            "description": "指定されたEPCの配列。",
+                            "items":{
+                                "type": "object",
+                                "required": [
+                                    "epc",
+                                    "value"
+                                ],
+                                "properties": {
+                                    "epc": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Code",
+                                        "description": ""
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Codeの設定値。",
+                                        "description": ""
+                                    }
                                 }
                             }
                         }
