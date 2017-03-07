@@ -1,19 +1,19 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "ECHONETLite Profile",
+        "title": "Power Profile",
         "version": "2.0.0",
-        "description": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を操作する。"
+        "description": "スマートデバイスの電源状態を操作する。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
         "multipart/form-data"
     ],
     "paths": {
-        "/property": {
+        "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する。<br>EPC:ECHONET Property Code",
+                "summary": "機器の電源の状態を取得する。",
                 "description": "",
                 "parameters": [
                     {
@@ -21,38 +21,20 @@
                         "in": "query",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "epc",
-                        "in": "query",
-                        "required": true,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/EchonetLiteGetResponse"
+                            "$ref": "#/definitions/PowerStatusGetResponse"
                         },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "properties": [
-                                    {
-                                        "epc": "OperationStatus",
-                                        "value": "49"
-                                    },
-                                    {
-                                        "epc": "InstallationLocation",
-                                        "value": "0"
-                                    }
-                                ]
+                                "powerstatus": "OFF"
                             }
                         }
                     }
@@ -60,23 +42,11 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う。",
+                "summary": "機器の電源をONにする。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "epc",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -86,15 +56,41 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/EchonetLiteSetResponse"
+                            "$ref": "#/definitions/PowerOnResponse"
                         },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "epc": "OperationStatus",
-                                "value": "49"
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "one-shot",
+                "summary": "機器の電源をOFFにする。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PowerOffResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
                             }
                         }
                     }
@@ -103,7 +99,7 @@
         }
     },
     "definitions": {
-        "EchonetLiteGetResponse": {
+        "PowerStatusGetResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -112,38 +108,30 @@
                 {
                     "type": "object",
                     "required": [
-                        "properties"
+                        "powerstatus"
                     ],
                     "properties": {
-                        "properties": {
-                            "type": "array",
-                            "title": "EPCのリスト",
-                            "description": "指定されたEPCの配列。",
-                            "items":{
-                                "type": "object",
-                                "required": [
-                                    "epc",
-                                    "value"
-                                ],
-                                "properties": {
-                                    "epc": {
-                                        "type": "string",
-                                        "title": "ECHONET Property Code",
-                                        "description": "ECHONET Property Code"
-                                    },
-                                    "value": {
-                                        "type": "string",
-                                        "title": "ECHONET Property Codeの設定値。",
-                                        "description": "ECHONET Property Codeの設定値。"
-                                    }
-                                }
-                            }
+                        "powerstatus": {
+                            "type": "string",
+                            "title": "電源状態",
+                            "description": "電源状態",
+                            "enum": [
+                                  "on", "off", "unknown"
+                            ]
                         }
                     }
                 }
             ]
         },
-        "EchonetLiteSetResponse": {
+        "PowerOnResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "PowerOffResponse": {
             "type": "object",
             "allOf": [
                 {
