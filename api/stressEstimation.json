@@ -31,7 +31,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "pose": {
+                                "stress": {
                                     "lfhf": 0.5,
                                     "timeStamp": 1483241696789,
                                     "timeStampString": "20170101123456.789+0900"
@@ -68,6 +68,20 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "stressestimation",
+                            "attribute": "onstressestimation",
+                            "stress": {
+                                "lfhf": 0.5,
+                                "timeStamp": 1483241696789,
+                                "timeStampString": "20170101123456.789+0900"
                             }
                         }
                     }

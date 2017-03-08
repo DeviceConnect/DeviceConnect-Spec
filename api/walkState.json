@@ -75,6 +75,24 @@
                             }
                         }
                     }
+                },
+                "x-event": {
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "walkstate",
+                            "attribute": "onwalkstate",
+                            "walk": {
+                                "step": 123456,
+                                "state": "Walking",
+                                "speed": 5.799,
+                                "distance": 12.3456,
+                                "balance": 0.16,
+                                "timeStamp": 1483241696789,
+                                "timeStampString": "20170101123456.789+0900"
+                            }
+                        }
+                    }
                 }
             },
             "delete": {

@@ -90,8 +90,7 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "value": "regist:/storage/emulated/0/Music/Test Music 1.mp3"
+                                "version": "1.0.0"
                             }
                         }
                     }
@@ -604,6 +603,13 @@
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
                             "profile": "mediaplayer",
                             "attribute": "onstatuschange",
+                            "mediaPlayer": {
+                                "status": "media",
+                                "mediaId": "1234",
+                                "mimeType": "application/ogg",
+                                "pos": 0,
+                                "volume": 1
+                            }
                         }
                     }
                 }

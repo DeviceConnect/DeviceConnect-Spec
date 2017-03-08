@@ -142,6 +142,17 @@
                 "x-event": {
                     "schema": {
                         "$ref": "#/definitions/PhoneStatusEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "phone",
+                            "attribute": "onconnect",
+                            "phoneStatus": {
+                                "phoneNumber": "01234567890",
+                                "state": 2
+                            }
+                        }
                     }
                 }
             },
