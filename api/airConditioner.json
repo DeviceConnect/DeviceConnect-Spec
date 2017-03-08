@@ -14,7 +14,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源状態を取得する。",
-                "description": "スマートデバイスの電源状態を取得する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -27,7 +27,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerPowerStatusGetResponse"
+                            "$ref": "#/definitions/PowerStatusGetResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -43,7 +43,7 @@
             "put": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源を点ける。",
-                "description": "スマートデバイスの電源を点ける。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -56,7 +56,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerPowerOnResponse"
+                            "$ref": "#/definitions/PowerOnResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -71,7 +71,7 @@
             "delete": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源を消す。",
-                "description": "スマートデバイスの電源を消す。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -84,7 +84,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerPowerOffResponse"
+                            "$ref": "#/definitions/PowerOffResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -101,7 +101,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの節電動作設定を取得する。",
-                "description": "スマートデバイスの節電動作設定を取得する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -114,7 +114,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerGetPowerSavingResponse"
+                            "$ref": "#/definitions/GetPowerSavingResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -130,7 +130,7 @@
             "put": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの節電動作設定を設定する。",
-                "description": "スマートデバイスの節電動作設定を設定する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -150,7 +150,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerSetPowerSavingResponse"
+                            "$ref": "#/definitions/SetPowerSavingResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -167,7 +167,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの運転モード設定を取得する。",
-                "description": "スマートデバイスの運転モード設定を取得する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -180,7 +180,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerGetModeSettingResponse"
+                            "$ref": "#/definitions/GetModeSettingResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -196,7 +196,7 @@
             "put": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの運転モード設定を設定する。",
-                "description": "スマートデバイスの運転モード設定を設定する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -216,7 +216,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerSetModeSettingResponse"
+                            "$ref": "#/definitions/SetModeSettingResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -233,7 +233,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの室温計測値を取得する。",
-                "description": "スマートデバイスの室温計測値を取得する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -246,7 +246,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerGetRoomTemperatureResponse"
+                            "$ref": "#/definitions/GetRoomTemperatureResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -264,7 +264,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を取得する。",
-                "description": "スマートデバイスの温度設定値を取得する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -277,7 +277,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerGetTemperatureResponse"
+                            "$ref": "#/definitions/GetTemperatureResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -293,7 +293,7 @@
             "put": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を設定する。",
-                "description": "スマートデバイスの温度設定値を設定する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -314,7 +314,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerSetTemperatureResponse"
+                            "$ref": "#/definitions/SetTemperatureResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -331,7 +331,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの風量設定値を取得する。",
-                "description": "スマートデバイスの風量設定値を取得する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -344,7 +344,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerGetAirFlowResponse"
+                            "$ref": "#/definitions/GetAirFlowResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -361,7 +361,7 @@
             "put": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの風量設定値を設定する。",
-                "description": "スマートデバイスの風量設定値を設定する。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -388,7 +388,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerSetAirFlowResponse"
+                            "$ref": "#/definitions/SetAirFlowResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -427,7 +427,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerGetEnlPropertyResponse"
+                            "$ref": "#/definitions/GetEnlPropertyResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -477,7 +477,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AirConditionerSetEnlPropertyResponse"
+                            "$ref": "#/definitions/SetEnlPropertyResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -494,7 +494,7 @@
         }
     },
     "definitions": {
-        "AirConditionerPowerStatusGetResponse": {
+        "PowerStatusGetResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -518,7 +518,7 @@
                 }
             ]
         },
-        "AirConditionerPowerOnResponse": {
+        "PowerOnResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -526,7 +526,7 @@
                 }
             ]
         },
-        "AirConditionerPowerOffResponse": {
+        "PowerOffResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -534,7 +534,7 @@
                 }
             ]
         },
-        "AirConditionerGetPowerSavingResponse": {
+        "GetPowerSavingResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -558,7 +558,7 @@
                 }
             ]
         },
-        "AirConditionerSetPowerSavingResponse": {
+        "SetPowerSavingResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -566,7 +566,7 @@
                 }
             ]
         },
-        "AirConditionerGetModeSettingResponse": {
+        "GetModeSettingResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -590,7 +590,7 @@
                 }
             ]
         },
-        "AirConditionerSetModeSettingResponse": {
+        "SetModeSettingResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -598,7 +598,7 @@
                 }
             ]
         },
-        "AirConditionerGetRoomTemperatureResponse": {
+        "GetRoomTemperatureResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -619,7 +619,7 @@
                 }
             ]
         },
-        "AirConditionerGetTemperatureResponse": {
+        "GetTemperatureResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -640,7 +640,7 @@
                 }
             ]
         },
-        "AirConditionerSetTemperatureResponse": {
+        "SetTemperatureResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -648,7 +648,7 @@
                 }
             ]
         },
-        "AirConditionerGetAirFlowResponse": {
+        "GetAirFlowResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -675,7 +675,7 @@
                 }
             ]
         },
-        "AirConditionerSetAirFlowResponse": {
+        "SetAirFlowResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -683,7 +683,7 @@
                 }
             ]
         },
-        "AirConditionerGetEnlPropertyResponse": {
+        "GetEnlPropertyResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -723,7 +723,7 @@
                 }
             ]
         },
-        "AirConditionerSetEnlPropertyResponse": {
+        "SetEnlPropertyResponse": {
             "type": "object",
             "allOf": [
                 {

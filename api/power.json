@@ -27,7 +27,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PowerStatusGetResponse"
+                            "$ref": "#/definitions/PowerStatusResponse"
                         },
                         "examples": {
                             "application/json": {

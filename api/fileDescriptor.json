@@ -3,7 +3,7 @@
     "info": {
         "title": "File Descriptor Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートフォンまたは周辺機器から他方のスマートデバイスに対してのファイルディスクリプタ操作機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -12,9 +12,10 @@
     "paths": {
         "/open": {
             "get": {
+                "deprecated": true,
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのファイルを開くように要求する。",
+                "description": "ここで使用するpathは、File APIで取得できる。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -39,6 +40,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/FileDescriptorOpenResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -52,8 +56,9 @@
         },
         "/close": {
             "put": {
+                "deprecated": true,
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスのファイルを閉じるように要求する。",
                 "description": "",
                 "parameters": [
                     {
@@ -72,6 +77,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/FileDescriptorCloseResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -85,9 +93,10 @@
         },
         "/read": {
             "get": {
+                "deprecated": true,
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのファイルを指定したサイズ分取得する。",
+                "description": "スマートデバイスのファイルが読み込み完了していない場合には、再度このAPIを呼び出して取得を行う。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -122,13 +131,16 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/FileDescriptorReadResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "size": 9,
-                                "fileData": "dummydata"
+                                "size": 100,
+                                "fileData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
                             }
                         }
                     }
@@ -137,8 +149,9 @@
         },
         "/write": {
             "put": {
+                "deprecated": true,
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスのファイルへの書き込みを要求する。",
                 "description": "",
                 "parameters": [
                     {
@@ -177,6 +190,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/FileDescriptorWriteResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -190,9 +206,10 @@
         },
         "/onWatchFile": {
             "get": {
+                "deprecated": true,
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知する。",
+                "description": "スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -204,43 +221,38 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnWatchFileResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "file": {
-                                    "path": "Test1.png",
-                                    "curr": "2017-01-01T12:34:56+0900",
-                                    "prev": "2017-01-01T01:23:45+0900"
-                                }
+                                "version": "1.0.0"
                             }
                         }
                     }
                 }
             },
             "put": {
+                "deprecated": true,
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知する。",
+                "description": "スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
                         "in": "formData",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "interval",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -251,24 +263,28 @@
                     }
                 },
                 "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnWatchFileEvent"
+                    },
                     "examples": {
                         "application/json": {
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
                             "profile": "filedescriptor",
                             "attribute": "onwatchfile",
-                            "file": {
-                                "path": "Test1.png",
-                                "curr": "2017-01-01T12:34:56+0900",
-                                "prev": "2017-01-01T01:23:45+0900"
+                            "file" : {
+                              "path": "/dir/file1.txt",
+                              "curr": "2014-05-02 T10:32:10+0900",
+                              "prev": "2014-05-01 T10:32:10+0900"
                             }
                         }
                     }
                 }
             },
             "delete": {
+                "deprecated": true,
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知する。",
+                "description": "スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -280,6 +296,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -288,6 +307,163 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "FileDescriptorOpenResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "FileDescriptorCloseResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "FileDescriptorReadResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "FileDescriptorWriteResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "OnWatchFileResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/OnWatchFileInfo"
+                }
+            ]
+        },
+        "OnWatchFileEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/OnWatchFileInfo"
+                }
+            ]
+        },
+       "OnWatchFileInfo": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "required": [
+                        "connectStatus"
+                    ],
+                    "properties": {
+                        "connectStatus": {
+                            "type": "object",
+                            "required": [
+                                "enable"
+                            ],
+                            "properties": {
+                                "enable": {
+                                    "type": "boolean",
+                                    "title": "BLE機能有効状態",
+                                    "description": "BLE機能有効状態<br>ON: true<br>OFF: false"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "title": "処理結果",
+                    "description": "0: 正常応答<br>0以外: 異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムの名前",
+                    "description": ""
+                },
+                "version": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムのバージョン名",
+                    "description": ""
+                },
+                "hmac": {
+                    "type": "string",
+                    "title": "レスポンスに対する署名",
+                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
                 }
             }
         }
