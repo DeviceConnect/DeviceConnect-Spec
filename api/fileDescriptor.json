@@ -208,7 +208,7 @@
             "get": {
                 "deprecated": true,
                 "x-type": "one-shot",
-                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知する。",
+                "summary": "スマートデバイスのファイルの更新時間が変化したことを取得する。",
                 "description": "スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
                 "parameters": [
                     {
@@ -222,7 +222,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/OnWatchFileResponse"
+                            "$ref": "#/definitions/WatchFileResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -237,7 +237,7 @@
             "put": {
                 "deprecated": true,
                 "x-type": "event",
-                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知する。",
+                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録する。",
                 "description": "スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
                 "parameters": [
                     {
@@ -264,7 +264,7 @@
                 },
                 "x-event": {
                     "schema": {
-                        "$ref": "#/definitions/OnWatchFileEvent"
+                        "$ref": "#/definitions/WatchFileEvent"
                     },
                     "examples": {
                         "application/json": {
@@ -283,7 +283,7 @@
             "delete": {
                 "deprecated": true,
                 "x-type": "event",
-                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知する。",
+                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録解除する。",
                 "description": "スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
                 "parameters": [
                     {
@@ -344,29 +344,29 @@
                 }
             ]
         },
-        "OnWatchFileResponse": {
+        "WatchFileResponse": {
             "type": "object",
             "allOf": [
                 {
                     "$ref": "#/definitions/CommonResponse"
                 },
                 {
-                    "$ref": "#/definitions/OnWatchFileInfo"
+                    "$ref": "#/definitions/WatchFileInfo"
                 }
             ]
         },
-        "OnWatchFileEvent": {
+        "WatchFileEvent": {
             "type": "object",
             "allOf": [
                 {
                     "$ref": "#/definitions/CommonEvent"
                 },
                 {
-                    "$ref": "#/definitions/OnWatchFileInfo"
+                    "$ref": "#/definitions/WatchFileInfo"
                 }
             ]
         },
-       "OnWatchFileInfo": {
+       "WatchFileInfo": {
             "type": "object",
             "allOf": [
                 {

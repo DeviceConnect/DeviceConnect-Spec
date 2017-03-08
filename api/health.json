@@ -13,7 +13,7 @@
         "/heart": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "デバイスの心拍数計測通知イベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
@@ -86,7 +86,7 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスの心拍数計測通知イベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
@@ -178,7 +178,7 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスの心拍数計測通知イベントを停止する。",
                 "description": "",
                 "parameters": [
                     {
@@ -204,10 +204,349 @@
                     }
                 }
             }
+        },
+        "/onheart": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスの心拍数計測通知イベントを取得する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/HeartResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "heart": {
+                                    "rate": {
+                                        "value": 60,
+                                        "mderFloat": "00000042",
+                                        "type": "heart rate",
+                                        "typeCode": 147842,
+                                        "unit": "beat per min",
+                                        "unitCode": 264864,
+                                        "timeStamp": 1483241696789,
+                                        "timeStampString": "20170101123456.789+0900"
+                                    },
+                                    "rr": {
+                                        "value": 909.1796875,
+                                        "mderFloat": "F9E9CF8B",
+                                        "type": "RR interval",
+                                        "typeCode": 147240,
+                                        "unit": "ms",
+                                        "unitCode": 264338,
+                                        "timeStamp": 1483241696789,
+                                        "timeStampString": "20170101123456.789+0900"
+                                    },
+                                    "energy": {
+                                        "value": 0,
+                                        "mderFloat": "01000000",
+                                        "type": "energy expended",
+                                        "typeCode": 119,
+                                        "unit": "Calories",
+                                        "unitCode": 6784,
+                                        "timeStamp": 1483241696789,
+                                        "timeStampString": "20170101123456.789+0900"
+                                    },
+                                    "device": {
+                                        "productName": "DUMMY DEVICE",
+                                        "manufacturerName": "",
+                                        "modelNumber": "",
+                                        "firmwareRevision": "",
+                                        "serialNumber": "",
+                                        "softwareRevision": "",
+                                        "hardwareRevision": "",
+                                        "partNumber": "",
+                                        "protocolRevision": "",
+                                        "systemId": "0x0",
+                                        "batteryLevel": -1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスの心拍数計測通知イベントを開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/HeartEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "health",
+                            "attribute": "heart",
+                            "heart": {
+                                "rate": {
+                                    "value": 60,
+                                    "mderFloat": "00000042",
+                                    "type": "heart rate",
+                                    "typeCode": 147842,
+                                    "unit": "beat per min",
+                                    "unitCode": 264864,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                },
+                                "rr": {
+                                    "value": 909.1796875,
+                                    "mderFloat": "F9E9CF8B",
+                                    "type": "RR interval",
+                                    "typeCode": 147240,
+                                    "unit": "ms",
+                                    "unitCode": 264338,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                },
+                                "energy": {
+                                    "value": 0,
+                                    "mderFloat": "01000000",
+                                    "type": "energy expended",
+                                    "typeCode": 119,
+                                    "unit": "Calories",
+                                    "unitCode": 6784,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                },
+                                "device": {
+                                    "productName": "DUMMY DEVICE",
+                                    "manufacturerName": "",
+                                    "modelNumber": "",
+                                    "firmwareRevision": "",
+                                    "serialNumber": "",
+                                    "softwareRevision": "",
+                                    "hardwareRevision": "",
+                                    "partNumber": "",
+                                    "protocolRevision": "",
+                                    "systemId": "0x0",
+                                    "batteryLevel": -1
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "デバイスの心拍数計測通知イベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/heartRate": {
+            "get": {
+                "deprecated": true,
+                "x-type": "one-shot",
+                "summary": "デバイスの心拍数計測通知イベントを取得する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/HeartRateResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                             }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "deprecated": true,
+                "x-type": "event",
+                "summary": "デバイスの心拍数計測通知イベントを開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                             }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/HeartRateEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "health",
+                            "attribute": "heartrate",
+                            "heartRate": 80
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "deprecated": true,
+                "x-type": "event",
+                "summary": "デバイスの心拍数計測通知イベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                             }
+                        }
+                    }
+                }
+            }
         }
     },
 
     "definitions": {
+        "HeartRateEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/HeartRateInfo"
+                }
+            ]
+        },
+        "HeartRateResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/HeartRateInfo"
+                }
+            ]
+        },
+        "HeartRateInfo": {
+            "type": "object",
+            "required": [
+                "heartRate"
+            ],
+            "properties": {
+                "heartRate": {
+                    "type": "integer",
+                    "title": "心拍数",
+                    "description": "ターゲットデバイスで測定した心拍数を返す。"
+                }
+            }
+        },
         "HeartEvent": {
             "type": "object",
             "allOf": [

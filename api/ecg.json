@@ -13,7 +13,7 @@
         "/onECG": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "デバイスのECG計測通知イベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
@@ -51,7 +51,7 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスのECG計測通知イベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
@@ -108,7 +108,7 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスのECG計測通知イベントを停止する。",
                 "description": "",
                 "parameters": [
                     {

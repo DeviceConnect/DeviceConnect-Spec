@@ -1,0 +1,1450 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Human Detection Profile",
+        "version": "2.0.0",
+        "description": "スマートデバイスの人体検出機能を提供するAPI。"
+    },
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "paths": {
+        "/onDetection": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "人を検出したときの通知イベントを取得する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/HumanDetectionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "humanDetect": {
+                                    "exist": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "人を検出したときの通知イベントを開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/HumanDetectionEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "humandetection",
+                            "attribute": "ondetection",
+                            "humanDetect": {
+                                "exist": true
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "人を検出したときの通知イベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+
+                    }
+                }
+            }
+        },
+        "/onBodyDetection": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "体を検出したときの通知イベントを取得する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "threshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/BodyDetectionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "bodyDetects": [
+                                    {
+                                        "x": 0.47291666666666665,
+                                        "y": 0.6712962962962963,
+                                        "width": 0.271875,
+                                        "height": 0.48333333333333334,
+                                        "confidence": 0.907
+                                    },
+                                    {
+                                        "x": 0.034375,
+                                        "y": 0.8925925925925926,
+                                        "width": 0.036458333333333336,
+                                        "height": 0.06481481481481481,
+                                        "confidence": 0.746
+                                    },
+                                    {
+                                        "x": 0.9515625,
+                                        "y": 0.9592592592592593,
+                                        "width": 0.03177083333333333,
+                                        "height": 0.05648148148148148,
+                                        "confidence": 0.619
+                                    }
+                                ]
+                            }
+                        }
+
+
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "体を検出したときの通知イベントを開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "threshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/BodyDetectionEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "humandetection",
+                            "attribute": "onbodydetection",
+                            "bodyDetects": [
+                                {
+                                    "x": 0.47291666666666665,
+                                    "y": 0.6712962962962963,
+                                    "width": 0.271875,
+                                    "height": 0.48333333333333334,
+                                    "confidence": 0.907
+                                },
+                                {
+                                    "x": 0.034375,
+                                    "y": 0.8925925925925926,
+                                    "width": 0.036458333333333336,
+                                    "height": 0.06481481481481481,
+                                    "confidence": 0.746
+                                },
+                                {
+                                    "x": 0.9515625,
+                                    "y": 0.9592592592592593,
+                                    "width": 0.03177083333333333,
+                                    "height": 0.05648148148148148,
+                                    "confidence": 0.619
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "体を検出したときの通知イベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+
+                    }
+                }
+            }
+        },
+        "/onHandDetection": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "手を検出したときの通知イベントを取得する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "threshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/HandDetectionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "handDetects": [
+                                    {
+                                        "x": 0.5114583333333333,
+                                        "y": 0.6018518518518519,
+                                        "width": 0.15833333333333333,
+                                        "height": 0.2814814814814815,
+                                        "confidence": 0.962
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "手を検出したときの通知イベントを開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "threshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/HandDetectionEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "humandetection",
+                            "attribute": "onhanddetection",
+                            "handDetects": [
+                                {
+                                    "x": 0.5114583333333333,
+                                    "y": 0.6018518518518519,
+                                    "width": 0.15833333333333333,
+                                    "height": 0.2814814814814815,
+                                    "confidence": 0.962
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "手を検出したときの通知イベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+
+                    }
+                }
+            }
+        },
+        "/onFaceDetection": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "顔を検出したときの通知イベントを取得する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "threshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "eyeThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "noseThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "mouthThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "blinkThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "ageThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "genderThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "faceDirectionThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "gazeThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "expressionThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/FaceDetectionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "faceDetects": [
+                                    {
+                                       "ageResults":{
+                                           "age":"35",
+                                           "confidence":"0.82"
+                                       },
+                                       "genderResults":{
+                                           "gender":"male",
+                                           "confidence":"0.75"
+                                       },
+                                       "expressionResults":{
+                                           "expression":"surprise",
+                                           "confidence":"0.69"
+                                       }
+                                    }
+                                ]
+                            }
+                        }
+
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "顔を検出したときの通知イベントを開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "threshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "minHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxWidth",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "maxHeight",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "eyeThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "noseThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "mouthThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "blinkThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "ageThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "genderThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "faceDirectionThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "gazeThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "expressionThreshold",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/FaceDetectionEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "humandetection",
+                            "attribute": "onfacedetection",
+                            "faceDetects": [
+                                {
+                                   "ageResults":{
+                                       "age":"35",
+                                       "confidence":"0.82"
+                                   },
+                                   "genderResults":{
+                                       "gender":"male",
+                                       "confidence":"0.75"
+                                   },
+                                   "expressionResults":{
+                                       "expression":"surprise",
+                                       "confidence":"0.69"
+                                   }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "顔を検出したときの通知イベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+         "HumanDetectionResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/HumanDetectionInfo"
+                }
+            ]
+        },
+        "HumanDetectionEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/HumanDetectionInfo"
+                }
+            ]
+        },
+        "HumanDetectionInfo": {
+            "type": "object",
+            "required": [
+                "humanDetect"
+            ],
+            "properties": {
+                "humanDetect": {
+                    "type": "object",
+                    "required": [
+                        "exist"
+                    ],
+                    "properties": {
+                        "exist": {
+                            "type": "boolean",
+                            "title": "人が検出されたかどうかのフラグ。",
+                            "description": "検出された : true<br>検出されない : false"
+                        }
+                    }
+                }
+            }
+        },
+         "BodyDetectionResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/BodyDetectionInfo"
+                }
+            ]
+        },
+        "BodyDetectionEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/BodyDetectionInfo"
+                }
+            ]
+        },
+        "BodyDetectionInfo": {
+            "type": "object",
+            "required": [
+                "bodyDetects"
+            ],
+            "properties": {
+                "bodyDetects": {
+                    "type": "array",
+                    "title": "人体検出リスト",
+                    "description": "検出された数分出現する。",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "x",
+                            "y",
+                            "confidence"
+                        ],
+                        "properties": {
+                            "x": {
+                                "type": "number",
+                                "title": "検出領域の中心X座標",
+                                "description": "0.0~1.0"
+                            },
+                            "y": {
+                                "type": "number",
+                                "title": "検出領域の中心Y座標",
+                                "description": "0.0~1.0"
+                            },
+                            "width": {
+                                "type": "number",
+                                "title": "検出領域のX方向の幅",
+                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                            },
+                            "height": {
+                                "type": "number",
+                                "title": "検出領域のY方向の幅",
+                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                            },
+                            "confidence": {
+                                "type": "number",
+                                "title": "解析の信頼度",
+                                "description": "0.0~1.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+         "HandDetectionResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/HandDetectionInfo"
+                }
+            ]
+        },
+        "HandDetectionEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/HandDetectionInfo"
+                }
+            ]
+        },
+        "HandDetectionInfo": {
+            "type": "object",
+            "required": [
+                "handDetects"
+            ],
+            "properties": {
+                "handDetects": {
+                    "type": "array",
+                    "title": "手検出リスト",
+                    "description": "検出された数分出現する。",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "x",
+                            "y",
+                            "confidence"
+                        ],
+                        "properties": {
+                            "x": {
+                                "type": "number",
+                                "title": "検出領域の中心X座標",
+                                "description": "0.0~1.0"
+                            },
+                            "y": {
+                                "type": "number",
+                                "title": "検出領域の中心Y座標",
+                                "description": "0.0~1.0"
+                            },
+                            "width": {
+                                "type": "number",
+                                "title": "検出領域のX方向の幅",
+                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                            },
+                            "height": {
+                                "type": "number",
+                                "title": "検出領域のY方向の幅",
+                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                            },
+                            "confidence": {
+                                "type": "number",
+                                "title": "解析の信頼度",
+                                "description": "0.0~1.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+         "FaceDetectionResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/FaceDetectionInfo"
+                }
+            ]
+        },
+        "FaceDetectionEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/FaceDetectionInfo"
+                }
+            ]
+        },
+        "FaceDetectionInfo": {
+            "type": "object",
+            "required": [
+                "faceDetects"
+            ],
+            "properties": {
+                "faceDetects": {
+                    "type": "array",
+                    "title": "顔検出リスト",
+                    "description": "検出された数分出現する。",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                          "eyePoints": {
+                              "type": "object",
+                              "properties": {
+                                  "leftEyeX": {
+                                      "type": "number",
+                                      "title": "左目の中心座標(x)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "leftEyeY": {
+                                      "type": "number",
+                                      "title": "左目の中心座標(y)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "leftEyeWidth": {
+                                      "type": "number",
+                                      "title": "左目の領域幅(w)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "leftEyeHeight": {
+                                      "type": "number",
+                                      "title": "左目の領域幅(h)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "rightEyeX": {
+                                      "type": "number",
+                                      "title": "右目の中心座標(x)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "rightEyeY": {
+                                      "type": "number",
+                                      "title": "右目の中心座標(y)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "rightEyeWidth": {
+                                      "type": "number",
+                                      "title": "右目の領域幅(w)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "rightEyeHeight": {
+                                      "type": "number",
+                                      "title": "右目の領域幅(h)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "nosePoints": {
+                              "type": "object",
+                              "properties": {
+                                  "noseX": {
+                                      "type": "number",
+                                      "title": "鼻の中心座標(x)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "noseY": {
+                                      "type": "number",
+                                      "title": "鼻の中心座標(y)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "noseWidth": {
+                                      "type": "number",
+                                      "title": "鼻の領域幅(w)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "noseHeight": {
+                                      "type": "number",
+                                      "title": "鼻の領域幅(h)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "mouthPoints": {
+                              "type": "object",
+                              "properties": {
+                                  "mouthX": {
+                                      "type": "number",
+                                      "title": "口の中心座標(x)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "mouthY": {
+                                      "type": "number",
+                                      "title": "口の中心座標(y)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "mouthWidth": {
+                                      "type": "number",
+                                      "title": "口の領域幅(w)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "mouthHeight": {
+                                      "type": "number",
+                                      "title": "口の領域幅(h)",
+                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "blinkResults": {
+                              "type": "object",
+                              "properties": {
+                                  "leftEye": {
+                                      "type": "number",
+                                      "title": "目つむり度合(左)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "rightEye": {
+                                      "type": "number",
+                                      "title": "目つむり度合(右)",
+                                      "description": "0.0~1.0"
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "ageResults": {
+                              "type": "object",
+                              "properties": {
+                                  "age": {
+                                      "type": "integer",
+                                      "title": "年齢",
+                                      "description": ""
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "genderResults": {
+                              "type": "object",
+                              "properties": {
+                                  "gender": {
+                                      "type": "string",
+                                      "title": "性別",
+                                      "description": "male : 男性<br>female : 女性",
+                                      "enum": [
+                                              "male", "female"
+                                      ]
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "faceDirectionResults": {
+                              "type": "object",
+                              "properties": {
+                                  "yaw": {
+                                      "type": "integer",
+                                      "title": "左右方向角度",
+                                      "description": "-180~180[degree]"
+                                  },
+                                  "pitch": {
+                                      "type": "integer",
+                                      "title": "上下方向角度",
+                                      "description": "-180~180[degree]"
+                                  },
+                                  "roll": {
+                                      "type": "integer",
+                                      "title": "顔傾き角度",
+                                      "description": "-180~180[degree]"
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "gazeResults": {
+                              "type": "object",
+                              "properties": {
+                                  "gazeLR": {
+                                      "type": "integer",
+                                      "title": "左右角度",
+                                      "description": "-90~90[degree]"
+                                  },
+                                  "gateUD": {
+                                      "type": "integer",
+                                      "title": "上下角度",
+                                      "description": "-90~90[degree]"
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          },
+                          "expressionResults": {
+                              "type": "object",
+                              "properties": {
+                                  "expression": {
+                                      "type": "string",
+                                      "title": "左右角度",
+                                      "description": "unknown : 無表情<br>smile : 笑 い/喜び<br>surprise : 驚き<br>mad : 怒り<br>sad : 悲しみ",
+                                      "enum": [
+                                              "unknown", "smile", "surprise", "mad", "sad"
+                                      ]
+                                  },
+                                  "confidence": {
+                                      "type": "number",
+                                      "title": "解析の信頼度",
+                                      "description": "0.0~1.0"
+                                  }
+                              }
+                          }
+                        }
+                    }
+                }
+            }
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
+                }
+            }
+        }
+    }
+}

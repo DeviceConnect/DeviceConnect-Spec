@@ -114,7 +114,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/OnWifiChangeResponse"
+                            "$ref": "#/definitions/WifiChangeResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -165,7 +165,7 @@
                 },
                 "x-event": {
                     "schema": {
-                        "$ref": "#/definitions/OnWifiChangeEvent"
+                        "$ref": "#/definitions/WifiChangeEvent"
                     },
                     "examples": {
                         "application/json": {
@@ -312,7 +312,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/OnBluetoothChangeResponse"
+                            "$ref": "#/definitions/BluetoothChangeResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -363,7 +363,7 @@
                 },
                 "x-event": {
                     "schema": {
-                        "$ref": "#/definitions/OnBluetoothChangeEvent"
+                        "$ref": "#/definitions/BluetoothChangeEvent"
                     },
                     "examples": {
                         "application/json": {
@@ -568,7 +568,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/OnNfcChangeResponse"
+                            "$ref": "#/definitions/NfcChangeResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -619,7 +619,7 @@
                 },
                 "x-event": {
                     "schema": {
-                        "$ref": "#/definitions/OnNfcChangeEvent"
+                        "$ref": "#/definitions/NfcChangeEvent"
                     },
                     "examples": {
                         "application/json": {
@@ -766,7 +766,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/OnBleChangeResponse"
+                            "$ref": "#/definitions/BleChangeResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -817,7 +817,7 @@
                 },
                 "x-event": {
                     "schema": {
-                        "$ref": "#/definitions/OnBleChangeEvent"
+                        "$ref": "#/definitions/BleChangeEvent"
                     },
                     "examples": {
                         "application/json": {
@@ -899,7 +899,7 @@
                 }
             ]
         },
-       "OnWifiChangeResponse": {
+       "WifiChangeResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -927,7 +927,7 @@
                 }
             ]
         },
-       "OnWifiChangeEvent": {
+       "WifiChangeEvent": {
             "type": "object",
             "allOf": [
                 {
@@ -992,7 +992,7 @@
                 }
             ]
         },
-       "OnBluetoothChangeResponse": {
+       "BluetoothChangeResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -1020,7 +1020,7 @@
                 }
             ]
         },
-       "OnBluetoothChangeEvent": {
+       "BluetoothChangeEvent": {
             "type": "object",
             "allOf": [
                 {
@@ -1101,7 +1101,7 @@
                 }
             ]
         },
-       "OnNfcChangeResponse": {
+       "NfcChangeResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -1129,7 +1129,7 @@
                 }
             ]
         },
-       "OnNfcChangeEvent": {
+       "NfcChangeEvent": {
             "type": "object",
             "allOf": [
                 {
@@ -1194,7 +1194,7 @@
                 }
             ]
         },
-       "OnBleChangeResponse": {
+       "BleChangeResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -1222,7 +1222,7 @@
                 }
             ]
         },
-       "OnBleChangeEvent": {
+       "BleChangeEvent": {
             "type": "object",
             "allOf": [
                 {
