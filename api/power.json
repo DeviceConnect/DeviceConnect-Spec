@@ -114,9 +114,9 @@
                         "powerstatus": {
                             "type": "string",
                             "title": "電源状態",
-                            "description": "電源状態",
+                            "description": "ON:電源オン<br>OFF:電源オフ<br>UNKNOWN:不明",
                             "enum": [
-                                  "on", "off", "unknown"
+                                  "ON", "OFF", "UNKNOWN"
                             ]
                         }
                     }

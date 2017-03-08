@@ -3,7 +3,7 @@
     "info": {
         "title": "Air Conditioner Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートデバイスが持つエアーコンディショナー機器を操作する機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,8 +13,8 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの電源状態を取得する。",
+                "description": "スマートデバイスの電源状態を取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -26,6 +26,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerPowerStatusGetResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -39,8 +42,8 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの電源を点ける。",
+                "description": "スマートデバイスの電源を点ける。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -52,6 +55,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerPowerOnResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -64,8 +70,8 @@
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの電源を消す。",
+                "description": "スマートデバイスの電源を消す。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -77,6 +83,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerPowerOffResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -88,11 +97,11 @@
                 }
             }
         },
-        "/operationPowerSaving": {
+        "/powerSaving": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの節電動作設定を取得する。",
+                "description": "スマートデバイスの節電動作設定を取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -104,12 +113,15 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerGetPowerSavingResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "operationpowersaving": "Normal"
+                                "powersaving": "Normal"
                             }
                         }
                     }
@@ -117,8 +129,8 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの節電動作設定を設定する。",
+                "description": "スマートデバイスの節電動作設定を設定する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -127,7 +139,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "operationpowersaving",
+                        "name": "powersaving",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -137,6 +149,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerSetPowerSavingResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -148,11 +163,11 @@
                 }
             }
         },
-        "/operationModeSetting": {
+        "/modeSetting": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの運転モード設定を取得する。",
+                "description": "スマートデバイスの運転モード設定を取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -164,12 +179,15 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerGetModeSettingResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "operationmodesetting": "Automatic"
+                                "modesetting": "Automatic"
                             }
                         }
                     }
@@ -177,8 +195,8 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの運転モード設定を設定する。",
+                "description": "スマートデバイスの運転モード設定を設定する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -187,7 +205,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "operationmodesetting",
+                        "name": "modesetting",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -197,6 +215,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerSetModeSettingResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -211,8 +232,8 @@
         "/roomTemperature": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの室温計測値を取得する。",
+                "description": "スマートデバイスの室温計測値を取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -224,6 +245,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerGetRoomTemperatureResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -236,11 +260,11 @@
                 }
             }
         },
-        "/temperatureValue": {
+        "/temperature": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの温度設定値を取得する。",
+                "description": "スマートデバイスの温度設定値を取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -252,12 +276,15 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerGetTemperatureResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "temperaturevalue": "20"
+                                "temperature": "20"
                             }
                         }
                     }
@@ -265,8 +292,8 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの温度設定値を設定する。",
+                "description": "スマートデバイスの温度設定値を設定する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -275,7 +302,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "temperaturevalue",
+                        "name": "temperature",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -286,6 +313,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerSetTemperatureResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -297,11 +327,11 @@
                 }
             }
         },
-        "/airFlowValue": {
+        "/airFlow": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの風量設定値を取得する。",
+                "description": "スマートデバイスの風量設定値を取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -313,13 +343,16 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerGetAirFlowResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
                                 "airflowauto": "true",
-                                "airflowvalue": "0.0"
+                                "airflow": "0.0"
                             }
                         }
                     }
@@ -327,8 +360,8 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの風量設定値を設定する。",
+                "description": "スマートデバイスの風量設定値を設定する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -337,7 +370,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "airflowvalue",
+                        "name": "airflow",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -354,6 +387,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerSetAirFlowResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -368,8 +404,8 @@
         "/enlProperty": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する（必須プロパティのみ）。",
+                "description": "※enlproperty:ECHONET Lite Propertyのこと。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -390,6 +426,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerGetEnlPropertyResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -412,8 +451,8 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う（必須プロパティのみ）。",
+                "description": "※enlproperty:ECHONET Lite Propertyのこと。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -437,6 +476,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AirConditionerSetEnlPropertyResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -447,6 +489,275 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AirConditionerPowerStatusGetResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "powerstatus"
+                    ],
+                    "properties": {
+                        "powerstatus": {
+                            "type": "string",
+                            "title": "電源状態",
+                            "description": "ON:電源オン<br>OFF:電源オフ<br>UNKNOWN:不明",
+                            "enum": [
+                                  "ON", "OFF", "UNKNOWN"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "AirConditionerPowerOnResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "AirConditionerPowerOffResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "AirConditionerGetPowerSavingResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "powersaving"
+                    ],
+                    "properties": {
+                        "powersaving": {
+                            "type": "string",
+                            "title": "節電動作設定",
+                            "description": "PowerSaving：節電動作中<br>Normal：通常動作中<br>Unknown：不明",
+                            "enum": [
+                                  "PowerSaving", "Normal", "Unknown"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "AirConditionerSetPowerSavingResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "AirConditionerGetModeSettingResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "modesetting"
+                    ],
+                    "properties": {
+                        "modesetting": {
+                            "type": "string",
+                            "title": "運転モード設定",
+                            "description": "Automatic:自動<br>Cooling:冷房<br>Heating:暖房<br>Dehumidification:除湿<br>AirCirculator:送風<br>Other:その他",
+                            "enum": [
+                                "Automatic", "Cooling", "Heating", "Dehumidification", "AirCirculator", "Other"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "AirConditionerSetModeSettingResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "AirConditionerGetRoomTemperatureResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "roomtemperature"
+                    ],
+                    "properties": {
+                        "roomtemperature": {
+                            "type": "integer",
+                            "title": "室内温度計測値",
+                            "description": "-127〜125 (℃)"
+                        }
+                    }
+                }
+            ]
+        },
+        "AirConditionerGetTemperatureResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "temperature"
+                    ],
+                    "properties": {
+                        "temperature": {
+                            "type": "integer",
+                            "title": "温度設定値",
+                            "description": "0〜50 (℃)"
+                        }
+                    }
+                }
+            ]
+        },
+        "AirConditionerSetTemperatureResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "AirConditionerGetAirFlowResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "airflow"
+                    ],
+                    "properties": {
+                        "airflow": {
+                            "type": "number",
+                            "title": "風量設定値",
+                            "description": "0.0〜1.0"
+                        },
+                        "airflowauto": {
+                            "type": "boolean",
+                            "title": "風量自動モード設定",
+                            "description": "true:自動モード有効<br>false:自動モード無効<br>※(注1) 風量自動モード設定をtrue設定した時のみ省略可。<br>※(注2) 省略時及びfalse設定時は、「風量設定値」が反映される。"
+                        }
+
+                    }
+                }
+            ]
+        },
+        "AirConditionerSetAirFlowResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "AirConditionerGetEnlPropertyResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "properties"
+                    ],
+                    "properties": {
+                        "properties": {
+                            "type": "array",
+                            "title": "EPCのリスト",
+                            "description": "指定されたEPCの配列。",
+                            "items":{
+                                "type": "object",
+                                "required": [
+                                    "epc",
+                                    "value"
+                                ],
+                                "properties": {
+                                    "epc": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Code",
+                                        "description": "ECHONET Property Code"
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Codeの設定値。",
+                                        "description": "ECHONET Property Codeの設定値。"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "AirConditionerSetEnlPropertyResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "title": "処理結果",
+                    "description": "0: 正常応答<br>0以外: 異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムの名前",
+                    "description": ""
+                },
+                "version": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムのバージョン名",
+                    "description": ""
+                },
+                "hmac": {
+                    "type": "string",
+                    "title": "レスポンスに対する署名",
+                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }
