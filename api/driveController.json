@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Drive Controller Profile",
+        "title": "DriveController Profile",
         "version": "2.0.0",
         "description": "スマートデバイスの駆動処理を提供するAPI。"
     },
@@ -43,7 +43,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/MoveResponse"
+                            "$ref": "#/definitions/DriveControllerMoveResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -57,7 +57,7 @@
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスに移動停止命令を送る。",
+                "summary": "スマートデバイスに移動停止リクエストを送る。",
                 "description": "",
                 "parameters": [
                     {
@@ -71,7 +71,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/StopResponse"
+                            "$ref": "#/definitions/DriveControllerStopResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -87,7 +87,7 @@
         "/rotate": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスを指定された向きに回転を開始する。",
+                "summary": "スマートデバイスを指定された向きに回転を行う。",
                 "description": "",
                 "parameters": [
                     {
@@ -109,7 +109,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/RotateResponse"
+                            "$ref": "#/definitions/DriveControllerRotateResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -123,9 +123,8 @@
             }
         }
     },
-
     "definitions": {
-        "MoveResponse": {
+        "DriveControllerMoveResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -133,7 +132,7 @@
                 }
             ]
         },
-        "StopResponse": {
+        "DriveControllerStopResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -141,7 +140,7 @@
                 }
             ]
         },
-        "RotateResponse": {
+        "DriveControllerRotateResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -159,19 +158,23 @@
             "properties": {
                 "result": {
                     "type": "integer",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "処理結果",
+                    "description": "0: 正常応答<br>0以外: 異常応答"
                 },
                 "product": {
                     "type": "string",
-                    "description": "DeviceConnectシステムの名前。"
+                    "title": "DeviceConnectシステムの名前",
+                    "description": ""
                 },
                 "version": {
                     "type": "string",
-                    "description": "DeviceConnectシステムのバージョン名。"
+                    "title": "DeviceConnectシステムのバージョン名",
+                    "description": ""
                 },
                 "hmac": {
                     "type": "string",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "レスポンスに対する署名",
+                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

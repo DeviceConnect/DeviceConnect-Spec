@@ -3,7 +3,7 @@
     "info": {
         "title": "ECG Profile",
         "version": "2.0.0",
-        "description": "デバイスのECGのイベントを通知するための機能を提供するAPI。"
+        "description": "デバイスのECGのイベントを通知するための機能。※ECG:Electrocardiogram(心電図)"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,8 +13,8 @@
         "/onECG": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "デバイスのECG計測情報を取得する。",
-                "description": "",
+                "summary": "デバイスのECG計測通知イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -27,7 +27,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/OnECGResponse"
+                            "$ref": "#/definitions/ECGResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -51,7 +51,7 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスのECG計測値を通知するイベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
@@ -108,7 +108,7 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスのECG計測値を通知するイベントを停止する。",
                 "description": "",
                 "parameters": [
                     {
@@ -138,7 +138,7 @@
     },
 
     "definitions": {
-        "ECGResponse": {
+         "ECGResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -168,6 +168,8 @@
             "properties": {
                 "ecg": {
                     "type": "object",
+                    "title": "ECG",
+                    "description": "ECGのオブジェクト。",
                     "required": [
                         "value",
                         "mderFloat",
@@ -180,15 +182,14 @@
                     ],
                     "properties": {
                         "value": {
-                            "type": "number",
-                            "format": "double",
+                            "type": "integer",
                             "title": "ECG",
-                            "description": "ターゲットデバイスによって測定されたECG。取得できない場合は-1を返す。"
+                            "description": "ターゲットデバイスで測定した心拍数を返す。"
                         },
                         "mderFloat": {
                             "type": "string",
                             "title": "ECGのMDER Float値",
-                            "description": "ターゲットデバイスによって測定されたECGを、16進数のMDER Float値で表している。取得できない場合は-1の16進数文字列を返す。"
+                            "description": "ターゲットデバイスによって測定された心拍数を、16進数のMDER Float値で表している。取得できない場合は-1の16進数文字列を返す。"
                         },
                         "type": {
                             "type": "string",
@@ -197,18 +198,18 @@
                         },
                         "typeCode": {
                             "type": "string",
-                            "title": "ECGのMDER Float値",
+                            "title": "ECGのオブジェクトのタイプのコード",
                             "description": "「663568」という「ecg beat」を意味するコードを返す。取得できない場合は、空文字を返す。"
                         },
                         "unit": {
                             "type": "string",
                             "title": "ECGの単位",
-                            "description": "「mVolt * milliSecond」のように人間がわかるように単位を返す。取得できない場合は、空文字を返す。"
+                            "description": "「mVolt * miliSecond」のように人間がわかるように単位を返す。取得できない場合は、空文字を返す。"
                         },
                         "unitCode": {
                             "type": "string",
                             "title": "ECGの単位コード",
-                            "description": "「3328」という「mVolt * milliSecond」を意味するコードを返す。取得できない場合は、空文字を返す。"
+                            "description": "「3328」という「mVolt * miliSecond」を意味するコードを返す。取得できない場合は、空文字を返す。"
                         },
                         "timeStamp": {
                             "type": "integer",
@@ -224,22 +225,6 @@
                     }
                 }
             }
-        },
-        "EventRegistrationResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "EventUnregistrationResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
         },
         "CommonResponse": {
             "type": "object",
@@ -266,6 +251,22 @@
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
         },
         "CommonEvent": {
             "type": "object",

@@ -27,7 +27,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/GetZoomResponse"
+                            "$ref": "#/definitions/CameraGetZoomResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -42,7 +42,7 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "Cameraデバイスに対してレンズのズームイン・アウト依頼を送る。",
+                "summary": "Cameraデバイスに対してレンズのズームイン・アウトリクエストを送る。",
                 "description": "",
                 "parameters": [
                     {
@@ -70,7 +70,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/ActionZoomResponse"
+                            "$ref": "#/definitions/CameraSetZoomResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -84,9 +84,8 @@
             }
         }
     },
-
     "definitions": {
-        "GetZoomResponse": {
+        "CameraGetZoomResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -99,15 +98,15 @@
                     ],
                     "properties": {
                         "zoomPosition": {
-                            "type": "integer",
-                            "format": "int64",
-                            "description": "カメラの倍率(%)<br>例)<br>QX-10の場合<br>0(%):拡大なし<br>50(%):倍率5倍での 拡大"
+                            "type": "number",
+                            "title": "カメラの倍率",
+                            "description": "カメラの倍率(%)<br>例)<br>QX-10の場合<br>0(%):拡大なし<br>50(%):倍率5倍での拡大"
                         }
                     }
                 }
             ]
         },
-        "ActionZoomResponse": {
+        "CameraSetZoomResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -125,19 +124,23 @@
             "properties": {
                 "result": {
                     "type": "integer",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "処理結果",
+                    "description": "0: 正常応答<br>0以外: 異常応答"
                 },
                 "product": {
                     "type": "string",
-                    "description": "DeviceConnectシステムの名前。"
+                    "title": "DeviceConnectシステムの名前",
+                    "description": ""
                 },
                 "version": {
                     "type": "string",
-                    "description": "DeviceConnectシステムのバージョン名。"
+                    "title": "DeviceConnectシステムのバージョン名",
+                    "description": ""
                 },
                 "hmac": {
                     "type": "string",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "レスポンスに対する署名",
+                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

@@ -13,8 +13,8 @@
         "/property": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する。<br>EPC:ECHONET Property Code",
-                "description": "",
+                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する。",
+                "description": "EPC:ECHONET Property Code",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -36,7 +36,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/EchonetLiteGetResponse"
+                            "$ref": "#/definitions/GetEchonetPropertyCodeResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -86,7 +86,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/EchonetLiteSetResponse"
+                            "$ref": "#/definitions/SetEchonetPropertyCodeResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -103,7 +103,7 @@
         }
     },
     "definitions": {
-        "EchonetLiteGetResponse": {
+        "GetEchonetPropertyCodeResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -143,7 +143,7 @@
                 }
             ]
         },
-        "EchonetLiteSetResponse": {
+        "SetEchonetPropertyCodeResponse": {
             "type": "object",
             "allOf": [
                 {

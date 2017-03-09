@@ -13,7 +13,7 @@
         "/drawImage": {
             "post" : {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "デバイスに画像を描画する。",
                 "description": "",
                 "parameters": [
                     {
