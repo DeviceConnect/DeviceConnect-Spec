@@ -14,7 +14,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "デバイスのECG計測通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -51,7 +51,7 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "デバイスのECG計測通知イベントを開始する。",
+                "summary": "デバイスのECG計測値を通知するイベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
@@ -108,7 +108,7 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "デバイスのECG計測通知イベントを停止する。",
+                "summary": "デバイスのECG計測値を通知するイベントを停止する。",
                 "description": "",
                 "parameters": [
                     {

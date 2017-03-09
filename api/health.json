@@ -14,7 +14,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "デバイスの心拍数計測通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -87,7 +87,7 @@
             "put": {
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを開始する。",
-                "description": "",
+                "description": "当該イベントの通知を開始する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -179,7 +179,7 @@
             "delete": {
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを停止する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -209,7 +209,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "デバイスの心拍数計測通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -282,7 +282,7 @@
             "put": {
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを開始する。",
-                "description": "",
+                "description": "当該イベントの通知を開始する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -374,7 +374,7 @@
             "delete": {
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを停止する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -405,7 +405,7 @@
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "デバイスの心拍数計測通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -434,7 +434,7 @@
                 "deprecated": true,
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを開始する。",
-                "description": "",
+                "description": "当該イベントの通知を開始する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -483,7 +483,7 @@
                 "deprecated": true,
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを停止する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",

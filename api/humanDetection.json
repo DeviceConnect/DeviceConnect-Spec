@@ -14,7 +14,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "人を検出したときの通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -45,7 +45,7 @@
             "put": {
                 "x-type": "event",
                 "summary": "人を検出したときの通知イベントを開始する。",
-                "description": "",
+                "description": "当該イベントの通知を開始する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -96,7 +96,7 @@
             "delete": {
                 "x-type": "event",
                 "summary": "人を検出したときの通知イベントを停止する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -127,7 +127,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "体を検出したときの通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -220,7 +220,7 @@
             "put": {
                 "x-type": "event",
                 "summary": "体を検出したときの通知イベントを開始する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -331,7 +331,7 @@
             "delete": {
                 "x-type": "event",
                 "summary": "体を検出したときの通知イベントを停止する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -362,7 +362,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "手を検出したときの通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -439,7 +439,7 @@
             "put": {
                 "x-type": "event",
                 "summary": "手を検出したときの通知イベントを開始する。",
-                "description": "",
+                "description": "当該イベントの通知を開始する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -536,7 +536,7 @@
             "delete": {
                 "x-type": "event",
                 "summary": "手を検出したときの通知イベントを停止する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -567,7 +567,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "顔を検出したときの通知イベントを取得する。",
-                "description": "",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -724,7 +724,7 @@
             "put": {
                 "x-type": "event",
                 "summary": "顔を検出したときの通知イベントを開始する。",
-                "description": "",
+                "description": "当該イベントの通知を開始する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -899,7 +899,7 @@
             "delete": {
                 "x-type": "event",
                 "summary": "顔を検出したときの通知イベントを停止する。",
-                "description": "",
+                "description": "当該イベントの通知を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",

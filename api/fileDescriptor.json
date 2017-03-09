@@ -209,7 +209,7 @@
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのファイルの更新時間が変化したことを取得する。",
-                "description": "スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -374,20 +374,34 @@
                 },
                 {
                     "required": [
-                        "connectStatus"
+                        "file"
                     ],
                     "properties": {
-                        "connectStatus": {
+                        "file": {
                             "type": "object",
                             "required": [
-                                "enable"
+                                "path",
+                                "curr",
+                                "prev"
                             ],
                             "properties": {
-                                "enable": {
-                                    "type": "boolean",
-                                    "title": "BLE機能有効状態",
-                                    "description": "BLE機能有効状態<br>ON: true<br>OFF: false"
+                                "path": {
+                                    "type": "string",
+                                    "title": "ファイルパス",
+                                    "description": "ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。"
+                                },
+                                "curr": {
+                                    "type": "string",
+                                    "title": "現在の更新時間（RFC 3339）",
+                                    "description": "例: 2014-01-01T00:00:00+0900"
+                                },
+                                "prev": {
+                                    "type": "string",
+                                    "title": "以前の更新時間（RFC 3339）",
+                                    "description": "例: 2014-01-01T00:00:00+0900"
                                 }
+
+
                             }
                         }
                     }
