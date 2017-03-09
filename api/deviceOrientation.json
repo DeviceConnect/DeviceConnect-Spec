@@ -86,8 +86,7 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "value": "Register OnDeviceOrientation event"
+                                "version": "1.0.0"
                             }
                         }
                     }
@@ -99,8 +98,8 @@
                     "examples": {
                         "application/json": {
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
-                            "profile": "",
-                            "attribute": "",
+                            "profile": "deviceorientation",
+                            "attribute": "ondeviceorientation",
                             "orientation": {
                                 "acceleration": {
                                     "x": 0.12345678901234567,
@@ -117,7 +116,7 @@
                                     "y": 0.12345678901234567,
                                     "z": 9.87654321098
                                 },
-                                "interval": 0
+                                "interval": 100
                             }
                         }
                     }
@@ -145,8 +144,7 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "value": "Unregister OnDeviceOrientation event"
+                                "version": "1.0.0"
                             }
                         }
                     }

@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Profile",
+        "title": "Drive Controller Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートデバイスの駆動処理を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,7 +13,7 @@
         "/move": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスを指定された方向に移動開始する。",
                 "description": "",
                 "parameters": [
                     {
@@ -42,6 +42,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/MoveResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -54,7 +57,7 @@
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスに移動停止命令を送る。",
                 "description": "",
                 "parameters": [
                     {
@@ -67,6 +70,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StopResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -81,7 +87,7 @@
         "/rotate": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスを指定された向きに回転を開始する。",
                 "description": "",
                 "parameters": [
                     {
@@ -102,6 +108,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RotateResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -110,6 +119,59 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "MoveResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "StopResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "RotateResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

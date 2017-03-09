@@ -3,7 +3,7 @@
     "info": {
         "title": "Camera Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートデバイス(Cameraデバイスなど）のズーム操作機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,7 +13,7 @@
         "/zoom": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "Cameraデバイスの現在の倍率を取得する。",
                 "description": "",
                 "parameters": [
                     {
@@ -26,6 +26,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GetZoomResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -39,7 +42,7 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "Cameraデバイスに対してレンズのズームイン・アウト依頼を送る。",
                 "description": "",
                 "parameters": [
                     {
@@ -66,6 +69,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ActionZoomResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -74,6 +80,64 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "GetZoomResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "zoomPosition"
+                    ],
+                    "properties": {
+                        "zoomPosition": {
+                            "type": "integer",
+                            "format": "int64",
+                            "description": "カメラの倍率(%)<br>例)<br>QX-10の場合<br>0(%):拡大なし<br>50(%):倍率5倍での 拡大"
+                        }
+                    }
+                }
+            ]
+        },
+        "ActionZoomResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

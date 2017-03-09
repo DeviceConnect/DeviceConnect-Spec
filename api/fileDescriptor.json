@@ -3,7 +3,7 @@
     "info": {
         "title": "File Descriptor Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートフォンまたは周辺機器から他方のスマートデバイスに対してのファイルディスクリプタ操作機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,7 +13,7 @@
         "/open": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスのファイルを開くように要求する。 ここで使用するメディアIDは、File APIで取得できる。",
                 "description": "",
                 "parameters": [
                     {
@@ -39,6 +39,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OpenResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -53,7 +56,7 @@
         "/close": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスのファイルを閉じるように要求する。",
                 "description": "",
                 "parameters": [
                     {
@@ -72,6 +75,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CloseResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -122,6 +128,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ReadResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -138,7 +147,7 @@
         "/write": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスのファイルへの書き込みを要求する。",
                 "description": "",
                 "parameters": [
                     {
@@ -177,6 +186,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/WriteResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -221,7 +233,7 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "スマートデバイスのファイルの更新時間が変化したことを通知する。 スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。",
                 "description": "",
                 "parameters": [
                     {
@@ -241,6 +253,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -251,6 +266,9 @@
                     }
                 },
                 "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnWatchFileEvent"
+                    },
                     "examples": {
                         "application/json": {
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
@@ -280,6 +298,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -288,6 +309,164 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "OpenResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CloseResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "ReadResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "size",
+                        "fileData"
+                    ],
+                    "properties": {
+                        "size": {
+                            "type": "integer",
+                            "description": "データサイズ<br>読み込んだデータのサイズ"
+                        },
+                        "fileData": {
+                            "type": "string",
+                            "description": "データ<br>読み込んだデータをdata URI schemeの形式で設定する"
+                        }
+                    }
+                }
+            ]
+        },
+        "WriteResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "OnWatchFileEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "required": [
+                        "file"
+                    ],
+                    "properties": {
+                        "file": {
+                            "type": "object",
+                            "required": [
+                                "path",
+                                "curr",
+                                "prev"
+                            ],
+                            "properties": {
+                                "path": {
+                                    "type": "string",
+                                    "description": "ファイルパス<br>ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。"
+                                },
+                                "curr": {
+                                    "type": "string",
+                                    "description": "現在の更新時間 (RFC 3339)。<br>例: 2014-01-01T00:00:00+0900"
+                                },
+                                "prev": {
+                                    "type": "string",
+                                    "description": "以前の更新時間 (RFC 3339)。<br>例: 2014-01-01T00:00:00+0900"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
                 }
             }
         }

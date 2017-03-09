@@ -11,10 +11,11 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのバッテリー情報を取得する。",
-                "description": "",
+                "description": "スマートデバイスのバッテリー情報として取得できない値がある場合は適切な値を代入してレスポンスを返却する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -49,6 +50,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -80,6 +82,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -111,6 +114,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -142,6 +146,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -168,11 +173,12 @@
         "/onBatteryChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのバッテリー状態変化通知イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -201,17 +207,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのバッテリーの状態が変化したことを通知する。",
+                "description": "充電時間、放電時間、バッテリー残量の値が変わった時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -253,11 +261,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -283,11 +292,12 @@
         "/onChargingChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのバッテリー充電状態変化通知イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -314,17 +324,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートフォンもしくは周辺機器へ他方のスマートデバイスのバッテリーの充電状態が変化したことを通知する。",
+                "description": "充電中フラグの値がtrueからfalse、もしくは、falseからtrueへ変わった時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -364,11 +376,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
