@@ -28,75 +28,75 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/MediaRecorderResponse"
-						},
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"recorders": [
-									{
-										"id": "photo_0",
-										"name": "Dummy Camera Recorder - back",
-										"state": "inactive",
-										"imageWidth": 3264,
-										"imageHeight": 2448,
-										"previewWidth": 640,
-										"previewHeight": 480,
-										"previewMaxFrameRate": 10,
-										"mimeType": "image/png",
-										"config": ""
-									},
-									{
-										"id": "photo_1",
-										"name": "Dummy Camera Recorder - front",
-										"state": "inactive",
-										"imageWidth": 1280,
-										"imageHeight": 960,
-										"previewWidth": 640,
-										"previewHeight": 480,
-										"previewMaxFrameRate": 10,
-										"mimeType": "image/png",
-										"config": ""
-									},
-									{
-										"id": "video_0",
-										"name": "Dummy Video Recorder - back",
-										"state": "inactive",
-										"imageWidth": 640,
-										"imageHeight": 480,
-										"mimeType": "video/3gp",
-										"config": ""
-									},
-									{
-										"id": "video_1",
-										"name": "Dummy Video Recorder - front",
-										"state": "inactive",
-										"imageWidth": 640,
-										"imageHeight": 480,
-										"mimeType": "video/3gp",
-										"config": ""
-									},
-									{
-										"id": "audio",
-										"name": "Dummy Audio Recorder",
-										"state": "inactive",
-										"mimeType": "audio/3gp",
-										"config": ""
-									},
-									{
-										"id": "screen",
-										"name": "Dummy Screen",
-										"state": "inactive",
-										"imageWidth": 1080,
-										"imageHeight": 1776,
-										"previewWidth": 270,
-										"previewHeight": 444,
-										"previewMaxFrameRate": 10,
-										"mimeType": "video/x-mjpeg",
-										"config": ""
-									}
-								]
+                                "recorders": [
+                                    {
+                                        "id": "photo_0",
+                                        "name": "Dummy Camera Recorder - back",
+                                        "state": "inactive",
+                                        "imageWidth": 3264,
+                                        "imageHeight": 2448,
+                                        "previewWidth": 640,
+                                        "previewHeight": 480,
+                                        "previewMaxFrameRate": 10,
+                                        "mimeType": "image/png",
+                                        "config": ""
+                                    },
+                                    {
+                                        "id": "photo_1",
+                                        "name": "Dummy Camera Recorder - front",
+                                        "state": "inactive",
+                                        "imageWidth": 1280,
+                                        "imageHeight": 960,
+                                        "previewWidth": 640,
+                                        "previewHeight": 480,
+                                        "previewMaxFrameRate": 10,
+                                        "mimeType": "image/png",
+                                        "config": ""
+                                    },
+                                    {
+                                        "id": "video_0",
+                                        "name": "Dummy Video Recorder - back",
+                                        "state": "inactive",
+                                        "imageWidth": 640,
+                                        "imageHeight": 480,
+                                        "mimeType": "video/3gp",
+                                        "config": ""
+                                    },
+                                    {
+                                        "id": "video_1",
+                                        "name": "Dummy Video Recorder - front",
+                                        "state": "inactive",
+                                        "imageWidth": 640,
+                                        "imageHeight": 480,
+                                        "mimeType": "video/3gp",
+                                        "config": ""
+                                    },
+                                    {
+                                        "id": "audio",
+                                        "name": "Dummy Audio Recorder",
+                                        "state": "inactive",
+                                        "mimeType": "audio/3gp",
+                                        "config": ""
+                                    },
+                                    {
+                                        "id": "screen",
+                                        "name": "Dummy Screen",
+                                        "state": "inactive",
+                                        "imageWidth": 1080,
+                                        "imageHeight": 1776,
+                                        "previewWidth": 270,
+                                        "previewHeight": 444,
+                                        "previewMaxFrameRate": 10,
+                                        "mimeType": "video/x-mjpeg",
+                                        "config": ""
+                                    }
+                                ]
                             }
                         }
                     }
@@ -127,14 +127,14 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/TakePhotoResponse"
-						},
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"uri": "Dummy URI",
-								"path": "Dummy Path"
+                                "uri": "Dummy URI",
+                                "path": "Dummy Path"
                             }
                         }
                     }
@@ -173,14 +173,14 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/RecordResponse"
-						},
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"uri": "Dummy URI",
-								"path": "Dummy Path"
+                                "uri": "Dummy URI",
+                                "path": "Dummy Path"
                             }
                         }
                     }
@@ -391,139 +391,139 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/OptionsResponse"
-						},
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"imageSize": [
-									{
-										"width": 3264,
-										"height": 2448
-									},
-									{
-										"width": 3200,
-										"height": 2400
-									},
-									{
-										"width": 2592,
-										"height": 1944
-									},
-									{
-										"width": 2048,
-										"height": 1536
-									},
-									{
-										"width": 1920,
-										"height": 1080
-									},
-									{
-										"width": 1600,
-										"height": 1200
-									},
-									{
-										"width": 1280,
-										"height": 960
-									},
-									{
-										"width": 1280,
-										"height": 768
-									},
-									{
-										"width": 1280,
-										"height": 720
-									},
-									{
-										"width": 1024,
-										"height": 768
-									},
-									{
-										"width": 800,
-										"height": 600
-									},
-									{
-										"width": 800,
-										"height": 480
-									},
-									{
-										"width": 720,
-										"height": 480
-									},
-									{
-										"width": 640,
-										"height": 480
-									},
-									{
-										"width": 352,
-										"height": 288
-									},
-									{
-										"width": 320,
-										"height": 240
-									},
-									{
-										"width": 176,
-										"height": 144
-									}
-								],
-								"previewSize": [
-									{
-										"width": 1920,
-										"height": 1080
-									},
-									{
-										"width": 1600,
-										"height": 1200
-									},
-									{
-										"width": 1280,
-										"height": 960
-									},
-									{
-										"width": 1280,
-										"height": 768
-									},
-									{
-										"width": 1280,
-										"height": 720
-									},
-									{
-										"width": 1024,
-										"height": 768
-									},
-									{
-										"width": 800,
-										"height": 600
-									},
-									{
-										"width": 800,
-										"height": 480
-									},
-									{
-										"width": 720,
-										"height": 480
-									},
-									{
-										"width": 640,
-										"height": 480
-									},
-									{
-										"width": 352,
-										"height": 288
-									},
-									{
-										"width": 320,
-										"height": 240
-									},
-									{
-										"width": 176,
-										"height": 144
-									}
-								],
-								"mimeType": [
-									"image/png"
-								]
+                                "imageSize": [
+                                    {
+                                        "width": 3264,
+                                        "height": 2448
+                                    },
+                                    {
+                                        "width": 3200,
+                                        "height": 2400
+                                    },
+                                    {
+                                        "width": 2592,
+                                        "height": 1944
+                                    },
+                                    {
+                                        "width": 2048,
+                                        "height": 1536
+                                    },
+                                    {
+                                        "width": 1920,
+                                        "height": 1080
+                                    },
+                                    {
+                                        "width": 1600,
+                                        "height": 1200
+                                    },
+                                    {
+                                        "width": 1280,
+                                        "height": 960
+                                    },
+                                    {
+                                        "width": 1280,
+                                        "height": 768
+                                    },
+                                    {
+                                        "width": 1280,
+                                        "height": 720
+                                    },
+                                    {
+                                        "width": 1024,
+                                        "height": 768
+                                    },
+                                    {
+                                        "width": 800,
+                                        "height": 600
+                                    },
+                                    {
+                                        "width": 800,
+                                        "height": 480
+                                    },
+                                    {
+                                        "width": 720,
+                                        "height": 480
+                                    },
+                                    {
+                                        "width": 640,
+                                        "height": 480
+                                    },
+                                    {
+                                        "width": 352,
+                                        "height": 288
+                                    },
+                                    {
+                                        "width": 320,
+                                        "height": 240
+                                    },
+                                    {
+                                        "width": 176,
+                                        "height": 144
+                                    }
+                                ],
+                                "previewSize": [
+                                    {
+                                        "width": 1920,
+                                        "height": 1080
+                                    },
+                                    {
+                                        "width": 1600,
+                                        "height": 1200
+                                    },
+                                    {
+                                        "width": 1280,
+                                        "height": 960
+                                    },
+                                    {
+                                        "width": 1280,
+                                        "height": 768
+                                    },
+                                    {
+                                        "width": 1280,
+                                        "height": 720
+                                    },
+                                    {
+                                        "width": 1024,
+                                        "height": 768
+                                    },
+                                    {
+                                        "width": 800,
+                                        "height": 600
+                                    },
+                                    {
+                                        "width": 800,
+                                        "height": 480
+                                    },
+                                    {
+                                        "width": 720,
+                                        "height": 480
+                                    },
+                                    {
+                                        "width": 640,
+                                        "height": 480
+                                    },
+                                    {
+                                        "width": 352,
+                                        "height": 288
+                                    },
+                                    {
+                                        "width": 320,
+                                        "height": 240
+                                    },
+                                    {
+                                        "width": 176,
+                                        "height": 144
+                                    }
+                                ],
+                                "mimeType": [
+                                    "image/png"
+                                ]
                             }
                         }
                     }
@@ -626,8 +626,8 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"uri": "Dummy URI",
-								"path": "Dummy Path"
+                                "uri": "Dummy URI",
+                                "path": "Dummy Path"
                             }
                         }
                     }
@@ -750,13 +750,13 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/PreviewStartResponse"
-						},
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"uri": "Dummy Preview URI"
+                                "uri": "Dummy Preview URI"
                             }
                         }
                     }
@@ -815,17 +815,17 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/RecordingStatusResponse"
-						},
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"media": {
-									"status": "stop",
-									"path": "Dummy Path",
-									"mimeType": "video/3gp"
-								}
+                                "media": {
+                                    "status": "stop",
+                                    "path": "Dummy Path",
+                                    "mimeType": "video/3gp"
+                                }
                             }
                         }
                     }

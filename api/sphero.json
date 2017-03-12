@@ -31,13 +31,13 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-							    "quaternion": {
-									"q0": 0.9998000264167786,
-							        "q1": -0.0027000000700354576,
-							        "q2": -0.010099999606609344,
-							        "q3": 0.010900000110268593,
-							        "interval": 220
-							    }
+                                "quaternion": {
+                                    "q0": 0.9998000264167786,
+                                    "q1": -0.0027000000700354576,
+                                    "q2": -0.010099999606609344,
+                                    "q3": 0.010900000110268593,
+                                    "interval": 220
+                                }
                             }
                         }
                     }
@@ -122,12 +122,12 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-							    "locator": {
-							        "positionX": -3,
-							        "positionY": 5,
-							        "velocityX": -10,
-							        "velocityY": -1.5
-							    }
+                                "locator": {
+                                    "positionX": -3,
+                                    "positionY": 5,
+                                    "velocityX": -10,
+                                    "velocityY": -1.5
+                                }
                             }
                         }
                     }
@@ -212,23 +212,23 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-							    "collision": {
-							        "impactAxis": {
-							            "x": true,
-							            "y": false
-							        },
-							        "impactPower": {
-							            "x": 152,
-							            "y": 75
-							        },
-							        "impactSpeed": 0,
-							        "impactTimestamp": 1483241696789,
-							        "impactAcceleration": {
-							            "x": -1.57421875,
-							            "y": -1.53076171875,
-							            "z": 0
-							        }
-							    }
+                                "collision": {
+                                    "impactAxis": {
+                                        "x": true,
+                                        "y": false
+                                    },
+                                    "impactPower": {
+                                        "x": 152,
+                                        "y": 75
+                                    },
+                                    "impactSpeed": 0,
+                                    "impactTimestamp": 1483241696789,
+                                    "impactAcceleration": {
+                                        "x": -1.57421875,
+                                        "y": -1.53076171875,
+                                        "z": 0
+                                    }
+                                }
                             }
                         }
                     }

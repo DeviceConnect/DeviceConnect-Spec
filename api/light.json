@@ -35,19 +35,19 @@
                                 "product": "Example System",
                                 "version": "1.0.0",
                                 "lights": [
-									{
-										"config": "",
-										"on": false,
-										"name": "Example Light 1",
-										"lightId": "0"
-									},
-									{
-										"config": "",
-										"on": true,
-										"name": "Example Light 2",
-										"lightId": "1"
-									}
-								]
+                                    {
+                                        "config": "",
+                                        "on": false,
+                                        "name": "Example Light 1",
+                                        "lightId": "0"
+                                    },
+                                    {
+                                        "config": "",
+                                        "on": true,
+                                        "name": "Example Light 2",
+                                        "lightId": "1"
+                                    }
+                                ]
                             }
                         }
                     }

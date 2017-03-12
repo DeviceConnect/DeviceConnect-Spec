@@ -25,13 +25,13 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/IlluminanceResponse"
-						},
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"illuminance": 240
+                                "illuminance": 240
                             }
                         }
                     }
