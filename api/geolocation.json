@@ -1,0 +1,377 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Geolocation Profile",
+        "version": "2.0.0",
+        "description": "スマートデバイスの位置情報機能を提供するAPI。"
+    },
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "paths": {
+        "/currentPosition": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "該当デバイスの現在の位置情報を取得する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "highAccuracy",
+                        "in": "query",
+                         "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "maximumAge",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CurrentPositionResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/onWatchPosition": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "highAccuracy",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnWatchPositionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "position": {
+                                    "coordinates": {
+                                        "latitude": 37.52104948,
+                                        "longitude": 139.93875834,
+                                        "altitude": 285,
+                                        "accuracy": 31,
+                                        "altitudeAccuracy": 15,
+                                        "heading": 0,
+                                        "speed": 0
+                                    },
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "該当デバイスの位置情報定期通知イベントを開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "highAccuracy",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "interval",
+                        "in": "formData",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": "Register OnWatchPosition event"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnWatchPositionEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "geolocation",
+                            "attribute": "onwatchposition",
+                            "position": {
+                                "coordinates": {
+                                    "latitude": 37.52104948,
+                                    "longitude": 139.93875834,
+                                    "altitude": 285,
+                                    "accuracy": 31,
+                                    "altitudeAccuracy": 15,
+                                    "heading": 0,
+                                    "speed": 0
+                                },
+                                "timeStamp": 1483241696789,
+                                "timeStampString": "20170101123456.789+0900"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "該当デバイスの位置情報定期通知イベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": "Unregister OnWatchPosition event"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "CurrentPositionResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/PositionInfo"
+                }
+            ]
+        },
+        "OnWatchPositionResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/PositionInfo"
+                }
+            ]
+        },
+        "OnWatchPositionEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/PositionInfo"
+                }
+            ]
+        },
+        "PositionInfo": {
+            "type": "object",
+            "required": [
+                "position"
+            ],
+            "properties": {
+                "position": {
+                    "type": "object",
+                    "required": [
+                        "coordinates",
+                        "timeStamp",
+                        "timeStampString"
+                    ],
+                    "properties": {
+                        "coordinates": {
+                            "type": "object",
+                            "title": "座標",
+                            "description": "座標のオブジェクト。",
+                            "properties": {
+                                "latitude": {
+                                    "type": "number",
+                                    "title": "緯度",
+                                    "description": "-180～180 単位：degree"
+                                },
+                                "longitude": {
+                                    "type": "number",
+                                    "title": "経度",
+                                    "description": "-90～90 単位：degree"
+                                },
+                                "altitude": {
+                                    "type": "number",
+                                    "title": "高度",
+                                    "description": "単位：m"
+                                },
+                                "accuracy": {
+                                    "type": "number",
+                                    "title": "緯度・経度の誤差",
+                                    "description": "単位：m"
+                                },
+                                "altitudeAccuracy": {
+                                    "type": "number",
+                                    "title": "高度の誤差",
+                                    "description": "単位：m"
+                                },
+                                "heading": {
+                                    "type": "number",
+                                    "title": "方角",
+                                    "description": "0～359 単位：degree 真北に対して右回りで 0 ≦ heading ＜ 360"
+                                },
+                                "speed": {
+                                    "type": "number",
+                                    "title": "速度",
+                                    "description": "単位：m/Sec"
+                                }
+                            }
+                        },
+                        "timeStamp": {
+                            "type": "number",
+                            "title": "測位時刻",
+                            "description": "エポックからのミリ秒"
+                        },
+                        "timeStampString": {
+                            "type": "string",
+                            "title": "測位時刻 (文字列)",
+                            "description": "測位時刻を文字列表記。[YYYYMMDDHHMMSS.sss+/-HHMM]形式"
+                        }
+                    }
+                }
+            }
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
+                }
+            }
+        }
+    }
+}
