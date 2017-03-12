@@ -127,10 +127,10 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"size": 9,
-								"fileData": "dummydata"
+                                "size": 9,
+                                "fileData": "dummydata"
                             }
-                        }						
+                        }
                     }
                 }
             }
@@ -209,11 +209,11 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-								"file": {
-									"curr": "2017-01-01T12:34:56+0900",
-									"prev": "2017-01-01T01:23:45+0900",
-									"path": "Test1.png"
-								}
+                                "file": {
+                                    "curr": "2017-01-01T12:34:56+0900",
+                                    "prev": "2017-01-01T01:23:45+0900",
+                                    "path": "Test1.png"
+                                }
                             }
                         }
                     }
