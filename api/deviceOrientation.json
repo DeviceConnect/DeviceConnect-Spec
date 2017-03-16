@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/deviceOrientation",
     "info": {
         "title": "DeviceOrientation Profile",
         "version": "2.0.0",
@@ -13,11 +14,12 @@
         "/onDeviceOrientation": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知イベントを取得する。",
+                "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを取得する。",
                 "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -64,12 +66,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -129,6 +133,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

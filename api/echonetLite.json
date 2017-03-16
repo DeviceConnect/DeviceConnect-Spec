@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/echonetLite",
     "info": {
         "title": "ECHONETLite Profile",
         "version": "2.0.0",
@@ -18,12 +19,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "epc",
+                        "description": "取得プロパティのEPC。取得するプロパティのEPCをカンマ区切りで列挙。10進または16進(0xXX)の値",
                         "in": "query",
                         "required": true,
                         "type": "array",
@@ -65,18 +68,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "epc",
+                        "description": "EPC。<br>ECHONET Property Code",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "EPCの設定値。",
                         "in": "formData",
                         "required": true,
                         "type": "string"

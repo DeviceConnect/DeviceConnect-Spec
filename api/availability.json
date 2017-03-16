@@ -1,44 +1,31 @@
 {
     "swagger": "2.0",
-    "basePath": "/gotapi/atmosphericPressure",
+    "basePath": "/gotapi/availability",
     "info": {
-        "title": "Atmospheric Pressure Profile",
+        "title": "Availability Profile",
         "version": "2.0.0",
-        "description": "気圧の値を取得する機能を提供するAPI。"
+        "description": "ホストデバイス上でDevice Connect Managerが起動しているかどうかを確認する機能を提供する。"
     },
-    "consumes": [
-        "application/x-www-form-urlencoded",
-        "multipart/form-data"
-    ],
+    "consumes": [],
     "paths": {
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスの気圧情報を取得する。",
+                "summary": "",
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/GetAtmosphericPressureResponse"
+                            "$ref": "#/definitions/AvailabilityResponse"
                         },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "atmosphericPressure": 1016.12,
-                                "timeStamp": 1431856940275,
-                                "timeStampString": "20150517100220.000-0000"
+                                "name": "Manager-xxxx"
                             }
                         }
                     }
@@ -47,7 +34,7 @@
         }
     },
     "definitions": {
-        "GetAtmosphericPressureResponse": {
+        "AvailabilityResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -56,26 +43,12 @@
                 {
                     "type": "object",
                     "required": [
-                        "atmosphericPressure",
-                        "timeStamp",
-                        "timeStampString"
                     ],
                     "properties": {
-                        "atmosphericPressure": {
-                            "type": "number",
-                            "title": "気圧",
-                            "description": "気圧<br>単位: ヘクトパスカル(hPa)"
-                        },
-                        "timeStamp": {
-                            "type": "integer",
-                            "format": "int64",
-                            "title": "気圧のタイムスタンプ",
-                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
-                        },
-                        "timeStampString": {
+                        "name": {
                             "type": "string",
-                            "title": "気圧のタイムスタンプ文字列",
-                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                            "title": "Managerの名前",
+                            "description": "Managerの設定画面の「Managerの名前を表示」をONにすることで追加される。"
                         }
                     }
                 }

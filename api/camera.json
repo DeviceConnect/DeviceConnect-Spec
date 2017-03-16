@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/camera",
     "info": {
         "title": "Camera Profile",
         "version": "2.0.0",
@@ -18,6 +19,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -47,12 +49,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "direction",
+                        "description": "方向。ズームの方向<br>in<br>out",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -60,6 +64,7 @@
                     },
                     {
                         "name": "movement",
+                        "description": "動作。ズームの動作<br>in-startで開始して in-stopで終了。<br>1shotは開始してから所定位置まで動作する。<br>maxはin-startと同じ動作を行う。",
                         "in": "formData",
                         "required": true,
                         "type": "string",

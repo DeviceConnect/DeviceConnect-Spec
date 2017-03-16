@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/file",
     "info": {
         "title": "File Profile",
         "version": "2.0.0",
@@ -13,17 +14,19 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスへの、テキスト（歩数、消費カロリー、睡眠時間などのバイナリーの任意のデータ）や画像、音声、動画（リソースも含む）を受け取る。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "ファイルパス。ファイル名とパス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -50,40 +53,46 @@
             "post": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して、テキストや画像、音声、動画（リソースも含む）を渡す。",
-                "description": "ディレクトリの作成も可能。再帰的にディレクトリを作成することも可能。",
+                "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "ファイルパス。ファイル名とパス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mimeType",
+                        "description": "MimeType。送信するファイルのMimeType",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "uri",
+                        "description": "URI。このURIに送信するデータを格納する。dataと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "data",
+                        "description": "ファイルのbinary。送信するファイルのbinary。uriと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。",
                         "in": "formData",
                         "required": false,
                         "type": "file"
                     },
                     {
                         "name": "forceOverwrite",
+                        "description": "上書きフラグ。<br>true : 既にpath名と同じファイルがある場合は上書きされる。<br>false : 既にpath名と同じファイルがある場合は上書きされない。",
                         "in": "formData",
                         "required": false,
                         "type": "boolean"
@@ -112,24 +121,28 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "oldPath",
+                        "description": "移動前のファイル名を含んだファイルパス。ファイル名を含む。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "newPath",
+                        "description": "移動先のファイル名を含んだファイルパス。ファイル名を含まなくても良い。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "forceOverwrite",
+                        "description": "上書きフラグ。<br>true : 既にpath名と同じファイルがある場合は上書きされる。<br>false : 既にpath名と同じファイルがある場合は上書きされない。",
                         "in": "formData",
                         "required": false,
                         "type": "boolean"
@@ -158,12 +171,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "ファイルパス。ファイル名とパス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -195,24 +210,28 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "パス。検索対象のディレクトリ。省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。 例)/files/test/",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "mimeType",
+                        "description": "MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)image/png",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "order",
+                        "description": "取得ファイルの並び順。取得する一覧のエントリの並び順。昇順はascで、降順はdescを後ろに指定する。並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。例)updateDate,asc",
                         "in": "query",
                         "required": false,
                         "type": "array",
@@ -222,6 +241,7 @@
                     },
                     {
                         "name": "offset",
+                        "description": "取得件数の始まり。取得できるファイル数が多いときに、表示開始位置を指定できる。例)4",
                         "in": "query",
                         "required": false,
                         "type": "integer",
@@ -229,6 +249,7 @@
                     },
                     {
                         "name": "limit",
+                        "description": "取得件数の制限。取得できるファイル数を制限するときに、その件数を指定できる。例)30",
                         "in": "query",
                         "required": false,
                         "type": "integer",
@@ -271,24 +292,28 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "パス。検索対象のディレクトリ。省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。 例)/files/test/",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "mimeType",
+                        "description": "MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)image/png",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "order",
+                        "description": "取得ファイルの並び順。取得する一覧のエントリの並び順。昇順はascで、降順はdescを後ろに指定する。並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。例)updateDate,asc",
                         "in": "query",
                         "required": false,
                         "type": "array",
@@ -298,6 +323,7 @@
                     },
                     {
                         "name": "offset",
+                        "description": "取得件数の始まり。取得できるファイル数が多いときに、表示開始位置を指定できる。例)4",
                         "in": "query",
                         "required": false,
                         "type": "integer",
@@ -305,6 +331,7 @@
                     },
                     {
                         "name": "limit",
+                        "description": "取得件数の制限。取得できるファイル数を制限するときに、その件数を指定できる。例)30",
                         "in": "query",
                         "required": false,
                         "type": "integer",
@@ -345,12 +372,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "パス。作成するディレクトリのパス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -379,18 +408,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "oldPath",
+                        "description": "移動前のディレクトリパス。ファイル名を含まない",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "newPath",
+                        "description": "移動先のディレクトリパス。ファイル名を含まない",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -419,18 +451,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "パス。削除するディレクトリのパス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "forceRemove",
+                        "description": "強制削除フラグ。trueが指定された場合には、空ではないディレクトリも削除する。falseが指定された場合には、空でないディレクトリは削除できない。省略された場合には、falseと同じ動作となる。",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
@@ -470,8 +505,8 @@
                     "properties": {
                         "mimeType": {
                             "type": "string",
-                            "title": "マイムタイプ",
-                            "description": "URIデータのマイムタイプ"
+                            "title": "MimeType",
+                            "description": "URIデータのMimeType"
                         },
                         "uri": {
                             "type": "string",
@@ -546,7 +581,7 @@
                                     },
                                     "mimeType": {
                                         "type": "string",
-                                        "title": "MIME Type",
+                                        "title": "MimeType",
                                         "description": "fileのエンコードするタイプ。"
                                     },
                                     "fileType": {

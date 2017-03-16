@@ -1,7 +1,8 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/connection",
     "info": {
-        "title": "Connect Profile",
+        "title": "Connection Profile",
         "version": "2.0.0",
         "description": "スマートデバイスとのネットワーク接続情報を提供するAPI。"
     },
@@ -18,6 +19,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -47,6 +49,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -75,6 +78,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -100,11 +104,12 @@
         "/onWifiChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "WIFI機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -131,17 +136,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
                 "description": "WIFI機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -181,11 +188,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
                 "description": "WIFI機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -216,6 +224,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -245,6 +254,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -273,6 +283,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -298,11 +309,12 @@
         "/onBluetoothChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -329,17 +341,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
                 "description": "Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -379,11 +393,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
                 "description": "Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -414,6 +429,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -442,6 +458,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -472,6 +489,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -501,6 +519,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -529,6 +548,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -554,11 +574,12 @@
         "/onNfcChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "NFC機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -585,17 +606,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
                 "description": "NFC機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -635,11 +658,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
                 "description": "NFC機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -670,6 +694,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -699,6 +724,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -727,6 +753,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -752,11 +779,12 @@
         "/onBleChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)の変化通知を受領する。",
+                "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "BLE機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -783,17 +811,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
+                "description": "BLE機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -833,11 +863,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
+                "description": "BLE機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

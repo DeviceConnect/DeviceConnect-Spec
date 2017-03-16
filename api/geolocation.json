@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/geolocation",
     "info": {
         "title": "Geolocation Profile",
         "version": "2.0.0",
@@ -18,18 +19,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "highAccuracy",
+                        "description": "測位精度設定。<br> true : 高精度<br>false : 通常精度<br>省略時はfalse",
                         "in": "query",
                          "required": false,
                         "type": "boolean"
                     },
                     {
                         "name": "maximumAge",
+                        "description": "位置情報有効時間（ミリ秒単位）省略時は0mSec<br>※前回呼び出し時から該当時間以上経過していた場合に最新の位置情報を返す。それ以外は前回と同じ位置情報を返す。",
                         "in": "query",
                         "required": false,
                         "type": "number",
@@ -41,6 +45,26 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/CurrentPositionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "position": {
+                                    "coordinates": {
+                                        "latitude": 37.52104948,
+                                        "longitude": 139.93875834,
+                                        "altitude": 285,
+                                        "accuracy": 31,
+                                        "altitudeAccuracy": 15,
+                                        "heading": 0,
+                                        "speed": 0
+                                    },
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
+                                }
+                            }
                         }
                     }
                 }
@@ -49,23 +73,26 @@
         "/onWatchPosition": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "該当デバイスの位置情報定期通知イベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "highAccuracy",
+                        "description": "測位精度設定。<br> true : 高精度<br>false : 通常精度<br>省略時はfalse",
                         "in": "query",
                         "required": false,
                         "type": "boolean"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "query",
                         "required": false,
                         "type": "number",
@@ -108,18 +135,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "highAccuracy",
+                        "description": "測位精度設定。<br> true : 高精度<br>false : 通常精度<br>省略時はfalse",
                         "in": "formData",
                         "required": false,
                         "type": "boolean"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -136,8 +166,7 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "value": "Register OnWatchPosition event"
+                                "version": "1.0.0"
                             }
                         }
                     }
@@ -175,6 +204,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -190,8 +220,7 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "value": "Unregister OnWatchPosition event"
+                                "version": "1.0.0"
                             }
                         }
                     }

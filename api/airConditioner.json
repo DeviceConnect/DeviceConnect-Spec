@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/airConditioner",
     "info": {
         "title": "Air Conditioner Profile",
         "version": "2.0.0",
@@ -18,6 +19,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -27,7 +29,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PowerStatusGetResponse"
+                            "$ref": "#/definitions/GetPowerStatusResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -47,6 +49,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -75,6 +78,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -105,6 +109,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -134,16 +139,18 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "powersaving",
+                        "description": "節電動作設定。<br>PowerSaving：節電動作中<br>Normal：通常動作中<br>Unknown：不明",
                         "in": "formData",
                         "required": true,
                         "type": "string",
-                        "enum": ["PowerSaving", "Normal"]
+                        "enum": ["PowerSaving", "Normal", "Unknown"]
                     }
                 ],
                 "responses": {
@@ -171,6 +178,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -200,12 +208,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "modesetting",
+                        "description": "運転モード設定。<br>Automatic:自動<br>Cooling:冷房<br>Heating:暖房<br>Dehumidification:除湿<br>AirCirculator:送風<br>Other:その他",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -237,6 +247,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -268,6 +279,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -297,12 +309,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "temperature",
+                        "description": "温度設定値。<br>0〜50 (℃)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -335,6 +349,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -365,12 +380,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "airflow",
+                        "description": "風量設定値。<br>0.0〜1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -379,6 +396,7 @@
                     },
                     {
                         "name": "airflowauto",
+                        "description": "風量自動モード設定。true : 自動モード有効<br>false : 自動モード無効",
                         "in": "formData",
                         "required": false,
                         "type": "boolean"
@@ -409,12 +427,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "epc",
+                        "description": "取得プロパティのEPC。取得するプロパティのEPCをカンマ区切りで列挙。10進または16進(0xXX)の値",
                         "in": "query",
                         "required": true,
                         "type": "array",
@@ -456,18 +476,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "epc",
+                        "description": "EPC。<br>ECHONET Property Code"
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "EPCの設定値。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -494,7 +517,7 @@
         }
     },
     "definitions": {
-        "PowerStatusGetResponse": {
+        "GetPowerStatusResponse": {
             "type": "object",
             "allOf": [
                 {

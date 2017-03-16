@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/fileDescriptor",
     "info": {
         "title": "File Descriptor Profile",
         "version": "2.0.0",
@@ -19,18 +20,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "flag",
+                        "description": "フラグ。r : 読み込みのみ<br>rw : 読み込み＆書き込み",
                         "in": "query",
                         "required": true,
                         "type": "string",
@@ -63,12 +67,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -100,18 +106,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "length",
+                        "description": "読み込みサイズ。一度の読み込みで取得する最大サイズ。length > 0",
                         "in": "query",
                         "required": true,
                         "type": "integer",
@@ -121,6 +130,7 @@
                     },
                     {
                         "name": "position",
+                        "description": "読み込み開始位置。読み込みファイルの開始位置を指定する。省略された場合には、現在ファイルが読み込んでいる位置から読み込む。position >= 0",
                         "in": "query",
                         "required": false,
                         "type": "integer",
@@ -156,30 +166,35 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "path",
+                        "description": "ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "uri",
+                        "description": "URI。dataと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "data",
+                        "description": "ファイルのbinary。送信するファイルのbinary。uriと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。",
                         "in": "formData",
                         "required": false,
                         "type": "file"
                     },
                     {
                         "name": "position",
+                        "description": "ファイルオフセット。ファイルの書き込み開始位置を指定する。省略された場合には、現在ファイルが書き込んでいる位置から書き込む。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -213,6 +228,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -247,12 +263,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -300,6 +318,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
