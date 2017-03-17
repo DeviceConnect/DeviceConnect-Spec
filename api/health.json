@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/health",
     "info": {
         "title": "Health Profile",
         "version": "2.0.0",
@@ -18,6 +19,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -91,12 +93,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -183,6 +187,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -213,6 +218,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -286,12 +292,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -378,6 +386,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -409,6 +418,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -438,12 +448,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -487,6 +499,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

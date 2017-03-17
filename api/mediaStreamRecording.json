@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/mediaStreamRecording",
     "info": {
         "title": "Media Stream Recording Profile",
         "version": "2.0.0",
@@ -13,11 +14,12 @@
         "/mediaRecorder": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスから使用可能なレコーダーの一覧を取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -106,17 +108,19 @@
         "/takePhoto": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスに対して写真撮影リクエストを送る。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -144,23 +148,26 @@
         "/record": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスに対して、動画撮影や音声録音の開始リクエストを送る。",
+                "description": "MediaStreamRecording Stopされない場合は各デバイスが撮影できる最大時間まで撮影を行い、その後撮影を停止する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "timeslice",
+                        "description": "タイムスライス。動画・音声入力などから得られた1フレームを新たに出力先メディアに書き出すまでの待ち時間。単位はミリ秒。1000/timesliceが出力メディアの固定フレームレート（フレーム/秒）に相当する。省略された場合には、デバイス毎の挙動でフレーム書き出しを行う。",
                         "in": "formData",
                         "required": false,
                         "minimum": 0.0,
@@ -190,17 +197,19 @@
         "/pause": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスに対して動画撮影または音声録音の一時停止依頼を送る。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -226,17 +235,19 @@
         "/resume": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスに対して一時停止状態にある動画撮影または音声録音の再開リクエストを送る。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -262,17 +273,19 @@
         "/stop": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスに対して動画撮影または音声録音の終了リクエストを送る。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -298,17 +311,19 @@
         "/muteTrack": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスに対して動画撮影や音声録音のミュート依頼を送る。",
+                "description": "ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、オーディオトラックがミュートされる。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -334,17 +349,19 @@
         "/unmuteTrack": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスに対して動画撮影や音声録音のミュート解除依頼を送る。",
+                "description": "ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、オーディオトラックがミュート解除される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -370,17 +387,19 @@
         "/options": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスからサポートしている写真撮影、動画撮影や音声録音のオプションを取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -531,47 +550,54 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスからサポートしている写真撮影、動画撮影や音声録音のオプションを設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "imageWidth",
+                        "description": "撮影時の横幅。単位はピクセル。previewHeightを指定するときは省略不可。Options API GETで返された値以外を指定した場合はパラメータエラー。",
                         "in": "formData",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "imageHeight",
+                        "description": "撮影時の縦幅。単位はピクセル。previewWidthを指定するときは省略不可。Options API GETで返された値以外を指定した場合はパラメータエラー。",
                         "in": "formData",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "previewWidth",
+                        "description": "プレビュー時の横幅。単位はピクセル。previewHeightを指定するときは省略不可。Options API GETで返された値以外を指定した場合はパラメータエラー。",
                         "in": "formData",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "previewHeight",
+                        "description": "プレビュー時の縦幅。単位はピクセル。previewWidthを指定するときは省略不可。Options API GETで返された値以外を指定した場合はパラメータエラー。",
                         "in": "formData",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "previewMaxFrameRate",
+                        "description": "プレビュー時の最大フレームレート。単位はfps。範囲は0.0より大きい小数値。",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -580,6 +606,7 @@
                     },
                     {
                         "name": "mimeType",
+                        "description": "MimeType。動画録画・音声録音するときのエンコードするタイプ。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -605,11 +632,12 @@
         "/onPhoto": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスの写真撮影通知イベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -635,17 +663,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "スマートデバイスの写真撮影通知イベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -687,11 +717,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "スマートデバイスの写真撮影通知イベントを停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -717,17 +748,19 @@
         "/preview": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスでの動画撮影中に、動画のプレビュー画像を取得する。",
+                "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -741,17 +774,19 @@
             },
             "put": {
                 "x-type": "streaming",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスでの動画撮影中に、動画のプレビュー画像を受信を開始する。",
+                "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -776,17 +811,19 @@
             },
             "delete": {
                 "x-type": "streaming",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスでの動画撮影中に、動画のプレビュー画像を受信を停止する。",
+                "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "target",
+                        "description": "ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -812,11 +849,12 @@
         "/onRecordingChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -845,17 +883,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -897,11 +937,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -925,7 +966,6 @@
             }
         }
     },
-
     "definitions": {
         "MediaRecorderResponse": {
             "type": "object",

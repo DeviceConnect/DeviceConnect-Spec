@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/gpio",
     "info": {
         "title": "GPIO Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "General Purpose Input/Output（汎用入出力）にアクセスする機能を提供するProfile。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,17 +14,19 @@
         "/export/D0": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D0ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -32,7 +35,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -40,17 +53,19 @@
         "/export/D1": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D1ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -59,7 +74,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -67,17 +92,19 @@
         "/export/D2": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D2ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -86,7 +113,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -94,17 +131,19 @@
         "/export/D3": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D3ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -113,7 +152,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -121,17 +170,19 @@
         "/export/D4": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D4ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -140,7 +191,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -148,17 +209,19 @@
         "/export/D5": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D5ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -167,7 +230,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -175,17 +248,19 @@
         "/export/D6": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D6ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -194,7 +269,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -202,17 +287,19 @@
         "/export/D7": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D7ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -221,7 +308,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -229,17 +326,19 @@
         "/export/D8": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D8ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -248,7 +347,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -256,17 +365,19 @@
         "/export/D9": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D9ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -275,7 +386,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -283,17 +404,19 @@
         "/export/D10": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D10ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -302,7 +425,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -310,17 +443,19 @@
         "/export/D11": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D11ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -329,7 +464,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -337,17 +482,19 @@
         "/export/D12": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D12ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -356,7 +503,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -364,17 +521,19 @@
         "/export/D13": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D13ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -383,7 +542,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -391,17 +560,19 @@
         "/export/A0": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A0ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -410,7 +581,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -418,17 +599,19 @@
         "/export/A1": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A1ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -437,7 +620,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -445,17 +638,19 @@
         "/export/A2": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A2ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -464,7 +659,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -472,17 +677,19 @@
         "/export/A3": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A3ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -491,7 +698,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -499,17 +716,19 @@
         "/export/A4": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A4ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -518,7 +737,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -526,17 +755,19 @@
         "/export/A5": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A5ピンの出力/入力の種類を設定する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT",
                         "in": "query",
                         "required": true,
                         "type": "number",
@@ -545,7 +776,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -553,11 +794,12 @@
         "/digital/D0": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D0ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -565,17 +807,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D0ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -583,17 +837,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D0ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -601,23 +866,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D0ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -626,7 +903,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -634,11 +921,12 @@
         "/digital/D1": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D1ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -646,17 +934,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D1ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -664,17 +964,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D1ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -682,23 +993,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D1ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -707,19 +1030,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D2": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D2ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -727,17 +1060,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D2ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -745,17 +1090,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D2ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -763,23 +1119,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D2ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -788,19 +1156,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D3": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D3ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -808,17 +1186,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D3ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -826,17 +1216,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D3ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -844,23 +1245,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D3ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -869,19 +1282,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D4": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D4ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -889,17 +1312,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D4ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -907,17 +1342,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D4ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -925,23 +1371,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D4ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -950,19 +1408,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D5": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D5ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -970,17 +1438,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D5ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -988,17 +1468,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D5ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1006,23 +1497,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D5ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1031,19 +1534,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D6": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D6ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1051,17 +1564,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D6ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1069,17 +1594,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D6ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1087,23 +1623,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D6ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1112,19 +1660,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D7": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D7ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1132,17 +1690,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D7ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1150,17 +1720,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D7ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1168,23 +1749,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D7ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1193,19 +1786,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D8": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D8ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1213,17 +1816,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D8ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1231,17 +1846,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D8ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1249,23 +1875,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D8ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1274,19 +1912,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D9": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D9ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1294,17 +1942,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D9ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1312,17 +1972,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D9ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1330,23 +2001,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D9ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1355,19 +2038,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D10": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D10ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1375,17 +2068,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D10ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1393,17 +2098,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D10ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1411,23 +2127,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D10ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1436,19 +2164,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D11": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D11ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1456,17 +2194,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D11ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1474,17 +2224,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D11ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1492,23 +2253,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D11ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1517,19 +2290,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D12": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D12ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1537,17 +2320,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D12ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1555,17 +2350,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D12ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1573,23 +2379,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D12ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1598,19 +2416,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
-            }
-        },
+            }        },
         "/digital/D13": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D13ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1618,17 +2446,29 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIODigitalValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D13ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -1636,17 +2476,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D13ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -1654,23 +2505,35 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "D13ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力する値<br>LOW(0), HIGH(1)",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -1679,385 +2542,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/digital/A0": {
-            "put": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "delete": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "enum": [0, 1]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/digital/A1": {
-            "put": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "delete": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "enum": [0, 1]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/digital/A2": {
-            "put": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "delete": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "enum": [0, 1]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/digital/A3": {
-            "put": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "delete": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "enum": [0, 1]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/digital/A4": {
-            "put": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "delete": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "enum": [0, 1]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/digital/A5": {
-            "put": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "delete": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "enum": [0, 1]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -2065,11 +2560,12 @@
         "/analog/A0": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A0ピンのアナログ値を入力",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2077,7 +2573,54 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOAnalogValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1024
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "x-type": "one-shot",
+                "summary": "A0ピンのアナログ値を出力",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "description": "値。出力するアナログ値",
+                        "in": "formData",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -2085,11 +2628,12 @@
         "/analog/A1": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A1ピンのアナログ値を入力",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2097,19 +2641,68 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOAnalogValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1024
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "x-type": "one-shot",
+                "summary": "A1ピンのアナログ値を出力",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "description": "値。出力するアナログ値",
+                        "in": "formData",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
+
         },
         "/analog/A2": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A2ピンのアナログ値を入力",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2117,7 +2710,54 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOAnalogValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1024
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "x-type": "one-shot",
+                "summary": "A2ピンのアナログ値を出力",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "description": "値。出力するアナログ値",
+                        "in": "formData",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -2125,11 +2765,12 @@
         "/analog/A3": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A3ピンのアナログ値を入力",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2137,19 +2778,68 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOAnalogValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1024
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "x-type": "one-shot",
+                "summary": "A3ピンのアナログ値を出力",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "description": "値。出力するアナログ値",
+                        "in": "formData",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
+
         },
         "/analog/A4": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A4ピンのアナログ値を入力",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2157,19 +2847,68 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOAnalogValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1024
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "x-type": "one-shot",
+                "summary": "A4ピンのアナログ値を出力",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "description": "値。出力するアナログ値",
+                        "in": "formData",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
+
         },
         "/analog/A5": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A5ピンのアナログ値を入力",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2177,25 +2916,36 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOAnalogValueResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "value": 1024
+                            }
+                        }
                     }
                 }
-            }
-        },
-        "/analog/D3": {
+            },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "A5ピンのアナログ値を出力",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "value",
+                        "description": "値。出力するアナログ値",
                         "in": "formData",
                         "required": true,
                         "type": "number"
@@ -2203,149 +2953,31 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
-        },
-        "/analog/D5": {
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/analog/D6": {
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/analog/D9": {
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/analog/D10": {
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/analog/D11": {
-            "post": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
+
         },
         "/onChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "各ピンで、入力状態のモードに設定されているピンの値を取得する",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2353,17 +2985,28 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GPIOChangeResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "各ピンで、入力状態のモードに設定されているピンの値を定期的に送信するイベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -2371,17 +3014,48 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/GPIOChangeEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "connect",
+                            "attribute": "onbluetoothchange",
+                            "pins" : {
+                                "14": 1023,
+                                "15": 111,
+                                "16": 201,
+                                "17": 0,
+                                "18": 1014,
+                                "19": 99
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "各ピンで、入力状態のモードに設定されているピンの値を定期的に送信するイベントを停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -2389,8 +3063,183 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "GPIOResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "GPIODigitalValueResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "value"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "number",
+                            "title": "ピンから取得した値",
+                            "description": "ピンの値、HIGH(1) or LOW(0)が返ってくる。"
+                        }
+                    }
+                }
+            ]
+        },
+        "GPIOAnalogValueResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "value"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "number",
+                            "title": "ピンから取得した値",
+                            "description": "指定したピンのアナログ値"
+                        }
+                    }
+                }
+            ]
+        },
+         "GPIOChangeResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/GPIOChangeInfo"
+                }
+            ]
+        },
+        "GPIOChangeEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/GPIOChangeInfo"
+                }
+            ]
+        },
+        "GPIOChangeInfo": {
+            "type": "object",
+            "required": [
+                "pins"
+            ],
+            "properties": {
+                "pins": {
+                    "type": "object",
+                    "properties": {
+                        "{ピン番号}": {
+                            "type": "integer",
+                            "title": "ピンの値",
+                            "description": "取得したピンの値"
+                        }
+                    }
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
+                }
+            }
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "title": "処理結果",
+                    "description": "0: 正常応答<br>0以外: 異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムの名前",
+                    "description": ""
+                },
+                "version": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムのバージョン名",
+                    "description": ""
+                },
+                "hmac": {
+                    "type": "string",
+                    "title": "レスポンスに対する署名",
+                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/illuminance",
     "info": {
         "title": "Illuminance Profile",
         "version": "2.0.0",
@@ -10,11 +11,12 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスの照度を取得する機能を提供する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

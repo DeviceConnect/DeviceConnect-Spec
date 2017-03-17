@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/humanDetection",
     "info": {
         "title": "Human Detection Profile",
         "version": "2.0.0",
@@ -18,6 +19,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -49,12 +51,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -100,6 +104,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -131,13 +136,15 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -145,7 +152,8 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -153,7 +161,8 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -161,7 +170,8 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -169,11 +179,22 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
                         "maximum": 1.0
+                    },
+                    {
+                        "name": "options",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -224,12 +245,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "threshold",
+                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -238,6 +261,7 @@
                     },
                     {
                         "name": "minWidth",
+                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -246,6 +270,7 @@
                     },
                     {
                         "name": "minHeight",
+                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -254,6 +279,7 @@
                     },
                     {
                         "name": "maxWidth",
+                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -262,6 +288,7 @@
                     },
                     {
                         "name": "maxHeight",
+                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -270,10 +297,21 @@
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
                         "format": "int64"
+                    },
+                    {
+                        "name": "options",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "in": "formData",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -335,6 +373,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -366,13 +405,15 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -380,7 +421,8 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -388,7 +430,8 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -396,7 +439,8 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -404,11 +448,22 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
                         "maximum": 1.0
+                    },
+                    {
+                        "name": "options",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -443,12 +498,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "threshold",
+                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -457,6 +514,7 @@
                     },
                     {
                         "name": "minWidth",
+                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -465,6 +523,7 @@
                     },
                     {
                         "name": "minHeight",
+                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -473,6 +532,7 @@
                     },
                     {
                         "name": "maxWidth",
+                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -481,6 +541,7 @@
                     },
                     {
                         "name": "maxHeight",
+                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -489,10 +550,21 @@
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
                         "format": "int64"
+                    },
+                    {
+                        "name": "options",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "in": "formData",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -540,6 +612,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -571,13 +644,15 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "threshold",
-                        "in": "formData",
+                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -585,7 +660,8 @@
                     },
                     {
                         "name": "minWidth",
-                        "in": "formData",
+                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -593,7 +669,8 @@
                     },
                     {
                         "name": "minHeight",
-                        "in": "formData",
+                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -601,7 +678,8 @@
                     },
                     {
                         "name": "maxWidth",
-                        "in": "formData",
+                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -609,7 +687,8 @@
                     },
                     {
                         "name": "maxHeight",
-                        "in": "formData",
+                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -617,7 +696,8 @@
                     },
                     {
                         "name": "eyeThreshold",
-                        "in": "formData",
+                        "description": "目の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -625,7 +705,8 @@
                     },
                     {
                         "name": "noseThreshold",
-                        "in": "formData",
+                        "description": "鼻の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -633,7 +714,8 @@
                     },
                     {
                         "name": "mouthThreshold",
-                        "in": "formData",
+                        "description": "口の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -641,7 +723,8 @@
                     },
                     {
                         "name": "blinkThreshold",
-                        "in": "formData",
+                        "description": "目つむり検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -649,7 +732,8 @@
                     },
                     {
                         "name": "ageThreshold",
-                        "in": "formData",
+                        "description": "年齢推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -657,7 +741,8 @@
                     },
                     {
                         "name": "genderThreshold",
-                        "in": "formData",
+                        "description": "性別推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -665,7 +750,8 @@
                     },
                     {
                         "name": "faceDirectionThreshold",
-                        "in": "formData",
+                        "description": "顔向き推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -673,7 +759,8 @@
                     },
                     {
                         "name": "gazeThreshold",
-                        "in": "formData",
+                        "description": "視線推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
@@ -681,11 +768,22 @@
                     },
                     {
                         "name": "expressionThreshold",
-                        "in": "formData",
+                        "description": "表情推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
+                        "in": "query",
                         "required": false,
                         "type": "number",
                         "minimum": 0.0,
                         "maximum": 1.0
+                    },
+                    {
+                        "name": "options",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -728,12 +826,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "threshold",
+                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -742,6 +842,7 @@
                     },
                     {
                         "name": "minWidth",
+                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -750,6 +851,7 @@
                     },
                     {
                         "name": "minHeight",
+                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -758,6 +860,7 @@
                     },
                     {
                         "name": "maxWidth",
+                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -766,6 +869,7 @@
                     },
                     {
                         "name": "maxHeight",
+                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -774,6 +878,7 @@
                     },
                     {
                         "name": "eyeThreshold",
+                        "description": "目の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -782,6 +887,7 @@
                     },
                     {
                         "name": "noseThreshold",
+                        "description": "鼻の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -790,6 +896,7 @@
                     },
                     {
                         "name": "mouthThreshold",
+                        "description": "口の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -798,6 +905,7 @@
                     },
                     {
                         "name": "blinkThreshold",
+                        "description": "目つむり検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -806,6 +914,7 @@
                     },
                     {
                         "name": "ageThreshold",
+                        "description": "年齢推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -814,6 +923,7 @@
                     },
                     {
                         "name": "genderThreshold",
+                        "description": "性別推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -822,6 +932,7 @@
                     },
                     {
                         "name": "faceDirectionThreshold",
+                        "description": "顔向き推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -830,6 +941,7 @@
                     },
                     {
                         "name": "gazeThreshold",
+                        "description": "視線推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -838,6 +950,7 @@
                     },
                     {
                         "name": "expressionThreshold",
+                        "description": "表情推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -846,10 +959,21 @@
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
                         "format": "int64"
+                    },
+                    {
+                        "name": "options",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "in": "formData",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -903,6 +1027,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

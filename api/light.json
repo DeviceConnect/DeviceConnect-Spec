@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/light",
     "info": {
         "title": "Light Profile",
         "version": "2.0.0",
@@ -13,11 +14,12 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "ライトを識別するIDなどを取得するAPI。",
+                "description": "スマートデバイスが認識しているライトデバイスの一覧を取得する。取得できる情報には、ライトの識別子、ライトの名前と状態を持つ。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -60,18 +62,21 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "lightId",
+                        "description": "ライトID。操作の対象となるライト。省略された場合、デフォルトのライトが選択される。",
                         "in": "formData",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "brightness",
+                        "description": "ライトの明るさ。ライトの明るさを0.0-1.0で表す。",
                         "in": "formData",
                         "type": "number",
                         "format": "float",
@@ -81,6 +86,7 @@
                     },
                     {
                         "name": "color",
+                        "description": "ライトの色。RGB形式の16進数で指定。",
                         "in": "formData",
                         "type": "string",
                         "format": "rgb",
@@ -88,6 +94,7 @@
                     },
                     {
                         "name": "flashing",
+                        "description": "ライトの点滅間隔。点滅間隔をカンマ区切りの msecで点灯、消灯を繰り返し指定できる。このパラメータを指定しなかった場合は、 常時点灯。",
                         "in": "formData",
                         "type": "array",
                         "items": {
@@ -121,12 +128,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "lightId",
+                        "description": "ライトID。操作の対象となるライト。省略された場合、デフォルトのライトが選択される。",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -155,24 +164,28 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "lightId",
+                        "description": "ライトID。操作の対象となるライト。省略された場合、デフォルトのライトが選択される。",
                         "in": "formData",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "name",
+                        "description": "ライト名。",
                         "in": "formData",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "brightness",
+                        "description": "ライトの明るさ。ライトの明るさを0.0-1.0で表す。",
                         "in": "formData",
                         "type": "number",
                         "format": "float",
@@ -182,6 +195,7 @@
                     },
                     {
                         "name": "color",
+                        "description": "ライトの色。RGB形式の16進数で指定。",
                         "in": "formData",
                         "type": "string",
                         "format": "rgb",
@@ -189,6 +203,7 @@
                     },
                     {
                         "name": "flashing",
+                        "description": "ライトの点滅間隔。点滅間隔をカンマ区切りの msecで点灯、消灯を繰り返し指定できる。このパラメータを指定しなかった場合は、 常時点灯。",
                         "in": "formData",
                         "type": "array",
                         "items": {
