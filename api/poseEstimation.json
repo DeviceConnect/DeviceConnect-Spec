@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/poseEstimation",
     "info": {
         "title": "PoseEstimation Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "デバイスの姿勢推定のイベントを通知するための機能。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,11 +14,12 @@
         "/onPoseEstimation": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "デバイスの姿勢推定計測イベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -26,6 +28,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PoseResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -43,17 +48,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスの姿勢推定計測イベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -63,6 +70,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -73,6 +83,9 @@
                     }
                 },
                 "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/PoseEvent"
+                    },
                     "examples": {
                         "application/json": {
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
@@ -89,11 +102,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスの姿勢推定計測イベントを停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -102,6 +116,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -110,6 +127,138 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "PoseResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/PoseInfo"
+                }
+            ]
+        },
+        "PoseEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/PoseInfo"
+                }
+            ]
+        },
+        "PoseInfo": {
+            "type": "object",
+            "required": [
+                "pose"
+            ],
+            "properties": {
+                "pose": {
+                    "type": "object",
+                    "required": [
+                        "state",
+                        "timeStamp",
+                        "timeStampString"
+                    ],
+                    "properties": {
+                        "state": {
+                            "type": "string",
+                            "title": "姿勢状態",
+                            "description": "ターゲットデバイスによって測定された姿勢状態を返す。<br><ul><li>Forward:前屈</li><li>Backward:後屈</li><li>Rightside:右傾き</li><li>Leftside:左傾き</li><li>FaceUp:仰向け</li><li>FaceLeft:左向き</li><li>FaceDown:うつ伏せ</li><li>FaceRight:右向き</li><li>Standing:直立</li></ul>",
+                            "enum": [
+                                "Forward", "Backward", "Rightside", "FaceUp", "FaceLeft", "FaceDown", "FaceRight", "Standing"
+                            ]
+                        },
+                        "timeStamp": {
+                            "type": "integer",
+                            "format": "int64",
+                            "title": "姿勢推定のタイムスタンプ",
+                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+                        },
+                        "timeStampString": {
+                            "type": "integer",
+                            "format": "int64",
+                            "title": "姿勢推定のタイムスタンプ文字列",
+                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                        }
+                    }
+                }
+            }
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
                 }
             }
         }

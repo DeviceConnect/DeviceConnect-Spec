@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/phone",
     "info": {
         "title": "Phone Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "周辺機器からスマートフォンの通話機能もしくは通話操作機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,17 +14,19 @@
         "/call": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートフォンに対して電話発信要求をリクエストする。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "phoneNumber",
+                        "description": "電話番号。電話番号を示す文字列。文字には数字の0〜9のみを使用可能。長さは11桁または13桁のいずれかとする。11桁は国内電話、13桁は国際電話として扱う。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -49,17 +52,19 @@
         "/set": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートフォンに対して電話に関する設定項目(サイレント・マナー・音あり)の設定をリクエストする。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "mode",
+                        "description": "電話のモード。電話のモードを指定<br>0:サイレント<br>1:マナー<br>2:音あり",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -86,11 +91,12 @@
         "/onConnect": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -107,17 +113,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -158,11 +166,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

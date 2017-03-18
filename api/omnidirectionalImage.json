@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/omnidirectionalImage",
     "info": {
         "title": "Omnidirectional Image Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "全方位パノラマ画像をROI画像へ変換する機能を提供する。<br>※ROI:Region of Imageのこと。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,17 +14,19 @@
         "/roi": {
             "put": {
                 "x-type": "streaming",
-                "summary": "",
-                "description": "",
+                "summary": "ROI画像の受信を開始するAPI。",
+                "description": "本APIのレスポンスで返されるURIでROI画像を参照できる。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "source",
+                        "description": "全方位パノラマ画像URI。ROI画像に変換する全方位パノラマ画像のURI。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -31,23 +34,36 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ROIStartResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "uri": "Dummy Preview URI"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "streaming",
-                "summary": "",
+                "summary": "ROI画像の受信を終了する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "uri",
+                        "description": "ROI画像URI。",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -55,7 +71,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ROIStopResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
                 }
             }
@@ -63,41 +89,47 @@
         "/roi/settings" :{
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "ROI画像の設定を変更する。",
+                "description": "注1: OpenGLで実装する場合、ワールド座標上の長さ1は実世界上の1メートルに換算する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "uri",
+                        "description": "ROI画像URI。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "x",
+                        "description": "視点の絶対座標 (x)。ワールド座標上の視点の絶対座標(前後方向)。単位はメートル。（注1）指定なしの場合は 0.0。",
                         "in": "formData",
                         "required": false,
                         "type": "number"
                     },
                     {
                         "name": "y",
+                        "description": "視点の絶対座標 (y)。ワールド座標上の視点の絶対座標(左右方向)。以下、同上。",
                         "in": "formData",
                         "required": false,
                         "type": "number"
                     },
                     {
                         "name": "z",
+                        "description": "視点の絶対座標 (z)。ワールド座標上の視点の絶対座標(上下方向)。以下、同上。",
                         "in": "formData",
                         "required": false,
                         "type": "number"
                     },
                     {
                         "name": "roll",
+                        "description": "視点の回転 (ロール)。ワールド座標系に対する視点の回転(前後方向の軸中心)。単位はdegree。角度の範囲は0.0〜360.0。0.0, 360.0は撮影時の角度とする。指定なしの場合は0.0。配信開始時の視点の向きは全方位パノラマ画像の中央点。回転の順番はroll, pitch, yawの順。",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -106,6 +138,7 @@
                     },
                     {
                         "name": "pitch",
+                        "description": "視点の回転 (ピッチ)。ワールド座標系に対する視点の回転(左右方向の軸中心)。以下、同上。",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -114,6 +147,7 @@
                     },
                     {
                         "name": "yaw",
+                        "description": "視点の回転 (ヨー)。ワールド座標系に対する視点の回転(上下方向の軸中心)。以下、同上。",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -122,6 +156,7 @@
                     },
                     {
                         "name": "fov",
+                        "description": "視点の画角。視点の画角。角度の範囲は0.0〜180.0。単位はdegree。指定なしの場合は90度。",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -130,6 +165,7 @@
                     },
                     {
                         "name": "sphereSize",
+                        "description": "天球の大きさ。天球の大きさを半径で指定。単位はメートル。（注1）指定なしの場合は 1。",
                         "in": "formData",
                         "required": false,
                         "type": "number",
@@ -137,24 +173,28 @@
                     },
                     {
                         "name": "width",
+                        "description": "ROI画像のサイズ (横)。配信されるROI画像の横サイズ。単位はピクセル。指定なしの場合は600。ステレオ画像生成フラグがtrueの場合、左右それぞれに対しての画像のサイズとして適用される。(よって、ステレオ画像全体としての横幅は 2 * width となる)",
                         "in": "formData",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "height",
+                        "description": "ROI画像のサイズ (縦)。配信されるROI画像の縦サイズ。単位はピクセル。指定なしの場合は400。",
                         "in": "formData",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "stereo",
+                        "description": "ステレオ画像生成フラグ。trueの場合、ROI画像がステレオ画像形式で配信されるようになる。(ステレオ画像左右の視点が) 指定なしの場合はfalse。",
                         "in": "formData",
                         "required": false,
                         "type": "boolean"
                     },
                     {
                         "name": "vr",
+                        "description": "仮想現実モードフラグ。trueの場合、仮想現実モード(ホストデバイスの向きとROIの向きを連動させるモード)をONにする。指定なしの場合はfalse。",
                         "in": "formData",
                         "required": false,
                         "type": "boolean"
@@ -162,8 +202,84 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ROISettingsResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "ROISettingsResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "ROIStartResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "uri"
+                    ],
+                    "properties": {
+                        "uri": {
+                            "type": "string",
+                            "title": "ROI画像配信サーバURI",
+                            "description": "ROI画像を配信するサーバのURIを示す。配信される画像の形式はMotionJPEGとする。"
+                        }
+                    }
+                }
+            ]
+        },
+        "ROIStopResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }
