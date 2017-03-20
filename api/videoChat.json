@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/videoChat",
     "info": {
         "title": "Video Chat Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートデバイスが持つビデオチャットを操作する機能を提供するプロファイル。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,47 +14,64 @@
         "/profile": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "プロフィール情報を取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "config",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
+                    "name": "config",
+                    "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
+                    "in": "query",
+                    "required": false,
+                    "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GetProfileResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0,
+                                "name": "WebRTC Service",
+                                "addressId": "xxxxx"
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "プロフィールを更新する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "name",
+                        "description": "デバイスに付ける新規の名前",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "config",
+                        "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -61,7 +79,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PutProfileResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
                     }
                 }
             }
@@ -69,23 +97,26 @@
         "/address": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "接続先のアドレス一覧を取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "addressId",
+                        "description": "アドレスID。指定しない場合は、接続できるすべてのアドレスを返却する。指定した場合は、接続先アドレスに対応する情報のみ取得できる。",
                         "in": "query",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "config",
+                        "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -93,7 +124,34 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GetAddressResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0,
+                                "addresses": [
+                                    {
+                                        "name": "Sample 1",
+                                        "addressId": "xxxxxx",
+                                        "status": "idle"
+                                    },
+                                    {
+                                        "name": "Sample 2",
+                                        "addressId": "xxxxx",
+                                        "status": "calling"
+                                    },
+                                    {
+                                        "name": "Sample 3",
+                                        "addressId": "xxxxx",
+                                        "status": "talking"
+                                    }
+                                ]
+                            }
+                        }
                     }
                 }
             }
@@ -101,101 +159,119 @@
         "/call": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "VideoChatの接続を行う。",
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "addressId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "video",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "audio",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "config",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "outputs",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string",
-                        "enum": ["host", "app"]
-                    },
-                    {
-                        "name": "audioSampleRate",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "enum": [48000, 44100, 32000, 22050]
-                    },
-                    {
-                        "name": "audioBitDepth",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string",
-                        "enum": ["PCM_8BIT", "PCM_16BIT", "PCM_FLOAT"]
-                    },
-                    {
-                        "name": "audioChannel",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string",
-                        "enum": ["Monaural", "Stereo"]
-                    }
-                ],
+                "parameters": [{
+                    "name": "serviceId",
+                    "description": "サービスID",
+                    "in": "formData",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "addressId",
+                    "description": "接続先のアドレス。",
+                    "in": "formData",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "video",
+                    "description": "映像リソースURI。<br><ul><li>true: デバイス標準のカメラから取得できる映像を利用する。</li><li>false: 映像リソースを利用しない。</li><li>URI: 指定されたURIの映像リソースを利用する。</li></ul><br>省略された場合は、trueと同じ扱い。",
+                    "in": "formData",
+                    "required": false,
+                    "type": "string"
+                }, {
+                    "name": "audio",
+                    "description": "音声リソースURI。<br><ul><li>true: デバイス標準のマイクから取得できる映像を利用する。</li><li>false: 音声リソースを利用しない。</li><li>URL: 指定されたURIの音声リソースを利用する。</li></ul><br>省略された場合は、trueと同じ扱い。",
+                    "in": "formData",
+                    "required": false,
+                    "type": "string"
+                }, {
+                    "name": "config",
+                    "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。必要に応じてAPIキーなどを格納する任意の文字列。",
+                    "in": "query",
+                    "required": false,
+                    "type": "string"
+                }, {
+                    "name": "outputs",
+                    "description": "出力設定。<br><ul><li>host: HOST表示</li><li>app: アプリケーション表示</li></ul><br>ホストデバイスの画面上に表示する場合はhostを指定する。省略された場合はhost指定として動作する。アプリケーション等でURIを参照して表示する場合は、appを指定する。",
+                    "in": "formData",
+                    "required": false,
+                    "type": "string",
+                    "enum": ["host", "app"]
+                }, {
+                    "name": "audioSampleRate",
+                    "description": "サンプリング周波数。<br><ul><li>48000</li><li>44100</li><li>32000</li><li>22050</li></ul><br>サンプリング周波数を設定する。省略された場合は48000。",
+                    "in": "formData",
+                    "required": false,
+                    "type": "integer",
+                    "enum": [48000, 44100, 32000, 22050]
+                }, {
+                    "name": "audioBitDepth",
+                    "description": "量子化ビット数。<br><ul><li>PCM_8BIT</li><li>PCM_16BIT</li><li>PCM_FLOAT</li></ul><br>量子化ビット数を設定する。省略された場合はPCM_FLOAT。",
+                    "in": "formData",
+                    "required": false,
+                    "type": "string",
+                    "enum": ["PCM_8BIT", "PCM_16BIT", "PCM_FLOAT"]
+                }, {
+                    "name": "audioChannel",
+                    "description": "チャンネル数。<br><ul><li>Monaural</li><li>Stereo</li></ul><br>チャンネル数を設定する。省略され場合は、Monaural。",
+                    "in": "formData",
+                    "required": false,
+                    "type": "string",
+                    "enum": ["Monaural", "Stereo"]
+                }],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PostCallResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "接続中の VideoChat の切断を行う。",
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "addressId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "config",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
+                "parameters": [{
+                    "name": "serviceId",
+                    "description": "サービスID。",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "addressId",
+                    "description": "接続先のアドレス。",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "config",
+                    "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
+                    "in": "query",
+                    "required": false,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/DeleteCallResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
                     }
                 }
             }
@@ -203,67 +279,113 @@
         "/onIncoming": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "config",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
+                "summary": "他デバイスからの着信イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [{
+                    "name": "serviceId",
+                    "description": "",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "config",
+                    "description": "",
+                    "in": "query",
+                    "required": false,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnIncommingResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0,
+                                "incoming" : {
+                                    "name": "xxxx",
+                                    "addressId": "xxxx"
+                                }
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "他デバイスからの着信イベントの受信を開始する。",
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "config",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
+                "parameters": [{
+                    "name": "serviceId",
+                    "description": "サービスID。",
+                    "in": "formData",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "config",
+                    "description": "イベント受信間隔。単位：mSec",
+                    "in": "formData",
+                    "required": false,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnIncommingEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "servieId": "xxxxx",
+                            "profile" : "videochat",
+                            "attribute" : "incoming",
+                            "incoming" : {
+                                "name": "xxxx",
+                                "addressId": "xxxx"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
+                "parameters": [{
+                    "name": "serviceId",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
                     }
                 }
             }
@@ -271,67 +393,129 @@
         "/onCall": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "config",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
+                "summary": "通話開始イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [{
+                    "name": "serviceId",
+                    "description": "サービスID。",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "config",
+                    "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
+                    "in": "query",
+                    "required": false,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnCallResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0,
+                                "oncall" : [
+                                    {
+                                        "name": "xxxx",
+                                        "addressId": "xxxx"
+                                    }
+                                ]
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "通話開始イベントの受信を開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
-                    },
+                    }, 
                     {
                         "name": "config",
+                        "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnCallEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "servieId": "xxxxx",
+                            "profile" : "videochat",
+                            "attribute" : "oncall",
+                            "oncall" : [
+                                {
+                                    "name": "xxxx",
+                                    "addressId": "xxxx"
+                                }
+                            ]
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
+                "parameters": [{
+                    "name": "serviceId",
+                    "description": "サービスID。",
+                    "in": "query",
+                    "required": true,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
                     }
                 }
             }
@@ -339,17 +523,19 @@
         "/onHangup": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "VideoChatの切断イベントを取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "config",
+                        "description": "",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -357,41 +543,90 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnHangUpResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0,
+                                "hangup": {
+                                    "addressId": "xxxx"
+                                }
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "VideoChatの切断イベントの受信を開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "config",
+                        "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnHangUpEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "servieId":  "xxxxx",
+                            "profile" : "videochat",
+                            "attribute" : "hangup",
+                            "hangup": {
+                                "addressId": "xxxx"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -399,8 +634,388 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "GetProfileResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": ["name", "addressId"],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "デバイス自身の名前"
+                        },
+                        "addressId": {
+                            "type": "string",
+                            "description": "デバイス自身の名前"
+                        }
+                    }
+                }
+            ]
+        },
+        "PutProfileResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }]
+        },
+        "GetAddressResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }, {
+                "type": "object",
+                "required": ["addresses"],
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["name", "addressId", "status"],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "description": "デバイス名"
+                                },
+                                "addressId": {
+                                    "type": "string",
+                                    "description": "接続先のアドレス"
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "enum": ["idle", "calling", "talking"],
+                                    "description": "デバイスの状態<br><ul><li>idle: 待機状態</li><li>calling: 発信状態</li><li>talking: 通話中</li></ul>"
+                                }
+                            }
+                        }
+                    }
+                }
+            }]
+        },
+        "PostCallResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }]
+        },
+        "DeleteCallResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }]
+        },
+        "OnIncommingResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }, {
+                "$ref": "#/definitions/OnIncomingInfo"
+            }]
+        },
+        "OnIncommingEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            }, {
+                "$ref": "#/definitions/OnIncomingInfo"
+            }]
+        },
+        "OnIncomingInfo": {
+            "type": "object",
+            "required": ["incoming"],
+            "properties": {
+                "incoming": {
+                    "type": "object",
+                    "description": "発信元デバイスの情報を格納したオブジェクト。",
+                    "required": ["name", "addressId"],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "発信元デバイスの名前。"
+                        },
+                        "addressId": {
+                            "type": "string",
+                            "description": "発信元のデバイスのアドレス。"
+                        }
+                    }
+                }
+            }
+        },
+        "OnCallResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }, {
+                "$ref": "#/definitions/OnCallInfo"
+            }]
+        },
+        "OnCallEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            }, {
+                "$ref": "#/definitions/OnCallInfo"
+            }]
+        },
+        "OnCallInfo": {
+            "type": "object",
+            "required": ["oncall"],
+            "properties": {
+                "oncall": {
+                    "type": "object",
+                    "required": ["name", "addressId"],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "発信元のデバイスの名前。"
+                        },
+                        "addressId": {
+                            "type": "string",
+                            "description": "発信元のデバイスのアドレス。"
+                        },
+                        "remote": {
+                            "type": "object",
+                            "description": "相手局リソース情報",
+                            "properties": {
+                                "video": {
+                                    "type": "object",
+                                    "description": "映像関連情報",
+                                    "properties": {
+                                        "uri": {
+                                            "type": "string",
+                                            "description": "映像のリソースURI。省略された場合は映像無し。但し、videoとaudioの両方が省略されることは無い"
+                                        },
+                                        "mimeType": {
+                                            "type": "string",
+                                            "description": "映像リソースのMIMEタイプ。"
+                                        },
+                                        "frameRate": {
+                                            "type": "number",
+                                            "description": "映像リソースのフレームレート。"
+                                        },
+                                        "width": {
+                                            "type": "integer",
+                                            "description": "通知時点での幅（可変）"
+                                        },
+                                        "height": {
+                                            "type": "integer",
+                                            "description": "通知時点での高さ（可変）"
+                                        }
+                                    }
+                                },
+                                "audio": {
+                                    "type": "object",
+                                    "description": "音声関連情報",
+                                    "properties": {
+                                        "uri": {
+                                            "type": "string",
+                                            "description": "音声のリソースURI。省略された場合は音声無し。但し、videoとaudioの両方が省略されることは無い。"
+                                        },
+                                        "mimeType": {
+                                            "type": "string",
+                                            "description": "音声リソースのMIMEタイプ。"
+                                        },
+                                        "sampleRate": {
+                                            "type": "integer",
+                                            "description": "音声リソースのサンプルレート。"
+                                        },
+                                        "channels": {
+                                            "type": "integer",
+                                            "description": "音声リソースのチャンネル数。"
+                                        },
+                                        "sampleSize": {
+                                            "type": "integer",
+                                            "description": "音声リソースのサンプルサイズ。"
+                                        },
+                                        "blockSize": {
+                                            "type": "integer",
+                                            "description": "音声リソースのブロックサイズ。"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "local": {
+                            "type": "object",
+                            "description": "自局リソース情報",
+                            "properties": {
+                                "video": {
+                                    "type": "object",
+                                    "description": "映像関連情報",
+                                    "properties": {
+                                        "uri": {
+                                            "type": "string",
+                                            "description": "映像のリソースURI。省略された場合は映像無し。但し、videoとaudioの両方が省略されることは無い"
+                                        },
+                                        "mimeType": {
+                                            "type": "string",
+                                            "description": "映像リソースのMIMEタイプ。"
+                                        },
+                                        "frameRate": {
+                                            "type": "number",
+                                            "description": "映像リソースのフレームレート。"
+                                        },
+                                        "width": {
+                                            "type": "integer",
+                                            "description": "通知時点での幅（可変）"
+                                        },
+                                        "height": {
+                                            "type": "integer",
+                                            "description": "通知時点での高さ（可変）"
+                                        }
+                                    }
+                                },
+                                "audio": {
+                                    "type": "object",
+                                    "description": "音声関連情報",
+                                    "properties": {
+                                        "uri": {
+                                            "type": "string",
+                                            "description": "音声のリソースURI。省略された場合は音声無し。但し、videoとaudioの両方が省略されることは無い。"
+                                        },
+                                        "mimeType": {
+                                            "type": "string",
+                                            "description": "音声リソースのMIMEタイプ。"
+                                        },
+                                        "sampleRate": {
+                                            "type": "integer",
+                                            "description": "音声リソースのサンプルレート。"
+                                        },
+                                        "channels": {
+                                            "type": "integer",
+                                            "description": "音声リソースのチャンネル数。"
+                                        },
+                                        "sampleSize": {
+                                            "type": "integer",
+                                            "description": "音声リソースのサンプルサイズ。"
+                                        },
+                                        "blockSize": {
+                                            "type": "integer",
+                                            "description": "音声リソースのブロックサイズ。"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "OnHangUpResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }, {
+                "$ref": "#/definitions/OnHangUpInfo"
+            }]
+        },
+        "OnHangUpEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            }, {
+                "$ref": "#/definitions/OnHangUpInfo"
+            }]
+        },
+        "OnHangUpInfo": {
+            "type": "object",
+            "required": ["hangup"],
+            "properties": {
+                "hangup": {
+                    "type": "object",
+                    "description": "発信元デバイスの情報を格納したオブジェクト。",
+                    "required": ["addressId"],
+                    "properties": {
+                        "addressId": {
+                            "type": "string",
+                            "description": "発信元のデバイスのアドレス。"
+                        }
+                    }
+                }
+            }
+        }
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
                 }
             }
         }
