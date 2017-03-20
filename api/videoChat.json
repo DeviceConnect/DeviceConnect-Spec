@@ -283,13 +283,13 @@
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [{
                     "name": "serviceId",
-                    "description": "",
+                    "description": "サービスID。",
                     "in": "query",
                     "required": true,
                     "type": "string"
                 }, {
                     "name": "config",
-                    "description": "",
+                    "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
                     "in": "query",
                     "required": false,
                     "type": "string"
@@ -369,6 +369,7 @@
                 "description": "",
                 "parameters": [{
                     "name": "serviceId",
+                    "description": "サービスID。",
                     "in": "query",
                     "required": true,
                     "type": "string"
@@ -528,14 +529,14 @@
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "description": "",
+                        "description": "サービスID",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "config",
-                        "description": "",
+                        "description": "コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。",
                         "in": "query",
                         "required": false,
                         "type": "string"
