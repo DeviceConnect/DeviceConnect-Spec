@@ -953,7 +953,7 @@
                     }
                 }
             }
-        }
+        },
         "EventRegistrationResponse": {
             "type": "object",
             "allOf": [{
