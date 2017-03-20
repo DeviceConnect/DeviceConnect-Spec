@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/vibration",
     "info": {
         "title": "Vibration Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "バイブレーション操作機能を提供するプロファイル。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,17 +14,19 @@
         "/vibrate": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスに対してバイブレーション依頼を送る。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象デバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "pattern",
+                        "description": "バイブレーションのパターン。カンマ区切りで、震える、止まるを繰り返しバイブレーションする。カンマ区切りされていない場合は、そのms分バイブレーションする。省略された場合は、デバイス毎のMax値分バイブレーションする。デバイス毎にMax値が設定されていない場合は、500ms分バイブレーションする。<br>例) 100, 100, 100, 100",
                         "in": "formData",
                         "required": false,
                         "type": "array",
@@ -52,11 +55,12 @@
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスに対してバイブレーション停止依頼を送る。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象デバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
