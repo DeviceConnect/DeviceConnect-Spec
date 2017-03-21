@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/stressEstimation",
     "info": {
         "title": "StressEstimation Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "ストレス推定のイベントを通知するプロファイル。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,11 +14,12 @@
         "/onStressEstimation": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "デバイスのストレス推定計測イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -26,6 +28,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StressEstimationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -43,17 +48,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスのストレス推定計測イベントの受信を開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -63,6 +70,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -73,6 +83,9 @@
                     }
                 },
                 "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/StressEstimationEvent"
+                    },
                     "examples": {
                         "application/json": {
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
@@ -89,11 +102,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -102,6 +116,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -110,6 +127,124 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "StressEstimationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/StressEstimationInfo"
+                }
+            ]
+        },
+        "StressEstimationEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/StressEstimationInfo"
+                }
+            ]
+        },
+        "StressEstimationInfo": {
+            "type": "object",
+            "required": ["stress"],
+            "properties": {
+                "stress": {
+                    "type": "object",
+                    "required": ["lfhf", "timeStamp", "timeStampString"],
+                    "properties": {
+                        "lfhf": {
+                            "type": "number",
+                            "description": "ターゲットデバイスによって測定されたLFHF値。"
+                        },
+                        "timeStamp": {
+                            "type": "integer",
+                            "format": "int64",
+                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+                        },
+                        "timeStampString": {
+                            "type": "string",
+                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                        }
+                    }
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
                 }
             }
         }
