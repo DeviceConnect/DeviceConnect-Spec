@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/temperature",
     "info": {
         "title": "Temperature Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートデバイスの計測または管理している温度を提供するプロファイル。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,28 +14,139 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの温度設定値を取得する。",
+                "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。",
                         "in": "query",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "description": "1:摂氏、2:華氏",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "enum": [1, 2]
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GetTemperatureResponse"
+                        },
                         "examples": {
                             "application/json": {
-                                "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "temperature": 25
+                                "version": "1.0",
+                                "result": 0,
+                                "temperature":25,
+                                "type":1
                             }
                         }
                     }
+                }
+            },
+            "put": {
+                "x-type": "one-shot",
+                "summary": "スマートデバイスの温度設定値を設定する。",
+                "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。<br>temperatureに設定できる値は、摂氏の場合は0以上50以下, 華氏の場合は32以上122以下。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "temperature",
+                        "description": "温度の値。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "type",
+                        "description": "1:摂氏、2:華氏",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "enum": [1, 2]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PutTemperatureResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "product": "Example System",
+                                "version": "1.0",
+                                "result": 0
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "GetTemperatureResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "type": "object",
+                "required": ["tempareture", "type"],
+                "properties": {
+                    "tempareture": {
+                        "type": "number",
+                        "description": "温度の値。"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "enum": [1, 2],
+                        "description": "1:摂氏、2:華氏"
+                    }
+                }
+            }]
+        },
+        "PutTemperatureResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

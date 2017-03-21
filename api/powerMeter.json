@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/powerMeter",
     "info": {
         "title": "Power Meter Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートデバイスが計測した電力を取得する機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,11 +14,12 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスの電源状態を取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -42,11 +44,12 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスの電源を付ける。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
@@ -70,11 +73,12 @@
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスの電源を消す。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -97,20 +101,22 @@
                 }
             }
         },
-        "/integratedPowerValue": {
+        "/integratedPower": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスが計測した積算電力量を取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "date",
+                        "description": "取得日付。RFC 3339 例: 2014-01-01T00:00:00+0900",
                         "in": "query",
                         "required": false,
                         "type": "string",
@@ -160,14 +166,15 @@
                 }
             }
         },
-        "/instantaneousPowerValue": {
+        "/instantaneousPower": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "スマートデバイスが計測した瞬間電力量を取得する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

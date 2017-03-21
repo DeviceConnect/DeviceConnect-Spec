@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/battery",
     "info": {
         "title": "Battery Profile",
         "version": "2.0.0",
@@ -11,10 +12,11 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのバッテリー情報を取得する。",
-                "description": "",
+                "description": "スマートデバイスのバッテリー情報として取得できない値がある場合は適切な値を代入してレスポンスを返却する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -49,6 +51,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -80,6 +83,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -111,6 +115,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -142,6 +147,7 @@
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -168,11 +174,12 @@
         "/onBatteryChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのバッテリー状態変化通知イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -201,17 +208,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのバッテリーの状態が変化したことを通知する。",
+                "description": "充電時間、放電時間、バッテリー残量の値が変わった時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "in": "query",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -253,11 +262,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -283,11 +293,12 @@
         "/onChargingChange": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのバッテリー充電状態変化通知イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -314,17 +325,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートフォンもしくは周辺機器へ他方のスマートデバイスのバッテリーの充電状態が変化したことを通知する。",
+                "description": "充電中フラグの値がtrueからfalse、もしくは、falseからtrueへ変わった時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "in": "query",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -364,11 +377,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "当該イベントの通知を停止する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -408,21 +422,25 @@
                     "properties": {
                         "charging": {
                             "type": "boolean",
-                            "description": "充電状態フラグ。<br>充電中:true<br>非充電中:false"
+                            "title": "充電状態フラグ。",
+                            "description": "充電中:true<br>非充電中:false"
                         },
                         "chargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "description": "完全充電までの時間(秒)。<br>満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
+                            "title": "完全充電までの時間(秒)。",
+                            "description": "満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
                         },
                         "dischargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "description": "完全放電までの時間(秒)。<br>充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE"
+                            "title": "完全放電までの時間(秒)。",
+                            "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE"
                         },
                         "level": {
                             "type": "number",
-                            "description": "バッテリー残量。<br>範囲: 0.0 <= level <= 1.0"
+                            "title": "バッテリー残量。",
+                            "description": "範囲: 0.0 <= level <= 1.0"
                         }
                     }
                 }
@@ -442,7 +460,8 @@
                     "properties": {
                         "charging": {
                             "type": "boolean",
-                            "description": "充電状態フラグ<br>充電中:true<br>非充電中:false"
+                            "title": "充電状態フラグ",
+                            "description": "充電中:true<br>非充電中:false"
                         }
                     }
                 }
@@ -463,7 +482,8 @@
                         "chargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "description": "完全充電までの時間(秒)。満充電、または非充電中の場合は0。システムとして取得出来ない場合はNumber.MAX_VALUE。"
+                            "title": "完全充電までの時間(秒)。",
+                            "description": "満充電、または非充電中の場合は0。システムとして取得出来ない場合はNumber.MAX_VALUE。"
                         }
                     }
                 }
@@ -484,7 +504,8 @@
                         "dischargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "description": "完全放電までの時間(秒)。充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
+                            "title": "完全放電までの時間(秒)。",
+                            "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
                         }
                     }
                 }
@@ -504,7 +525,8 @@
                     "properties": {
                         "level": {
                             "type": "number",
-                            "description": "バッテリー残量。<br>範囲: 0.0 <= level <= 1.0"
+                            "title": "バッテリー残量。",
+                            "description": "範囲: 0.0 <= level <= 1.0"
                         }
                     }
                 }
@@ -529,7 +551,8 @@
                             "properties": {
                                 "charging": {
                                     "type": "boolean",
-                                    "description": "充電状態フラグ<br>充電中:true<br>非充電中:false"
+                                    "title": "充電状態フラグ",
+                                    "description": "充電中:true<br>非充電中:false"
                                 }
                             }
                         }
@@ -556,7 +579,8 @@
                             "properties": {
                                 "charging": {
                                     "type": "boolean",
-                                    "description": "充電状態フラグ<br>充電中:true<br>非充電中:false"
+                                    "title": "充電状態フラグ",
+                                    "description": "充電中:true<br>非充電中:false"
                                 }
                             }
                         }
@@ -586,16 +610,19 @@
                                 "chargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "description": "完全充電までの時間(秒)。<br>満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
+                                    "title": "完全充電までの時間(秒)。",
+                                    "description": "満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "dischargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "description": "完全放電までの時間(秒)。<br>充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
+                                    "title": "完全放電までの時間(秒)。",
+                                    "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "level": {
                                     "type": "number",
-                                    "description": "バッテリー残量。<br>範囲: 0.0 <= level <= 1.0"
+                                    "title": "バッテリー残量。",
+                                    "description": "範囲: 0.0 <= level <= 1.0"
                                 }
                             }
                         }
@@ -625,16 +652,19 @@
                                 "chargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "description": "完全充電までの時間(秒)。<br>満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
+                                    "title": "完全充電までの時間(秒)。",
+                                    "description": "満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "dischargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "description": "完全放電までの時間(秒)。<br>充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
+                                    "title": "完全放電までの時間(秒)。",
+                                    "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "level": {
                                     "type": "number",
-                                    "description": "バッテリー残量。<br>範囲: 0.0 <= level <= 1.0"
+                                    "title": "バッテリー残量。",
+                                    "description": "範囲: 0.0 <= level <= 1.0"
                                 }
                             }
                         }

@@ -1,10 +1,10 @@
 {
     "swagger": "2.0",
-    "basePath": "/gotapi/humidity",
+    "basePath": "/gotapi/atmosphericPressure",
     "info": {
-        "title": "Humidity Profile",
+        "title": "Atmospheric Pressure Profile",
         "version": "2.0.0",
-        "description": "スマートデバイスが計測した湿度を取得する機能を提供するAPI。"
+        "description": "気圧の値を取得する機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -14,7 +14,7 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスの湿度を取得する機能を提供する。",
+                "summary": "スマートデバイスの気圧情報を取得する。",
                 "description": "",
                 "parameters": [
                     {
@@ -29,14 +29,16 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/HumidityResponse"
+                            "$ref": "#/definitions/GetAtmosphericPressureResponse"
                         },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "humidity": 0.1
+                                "atmosphericPressure": 1016.12,
+                                "timeStamp": 1431856940275,
+                                "timeStampString": "20150517100220.000-0000"
                             }
                         }
                     }
@@ -44,9 +46,8 @@
             }
         }
     },
-
     "definitions": {
-         "HumidityResponse": {
+        "GetAtmosphericPressureResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -55,15 +56,26 @@
                 {
                     "type": "object",
                     "required": [
-                        "humidity"
+                        "atmosphericPressure",
+                        "timeStamp",
+                        "timeStampString"
                     ],
                     "properties": {
-                        "humidity": {
+                        "atmosphericPressure": {
                             "type": "number",
-                            "title": "湿度",
-                            "description": "湿度センサーが検知した湿度を通知する。<br>範囲: 0.0 ~ 1.0",
-                            "minimum": 0.0,
-                            "maximum": 1.0
+                            "title": "気圧",
+                            "description": "気圧<br>単位: ヘクトパスカル(hPa)"
+                        },
+                        "timeStamp": {
+                            "type": "integer",
+                            "format": "int64",
+                            "title": "気圧のタイムスタンプ",
+                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+                        },
+                        "timeStampString": {
+                            "type": "string",
+                            "title": "気圧のタイムスタンプ文字列",
+                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
                         }
                     }
                 }
@@ -79,19 +91,23 @@
             "properties": {
                 "result": {
                     "type": "integer",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "処理結果",
+                    "description": "0: 正常応答<br>0以外: 異常応答"
                 },
                 "product": {
                     "type": "string",
-                    "description": "DeviceConnectシステムの名前。"
+                    "title": "DeviceConnectシステムの名前",
+                    "description": ""
                 },
                 "version": {
                     "type": "string",
-                    "description": "DeviceConnectシステムのバージョン名。"
+                    "title": "DeviceConnectシステムのバージョン名",
+                    "description": ""
                 },
                 "hmac": {
                     "type": "string",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "レスポンスに対する署名",
+                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

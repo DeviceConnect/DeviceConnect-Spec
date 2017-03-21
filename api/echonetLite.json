@@ -1,21 +1,21 @@
 {
     "swagger": "2.0",
-    "basePath": "/gotapi/camera",
+    "basePath": "/gotapi/echonetLite",
     "info": {
-        "title": "Camera Profile",
+        "title": "ECHONETLite Profile",
         "version": "2.0.0",
-        "description": "スマートデバイス(Cameraデバイスなど）のズーム操作機能を提供するAPI。"
+        "description": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を操作する。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
         "multipart/form-data"
     ],
     "paths": {
-        "/zoom": {
+        "/property": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "Cameraデバイスの現在の倍率を取得する。",
-                "description": "",
+                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する。",
+                "description": "EPC:ECHONET Property Code",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -23,20 +23,39 @@
                         "in": "query",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "epc",
+                        "description": "取得プロパティのEPC。取得するプロパティのEPCをカンマ区切りで列挙。10進または16進(0xXX)の値",
+                        "in": "query",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/CameraGetZoomResponse"
+                            "$ref": "#/definitions/GetEchonetPropertyCodeResponse"
                         },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "zoomPosition": 0
+                                "properties": [
+                                    {
+                                        "epc": "OperationStatus",
+                                        "value": "49"
+                                    },
+                                    {
+                                        "epc": "InstallationLocation",
+                                        "value": "0"
+                                    }
+                                ]
                             }
                         }
                     }
@@ -44,7 +63,7 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "Cameraデバイスに対してレンズのズームイン・アウトリクエストを送る。",
+                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う。",
                 "description": "",
                 "parameters": [
                     {
@@ -55,33 +74,33 @@
                         "type": "string"
                     },
                     {
-                        "name": "direction",
-                        "description": "方向。ズームの方向<br>in<br>out",
+                        "name": "epc",
+                        "description": "EPC。<br>ECHONET Property Code",
                         "in": "formData",
                         "required": true,
-                        "type": "string",
-                        "enum": ["in", "out"]
+                        "type": "string"
                     },
                     {
-                        "name": "movement",
-                        "description": "動作。ズームの動作<br>in-startで開始して in-stopで終了。<br>1shotは開始してから所定位置まで動作する。<br>maxはin-startと同じ動作を行う。",
+                        "name": "value",
+                        "description": "EPCの設定値。",
                         "in": "formData",
                         "required": true,
-                        "type": "string",
-                        "enum": ["in-start", "in-stop", "1shot", "max"]
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/CameraSetZoomResponse"
+                            "$ref": "#/definitions/SetEchonetPropertyCodeResponse"
                         },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0"
+                                "version": "1.0.0",
+                                "epc": "OperationStatus",
+                                "value": "49"
                             }
                         }
                     }
@@ -90,7 +109,7 @@
         }
     },
     "definitions": {
-        "CameraGetZoomResponse": {
+        "GetEchonetPropertyCodeResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -99,19 +118,38 @@
                 {
                     "type": "object",
                     "required": [
-                        "zoomPosition"
+                        "properties"
                     ],
                     "properties": {
-                        "zoomPosition": {
-                            "type": "number",
-                            "title": "カメラの倍率",
-                            "description": "カメラの倍率(%)<br>例)<br>QX-10の場合<br>0(%):拡大なし<br>50(%):倍率5倍での拡大"
+                        "properties": {
+                            "type": "array",
+                            "title": "EPCのリスト",
+                            "description": "指定されたEPCの配列。",
+                            "items":{
+                                "type": "object",
+                                "required": [
+                                    "epc",
+                                    "value"
+                                ],
+                                "properties": {
+                                    "epc": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Code",
+                                        "description": "ECHONET Property Code"
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Codeの設定値。",
+                                        "description": "ECHONET Property Codeの設定値。"
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             ]
         },
-        "CameraSetZoomResponse": {
+        "SetEchonetPropertyCodeResponse": {
             "type": "object",
             "allOf": [
                 {

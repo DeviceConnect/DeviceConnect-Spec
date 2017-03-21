@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/ecg",
     "info": {
         "title": "ECG Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "デバイスのECGのイベントを通知するための機能。※ECG:Electrocardiogram(心電図)"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,11 +14,12 @@
         "/onECG": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "デバイスのECG計測通知イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -26,20 +28,23 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ECGResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
                                 "ecg": {
-                                    "typeCode": 663568,
-                                    "unitCode": 3328,
-                                    "type": "ecg beat",
-                                    "unit": "mVolt * milliSecond",
-                                    "timeStamp": 1483241696789,
                                     "value": -172.40676879882812,
-                                    "timeStampString": "20170101123456.789+0900",
-                                    "mderFloat": "F68ED1CC"
+                                    "mderFloat": "F68ED1CC",
+                                    "type": "ecg beat",
+                                    "typeCode": 663568,
+                                    "unit": "mVolt * milliSecond",
+                                    "unitCode": 3328,
+                                    "timeStamp": 1483241696789,
+                                    "timeStampString": "20170101123456.789+0900"
                                 }
                             }
                         }
@@ -48,17 +53,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
+                "summary": "デバイスのECG計測値を通知するイベントを開始する。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -68,6 +75,60 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/ECGEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "ecg",
+                            "attribute": "onecg",
+                            "ecg": {
+                                "value": -172.40676879882812,
+                                "mderFloat": "F68ED1CC",
+                                "type": "ecg beat",
+                                "typeCode": 663568,
+                                "unit": "mVolt * milliSecond",
+                                "unitCode": 3328,
+                                "timeStamp": 1483241696789,
+                                "timeStampString": "20170101123456.789+0900"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "デバイスのECG計測値を通知するイベントを停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -77,30 +138,165 @@
                         }
                     }
                 }
-            },
-            "delete": {
-                "x-type": "event",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
+            }
+        }
+    },
+
+    "definitions": {
+         "ECGResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/ECGInfo"
+                }
+            ]
+        },
+        "ECGEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/ECGInfo"
+                }
+            ]
+        },
+        "ECGInfo": {
+            "type": "object",
+            "required": [
+                "ecg"
+            ],
+            "properties": {
+                "ecg": {
+                    "type": "object",
+                    "title": "ECG",
+                    "description": "ECGのオブジェクト。",
+                    "required": [
+                        "value",
+                        "mderFloat",
+                        "type",
+                        "typeCode",
+                        "unit",
+                        "unitCode",
+                        "timeStamp",
+                        "timeStampString"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "integer",
+                            "title": "ECG",
+                            "description": "ターゲットデバイスで測定した心拍数を返す。"
+                        },
+                        "mderFloat": {
+                            "type": "string",
+                            "title": "ECGのMDER Float値",
+                            "description": "ターゲットデバイスによって測定された心拍数を、16進数のMDER Float値で表している。取得できない場合は-1の16進数文字列を返す。"
+                        },
+                        "type": {
+                            "type": "string",
+                            "title": "ECGのタイプ",
+                            "description": "この値が「ecg beat」であることを表す文字列を返す。取得できない場合は、空文字を返す。"
+                        },
+                        "typeCode": {
+                            "type": "string",
+                            "title": "ECGのオブジェクトのタイプのコード",
+                            "description": "「663568」という「ecg beat」を意味するコードを返す。取得できない場合は、空文字を返す。"
+                        },
+                        "unit": {
+                            "type": "string",
+                            "title": "ECGの単位",
+                            "description": "「mVolt * miliSecond」のように人間がわかるように単位を返す。取得できない場合は、空文字を返す。"
+                        },
+                        "unitCode": {
+                            "type": "string",
+                            "title": "ECGの単位コード",
+                            "description": "「3328」という「mVolt * miliSecond」を意味するコードを返す。取得できない場合は、空文字を返す。"
+                        },
+                        "timeStamp": {
+                            "type": "integer",
+                            "format": "int64",
+                            "title": "ECGのタイムスタンプ",
+                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+                        },
+                        "timeStampString": {
+                            "type": "string",
+                            "title": "ECGのタイムスタンプ文字列",
+                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
                         }
                     }
+                }
+            }
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
                 }
             }
         }

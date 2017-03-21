@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/proximity",
     "info": {
         "title": "Proximity Profile",
         "version": "2.0.0",
@@ -14,11 +15,12 @@
         "/onDeviceProximity": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの近接センサーの物の検知を通知するイベントを取得する。",
+                "description": "スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -36,7 +38,11 @@
                                 "product": "Example System",
                                 "version": "1.0.0",
                                 "proximity": {
-                                    "near": true
+                                    "value": 12.3456,
+                                    "min": 1.23456,
+                                    "max": 123.456,
+                                    "threshold": 12.3456,
+                                    "range": "NEAR"
                                 }
                             }
                         }
@@ -45,17 +51,20 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの近接センサーの物の検知を通知するイベントを開始する。",
+                "description": "スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -80,16 +89,31 @@
                 "x-event": {
                     "schema": {
                         "$ref": "#/definitions/DeviceProximityEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "proximity",
+                            "attribute": "ondeviceproximity",
+                            "proximity": {
+                                "value": 12.3456,
+                                "min": 1.23456,
+                                "max": 123.456,
+                                "threshold": 12.3456,
+                                "range": "NEAR"
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの近接センサーの物の検知を通知するイベントを停止する。",
+                "description": "スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -120,11 +144,12 @@
         "/onUserProximity": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの近接センサーのユーザ検知を通知するイベントを取得する。",
+                "description": "ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -151,17 +176,20 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの近接センサーのユーザ検知を通知するイベントを開始する。",
+                "description": "ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -186,16 +214,27 @@
                 "x-event": {
                     "schema": {
                         "$ref": "#/definitions/UserProximityEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "proximity",
+                            "attribute": "onuserproximity",
+                            "proximity": {
+                                "near": true
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスの近接センサーのユーザ検知を通知するイベントを停止する。",
+                "description": "ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"

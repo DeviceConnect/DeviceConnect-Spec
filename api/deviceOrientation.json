@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/deviceOrientation",
     "info": {
         "title": "DeviceOrientation Profile",
         "version": "2.0.0",
@@ -13,11 +14,12 @@
         "/onDeviceOrientation": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを取得する。",
+                "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -59,17 +61,19 @@
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを開始する。",
+                "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -86,8 +90,7 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "value": "Register OnDeviceOrientation event"
+                                "version": "1.0.0"
                             }
                         }
                     }
@@ -99,8 +102,8 @@
                     "examples": {
                         "application/json": {
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
-                            "profile": "",
-                            "attribute": "",
+                            "profile": "deviceorientation",
+                            "attribute": "ondeviceorientation",
                             "orientation": {
                                 "acceleration": {
                                     "x": 0.12345678901234567,
@@ -117,7 +120,7 @@
                                     "y": 0.12345678901234567,
                                     "z": 9.87654321098
                                 },
-                                "interval": 0
+                                "interval": 100
                             }
                         }
                     }
@@ -125,11 +128,12 @@
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを停止する。",
+                "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -145,8 +149,7 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "value": "Unregister OnDeviceOrientation event"
+                                "version": "1.0.0"
                             }
                         }
                     }
@@ -154,7 +157,6 @@
             }
         }
     },
-
     "definitions": {
          "DeviceOrientationResponse": {
             "type": "object",

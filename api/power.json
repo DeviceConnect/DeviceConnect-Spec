@@ -1,67 +1,20 @@
 {
     "swagger": "2.0",
-    "basePath": "/gotapi/driveController",
+    "basePath": "/gotapi/power",
     "info": {
-        "title": "DriveController Profile",
+        "title": "Power Profile",
         "version": "2.0.0",
-        "description": "スマートデバイスの駆動処理を提供するAPI。"
+        "description": "スマートデバイスの電源状態を操作する。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
         "multipart/form-data"
     ],
     "paths": {
-        "/move": {
-            "post": {
+        "/": {
+            "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスを指定された方向に移動開始する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "angle",
-                        "description": "角度。デバイスの方向 (degree)<br>0~360",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 360
-                    },
-                    {
-                        "name": "speed",
-                        "description": "速度。デバイスの動く速度<br>0.0~1.0",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/DriveControllerMoveResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "x-type": "one-shot",
-                "summary": "スマートデバイスに移動停止リクエストを送る。",
+                "summary": "機器の電源の状態を取得する。",
                 "description": "",
                 "parameters": [
                     {
@@ -76,7 +29,37 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/DriveControllerStopResponse"
+                            "$ref": "#/definitions/PowerStatusResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "powerstatus": "OFF"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "one-shot",
+                "summary": "機器の電源をONにする。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PowerOnResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -87,36 +70,25 @@
                         }
                     }
                 }
-            }
-        },
-        "/rotate": {
-            "put": {
+            },
+            "delete": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスを指定された向きに回転を行う。",
+                "summary": "機器の電源をOFFにする。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
                         "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
+                        "in": "query",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "angle",
-                        "description": "角度。デバイスの方向 (degree)<br>0~360",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 360
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/DriveControllerRotateResponse"
+                            "$ref": "#/definitions/PowerOffResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -131,7 +103,31 @@
         }
     },
     "definitions": {
-        "DriveControllerMoveResponse": {
+        "PowerStatusGetResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "powerstatus"
+                    ],
+                    "properties": {
+                        "powerstatus": {
+                            "type": "string",
+                            "title": "電源状態",
+                            "description": "ON:電源オン<br>OFF:電源オフ<br>UNKNOWN:不明",
+                            "enum": [
+                                  "ON", "OFF", "UNKNOWN"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "PowerOnResponse": {
             "type": "object",
             "allOf": [
                 {
@@ -139,15 +135,7 @@
                 }
             ]
         },
-        "DriveControllerStopResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "DriveControllerRotateResponse": {
+        "PowerOffResponse": {
             "type": "object",
             "allOf": [
                 {

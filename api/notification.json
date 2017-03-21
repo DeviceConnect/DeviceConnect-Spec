@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/notification",
     "info": {
         "title": "Notification Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "スマートデバイスのノーティフィケーションを操作する機能。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,17 +14,19 @@
         "/notify": {
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスにノーティフィケーションの表示要求をする。",
+                "description": "ノーティフィケーションの表示要求の到達成否を応答として返却し、ノーティフィケーションの表示完了を待って応答をするわけではない。ノーティフィケーションの表示方法は表示要求を受けたスマートデバイスに依存する。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "type",
+                        "description": "通知タイプ。通知のタイプを識別する。<br>0: 音声通話着信<br>1: メール着信<br>2: SMS着信<br>3: イベント",
                         "in": "formData",
                         "required": true,
                         "type": "integer",
@@ -31,6 +34,7 @@
                     },
                     {
                         "name": "dir",
+                        "description": "向き。メッセージの文字の向き。<br>auto: 自動<br>rtl: 右から左<br>ltr: 左から右",
                         "in": "formData",
                         "required": false,
                         "type": "string",
@@ -38,24 +42,28 @@
                     },
                     {
                         "name": "lang",
+                        "description": "言語。メッセージの言語。 ref. BCP47",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "body",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "tag",
+                        "description": "タグ。任意タグ文字列 カンマ(,)区切りで任意個数指定。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "uri",
+                        "description": "アイコン。アイコンファイルのURI。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
@@ -64,6 +72,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/SendNotificationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -77,17 +88,19 @@
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスにノーティフィケーションの消去要求をする。",
+                "description": "ノーティフィケーションの消去要求の到達成否を応答として返却し、ノーティフィケーションの消去完了を待って応答をするわけではない。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "notificationId",
+                        "description": "通知ID。ユニークな文字列。",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -96,6 +109,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/DeleteNotificationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -110,11 +126,12 @@
         "/onClick": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを取得する。",
+                "description": "スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -122,23 +139,36 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ClickNotificationResponse"
+                        },
+                        "examples": {
+                          "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "notificationId": 123456
+                          }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを開始する。",
+                "description": "スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -148,6 +178,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -156,15 +189,29 @@
                             }
                         }
                     }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/ClickNotificationEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "notification",
+                            "attribute": "onclick",
+                            "notificationId": 123456
+                        }
+                    }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを停止する。",
+                "description": "スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -173,6 +220,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -187,11 +237,12 @@
         "/onShow": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを取得する。",
+                "description": "スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -199,23 +250,36 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ShowNotificationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "notificationId": 123456
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを開始する。",
+                "description": "スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -225,6 +289,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -233,15 +300,29 @@
                             }
                         }
                     }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/ShowNotificationEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "notification",
+                            "attribute": "onshow",
+                            "notificationId": 123456
+                        }
+                    }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを停止する。",
+                "description": "スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -250,6 +331,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -264,11 +348,12 @@
         "/onClose": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを取得する。",
+                "description": "ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -276,23 +361,36 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CloseNotificationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "notificationId": 123456
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを開始する。",
+                "description": "ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -302,6 +400,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -310,15 +411,29 @@
                             }
                         }
                     }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/CloseNotificationEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "notification",
+                            "attribute": "onclose",
+                            "notificationId": 123456
+                        }
+                    }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを停止する。",
+                "description": "ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -327,6 +442,9 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -341,11 +459,12 @@
         "/onError": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを取得する。",
+                "description": "スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -353,23 +472,36 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorNotificationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "notificationId": 123456
+                            }
+                        }
                     }
                 }
             },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "summary": "スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを開始する。",
+                "description": "スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。",
                 "parameters": [
                     {
                         "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
                         "in": "formData",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
                         "in": "formData",
                         "required": false,
                         "type": "integer",
@@ -379,6 +511,51 @@
                 "responses": {
                     "200": {
                         "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/ErrorNotificationEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "notification",
+                            "attribute": "onerror",
+                            "notificationId": 123456
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを停止する。",
+                "description": "スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
                         "examples": {
                             "application/json": {
                                 "result": 0,
@@ -388,30 +565,207 @@
                         }
                     }
                 }
-            },
-            "delete": {
-                "x-type": "event",
-                "summary": "",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
+            }
+        }
+    },
+
+    "definitions": {
+        "SendNotificationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                      "notificationId"
+                  ],
+                  "properties": {
+                      "notificationId": {
+                              "type": "string",
+                              "title": "ノーティフィケーションID",
+                              "description": "ユニークな文字列。"
+                      }
+                  }
+                }
+            ]
+        },
+        "DeleteNotificationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+         "ClickNotificationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+        "ClickNotificationEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+         "ShowNotificationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+        "ShowNotificationEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+         "CloseNotificationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+        "CloseNotificationEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+         "ErrorNotificationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+        "ErrorNotificationEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/NotificationInfo"
+                }
+            ]
+        },
+        "NotificationInfo": {
+            "type": "object",
+            "required": [
+                "notificationId"
+            ],
+            "properties": {
+                "notificationId": {
+                    "type": "string",
+                    "title": "ノーティフィケーションID",
+                    "description": "ノーティフィケーションを識別するID。"
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
                 }
             }
         }
