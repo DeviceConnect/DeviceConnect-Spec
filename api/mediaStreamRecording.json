@@ -749,7 +749,7 @@
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスでの動画撮影中に、動画のプレビュー画像を取得する。",
-                "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。",
+                "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。JPEGでデータを受信する。",
                 "parameters": [
                     {
                         "name": "serviceId",
@@ -768,7 +768,18 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PreviewGetResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "uri": "Dummy Preview URI"
+                            }
+                        }
                     }
                 }
             },
@@ -1270,6 +1281,27 @@
                     }
                 }
             }
+        },
+        "PreviewGetResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "uri"
+                    ],
+                    "properties": {
+                        "uri": {
+                            "type": "string",
+                            "title": "プレビュー画像URI",
+                            "description": "プレビュー画像URI。形式はJPEGとする。"
+                        }
+                    }
+                }
+            ]
         },
         "PreviewStartResponse": {
             "type": "object",

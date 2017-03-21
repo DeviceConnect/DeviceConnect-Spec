@@ -107,6 +107,17 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/PhoneStatusResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "phoneStatus": {
+                                    "phoneNumber": "01234567890",
+                                    "state": 2
+                                }
+                            }
                         }
                     }
                 }

@@ -11,7 +11,7 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "Device Connect Managerが起動しているかどうかを確認する。",
                 "description": "",
                 "parameters": [],
                 "responses": {

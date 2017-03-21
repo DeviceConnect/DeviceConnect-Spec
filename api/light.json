@@ -57,7 +57,7 @@
             },
             "post": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "ライトを点灯するAPI。",
                 "description": "",
                 "parameters": [
                     {
@@ -123,7 +123,7 @@
             },
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "summary": "ライトを消灯するAPI。",
                 "description": "",
                 "parameters": [
                     {
@@ -159,8 +159,8 @@
             },
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "summary": "ライトのステータスを変更するAPI。",
+                "description": "ライトの色、明るさ及び、名前の変更ができる。",
                 "parameters": [
                     {
                         "name": "serviceId",
