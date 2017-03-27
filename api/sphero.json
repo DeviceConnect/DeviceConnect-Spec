@@ -1,0 +1,658 @@
+{
+    "swagger": "2.0",
+    "basePath": "/gotapi/sphero",
+    "info": {
+        "title": "Sphero Profile",
+        "version": "2.0.0",
+        "description": "Spheroに搭載されているセンサーの値を通知するプロファイル。"
+    },
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "paths": {
+        "/quaternion/onQuaternion": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "Spheroの四元数を通知するイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/QuaternionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "quaternion": {
+                                    "q0": 0.9998000264167786,
+                                    "q1": -0.0027000000700354576,
+                                    "q2": -0.010099999606609344,
+                                    "q3": 0.010900000110268593,
+                                    "interval": 220
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "Spheroの四元数を通知するイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/QuaternionEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "sphero",
+                            "interface": "quaternion",
+                            "attribute": "onquaternion",
+                            "quaternion": {
+                                "q0": 0.9998000264167786,
+                                "q1": -0.0027000000700354576,
+                                "q2": -0.010099999606609344,
+                                "q3": 0.010900000110268593,
+                                "interval": 220
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/locator/onLocator": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "Spheroの位置と速度を通知するイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/LocatorResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "locator": {
+                                    "positionX": -3,
+                                    "positionY": 5,
+                                    "velocityX": -10,
+                                    "velocityY": -1.5
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "Spheroの位置と速度を通知するイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/LocatorEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "sphero",
+                            "interface": "locator",
+                            "attribute": "onlocator",
+                            "locator": {
+                                "positionX": -3,
+                                "positionY": 5,
+                                "velocityX": -10,
+                                "velocityY": -1.5
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/collision/onCollision": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "Spheroの衝突イベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CollisionResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "collision": {
+                                    "impactAxis": {
+                                        "x": true,
+                                        "y": false
+                                    },
+                                    "impactPower": {
+                                        "x": 152,
+                                        "y": 75
+                                    },
+                                    "impactSpeed": 0,
+                                    "impactTimestamp": 1483241696789,
+                                    "impactAcceleration": {
+                                        "x": -1.57421875,
+                                        "y": -1.53076171875,
+                                        "z": 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "Spheroの衝突イベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/CollisionEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "sphero",
+                            "interface": "collision",
+                            "attribute": "oncollision",
+                            "collision": {
+                                "impactAxis": {
+                                    "x": true,
+                                    "y": false
+                                },
+                                "impactPower": {
+                                    "x": 152,
+                                    "y": 75
+                                },
+                                "impactSpeed": 0,
+                                "impactTimestamp": 1483241696789,
+                                "impactAcceleration": {
+                                    "x": -1.57421875,
+                                    "y": -1.53076171875,
+                                    "z": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CollisionResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }, {
+                "$ref": "#/definitions/CollisionInfo"
+            }]
+        },
+        "CollisionEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            }, {
+                "$ref": "#/definitions/CollisionInfo"
+            }]
+        },
+        "CollisionInfo": {
+            "type": "object",
+            "required": ["collision"],
+            "properties": {
+                "collision": {
+                    "type": "object",
+                    "description": "衝突イベントオブジェクト。",
+                    "required": [],
+                    "properties": {
+                        "impactAcceleration": {
+                            "type": "object",
+                            "description": "衝突加速度。",
+                            "required": ["x", "y", "z"],
+                            "properties": {
+                                "x": {
+                                    "type": "number",
+                                    "description": "x軸方向への加速度(cm/s2)"
+                                },
+                                "y": {
+                                    "type": "number",
+                                    "description": "y軸方向への加速度(cm/s2)"
+                                },
+                                "z": {
+                                    "type": "number",
+                                    "description": "z軸方向への加速度(cm/s2)"
+                                }
+                            }
+                        },
+                        "impactAxis": {
+                            "type": "object",
+                            "description": "衝突軸。",
+                            "required": ["x", "y"],
+                            "properties": {
+                                "x": {
+                                    "type": "boolean",
+                                    "description": "x軸成分。"
+                                },
+                                "y": {
+                                    "type": "boolean",
+                                    "description": "y軸成分。"
+                                }
+                            }
+                        },
+                        "impactPower": {
+                            "type": "object",
+                            "description": "衝突力。",
+                            "required": ["x", "y"],
+                            "properties": {
+                                "x": {
+                                    "type": "number",
+                                    "description": "x軸成分。"
+                                },
+                                "y": {
+                                    "type": "number",
+                                    "description": "y軸成分。"
+                                }
+                            }
+                        },
+                        "impactSpeed": {
+                            "type": "number",
+                            "description": "衝突速度(単位: cm/s)"
+                        },
+                        "impactTimestamp": {
+                            "type": "integer",
+                            "format": "int64",
+                            "description": "衝突した時間のタイムスタンプ(単位: ミリ秒)"
+                        }
+                    }
+                }
+            }
+        },
+        "LocatorResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }, {
+                "$ref": "#/definitions/LocatorInfo"
+            }]
+        },
+        "LocatorEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            }, {
+                "$ref": "#/definitions/LocatorInfo"
+            }]
+        },
+        "LocatorInfo": {
+            "type": "object",
+            "required": ["locator"],
+            "properties": {
+                "locator": {
+                    "type": "object",
+                    "description": "Spheroの位置座標オブジェクト。",
+                    "required": ["positionX", "positionY", "velocityX", "velocityY"],
+                    "properties": {
+                        "positionX": {
+                            "type": "number",
+                            "description": "位置のx座標 (単位: cm)"
+                        },
+                        "positionY": {
+                            "type": "number",
+                            "description": "位置のy座標 (単位: cm)"
+                        },
+                        "velocityX": {
+                            "type": "number",
+                            "description": "速度のx成分 (単位:cm/s)"
+                        },
+                        "velocityY": {
+                            "type": "number",
+                            "description": "速度のy成分 (単位:cm/s)"
+                        }
+                    }
+                }
+            }
+        },
+        "QuaternionResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            }, {
+                "$ref": "#/definitions/QuaternionInfo"
+            }]
+        },
+        "QuaternionEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            }, {
+                "$ref": "#/definitions/QuaternionInfo"
+            }]
+        },
+        "QuaternionInfo": {
+            "type": "object",
+            "required": ["quaternion"],
+            "properties": {
+                "quaternion": {
+                    "type": "object",
+                    "description": "四元数オブジェクト。",
+                    "required": ["q0", "q1", "q2", "q3", "interval"],
+                    "properties": {
+                        "q0": {
+                            "type": "number",
+                            "description": "i軸"
+                        },
+                        "q1": {
+                            "type": "number",
+                            "description": "j軸"
+                        },
+                        "q2": {
+                            "type": "number",
+                            "description": "k軸"
+                        },
+                        "q3": {
+                            "type": "number",
+                            "description": "s軸"
+                        },
+                        "interval": {
+                            "type": "integer",
+                            "format": "int64",
+                            "description": "計測のインターバル。(単位: ミリ秒)"
+                        }
+                    }
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
+                }
+            }
+        }
+    }
+}

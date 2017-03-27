@@ -1,0 +1,587 @@
+{
+    "swagger": "2.0",
+    "basePath": "/gotapi/keyevent",
+    "info": {
+        "title": "Key Event Profile",
+        "version": "2.0.0",
+        "description": "デバイスのキーイベントが操作されたことを通知する機能。"
+    },
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "paths": {
+        "/onDown": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスのキーが押されたときの情報を取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/KeyEventDownResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "keyevent": {
+                                    "config": "5",
+                                    "id": 149
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスのキーが押されたことを通知するイベントを開始する。",
+                "description": "当該イベントの通知を開始する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/KeyEventDownEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "keyevent",
+                            "attribute": "ondown",
+                            "keyevent": {
+                                "config": "5",
+                                "id": 149
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "デバイスのキーが押されたことを通知するイベントを停止する。",
+                "description": "当該イベントの通知を停止する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/onUp": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスのキーが離されたときの情報を取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/KeyEventUpResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "keyevent": {
+                                    "config": "play",
+                                    "id": 672
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスのキーが離されたことを通知するイベントを開始する。",
+                "description": "当該イベントの通知を開始する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "デバイスプラグインがイベントを送信する間隔。",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/KeyEventUpEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "keyevent",
+                            "attribute": "onup",
+                            "keyevent": {
+                                "config": "play",
+                                "id": 672
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "デバイスのキーが離されたことを通知するイベントを停止する。",
+                "description": "当該イベントの通知を停止する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/onKeyChange": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスのキーが押された、離された時の情報を取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/KeyEventChangeResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "keyevent": {
+                                    "state": "up",
+                                    "config": "5",
+                                    "id": 149
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスのキーが押された、または離されたことを通知するイベントを開始する。",
+                "description": "当該イベントの通知を開始する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/KeyEventChangeEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "keyevent",
+                            "attribute": "onkeychange",
+                            "keyevent": {
+                                "state": "up",
+                                "config": "5",
+                                "id": 149
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "デバイスのキーが押された、または離されたことを通知するイベントを停止する。",
+                "description": "当該イベントの通知を停止する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+         "KeyEventDownResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/KeyEventDownInfo"
+                }
+            ]
+        },
+        "KeyEventDownEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/KeyEventDownInfo"
+                }
+            ]
+        },
+        "KeyEventDownInfo": {
+            "type": "object",
+            "required": [
+                "keyevent"
+            ],
+            "properties": {
+                "keyevent": {
+                    "type": "object",
+                    "title": "KeyEvent",
+                    "description": "KeyEventのオブジェクト。",
+                    "required": [
+                        "id"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "title": "離されたKeyのID",
+                            "description": ""
+                        },
+                        "config": {
+                            "type": "string",
+                            "title": "離されたKeyのConfig",
+                            "description": ""
+                        }
+                    }
+                }
+            }
+        },
+         "KeyEventUpResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/KeyEventUpInfo"
+                }
+            ]
+        },
+        "KeyEventUpEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/KeyEventUpInfo"
+                }
+            ]
+        },
+        "KeyEventUpInfo": {
+            "type": "object",
+            "required": [
+                "keyevent"
+            ],
+            "properties": {
+                "keyevent": {
+                    "type": "object",
+                    "title": "KeyEvent",
+                    "description": "KeyEventのオブジェクト。",
+                    "required": [
+                        "id"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "title": "押されたKeyのID",
+                            "description": ""
+                        },
+                        "config": {
+                            "type": "string",
+                            "title": "押されたKeyのConfig",
+                            "description": ""
+                        }
+                    }
+                }
+            }
+        },
+         "KeyEventChangeResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "$ref": "#/definitions/KeyEventChangeInfo"
+                }
+            ]
+        },
+        "KeyEventChangeEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/KeyEventChangeInfo"
+                }
+            ]
+        },
+        "KeyEventChangeInfo": {
+            "type": "object",
+            "required": [
+                "keyevent"
+            ],
+            "properties": {
+                "keyevent": {
+                    "type": "object",
+                    "title": "KeyEvent",
+                    "description": "KeyEventのオブジェクト。",
+                    "required": [
+                        "state",
+                        "id"
+                    ],
+                    "properties": {
+                        "state": {
+                            "type": "string",
+                            "title": "押されたKeyのID",
+                            "description": ""
+                        },
+                        "id": {
+                            "type": "integer",
+                            "title": "押された、もしくは離された時のKeyのID",
+                            "description": ""
+                        },
+                        "config": {
+                            "type": "string",
+                            "title": "押された、もしくは離された時のKeyのConfig",
+                            "description": ""
+                        }
+                    }
+                }
+            }
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
+                }
+            }
+        }
+    }
+}

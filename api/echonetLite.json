@@ -1,0 +1,191 @@
+{
+    "swagger": "2.0",
+    "basePath": "/gotapi/echonetLite",
+    "info": {
+        "title": "ECHONETLite Profile",
+        "version": "2.0.0",
+        "description": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を操作する。"
+    },
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "paths": {
+        "/property": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する。",
+                "description": "EPC:ECHONET Property Code",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "epc",
+                        "description": "取得プロパティのEPC。取得するプロパティのEPCをカンマ区切りで列挙。10進または16進(0xXX)の値",
+                        "in": "query",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GetEchonetPropertyCodeResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "properties": [
+                                    {
+                                        "epc": "OperationStatus",
+                                        "value": "49"
+                                    },
+                                    {
+                                        "epc": "InstallationLocation",
+                                        "value": "0"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "one-shot",
+                "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。取得対象スマートデバイス",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "epc",
+                        "description": "EPC。<br>ECHONET Property Code",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "description": "EPCの設定値。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/SetEchonetPropertyCodeResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "epc": "OperationStatus",
+                                "value": "49"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "GetEchonetPropertyCodeResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "properties"
+                    ],
+                    "properties": {
+                        "properties": {
+                            "type": "array",
+                            "title": "EPCのリスト",
+                            "description": "指定されたEPCの配列。",
+                            "items":{
+                                "type": "object",
+                                "required": [
+                                    "epc",
+                                    "value"
+                                ],
+                                "properties": {
+                                    "epc": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Code",
+                                        "description": "ECHONET Property Code"
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "title": "ECHONET Property Codeの設定値。",
+                                        "description": "ECHONET Property Codeの設定値。"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "SetEchonetPropertyCodeResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "title": "処理結果",
+                    "description": "0: 正常応答<br>0以外: 異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムの名前",
+                    "description": ""
+                },
+                "version": {
+                    "type": "string",
+                    "title": "DeviceConnectシステムのバージョン名",
+                    "description": ""
+                },
+                "hmac": {
+                    "type": "string",
+                    "title": "レスポンスに対する署名",
+                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        }
+    }
+}

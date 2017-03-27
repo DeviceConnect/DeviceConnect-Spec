@@ -1,0 +1,1039 @@
+{
+    "swagger": "2.0",
+    "basePath": "/gotapi/touch",
+    "info": {
+        "title": "Touch Profile",
+        "version": "2.0.0",
+        "description": "スマートデバイス上でのタッチイベントを通知するプロファイル。"
+    },
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "paths": {
+        "/onTouch": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスでタッチ(touchstart,touchendされた後)されたイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnTouchResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 256,
+                                            "y": 128,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 64,
+                                            "y": 32,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスでタッチ(touchstart,touchendされた後)されたイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnTouchEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "touch",
+                            "attribute": "ontouch",
+                            "touch": {
+                                "touches": [
+                                    {
+                                        "x": 256,
+                                        "y": 128,
+                                        "id": 0
+                                    },
+                                    {
+                                        "x": 64,
+                                        "y": 32,
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/onTouchStart": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスでタッチが開始されたイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnTouchStartResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 64,
+                                            "y": 32,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 128,
+                                            "y": 256,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスでタッチが開始されたイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnTouchStartEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "touch",
+                            "attribute": "ontouchstart",
+                            "touch": {
+                                "touches": [
+                                    {
+                                        "x": 64,
+                                        "y": 32,
+                                        "id": 0
+                                    },
+                                    {
+                                        "x": 128,
+                                        "y": 256,
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/onTouchEnd": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスでタッチが終了したイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnTouchEndResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 384,
+                                            "y": 512,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 512,
+                                            "y": 768,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスでタッチが終了したイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnTouchEndEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "touch",
+                            "attribute": "ontouchend",
+                            "touch": {
+                                "touches": [
+                                    {
+                                        "x": 384,
+                                        "y": 512,
+                                        "id": 0
+                                    },
+                                    {
+                                        "x": 512,
+                                        "y": 768,
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/onTouchMove": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスでタッチされ続けているイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnTouchMoveResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 16,
+                                            "y": 32,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 32,
+                                            "y": 64,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスでタッチされ続けているイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnTouchMoveEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "touch",
+                            "attribute": "ontouchmove",
+                            "touch": {
+                                "touches": [
+                                    {
+                                        "x": 16,
+                                        "y": 32,
+                                        "id": 0
+                                    },
+                                    {
+                                        "x": 32,
+                                        "y": 64,
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/onTouchCancel": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスでタッチがキャンセルされたイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnTouchCancelResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 384,
+                                            "y": 192,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 512,
+                                            "y": 256,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスでタッチがキャンセルされたイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnTouchCancelEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "touch",
+                            "attribute": "ontouchcancel",
+                            "touch": {
+                                "touches": [
+                                    {
+                                        "x": 384,
+                                        "y": 192,
+                                        "id": 0
+                                    },
+                                    {
+                                        "x": 512,
+                                        "y": 256,
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/onDoubleTap": {
+            "get": {
+                "x-type": "one-shot",
+                "summary": "デバイスでダブルタップされたイベントを取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnDoubleTapResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 192,
+                                            "y": 168,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 54,
+                                            "y": 200,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "x-type": "event",
+                "summary": "デバイスでダブルタップされたイベントの受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnDoubleTapEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "touch",
+                            "attribute": "ondoubletap",
+                            "touch": {
+                                "touches": [
+                                    {
+                                        "x": 192,
+                                        "y": 168,
+                                        "id": 0
+                                    },
+                                    {
+                                        "x": 54,
+                                        "y": 200,
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "OnTouchResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchStartResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchStartEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchEndResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchEndEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchMoveResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchMoveEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchCancelResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchCancelEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnDoubleTapResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnDoubleTapEvent": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonEvent"
+            },{
+                "$ref": "#/definitions/OnTouchInfo"
+            }]
+        },
+        "OnTouchInfo": {
+            "type": "object",
+            "required": ["touch"],
+            "properties": {
+                "touch": {
+                    "type": "object",
+                    "description": "イベントの内容を保持するオブジェクト。",
+                    "required": ["touches"],
+                    "properties": {
+                        "touches": {
+                            "type": "array",
+                            "description": "各タッチに関する情報の配列。",
+                            "items": {
+                                "type": "object",
+                                "required": ["id", "x", "y"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "description": "タッチを開始すると割り振られる、ユニーク（唯一）な識別番号。"
+                                    },
+                                    "x": {
+                                        "type": "integer",
+                                        "description": "デバイスが持つ空間の左上を原点としたx座標。"
+                                    },
+                                    "y": {
+                                        "type": "integer",
+                                        "description": "デバイスが持つ空間の左上を原点としたy座標。"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "description": "アトリビュート名。"
+                }
+            }
+        }
+    }
+}
