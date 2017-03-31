@@ -1,8 +1,10 @@
 # DeviceConnect-Spec
-Device Connect API 仕様 (Swagger 2.0 形式)を定義したファイルを管理します。<br>
+Device Connect API 仕様 ([Swagger 2.0](http://swagger.io/specification/) 形式)を定義したファイルを管理します。<br>
 ここで標準化した API を Device Connect は実装します。
 
-Device Connect については、[こちら](https://github.com/DeviceConnect/DeviceConnect-Docs)を参照してください。
+Device Connect システムについては、[こちら](https://github.com/DeviceConnect/DeviceConnect-Docs)を参照してください。<br>
+Device Connect API の作成ガイドラインは[こちら](https://github.com/DeviceConnect/DeviceConnect-Docs/wiki/Specification-Api-Guidelines)を参照してください。
+
 
 # ドキュメントの出力
 ドキュメント作成において、以下のコマンドがインストールされていることを前提に説明を行います。
@@ -10,17 +12,17 @@ Device Connect については、[こちら](https://github.com/DeviceConnect/De
 * Java
 * cURL
 
-[DeviceConnect-Experiments](https://github.com/TakayukiHoshi1984/DeviceConnect-Experiments) から DeviceConnect Codegen をダウンロードします。
+[DeviceConnect-Experiments](https://github.com/DeviceConnect/DeviceConnect-Experiments) から DeviceConnect Codegen をダウンロードします。
 
 ```
-$ curl -LkO https://github.com/TakayukiHoshi1984/DeviceConnect-Experiments/releases/download/codegen-v1.0.0/deviceconnect-codegen-project-1.0.0.dist.zip
+$ curl -LkO https://github.com/DeviceConnect/DeviceConnect-Experiments/releases/download/codegen-v1.0.0/deviceconnect-codegen-project-1.0.0.dist.zip
 $ unzip deviceconnect-codegen-project-1.0.0.dist.zip
 ```
 
 DeviceConnect-Spec から最新の定義ファイルをダウンロードします。
 
 ```
-$ curl -o DeviceConnect-Spec.zip -LkO https://github.com/TakayukiHoshi1984/DeviceConnect-Spec/archive/master.zip
+$ curl -o DeviceConnect-Spec.zip -LkO https://github.com/DeviceConnect/DeviceConnect-Spec/archive/master.zip
 $ unzip DeviceConnect-Spec.zip
 ```
 
@@ -51,5 +53,5 @@ $ java -Dfile.encoding=UTF-8 -jar ./deviceconnect-codegen-project-1.0.0/bin/devi
 > `--display-name`
 > > ドキュメントのタイトルを指定します。
 
-上記に記載したオプションが知りたい場合には[こちら](https://github.com/TakayukiHoshi1984/DeviceConnect-Experiments/tree/master/DeviceConnectCodegen)を参照してください。
+上記に記載したオプションが知りたい場合には[こちら](https://github.com/DeviceConnect/DeviceConnect-Experiments/tree/master/DeviceConnectCodegen)を参照してください。
 
