@@ -6,7 +6,6 @@
         "version": "2.0.0",
         "description": "スマートデバイスの近接センサーの物/人の検知を通知するAPI。"
     },
-    "basePath": "/gotapi/proximity",
     "consumes": [
         "application/x-www-form-urlencoded",
         "multipart/form-data"
