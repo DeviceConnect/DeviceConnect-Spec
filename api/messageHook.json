@@ -6,7 +6,10 @@
         "version": "2.0.0",
         "description": "メッセージ送受信の機能を提供するAPI。"
     },
-    "consumes": [],
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
     "paths": {
         "/channel": {
             "get": {

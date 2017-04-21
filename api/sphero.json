@@ -426,7 +426,6 @@
                 "collision": {
                     "type": "object",
                     "description": "衝突イベントオブジェクト。",
-                    "required": [],
                     "properties": {
                         "impactAcceleration": {
                             "type": "object",

@@ -29,7 +29,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/PowerStatusResponse"
+                            "$ref": "#/definitions/PowerStatusGetResponse"
                         },
                         "examples": {
                             "application/json": {
