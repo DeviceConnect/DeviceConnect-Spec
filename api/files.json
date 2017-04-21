@@ -1,6 +1,6 @@
 {
     "swagger": "2.0",
-    "basePath": "/files",
+    "basePath": "/gotapi/files",
     "info": {
         "title": "Files Profile",
         "version": "2.0.0",

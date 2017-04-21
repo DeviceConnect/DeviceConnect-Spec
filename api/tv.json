@@ -439,14 +439,6 @@
                 }
             ]
         },
-        "SetVolumeResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
         "SetBroadcastResponse": {
             "type": "object",
             "allOf": [
