@@ -1,6 +1,6 @@
 {
     "swagger": "2.0",
-    "basePath": "/gotapi/keyevent",
+    "basePath": "/gotapi/keyEvent",
     "info": {
         "title": "Key Event Profile",
         "version": "2.0.0",

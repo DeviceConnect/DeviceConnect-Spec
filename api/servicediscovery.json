@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/serviceDiscovery",
     "info": {
         "title": "ServiceDiscovery Profile",
         "version": "2.0.0",
