@@ -4,7 +4,7 @@
     "info": {
         "title": "Temperature Profile",
         "version": "2.0.0",
-        "description": "スマートデバイスの計測または管理している温度を提供するプロファイル。"
+        "description": "スマートデバイスの計測している温度を提供するプロファイル。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -14,7 +14,7 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "スマートデバイスの温度設定値を取得する。",
+                "summary": "スマートデバイスの温度実測値を取得する。",
                 "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。",
                 "parameters": [
                     {
@@ -35,7 +35,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "スマートデバイスが計測した温度を返す。",
                         "schema": {
                             "$ref": "#/definitions/GetTemperatureResponse"
                         },
@@ -46,50 +46,6 @@
                                 "result": 0,
                                 "temperature":25,
                                 "type":1
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの温度設定値を設定する。",
-                "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。<br>temperatureに設定できる値は、摂氏の場合は0以上50以下, 華氏の場合は32以上122以下。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "temperature",
-                        "description": "温度の値。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "type",
-                        "description": "1:摂氏、2:華氏",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "enum": [1, 2]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/PutTemperatureResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "product": "Example System",
-                                "version": "1.0",
-                                "result": 0
                             }
                         }
                     }
@@ -116,12 +72,6 @@
                         "description": "1:摂氏、2:華氏"
                     }
                 }
-            }]
-        },
-        "PutTemperatureResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
             }]
         },
         "CommonResponse": {
