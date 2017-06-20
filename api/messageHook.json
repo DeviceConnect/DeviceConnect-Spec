@@ -13,6 +13,7 @@
     "paths": {
         "/channel": {
             "get": {
+                "operationId": "messageHookChannelGet",
                 "x-type": "one-shot",
                 "summary": "チャンネル一覧を取得する。",
                 "description": "",
@@ -57,6 +58,7 @@
         },
         "/message": {
             "get": {
+                "operationId": "messageHookMessageGet",
                 "x-type": "one-shot",
                 "summary": "直近に受信したメッセージの一覧を取得する。",
                 "description": "",
@@ -99,6 +101,7 @@
                 }
             },
             "post": {
+                "operationId": "messageHookMessagePost",
                 "x-type": "one-shot",
                 "summary": "メッセージを投稿する。",
                 "description": "",
@@ -158,6 +161,7 @@
         },
         "/onMessage": {
             "get": {
+                "operationId": "messageHookOnMessageGet",
                 "x-type": "one-shot",
                 "summary": "直近に受信したメッセージの一覧を取得する。",
                 "description": "",
@@ -197,6 +201,7 @@
                 }
             },
             "put": {
+                "operationId": "messageHookOnMessagePut",
                 "x-type": "event",
                 "summary": "直近に受信したメッセージ取得イベントを開始する。",
                 "description": "",
@@ -256,6 +261,7 @@
                 }
             },
             "delete": {
+                "operationId": "messageHookOnMessageDelete",
                 "x-type": "event",
                 "summary": "直近に受信したメッセージ取得イベントを停止する。",
                 "description": "",

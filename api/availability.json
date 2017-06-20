@@ -10,6 +10,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "availabilityGet",
                 "x-type": "one-shot",
                 "summary": "Device Connect Managerが起動しているかどうかを確認する。",
                 "description": "",

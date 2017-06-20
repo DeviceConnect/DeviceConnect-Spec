@@ -13,6 +13,7 @@
     "paths": {
         "/zoom": {
             "get": {
+                "operationId": "cameraZoomGet",
                 "x-type": "one-shot",
                 "summary": "Cameraデバイスの現在の倍率を取得する。",
                 "description": "",
@@ -43,6 +44,7 @@
                 }
             },
             "put": {
+                "operationId": "cameraZoomPut",
                 "x-type": "one-shot",
                 "summary": "Cameraデバイスに対してレンズのズームイン・アウトリクエストを送る。",
                 "description": "",

@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "powerGet",
                 "x-type": "one-shot",
                 "summary": "機器の電源の状態を取得する。",
                 "description": "",
@@ -43,6 +44,7 @@
                 }
             },
             "put": {
+                "operationId": "powerPut",
                 "x-type": "one-shot",
                 "summary": "機器の電源をONにする。",
                 "description": "",
@@ -72,6 +74,7 @@
                 }
             },
             "delete": {
+                "operationId": "powerDelete",
                 "x-type": "one-shot",
                 "summary": "機器の電源をOFFにする。",
                 "description": "",

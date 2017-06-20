@@ -10,6 +10,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "illuminanceGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの照度を取得する機能を提供する。",
                 "description": "",

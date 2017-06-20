@@ -13,6 +13,7 @@
     "paths": {
         "/vibrate": {
             "put": {
+                "operationId": "vibrationVibratePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対してバイブレーション依頼を送る。",
                 "description": "",
@@ -54,6 +55,7 @@
                 }
             },
             "delete": {
+                "operationId": "vibrationVibrateDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対してバイブレーション停止依頼を送る。",
                 "description": "",

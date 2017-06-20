@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "fileGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスへの、テキスト（歩数、消費カロリー、睡眠時間などのバイナリーの任意のデータ）や画像、音声、動画（リソースも含む）を受け取る。",
                 "description": "",
@@ -51,6 +52,7 @@
                 }
             },
             "post": {
+                "operationId": "filePost",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して、テキストや画像、音声、動画（リソースも含む）を渡す。",
                 "description": "",
@@ -115,6 +117,7 @@
                 }
             },
             "put": {
+                "operationId": "filePut",
                 "x-type": "one-shot",
                 "summary": "ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）の名前を変更、移動をする。",
                 "description": "",
@@ -165,6 +168,7 @@
                 }
             },
             "delete": {
+                "operationId": "fileDelete",
                 "x-type": "one-shot",
                 "summary": "ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）を削除する。",
                 "description": "",
@@ -204,6 +208,7 @@
         },
         "/list": {
             "get": {
+                "operationId": "fileListGet",
                 "x-type": "one-shot",
                 "summary": "保存されているファイルの一覧を取得する。",
                 "description": "",
@@ -286,6 +291,7 @@
         },
         "/directory": {
             "get": {
+                "operationId": "fileDirectoryGet",
                 "x-type": "one-shot",
                 "summary": "保存されているファイルの一覧を取得する。",
                 "description": "",
@@ -366,6 +372,7 @@
                 }
             },
             "post": {
+                "operationId": "fileDirectoryPost",
                 "x-type": "one-shot",
                 "summary": "ディレクトリの作成要求を渡す。",
                 "description": "",
@@ -402,6 +409,7 @@
                 }
             },
             "put": {
+                "operationId": "fileDirectoryPut",
                 "x-type": "one-shot",
                 "summary": "ディレクトリの名前の変更、移動要求を渡す。",
                 "description": "",
@@ -445,6 +453,7 @@
                 }
             },
             "delete": {
+                "operationId": "fileDirectoryDelete",
                 "x-type": "one-shot",
                 "summary": "ディレクトリの削除要求を渡す。",
                 "description": "",

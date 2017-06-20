@@ -13,6 +13,7 @@
     "paths": {
         "/currentPosition": {
             "get": {
+                "operationId": "geolocationCurrentPositionGet",
                 "x-type": "one-shot",
                 "summary": "該当デバイスの現在の位置情報を取得する。",
                 "description": "",
@@ -72,6 +73,7 @@
         },
         "/onWatchPosition": {
             "get": {
+                "operationId": "geolocationOnWatchPositionGet",
                 "x-type": "one-shot",
                 "summary": "該当デバイスの位置情報定期通知イベントを取得する。",
                 "description": "",
@@ -129,6 +131,7 @@
                 }
             },
             "put": {
+                "operationId": "geolocationOnWatchPositionPut",
                 "x-type": "event",
                 "summary": "該当デバイスの位置情報定期通知イベントを開始する。",
                 "description": "",
@@ -198,6 +201,7 @@
                 }
             },
             "delete": {
+                "operationId": "geolocationOnWatchPositionDelete",
                 "x-type": "event",
                 "summary": "該当デバイスの位置情報定期通知イベントを停止する。",
                 "description": "",

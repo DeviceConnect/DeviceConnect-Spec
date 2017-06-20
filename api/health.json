@@ -13,6 +13,7 @@
     "paths": {
         "/heart": {
             "get": {
+                "operationId": "healthHeartGet",
                 "x-type": "one-shot",
                 "summary": "デバイスの心拍数計測通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -87,6 +88,7 @@
                 }
             },
             "put": {
+                "operationId": "healthHeartPut",
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -181,6 +183,7 @@
                 }
             },
             "delete": {
+                "operationId": "healthHeartDelete",
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -212,6 +215,7 @@
         },
         "/onheart": {
             "get": {
+                "operationId": "healthOnheartGet",
                 "x-type": "one-shot",
                 "summary": "デバイスの心拍数計測通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -286,6 +290,7 @@
                 }
             },
             "put": {
+                "operationId": "healthOnheartPut",
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -380,6 +385,7 @@
                 }
             },
             "delete": {
+                "operationId": "healthOnheartDelete",
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -411,6 +417,7 @@
         },
         "/heartRate": {
             "get": {
+                "operationId": "healthHeartRateGet",
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "デバイスの心拍数計測通知イベントを取得する。",
@@ -441,6 +448,7 @@
                 }
             },
             "put": {
+                "operationId": "healthHeartRatePut",
                 "deprecated": true,
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを開始する。",
@@ -492,6 +500,7 @@
                 }
             },
             "delete": {
+                "operationId": "healthHeartRateDelete",
                 "deprecated": true,
                 "x-type": "event",
                 "summary": "デバイスの心拍数計測通知イベントを停止する。",

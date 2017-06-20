@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "lightGet",
                 "x-type": "one-shot",
                 "summary": "ライトを識別するIDなどを取得するAPI。",
                 "description": "スマートデバイスが認識しているライトデバイスの一覧を取得する。取得できる情報には、ライトの識別子、ライトの名前と状態を持つ。",
@@ -56,6 +57,7 @@
                 }
             },
             "post": {
+                "operationId": "lightPost",
                 "x-type": "one-shot",
                 "summary": "ライトを点灯するAPI。",
                 "description": "",
@@ -122,6 +124,7 @@
                 }
             },
             "delete": {
+                "operationId": "lightDelete",
                 "x-type": "one-shot",
                 "summary": "ライトを消灯するAPI。",
                 "description": "",
@@ -158,6 +161,7 @@
                 }
             },
             "put": {
+                "operationId": "lightPut",
                 "x-type": "one-shot",
                 "summary": "ライトのステータスを変更するAPI。",
                 "description": "ライトの色、明るさ及び、名前の変更ができる。",

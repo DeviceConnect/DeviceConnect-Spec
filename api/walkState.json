@@ -13,6 +13,7 @@
     "paths": {
         "/onWalkState": {
             "get": {
+                "operationId": "walkStateOnWalkStateGet",
                 "x-type": "one-shot",
                 "summary": "該当デバイスの歩行状態計測イベントを取得する。",
                 "description": "",
@@ -51,6 +52,7 @@
                 }
             },
             "put": {
+                "operationId": "walkStateOnWalkStatePut",
                 "x-type": "event",
                 "summary": "該当デバイスの歩行状態計測イベントを通知する。",
                 "description": "",
@@ -109,6 +111,7 @@
                 }
             },
             "delete": {
+                "operationId": "walkStateOnWalkStateDelete",
                 "x-type": "event",
                 "summary": "該当デバイスの歩行状態計測イベントを停止する。",
                 "description": "",

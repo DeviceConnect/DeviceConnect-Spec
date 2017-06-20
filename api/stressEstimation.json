@@ -13,6 +13,7 @@
     "paths": {
         "/onStressEstimation": {
             "get": {
+                "operationId": "stressEstimationOnStressEstimationGet",
                 "x-type": "one-shot",
                 "summary": "デバイスのストレス推定計測イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -47,6 +48,7 @@
                 }
             },
             "put": {
+                "operationId": "stressEstimationOnStressEstimationPut",
                 "x-type": "event",
                 "summary": "デバイスのストレス推定計測イベントの受信を開始する。",
                 "description": "",
@@ -101,6 +103,7 @@
                 }
             },
             "delete": {
+                "operationId": "stressEstimationOnStressEstimationDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",

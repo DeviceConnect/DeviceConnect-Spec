@@ -13,6 +13,7 @@
     "paths": {
         "/" : {
             "get": {
+                "operationId": "tvGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源状態を取得する。",
                 "description": "",
@@ -42,6 +43,7 @@
                 }
             },
             "put": {
+                "operationId": "tvPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源をオンにする。",
                 "description": "",
@@ -71,6 +73,7 @@
                 }
             },
             "delete": {
+                "operationId": "tvDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源をオフにする。",
                 "description": "",
@@ -102,6 +105,7 @@
         },
         "/channel": {
             "put": {
+                "operationId": "tvChannelPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのチャンネルを変更する。",
                 "description": "",
@@ -149,6 +153,7 @@
         },
         "/volume": {
             "put": {
+                "operationId": "tvVolumePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの音量を変更する。",
                 "description": "",
@@ -188,6 +193,7 @@
         },
         "/broadcastWave": {
             "put": {
+                "operationId": "tvBroadcastWavePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの選択放送波を変更する。",
                 "description": "",
@@ -227,6 +233,7 @@
         },
         "/mute": {
             "put": {
+                "operationId": "tvMutePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのミュートをオンにする。",
                 "description": "",
@@ -256,6 +263,7 @@
                 }
             },
             "delete": {
+                "operationId": "tvMuteDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのミュートをオフにする。",
                 "description": "",
@@ -287,6 +295,7 @@
         },
         "/enlProperty": {
             "get": {
+                "operationId": "tvEnlPropertyGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する（必須プロパティのみ）。",
                 "description": "※enlproperty:ECHONET Lite Propertyのこと。",
@@ -336,6 +345,7 @@
                 }
             },
             "put": {
+                "operationId": "tvEnlPropertyPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う（必須プロパティのみ）。",
                 "description": "※enlproperty:ECHONET Lite Propertyのこと。",

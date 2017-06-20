@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "airConditionerGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源状態を取得する。",
                 "description": "",
@@ -43,6 +44,7 @@
                 }
             },
             "put": {
+                "operationId": "airConditionerPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源を点ける。",
                 "description": "",
@@ -72,6 +74,7 @@
                 }
             },
             "delete": {
+                "operationId": "airConditionerDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源を消す。",
                 "description": "",
@@ -103,6 +106,7 @@
         },
         "/powerSaving": {
             "get": {
+                "operationId": "airConditionerPowerSavingGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの節電動作設定を取得する。",
                 "description": "",
@@ -133,6 +137,7 @@
                 }
             },
             "put": {
+                "operationId": "airConditionerPowerSavingPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの節電動作設定を設定する。",
                 "description": "",
@@ -172,6 +177,7 @@
         },
         "/modeSetting": {
             "get": {
+                "operationId": "airConditionerModeSettingGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの運転モード設定を取得する。",
                 "description": "",
@@ -202,6 +208,7 @@
                 }
             },
             "put": {
+                "operationId": "airConditionerModeSettingPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの運転モード設定を設定する。",
                 "description": "",
@@ -241,6 +248,7 @@
         },
         "/roomTemperature": {
             "get": {
+                "operationId": "airConditionerRoomTemperatureGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの室温計測値を取得する。",
                 "description": "",
@@ -273,6 +281,7 @@
         },
         "/temperature": {
             "get": {
+                "operationId": "airConditionerTemperatureGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を取得する。",
                 "description": "",
@@ -303,6 +312,7 @@
                 }
             },
             "put": {
+                "operationId": "airConditionerTemperaturePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を設定する。",
                 "description": "",
@@ -343,6 +353,7 @@
         },
         "/airFlow": {
             "get": {
+                "operationId": "airConditionerAirFlowGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの風量設定値を取得する。",
                 "description": "",
@@ -374,6 +385,7 @@
                 }
             },
             "put": {
+                "operationId": "airConditionerAirFlowPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの風量設定値を設定する。",
                 "description": "",
@@ -421,6 +433,7 @@
         },
         "/enlProperty": {
             "get": {
+                "operationId": "airConditionerEnlPropertyGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する（必須プロパティのみ）。",
                 "description": "※enlproperty:ECHONET Lite Propertyのこと。",
@@ -470,6 +483,7 @@
                 }
             },
             "put": {
+                "operationId": "airConditionerEnlPropertyPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う（必須プロパティのみ）。",
                 "description": "※enlproperty:ECHONET Lite Propertyのこと。",

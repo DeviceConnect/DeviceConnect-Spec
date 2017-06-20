@@ -13,6 +13,7 @@
     "paths": {
         "/mediaRecorder": {
             "get": {
+                "operationId": "mediaStreamRecordingMediaRecorderGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスから使用可能なレコーダーの一覧を取得する。",
                 "description": "",
@@ -107,6 +108,7 @@
         },
         "/takePhoto": {
             "post": {
+                "operationId": "mediaStreamRecordingTakePhotoPost",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して写真撮影リクエストを送る。",
                 "description": "",
@@ -147,6 +149,7 @@
         },
         "/record": {
             "post": {
+                "operationId": "mediaStreamRecordingRecordPost",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して、動画撮影や音声録音の開始リクエストを送る。",
                 "description": "MediaStreamRecording Stopされない場合は各デバイスが撮影できる最大時間まで撮影を行い、その後撮影を停止する。",
@@ -196,6 +199,7 @@
         },
         "/pause": {
             "put": {
+                "operationId": "mediaStreamRecordingPausePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して動画撮影または音声録音の一時停止依頼を送る。",
                 "description": "",
@@ -234,6 +238,7 @@
         },
         "/resume": {
             "put": {
+                "operationId": "mediaStreamRecordingResumePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して一時停止状態にある動画撮影または音声録音の再開リクエストを送る。",
                 "description": "",
@@ -272,6 +277,7 @@
         },
         "/stop": {
             "put": {
+                "operationId": "mediaStreamRecordingStopPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して動画撮影または音声録音の終了リクエストを送る。",
                 "description": "",
@@ -310,6 +316,7 @@
         },
         "/muteTrack": {
             "put": {
+                "operationId": "mediaStreamRecordingMuteTrackPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して動画撮影や音声録音のミュート依頼を送る。",
                 "description": "ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、オーディオトラックがミュートされる。",
@@ -348,6 +355,7 @@
         },
         "/unmuteTrack": {
             "put": {
+                "operationId": "mediaStreamRecordingUnmuteTrackPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して動画撮影や音声録音のミュート解除依頼を送る。",
                 "description": "ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、オーディオトラックがミュート解除される。",
@@ -386,6 +394,7 @@
         },
         "/options": {
             "get": {
+                "operationId": "mediaStreamRecordingOptionsGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスからサポートしている写真撮影、動画撮影や音声録音のオプションを取得する。",
                 "description": "",
@@ -549,6 +558,7 @@
                 }
             },
             "put": {
+                "operationId": "mediaStreamRecordingOptionsPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスからサポートしている写真撮影、動画撮影や音声録音のオプションを設定する。",
                 "description": "",
@@ -631,6 +641,7 @@
         },
         "/onPhoto": {
             "get": {
+                "operationId": "mediaStreamRecordingOnPhotoGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの写真撮影通知イベントを取得する。",
                 "description": "",
@@ -662,6 +673,7 @@
                 }
             },
             "put": {
+                "operationId": "mediaStreamRecordingOnPhotoPut",
                 "x-type": "event",
                 "summary": "スマートデバイスの写真撮影通知イベントを開始する。",
                 "description": "",
@@ -716,6 +728,7 @@
                 }
             },
             "delete": {
+                "operationId": "mediaStreamRecordingOnPhotoDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスの写真撮影通知イベントを停止する。",
                 "description": "",
@@ -747,6 +760,7 @@
         },
         "/preview": {
             "get": {
+                "operationId": "mediaStreamRecordingPreviewGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスでの動画撮影中に、動画のプレビュー画像を取得する。",
                 "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。JPEGでデータを受信する。",
@@ -784,6 +798,7 @@
                 }
             },
             "put": {
+                "operationId": "mediaStreamRecordingPreviewPut",
                 "x-type": "streaming",
                 "summary": "スマートデバイスでの動画撮影中に、動画のプレビュー画像を受信を開始する。",
                 "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。",
@@ -821,6 +836,7 @@
                 }
             },
             "delete": {
+                "operationId": "mediaStreamRecordingPreviewDelete",
                 "x-type": "streaming",
                 "summary": "スマートデバイスでの動画撮影中に、動画のプレビュー画像を受信を停止する。",
                 "description": "このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。",
@@ -859,6 +875,7 @@
         },
         "/onRecordingChange": {
             "get": {
+                "operationId": "mediaStreamRecordingOnRecordingChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを取得する。",
                 "description": "",
@@ -893,6 +910,7 @@
                 }
             },
             "put": {
+                "operationId": "mediaStreamRecordingOnRecordingChangePut",
                 "x-type": "event",
                 "summary": "スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを開始する。",
                 "description": "",
@@ -947,6 +965,7 @@
                 }
             },
             "delete": {
+                "operationId": "mediaStreamRecordingOnRecordingChangeDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを停止する。",
                 "description": "",

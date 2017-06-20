@@ -13,6 +13,7 @@
     "paths": {
         "/call": {
             "post": {
+                "operationId": "phoneCallPost",
                 "x-type": "one-shot",
                 "summary": "スマートフォンに対して電話発信要求をリクエストする。",
                 "description": "",
@@ -51,6 +52,7 @@
         },
         "/set": {
             "put": {
+                "operationId": "phoneSetPut",
                 "x-type": "one-shot",
                 "summary": "スマートフォンに対して電話に関する設定項目(サイレント・マナー・音あり)の設定をリクエストする。",
                 "description": "",
@@ -90,6 +92,7 @@
         },
         "/onConnect": {
             "get": {
+                "operationId": "phoneOnConnectGet",
                 "x-type": "one-shot",
                 "summary": "スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを取得する。",
                 "description": "",
@@ -123,6 +126,7 @@
                 }
             },
             "put": {
+                "operationId": "phoneOnConnectPut",
                 "x-type": "event",
                 "summary": "スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを開始する。",
                 "description": "",
@@ -176,6 +180,7 @@
                 }
             },
             "delete": {
+                "operationId": "phoneOnConnectDelete",
                 "x-type": "event",
                 "summary": "スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを停止する。",
                 "description": "",

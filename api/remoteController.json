@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "remoteControllerGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスが保持する赤外線などの信号を取得する。",
                 "description": "",
@@ -43,6 +44,7 @@
                 }
             },
             "post": {
+                "operationId": "remoteControllerPost",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに対して赤外線などの信号送信依頼を送る。",
                 "description": "",

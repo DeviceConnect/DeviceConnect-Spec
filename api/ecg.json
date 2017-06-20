@@ -13,6 +13,7 @@
     "paths": {
         "/onECG": {
             "get": {
+                "operationId": "ecgOnECGGet",
                 "x-type": "one-shot",
                 "summary": "デバイスのECG計測通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -52,6 +53,7 @@
                 }
             },
             "put": {
+                "operationId": "ecgOnECGPut",
                 "x-type": "event",
                 "summary": "デバイスのECG計測値を通知するイベントを開始する。",
                 "description": "",
@@ -111,6 +113,7 @@
                 }
             },
             "delete": {
+                "operationId": "ecgOnECGDelete",
                 "x-type": "event",
                 "summary": "デバイスのECG計測値を通知するイベントを停止する。",
                 "description": "",

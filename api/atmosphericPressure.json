@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "atmosphericPressureGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの気圧情報を取得する。",
                 "description": "",

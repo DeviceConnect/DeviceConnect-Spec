@@ -13,6 +13,7 @@
     "paths": {
         "/onDeviceOrientation": {
             "get": {
+                "operationId": "deviceOrientationOnDeviceOrientationGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを取得する。",
                 "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
@@ -60,6 +61,7 @@
                 }
             },
             "put": {
+                "operationId": "deviceOrientationOnDeviceOrientationPut",
                 "x-type": "event",
                 "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを開始する。",
                 "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
@@ -127,6 +129,7 @@
                 }
             },
             "delete": {
+                "operationId": "deviceOrientationOnDeviceOrientationDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを停止する。",
                 "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",

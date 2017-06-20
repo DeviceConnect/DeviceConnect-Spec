@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "humidityGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの湿度を取得する機能を提供する。",
                 "description": "",

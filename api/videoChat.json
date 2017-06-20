@@ -13,6 +13,7 @@
     "paths": {
         "/profile": {
             "get": {
+                "operationId": "videoChatProfileGet",
                 "x-type": "one-shot",
                 "summary": "プロフィール情報を取得する。",
                 "description": "",
@@ -51,6 +52,7 @@
                 }
             },
             "put": {
+                "operationId": "videoChatProfilePut",
                 "x-type": "one-shot",
                 "summary": "プロフィールを更新する。",
                 "description": "",
@@ -96,6 +98,7 @@
         },
         "/address": {
             "get": {
+                "operationId": "videoChatAddressGet",
                 "x-type": "one-shot",
                 "summary": "接続先のアドレス一覧を取得する。",
                 "description": "",
@@ -158,6 +161,7 @@
         },
         "/call": {
             "post": {
+                "operationId": "videoChatCallPost",
                 "x-type": "one-shot",
                 "summary": "VideoChatの接続を行う。",
                 "description": "",
@@ -237,6 +241,7 @@
                 }
             },
             "delete": {
+                "operationId": "videoChatCallDelete",
                 "x-type": "one-shot",
                 "summary": "接続中の VideoChat の切断を行う。",
                 "description": "",
@@ -278,6 +283,7 @@
         },
         "/onIncoming": {
             "get": {
+                "operationId": "videoChatOnIncomingGet",
                 "x-type": "one-shot",
                 "summary": "他デバイスからの着信イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -315,6 +321,7 @@
                 }
             },
             "put": {
+                "operationId": "videoChatOnIncomingPut",
                 "x-type": "event",
                 "summary": "他デバイスからの着信イベントの受信を開始する。",
                 "description": "",
@@ -364,6 +371,7 @@
                 }
             },
             "delete": {
+                "operationId": "videoChatOnIncomingDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -393,6 +401,7 @@
         },
         "/onCall": {
             "get": {
+                "operationId": "videoChatOnCallGet",
                 "x-type": "one-shot",
                 "summary": "通話開始イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -432,6 +441,7 @@
                 }
             },
             "put": {
+                "operationId": "videoChatOnCallPut",
                 "x-type": "event",
                 "summary": "通話開始イベントの受信を開始する。",
                 "description": "",
@@ -494,6 +504,7 @@
                 }
             },
             "delete": {
+                "operationId": "videoChatOnCallDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -523,6 +534,7 @@
         },
         "/onHangup": {
             "get": {
+                "operationId": "videoChatOnHangupGet",
                 "x-type": "one-shot",
                 "summary": "VideoChatの切断イベントを取得する。",
                 "description": "",
@@ -562,6 +574,7 @@
                 }
             },
             "put": {
+                "operationId": "videoChatOnHangupPut",
                 "x-type": "event",
                 "summary": "VideoChatの切断イベントの受信を開始する。",
                 "description": "",
@@ -621,6 +634,7 @@
                 }
             },
             "delete": {
+                "operationId": "videoChatOnHangupDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",

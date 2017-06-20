@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "batteryGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのバッテリー情報を取得する。",
                 "description": "スマートデバイスのバッテリー情報として取得できない値がある場合は適切な値を代入してレスポンスを返却する。",
@@ -48,6 +49,7 @@
         },
         "/charging": {
             "get": {
+                "operationId": "batteryChargingGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの充電状態フラグを取得する。",
                 "description": "",
@@ -80,6 +82,7 @@
         },
         "/chargingTime": {
             "get": {
+                "operationId": "batteryChargingTimeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの充電完了時間を取得する。",
                 "description": "",
@@ -112,6 +115,7 @@
         },
         "/dischargingTime": {
             "get": {
+                "operationId": "batteryDischargingTimeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの放電完了時間を取得する。",
                 "description": "",
@@ -144,6 +148,7 @@
         },
         "/level": {
             "get": {
+                "operationId": "batteryLevelGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのバッテリー残量を取得する。",
                 "description": "",
@@ -176,6 +181,7 @@
         },
         "/onBatteryChange": {
             "get": {
+                "operationId": "batteryOnBatteryChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのバッテリー状態変化通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -210,6 +216,7 @@
                 }
             },
             "put": {
+                "operationId": "batteryOnBatteryChangePut",
                 "x-type": "event",
                 "summary": "スマートデバイスのバッテリーの状態が変化したことを通知する。",
                 "description": "充電時間、放電時間、バッテリー残量の値が変わった時にイベントが発行される。",
@@ -264,6 +271,7 @@
                 }
             },
             "delete": {
+                "operationId": "batteryOnBatteryChangeDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -295,6 +303,7 @@
         },
         "/onChargingChange": {
             "get": {
+                "operationId": "batteryOnChargingChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのバッテリー充電状態変化通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -327,6 +336,7 @@
                 }
             },
             "put": {
+                "operationId": "batteryOnChargingChangePut",
                 "x-type": "event",
                 "summary": "スマートフォンもしくは周辺機器へ他方のスマートデバイスのバッテリーの充電状態が変化したことを通知する。",
                 "description": "充電中フラグの値がtrueからfalse、もしくは、falseからtrueへ変わった時にイベントが発行される。",
@@ -379,6 +389,7 @@
                 }
             },
             "delete": {
+                "operationId": "batteryOnChargingChangeDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",

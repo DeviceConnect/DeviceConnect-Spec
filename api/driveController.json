@@ -13,6 +13,7 @@
     "paths": {
         "/move": {
             "post": {
+                "operationId": "driveControllerMovePost",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスを指定された方向に移動開始する。",
                 "description": "",
@@ -62,6 +63,7 @@
         },
         "/stop": {
             "delete": {
+                "operationId": "driveControllerStopDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスに移動停止リクエストを送る。",
                 "description": "",
@@ -93,6 +95,7 @@
         },
         "/rotate": {
             "put": {
+                "operationId": "driveControllerRotatePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスを指定された向きに回転を行う。",
                 "description": "",

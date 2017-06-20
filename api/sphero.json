@@ -13,6 +13,7 @@
     "paths": {
         "/quaternion/onQuaternion": {
             "get": {
+                "operationId": "spheroQuaternionOnQuaternionGet",
                 "x-type": "one-shot",
                 "summary": "Spheroの四元数を通知するイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -49,6 +50,7 @@
                 }
             },
             "put": {
+                "operationId": "spheroQuaternionOnQuaternionPut",
                 "x-type": "event",
                 "summary": "Spheroの四元数を通知するイベントの受信を開始する。",
                 "description": "",
@@ -106,6 +108,7 @@
                 }
             },
             "delete": {
+                "operationId": "spheroQuaternionOnQuaternionDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -137,6 +140,7 @@
         },
         "/locator/onLocator": {
             "get": {
+                "operationId": "spheroLocatorOnLocatorGet",
                 "x-type": "one-shot",
                 "summary": "Spheroの位置と速度を通知するイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -172,6 +176,7 @@
                 }
             },
             "put": {
+                "operationId": "spheroLocatorOnLocatorPut",
                 "x-type": "event",
                 "summary": "Spheroの位置と速度を通知するイベントの受信を開始する。",
                 "description": "",
@@ -228,6 +233,7 @@
                 }
             },
             "delete": {
+                "operationId": "spheroLocatorOnLocatorDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -259,6 +265,7 @@
         },
         "/collision/onCollision": {
             "get": {
+                "operationId": "spheroCollisionOnCollisionGet",
                 "x-type": "one-shot",
                 "summary": "Spheroの衝突イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -305,6 +312,7 @@
                 }
             },
             "put": {
+                "operationId": "spheroCollisionOnCollisionPut",
                 "x-type": "event",
                 "summary": "Spheroの衝突イベントの受信を開始する。",
                 "description": "",
@@ -372,6 +380,7 @@
                 }
             },
             "delete": {
+                "operationId": "spheroCollisionOnCollisionDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",

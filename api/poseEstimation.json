@@ -13,6 +13,7 @@
     "paths": {
         "/onPoseEstimation": {
             "get": {
+                "operationId": "poseEstimationOnPoseEstimationGet",
                 "x-type": "one-shot",
                 "summary": "デバイスの姿勢推定計測イベントを取得する。",
                 "description": "",
@@ -47,6 +48,7 @@
                 }
             },
             "put": {
+                "operationId": "poseEstimationOnPoseEstimationPut",
                 "x-type": "event",
                 "summary": "デバイスの姿勢推定計測イベントを開始する。",
                 "description": "",
@@ -101,6 +103,7 @@
                 }
             },
             "delete": {
+                "operationId": "poseEstimationOnPoseEstimationDelete",
                 "x-type": "event",
                 "summary": "デバイスの姿勢推定計測イベントを停止する。",
                 "description": "",

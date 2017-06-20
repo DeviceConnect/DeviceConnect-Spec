@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "temperatureGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を取得する。",
                 "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。",
@@ -52,6 +53,7 @@
                 }
             },
             "put": {
+                "operationId": "temperaturePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を設定する。",
                 "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。<br>temperatureに設定できる値は、摂氏の場合は0以上50以下, 華氏の場合は32以上122以下。",

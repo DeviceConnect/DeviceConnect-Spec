@@ -13,6 +13,7 @@
     "paths": {
         "/onTouch": {
             "get": {
+                "operationId": "touchOnTouchGet",
                 "x-type": "one-shot",
                 "summary": "デバイスでタッチ(touchstart,touchendされた後)されたイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -56,6 +57,7 @@
                 }
             },
             "put": {
+                "operationId": "touchOnTouchPut",
                 "x-type": "event",
                 "summary": "デバイスでタッチ(touchstart,touchendされた後)されたイベントの受信を開始する。",
                 "description": "",
@@ -119,6 +121,7 @@
                 }
             },
             "delete": {
+                "operationId": "touchOnTouchDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -150,6 +153,7 @@
         },
         "/onTouchStart": {
             "get": {
+                "operationId": "touchOnTouchStartGet",
                 "x-type": "one-shot",
                 "summary": "デバイスでタッチが開始されたイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -193,6 +197,7 @@
                 }
             },
             "put": {
+                "operationId": "touchOnTouchStartPut",
                 "x-type": "event",
                 "summary": "デバイスでタッチが開始されたイベントの受信を開始する。",
                 "description": "",
@@ -256,6 +261,7 @@
                 }
             },
             "delete": {
+                "operationId": "touchOnTouchStartDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -287,6 +293,7 @@
         },
         "/onTouchEnd": {
             "get": {
+                "operationId": "touchOnTouchEndGet",
                 "x-type": "one-shot",
                 "summary": "デバイスでタッチが終了したイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -330,6 +337,7 @@
                 }
             },
             "put": {
+                "operationId": "touchOnTouchEndPut",
                 "x-type": "event",
                 "summary": "デバイスでタッチが終了したイベントの受信を開始する。",
                 "description": "",
@@ -393,6 +401,7 @@
                 }
             },
             "delete": {
+                "operationId": "touchOnTouchEndDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -424,6 +433,7 @@
         },
         "/onTouchMove": {
             "get": {
+                "operationId": "touchOnTouchMoveGet",
                 "x-type": "one-shot",
                 "summary": "デバイスでタッチされ続けているイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -467,6 +477,7 @@
                 }
             },
             "put": {
+                "operationId": "touchOnTouchMovePut",
                 "x-type": "event",
                 "summary": "デバイスでタッチされ続けているイベントの受信を開始する。",
                 "description": "",
@@ -530,6 +541,7 @@
                 }
             },
             "delete": {
+                "operationId": "touchOnTouchMoveDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -561,6 +573,7 @@
         },
         "/onTouchCancel": {
             "get": {
+                "operationId": "touchOnTouchCancelGet",
                 "x-type": "one-shot",
                 "summary": "デバイスでタッチがキャンセルされたイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -604,6 +617,7 @@
                 }
             },
             "put": {
+                "operationId": "touchOnTouchCancelPut",
                 "x-type": "event",
                 "summary": "デバイスでタッチがキャンセルされたイベントの受信を開始する。",
                 "description": "",
@@ -667,6 +681,7 @@
                 }
             },
             "delete": {
+                "operationId": "touchOnTouchCancelDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -698,6 +713,7 @@
         },
         "/onDoubleTap": {
             "get": {
+                "operationId": "touchOnDoubleTapGet",
                 "x-type": "one-shot",
                 "summary": "デバイスでダブルタップされたイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -741,6 +757,7 @@
                 }
             },
             "put": {
+                "operationId": "touchOnDoubleTapPut",
                 "x-type": "event",
                 "summary": "デバイスでダブルタップされたイベントの受信を開始する。",
                 "description": "",
@@ -804,6 +821,7 @@
                 }
             },
             "delete": {
+                "operationId": "touchOnDoubleTapDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",

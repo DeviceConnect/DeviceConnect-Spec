@@ -13,6 +13,7 @@
     "paths": {
         "/sound/volume": {
             "get": {
+                "operationId": "settingSoundVolumeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの音量を取得する。",
                 "description": "",
@@ -51,6 +52,7 @@
                 }
             },
             "put": {
+                "operationId": "settingSoundVolumePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの音量の設定依頼を送る。",
                 "description": "",
@@ -99,6 +101,7 @@
         },
         "/date": {
             "get": {
+                "operationId": "settingDateGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの日時を取得する。",
                 "description": "",
@@ -129,6 +132,7 @@
                 }
             },
             "put": {
+                "operationId": "settingDatePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの日時の設定依頼を送る。",
                 "description": "",
@@ -168,6 +172,7 @@
         },
         "/display/brightness": {
             "get": {
+                "operationId": "settingDisplayBrightnessGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのライト明度を取得する。",
                 "description": "",
@@ -198,6 +203,7 @@
                 }
             },
             "put": {
+                "operationId": "settingDisplayBrightnessPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのライト明度の設定依頼を送る。",
                 "description": "",
@@ -238,6 +244,7 @@
         },
         "/display/sleep": {
             "get": {
+                "operationId": "settingDisplaySleepGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの画面消灯設定を取得する。",
                 "description": "",
@@ -268,6 +275,7 @@
                 }
             },
             "put": {
+                "operationId": "settingDisplaySleepPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの画面消灯設定依頼を送る。",
                 "description": "",

@@ -13,6 +13,7 @@
     "paths": {
         "/onDetection": {
             "get": {
+                "operationId": "humanDetectionOnDetectionGet",
                 "x-type": "one-shot",
                 "summary": "人を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -45,6 +46,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnDetectionPut",
                 "x-type": "event",
                 "summary": "人を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -98,6 +100,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnDetectionDelete",
                 "x-type": "event",
                 "summary": "人を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -130,6 +133,7 @@
         },
         "/onBodyDetection": {
             "get": {
+                "operationId": "humanDetectionOnBodyDetectionGet",
                 "x-type": "one-shot",
                 "summary": "体を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -239,6 +243,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnBodyDetectionPut",
                 "x-type": "event",
                 "summary": "体を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を停止する。",
@@ -367,6 +372,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnBodyDetectionDelete",
                 "x-type": "event",
                 "summary": "体を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -399,6 +405,7 @@
         },
         "/onHandDetection": {
             "get": {
+                "operationId": "humanDetectionOnHandDetectionGet",
                 "x-type": "one-shot",
                 "summary": "手を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -492,6 +499,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnHandDetectionPut",
                 "x-type": "event",
                 "summary": "手を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -606,6 +614,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnHandDetectionDelete",
                 "x-type": "event",
                 "summary": "手を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -638,6 +647,7 @@
         },
         "/onFaceDetection": {
             "get": {
+                "operationId": "humanDetectionOnFaceDetectionGet",
                 "x-type": "one-shot",
                 "summary": "顔を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -820,6 +830,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnFaceDetectionPut",
                 "x-type": "event",
                 "summary": "顔を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -1021,6 +1032,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnFaceDetectionDelete",
                 "x-type": "event",
                 "summary": "顔を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
