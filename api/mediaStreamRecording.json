@@ -1495,22 +1495,22 @@
                 "serviceId": {
                     "type": "string",
                     "title": "サービスID",
-                    "description": ""
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
                     "title": "プロファイル名",
-                    "description": ""
+                    "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
                     "title": "インターフェース名",
-                    "description": ""
+                    "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
                     "title": "アトリビュート名",
-                    "description": ""
+                    "description": "アトリビュート名。"
                 }
             }
         }
