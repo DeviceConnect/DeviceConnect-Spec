@@ -452,6 +452,7 @@
             "properties": {
                 "message": {
                     "type": "object",
+                    "title": "メッセージ",
                     "required": [
                         "messagerType",
                         "from",

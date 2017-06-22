@@ -110,10 +110,12 @@
                 "properties": {
                     "tempareture": {
                         "type": "number",
+                        "title": "温度",
                         "description": "温度の値。"
                     },
                     "type": {
                         "type": "integer",
+                        "title": "単位",
                         "enum": [1, 2],
                         "description": "1:摂氏、2:華氏"
                     }

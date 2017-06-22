@@ -163,19 +163,23 @@
             "properties": {
                 "stress": {
                     "type": "object",
+                    "title": "ストレス情報",
                     "required": ["lfhf", "timeStamp", "timeStampString"],
                     "properties": {
                         "lfhf": {
                             "type": "number",
+                            "title": "LFHF値",
                             "description": "ターゲットデバイスによって測定されたLFHF値。"
                         },
                         "timeStamp": {
                             "type": "integer",
                             "format": "int64",
+                            "title": "タイムスタンプ (Unix時刻)",
                             "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                         },
                         "timeStampString": {
                             "type": "string",
+                            "title": "タイムスタンプ (日付)",
                             "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
                         }
                     }

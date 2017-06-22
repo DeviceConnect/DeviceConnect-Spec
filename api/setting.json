@@ -325,6 +325,7 @@
                 "properties": {
                     "level": {
                         "type": "number",
+                        "title": "音量",
                         "description": "音量を割合で示す。(0.0 <= level <= 1.0)",
                         "minimum": 0.0,
                         "maximum": 1.0
@@ -343,6 +344,7 @@
                     "date": {
                         "type": "string",
                         "format": "date-time",
+                        "title": "日付",
                         "description": "RFC3339形式の日付。 例: 2014-01-01T00:00:00+0900"
                     }
                 }
@@ -358,6 +360,7 @@
                 "properties": {
                     "level": {
                         "type": "number",
+                        "title": "輝度",
                         "description": "ディスプレイの輝度を割合で示す 範囲 (0.0 <= level <= 1.0)",
                         "minimum": 0.0,
                         "maximum": 1.0
@@ -376,6 +379,7 @@
                     "time": {
                         "type": "integer",
                         "format": "int64",
+                        "title": "消灯するまでの時間",
                         "description": "ディスプレイが消灯するまでの時間 (ミリ秒)"
                     }
                 }

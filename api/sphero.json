@@ -434,64 +434,77 @@
             "properties": {
                 "collision": {
                     "type": "object",
+                    "title": "衝突イベント",
                     "description": "衝突イベントオブジェクト。",
                     "properties": {
                         "impactAcceleration": {
                             "type": "object",
+                            "title": "衝突加速度",
                             "description": "衝突加速度。",
                             "required": ["x", "y", "z"],
                             "properties": {
                                 "x": {
                                     "type": "number",
+                                    "title": "x成分",
                                     "description": "x軸方向への加速度(cm/s2)"
                                 },
                                 "y": {
                                     "type": "number",
+                                    "title": "y成分",
                                     "description": "y軸方向への加速度(cm/s2)"
                                 },
                                 "z": {
                                     "type": "number",
+                                    "title": "z成分",
                                     "description": "z軸方向への加速度(cm/s2)"
                                 }
                             }
                         },
                         "impactAxis": {
                             "type": "object",
+                            "title": "衝突軸",
                             "description": "衝突軸。",
                             "required": ["x", "y"],
                             "properties": {
                                 "x": {
                                     "type": "boolean",
-                                    "description": "x軸成分。"
+                                    "title": "x成分",
+                                    "description": "x成分。"
                                 },
                                 "y": {
                                     "type": "boolean",
-                                    "description": "y軸成分。"
+                                    "title": "y成分",
+                                    "description": "y成分。"
                                 }
                             }
                         },
                         "impactPower": {
                             "type": "object",
+                            "title": "衝突力",
                             "description": "衝突力。",
                             "required": ["x", "y"],
                             "properties": {
                                 "x": {
                                     "type": "number",
-                                    "description": "x軸成分。"
+                                    "title": "x成分",
+                                    "description": "x成分。"
                                 },
                                 "y": {
                                     "type": "number",
-                                    "description": "y軸成分。"
+                                    "title": "y成分",
+                                    "description": "y成分。"
                                 }
                             }
                         },
                         "impactSpeed": {
                             "type": "number",
+                            "title": "衝突速度",
                             "description": "衝突速度(単位: cm/s)"
                         },
                         "impactTimestamp": {
                             "type": "integer",
                             "format": "int64",
+                            "title": "衝突時刻",
                             "description": "衝突した時間のタイムスタンプ(単位: ミリ秒)"
                         }
                     }
@@ -520,23 +533,28 @@
             "properties": {
                 "locator": {
                     "type": "object",
+                    "title": "位置",
                     "description": "Spheroの位置座標オブジェクト。",
                     "required": ["positionX", "positionY", "velocityX", "velocityY"],
                     "properties": {
                         "positionX": {
                             "type": "number",
+                            "title": "x座標",
                             "description": "位置のx座標 (単位: cm)"
                         },
                         "positionY": {
                             "type": "number",
+                            "title": "y座標",
                             "description": "位置のy座標 (単位: cm)"
                         },
                         "velocityX": {
                             "type": "number",
+                            "title": "x成分",
                             "description": "速度のx成分 (単位:cm/s)"
                         },
                         "velocityY": {
                             "type": "number",
+                            "title": "y成分",
                             "description": "速度のy成分 (単位:cm/s)"
                         }
                     }
@@ -565,28 +583,34 @@
             "properties": {
                 "quaternion": {
                     "type": "object",
+                    "title": "四元数",
                     "description": "四元数オブジェクト。",
                     "required": ["q0", "q1", "q2", "q3", "interval"],
                     "properties": {
                         "q0": {
                             "type": "number",
+                            "title": "i軸",
                             "description": "i軸"
                         },
                         "q1": {
                             "type": "number",
+                            "title": "j軸",
                             "description": "j軸"
                         },
                         "q2": {
                             "type": "number",
+                            "title": "k軸",
                             "description": "k軸"
                         },
                         "q3": {
                             "type": "number",
+                            "title": "s軸",
                             "description": "s軸"
                         },
                         "interval": {
                             "type": "integer",
                             "format": "int64",
+                            "title": "インターバル",
                             "description": "計測のインターバル。(単位: ミリ秒)"
                         }
                     }

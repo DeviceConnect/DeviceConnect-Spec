@@ -1095,6 +1095,7 @@
             "properties": {
                 "humanDetect": {
                     "type": "object",
+                    "title": "人検出情報",
                     "required": [
                         "exist"
                     ],
@@ -1285,6 +1286,7 @@
                         "properties": {
                           "eyePoints": {
                               "type": "object",
+                              "title": "目検出情報",
                               "properties": {
                                   "leftEyeX": {
                                       "type": "number",
@@ -1335,6 +1337,7 @@
                           },
                           "nosePoints": {
                               "type": "object",
+                              "title": "鼻検出情報",
                               "properties": {
                                   "noseX": {
                                       "type": "number",
@@ -1365,6 +1368,7 @@
                           },
                           "mouthPoints": {
                               "type": "object",
+                              "title": "口検出情報",
                               "properties": {
                                   "mouthX": {
                                       "type": "number",
@@ -1395,6 +1399,7 @@
                           },
                           "blinkResults": {
                               "type": "object",
+                              "title": "まばたき検出情報",
                               "properties": {
                                   "leftEye": {
                                       "type": "number",
@@ -1415,6 +1420,7 @@
                           },
                           "ageResults": {
                               "type": "object",
+                              "title": "年齢判定結果",
                               "properties": {
                                   "age": {
                                       "type": "integer",
@@ -1430,6 +1436,7 @@
                           },
                           "genderResults": {
                               "type": "object",
+                              "title": "性別判定結果",
                               "properties": {
                                   "gender": {
                                       "type": "string",
@@ -1448,6 +1455,7 @@
                           },
                           "faceDirectionResults": {
                               "type": "object",
+                              "title": "顔の向き判定結果",
                               "properties": {
                                   "yaw": {
                                       "type": "integer",
@@ -1473,6 +1481,7 @@
                           },
                           "gazeResults": {
                               "type": "object",
+                              "title": "目の向き判定結果",
                               "properties": {
                                   "gazeLR": {
                                       "type": "integer",
@@ -1493,6 +1502,7 @@
                           },
                           "expressionResults": {
                               "type": "object",
+                              "title": "表情判定結果",
                               "properties": {
                                   "expression": {
                                       "type": "string",

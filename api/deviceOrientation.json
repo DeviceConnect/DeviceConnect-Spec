@@ -191,6 +191,7 @@
             "properties": {
                 "orientation": {
                     "type": "object",
+                    "title": "デバイスの向き",
                     "required": [
                         "interval"
                     ],

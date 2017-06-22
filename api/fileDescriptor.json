@@ -436,6 +436,7 @@
                     "properties": {
                         "file": {
                             "type": "object",
+                            "title": "ファイル情報",
                             "required": [
                                 "path",
                                 "curr",

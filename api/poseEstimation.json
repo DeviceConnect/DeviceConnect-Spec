@@ -166,6 +166,7 @@
             "properties": {
                 "pose": {
                     "type": "object",
+                    "title": "姿勢情報",
                     "required": [
                         "state",
                         "timeStamp",

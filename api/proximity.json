@@ -300,6 +300,7 @@
             "properties": {
                 "proximity": {
                     "type": "object",
+                    "title": "近接イベント",
                     "properties": {
                         "value": {
                             "type": "integer",
@@ -361,6 +362,7 @@
             "properties": {
                 "proximity": {
                     "type": "object",
+                    "title": "近接イベント",
                     "required": [
                         "near"
                     ],

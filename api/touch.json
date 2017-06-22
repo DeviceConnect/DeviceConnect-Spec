@@ -955,11 +955,13 @@
             "properties": {
                 "touch": {
                     "type": "object",
+                    "title": "タッチイベント",
                     "description": "イベントの内容を保持するオブジェクト。",
                     "required": ["touches"],
                     "properties": {
                         "touches": {
                             "type": "array",
+                            "title": "タッチ情報の配列",
                             "description": "各タッチに関する情報の配列。",
                             "items": {
                                 "type": "object",
@@ -967,14 +969,17 @@
                                 "properties": {
                                     "id": {
                                         "type": "integer",
+                                        "title": "ID",
                                         "description": "タッチを開始すると割り振られる、ユニーク（唯一）な識別番号。"
                                     },
                                     "x": {
                                         "type": "integer",
+                                        "title": "x座標",
                                         "description": "デバイスが持つ空間の左上を原点としたx座標。"
                                     },
                                     "y": {
                                         "type": "integer",
+                                        "title": "y座標",
                                         "description": "デバイスが持つ空間の左上を原点としたy座標。"
                                     }
                                 }

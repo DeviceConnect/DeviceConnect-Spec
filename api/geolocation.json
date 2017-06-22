@@ -275,6 +275,7 @@
             "properties": {
                 "position": {
                     "type": "object",
+                    "title": "位置情報",
                     "required": [
                         "coordinates",
                         "timeStamp",

@@ -173,6 +173,7 @@
             "properties": {
                 "walk": {
                     "type": "object",
+                    "title": "歩行情報",
                     "required": [
                         "step",
                         "state",
@@ -185,6 +186,7 @@
                         "step": {
                             "type": "number",
                             "format": "double",
+                            "title": "歩数",
                             "description": "歩数。単位は歩。"
                         },
                         "state": {
@@ -194,25 +196,36 @@
                                 "Walking",
                                 "Running"
                             ],
+                            "title": "歩行状態",
                             "description": "<ul><li>Stop:停止</li><li>Walking:歩行</li><li>Running:走行</li></ul>"
                         },
                         "speed": {
                             "type": "number",
                             "format": "double",
+                            "title": "速度",
+                            "description": "速度。単位はkm/h。"
+                        },
+                        "distance": {
+                            "type": "number",
+                            "format": "double",
+                            "title": "距離",
                             "description": "距離。単位はkm。"
                         },
                         "balance": {
                             "type": "number",
                             "format": "double",
+                            "title": "左右バランス",
                             "description": "左右のバランス。1に近いほど左右のバランスが良い。<br>-1.0〜1.0"
                         },
                         "timeStamp": {
                             "type": "integer",
                             "format": "int64",
+                            "title": "タイムスタンプ (Unix時刻)",
                             "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                         },
                         "timeStampString": {
                             "type": "string",
+                            "title": "タイムスタンプ (日付)",
                             "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
                         }
                     }

@@ -969,6 +969,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -997,6 +998,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1062,6 +1064,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1090,6 +1093,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1171,6 +1175,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1199,6 +1204,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1264,6 +1270,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1292,6 +1299,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],

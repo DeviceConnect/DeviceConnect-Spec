@@ -3251,6 +3251,7 @@
             "properties": {
                 "pins": {
                     "type": "object",
+                    "title": "ピン一覧",
                     "properties": {
                         "{ピン番号}": {
                             "type": "integer",
