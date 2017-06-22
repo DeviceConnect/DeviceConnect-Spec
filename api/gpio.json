@@ -13,6 +13,7 @@
     "paths": {
         "/export/D0": {
             "post": {
+                "operationId": "gpioExportD0Post",
                 "x-type": "one-shot",
                 "summary": "D0ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -52,6 +53,7 @@
         },
         "/export/D1": {
             "post": {
+                "operationId": "gpioExportD1Post",
                 "x-type": "one-shot",
                 "summary": "D1ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -91,6 +93,7 @@
         },
         "/export/D2": {
             "post": {
+                "operationId": "gpioExportD2Post",
                 "x-type": "one-shot",
                 "summary": "D2ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -130,6 +133,7 @@
         },
         "/export/D3": {
             "post": {
+                "operationId": "gpioExportD3Post",
                 "x-type": "one-shot",
                 "summary": "D3ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -169,6 +173,7 @@
         },
         "/export/D4": {
             "post": {
+                "operationId": "gpioExportD4Post",
                 "x-type": "one-shot",
                 "summary": "D4ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -208,6 +213,7 @@
         },
         "/export/D5": {
             "post": {
+                "operationId": "gpioExportD5Post",
                 "x-type": "one-shot",
                 "summary": "D5ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -247,6 +253,7 @@
         },
         "/export/D6": {
             "post": {
+                "operationId": "gpioExportD6Post",
                 "x-type": "one-shot",
                 "summary": "D6ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -286,6 +293,7 @@
         },
         "/export/D7": {
             "post": {
+                "operationId": "gpioExportD7Post",
                 "x-type": "one-shot",
                 "summary": "D7ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -325,6 +333,7 @@
         },
         "/export/D8": {
             "post": {
+                "operationId": "gpioExportD8Post",
                 "x-type": "one-shot",
                 "summary": "D8ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -364,6 +373,7 @@
         },
         "/export/D9": {
             "post": {
+                "operationId": "gpioExportD9Post",
                 "x-type": "one-shot",
                 "summary": "D9ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -403,6 +413,7 @@
         },
         "/export/D10": {
             "post": {
+                "operationId": "gpioExportD10Post",
                 "x-type": "one-shot",
                 "summary": "D10ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -442,6 +453,7 @@
         },
         "/export/D11": {
             "post": {
+                "operationId": "gpioExportD11Post",
                 "x-type": "one-shot",
                 "summary": "D11ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -481,6 +493,7 @@
         },
         "/export/D12": {
             "post": {
+                "operationId": "gpioExportD12Post",
                 "x-type": "one-shot",
                 "summary": "D12ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -520,6 +533,7 @@
         },
         "/export/D13": {
             "post": {
+                "operationId": "gpioExportD13Post",
                 "x-type": "one-shot",
                 "summary": "D13ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -559,6 +573,7 @@
         },
         "/export/A0": {
             "post": {
+                "operationId": "gpioExportA0Post",
                 "x-type": "one-shot",
                 "summary": "A0ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -598,6 +613,7 @@
         },
         "/export/A1": {
             "post": {
+                "operationId": "gpioExportA1Post",
                 "x-type": "one-shot",
                 "summary": "A1ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -637,6 +653,7 @@
         },
         "/export/A2": {
             "post": {
+                "operationId": "gpioExportA2Post",
                 "x-type": "one-shot",
                 "summary": "A2ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -676,6 +693,7 @@
         },
         "/export/A3": {
             "post": {
+                "operationId": "gpioExportA3Post",
                 "x-type": "one-shot",
                 "summary": "A3ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -715,6 +733,7 @@
         },
         "/export/A4": {
             "post": {
+                "operationId": "gpioExportA4Post",
                 "x-type": "one-shot",
                 "summary": "A4ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -754,6 +773,7 @@
         },
         "/export/A5": {
             "post": {
+                "operationId": "gpioExportA5Post",
                 "x-type": "one-shot",
                 "summary": "A5ピンの出力/入力の種類を設定する。",
                 "description": "",
@@ -793,6 +813,7 @@
         },
         "/digital/D0": {
             "get": {
+                "operationId": "gpioDigitalD0Get",
                 "x-type": "one-shot",
                 "summary": "D0ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -823,6 +844,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD0Put",
                 "x-type": "one-shot",
                 "summary": "D0ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -852,6 +874,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD0Delete",
                 "x-type": "one-shot",
                 "summary": "D0ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -881,6 +904,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD0Post",
                 "x-type": "one-shot",
                 "summary": "D0ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -920,6 +944,7 @@
         },
         "/digital/D1": {
             "get": {
+                "operationId": "gpioDigitalD1Get",
                 "x-type": "one-shot",
                 "summary": "D1ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -950,6 +975,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD1Put",
                 "x-type": "one-shot",
                 "summary": "D1ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -979,6 +1005,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD1Delete",
                 "x-type": "one-shot",
                 "summary": "D1ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1008,6 +1035,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD1Post",
                 "x-type": "one-shot",
                 "summary": "D1ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1046,6 +1074,7 @@
             }        },
         "/digital/D2": {
             "get": {
+                "operationId": "gpioDigitalD2Get",
                 "x-type": "one-shot",
                 "summary": "D2ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1076,6 +1105,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD2Put",
                 "x-type": "one-shot",
                 "summary": "D2ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1105,6 +1135,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD2Delete",
                 "x-type": "one-shot",
                 "summary": "D2ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1134,6 +1165,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD2Post",
                 "x-type": "one-shot",
                 "summary": "D2ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1172,6 +1204,7 @@
             }        },
         "/digital/D3": {
             "get": {
+                "operationId": "gpioDigitalD3Get",
                 "x-type": "one-shot",
                 "summary": "D3ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1202,6 +1235,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD3Put",
                 "x-type": "one-shot",
                 "summary": "D3ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1231,6 +1265,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD3Delete",
                 "x-type": "one-shot",
                 "summary": "D3ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1260,6 +1295,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD3Post",
                 "x-type": "one-shot",
                 "summary": "D3ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1298,6 +1334,7 @@
             }        },
         "/digital/D4": {
             "get": {
+                "operationId": "gpioDigitalD4Get",
                 "x-type": "one-shot",
                 "summary": "D4ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1328,6 +1365,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD4Put",
                 "x-type": "one-shot",
                 "summary": "D4ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1357,6 +1395,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD4Delete",
                 "x-type": "one-shot",
                 "summary": "D4ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1386,6 +1425,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD4Post",
                 "x-type": "one-shot",
                 "summary": "D4ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1424,6 +1464,7 @@
             }        },
         "/digital/D5": {
             "get": {
+                "operationId": "gpioDigitalD5Get",
                 "x-type": "one-shot",
                 "summary": "D5ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1454,6 +1495,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD5Put",
                 "x-type": "one-shot",
                 "summary": "D5ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1483,6 +1525,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD5Delete",
                 "x-type": "one-shot",
                 "summary": "D5ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1512,6 +1555,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD5Post",
                 "x-type": "one-shot",
                 "summary": "D5ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1550,6 +1594,7 @@
             }        },
         "/digital/D6": {
             "get": {
+                "operationId": "gpioDigitalD6Get",
                 "x-type": "one-shot",
                 "summary": "D6ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1580,6 +1625,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD6Put",
                 "x-type": "one-shot",
                 "summary": "D6ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1609,6 +1655,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD6Delete",
                 "x-type": "one-shot",
                 "summary": "D6ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1638,6 +1685,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD6Post",
                 "x-type": "one-shot",
                 "summary": "D6ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1676,6 +1724,7 @@
             }        },
         "/digital/D7": {
             "get": {
+                "operationId": "gpioDigitalD7Get",
                 "x-type": "one-shot",
                 "summary": "D7ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1706,6 +1755,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD7Put",
                 "x-type": "one-shot",
                 "summary": "D7ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1735,6 +1785,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD7Delete",
                 "x-type": "one-shot",
                 "summary": "D7ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1764,6 +1815,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD7Post",
                 "x-type": "one-shot",
                 "summary": "D7ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1802,6 +1854,7 @@
             }        },
         "/digital/D8": {
             "get": {
+                "operationId": "gpioDigitalD8Get",
                 "x-type": "one-shot",
                 "summary": "D8ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1832,6 +1885,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD8Put",
                 "x-type": "one-shot",
                 "summary": "D8ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1861,6 +1915,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD8Delete",
                 "x-type": "one-shot",
                 "summary": "D8ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -1890,6 +1945,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD8Post",
                 "x-type": "one-shot",
                 "summary": "D8ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -1928,6 +1984,7 @@
             }        },
         "/digital/D9": {
             "get": {
+                "operationId": "gpioDigitalD9Get",
                 "x-type": "one-shot",
                 "summary": "D9ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -1958,6 +2015,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD9Put",
                 "x-type": "one-shot",
                 "summary": "D9ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -1987,6 +2045,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD9Delete",
                 "x-type": "one-shot",
                 "summary": "D9ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -2016,6 +2075,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD9Post",
                 "x-type": "one-shot",
                 "summary": "D9ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -2054,6 +2114,7 @@
             }        },
         "/digital/D10": {
             "get": {
+                "operationId": "gpioDigitalD10Get",
                 "x-type": "one-shot",
                 "summary": "D10ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -2084,6 +2145,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD10Put",
                 "x-type": "one-shot",
                 "summary": "D10ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -2113,6 +2175,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD10Delete",
                 "x-type": "one-shot",
                 "summary": "D10ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -2142,6 +2205,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD10Post",
                 "x-type": "one-shot",
                 "summary": "D10ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -2180,6 +2244,7 @@
             }        },
         "/digital/D11": {
             "get": {
+                "operationId": "gpioDigitalD11Get",
                 "x-type": "one-shot",
                 "summary": "D11ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -2210,6 +2275,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD11Put",
                 "x-type": "one-shot",
                 "summary": "D11ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -2239,6 +2305,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD11Delete",
                 "x-type": "one-shot",
                 "summary": "D11ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -2268,6 +2335,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD11Post",
                 "x-type": "one-shot",
                 "summary": "D11ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -2306,6 +2374,7 @@
             }        },
         "/digital/D12": {
             "get": {
+                "operationId": "gpioDigitalD12Get",
                 "x-type": "one-shot",
                 "summary": "D12ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -2336,6 +2405,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD12Put",
                 "x-type": "one-shot",
                 "summary": "D12ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -2365,6 +2435,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD12Delete",
                 "x-type": "one-shot",
                 "summary": "D12ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -2394,6 +2465,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD12Post",
                 "x-type": "one-shot",
                 "summary": "D12ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -2432,6 +2504,7 @@
             }        },
         "/digital/D13": {
             "get": {
+                "operationId": "gpioDigitalD13Get",
                 "x-type": "one-shot",
                 "summary": "D13ピンにデジタル値 HIGH(1)またはLOW(1)を入力。",
                 "description": "",
@@ -2462,6 +2535,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioDigitalD13Put",
                 "x-type": "one-shot",
                 "summary": "D13ピンにデジタル値のHIGH(1)を出力。",
                 "description": "",
@@ -2491,6 +2565,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioDigitalD13Delete",
                 "x-type": "one-shot",
                 "summary": "D13ピンにデジタル値のLOW(0)を出力。",
                 "description": "",
@@ -2520,6 +2595,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioDigitalD13Post",
                 "x-type": "one-shot",
                 "summary": "D13ピンにデジタル値のHIGH(1)またはLOW(0)を出力。",
                 "description": "",
@@ -2559,6 +2635,7 @@
         },
         "/analog/A0": {
             "get": {
+                "operationId": "gpioAnalogA0Get",
                 "x-type": "one-shot",
                 "summary": "A0ピンのアナログ値を入力",
                 "description": "",
@@ -2589,6 +2666,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioAnalogA0Post",
                 "x-type": "one-shot",
                 "summary": "A0ピンのアナログ値を出力",
                 "description": "",
@@ -2627,6 +2705,7 @@
         },
         "/analog/A1": {
             "get": {
+                "operationId": "gpioAnalogA1Get",
                 "x-type": "one-shot",
                 "summary": "A1ピンのアナログ値を入力",
                 "description": "",
@@ -2657,6 +2736,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioAnalogA1Post",
                 "x-type": "one-shot",
                 "summary": "A1ピンのアナログ値を出力",
                 "description": "",
@@ -2696,6 +2776,7 @@
         },
         "/analog/A2": {
             "get": {
+                "operationId": "gpioAnalogA2Get",
                 "x-type": "one-shot",
                 "summary": "A2ピンのアナログ値を入力",
                 "description": "",
@@ -2726,6 +2807,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioAnalogA2Post",
                 "x-type": "one-shot",
                 "summary": "A2ピンのアナログ値を出力",
                 "description": "",
@@ -2764,6 +2846,7 @@
         },
         "/analog/A3": {
             "get": {
+                "operationId": "gpioAnalogA3Get",
                 "x-type": "one-shot",
                 "summary": "A3ピンのアナログ値を入力",
                 "description": "",
@@ -2794,6 +2877,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioAnalogA3Post",
                 "x-type": "one-shot",
                 "summary": "A3ピンのアナログ値を出力",
                 "description": "",
@@ -2833,6 +2917,7 @@
         },
         "/analog/A4": {
             "get": {
+                "operationId": "gpioAnalogA4Get",
                 "x-type": "one-shot",
                 "summary": "A4ピンのアナログ値を入力",
                 "description": "",
@@ -2863,6 +2948,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioAnalogA4Post",
                 "x-type": "one-shot",
                 "summary": "A4ピンのアナログ値を出力",
                 "description": "",
@@ -2902,6 +2988,7 @@
         },
         "/analog/A5": {
             "get": {
+                "operationId": "gpioAnalogA5Get",
                 "x-type": "one-shot",
                 "summary": "A5ピンのアナログ値を入力",
                 "description": "",
@@ -2932,6 +3019,7 @@
                 }
             },
             "post": {
+                "operationId": "gpioAnalogA5Post",
                 "x-type": "one-shot",
                 "summary": "A5ピンのアナログ値を出力",
                 "description": "",
@@ -2971,6 +3059,7 @@
         },
         "/onChange": {
             "get": {
+                "operationId": "gpioOnChangeGet",
                 "x-type": "one-shot",
                 "summary": "各ピンで、入力状態のモードに設定されているピンの値を取得する",
                 "description": "",
@@ -3000,6 +3089,7 @@
                 }
             },
             "put": {
+                "operationId": "gpioOnChangePut",
                 "x-type": "event",
                 "summary": "各ピンで、入力状態のモードに設定されているピンの値を定期的に送信するイベントを開始する。",
                 "description": "",
@@ -3049,6 +3139,7 @@
                 }
             },
             "delete": {
+                "operationId": "gpioOnChangeDelete",
                 "x-type": "event",
                 "summary": "各ピンで、入力状態のモードに設定されているピンの値を定期的に送信するイベントを停止する。",
                 "description": "",
@@ -3160,6 +3251,7 @@
             "properties": {
                 "pins": {
                     "type": "object",
+                    "title": "ピン一覧",
                     "properties": {
                         "{ピン番号}": {
                             "type": "integer",
@@ -3186,33 +3278,6 @@
                 }
             ]
         },
-        "CommonEvent": {
-            "type": "object",
-            "required": [
-                "serviceId",
-                "profile",
-                "interface",
-                "attribute"
-            ],
-            "properties": {
-                "serviceId": {
-                    "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
-                },
-                "profile": {
-                    "type": "string",
-                    "description": "プロファイル名。"
-                },
-                "interface": {
-                    "type": "string",
-                    "description": "インターフェース名。"
-                },
-                "attribute": {
-                    "type": "string",
-                    "description": "アトリビュート名。"
-                }
-            }
-        },
         "CommonResponse": {
             "type": "object",
             "required": [
@@ -3228,18 +3293,49 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
+                },
+                "profile": {
+                    "type": "string",
+                    "title": "プロファイル名",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "title": "インターフェース名",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "title": "アトリビュート名",
+                    "description": "アトリビュート名。"
                 }
             }
         }

@@ -13,6 +13,7 @@
     "paths": {
         "/onDeviceOrientation": {
             "get": {
+                "operationId": "deviceOrientationOnDeviceOrientationGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを取得する。",
                 "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
@@ -60,6 +61,7 @@
                 }
             },
             "put": {
+                "operationId": "deviceOrientationOnDeviceOrientationPut",
                 "x-type": "event",
                 "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを開始する。",
                 "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
@@ -127,6 +129,7 @@
                 }
             },
             "delete": {
+                "operationId": "deviceOrientationOnDeviceOrientationDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスが検知した加速度や重力込みの加速度（加速度センサー）、そして角速度（ジャイロセンサー）を通知するイベントを停止する。",
                 "description": "スマートデバイスでサポートしていないパラメータがある場合には、そのパラメータを省略する。",
@@ -188,6 +191,7 @@
             "properties": {
                 "orientation": {
                     "type": "object",
+                    "title": "デバイスの向き",
                     "required": [
                         "interval"
                     ],
@@ -293,18 +297,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -336,18 +344,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

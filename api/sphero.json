@@ -13,6 +13,7 @@
     "paths": {
         "/quaternion/onQuaternion": {
             "get": {
+                "operationId": "spheroQuaternionOnQuaternionGet",
                 "x-type": "one-shot",
                 "summary": "Spheroの四元数を通知するイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -49,6 +50,7 @@
                 }
             },
             "put": {
+                "operationId": "spheroQuaternionOnQuaternionPut",
                 "x-type": "event",
                 "summary": "Spheroの四元数を通知するイベントの受信を開始する。",
                 "description": "",
@@ -106,6 +108,7 @@
                 }
             },
             "delete": {
+                "operationId": "spheroQuaternionOnQuaternionDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -137,6 +140,7 @@
         },
         "/locator/onLocator": {
             "get": {
+                "operationId": "spheroLocatorOnLocatorGet",
                 "x-type": "one-shot",
                 "summary": "Spheroの位置と速度を通知するイベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -172,6 +176,7 @@
                 }
             },
             "put": {
+                "operationId": "spheroLocatorOnLocatorPut",
                 "x-type": "event",
                 "summary": "Spheroの位置と速度を通知するイベントの受信を開始する。",
                 "description": "",
@@ -228,6 +233,7 @@
                 }
             },
             "delete": {
+                "operationId": "spheroLocatorOnLocatorDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -259,6 +265,7 @@
         },
         "/collision/onCollision": {
             "get": {
+                "operationId": "spheroCollisionOnCollisionGet",
                 "x-type": "one-shot",
                 "summary": "Spheroの衝突イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -305,6 +312,7 @@
                 }
             },
             "put": {
+                "operationId": "spheroCollisionOnCollisionPut",
                 "x-type": "event",
                 "summary": "Spheroの衝突イベントの受信を開始する。",
                 "description": "",
@@ -372,6 +380,7 @@
                 }
             },
             "delete": {
+                "operationId": "spheroCollisionOnCollisionDelete",
                 "x-type": "event",
                 "summary": "当該イベントの通知を停止する。",
                 "description": "",
@@ -425,64 +434,77 @@
             "properties": {
                 "collision": {
                     "type": "object",
+                    "title": "衝突イベント",
                     "description": "衝突イベントオブジェクト。",
                     "properties": {
                         "impactAcceleration": {
                             "type": "object",
+                            "title": "衝突加速度",
                             "description": "衝突加速度。",
                             "required": ["x", "y", "z"],
                             "properties": {
                                 "x": {
                                     "type": "number",
+                                    "title": "x成分",
                                     "description": "x軸方向への加速度(cm/s2)"
                                 },
                                 "y": {
                                     "type": "number",
+                                    "title": "y成分",
                                     "description": "y軸方向への加速度(cm/s2)"
                                 },
                                 "z": {
                                     "type": "number",
+                                    "title": "z成分",
                                     "description": "z軸方向への加速度(cm/s2)"
                                 }
                             }
                         },
                         "impactAxis": {
                             "type": "object",
+                            "title": "衝突軸",
                             "description": "衝突軸。",
                             "required": ["x", "y"],
                             "properties": {
                                 "x": {
                                     "type": "boolean",
-                                    "description": "x軸成分。"
+                                    "title": "x成分",
+                                    "description": "x成分。"
                                 },
                                 "y": {
                                     "type": "boolean",
-                                    "description": "y軸成分。"
+                                    "title": "y成分",
+                                    "description": "y成分。"
                                 }
                             }
                         },
                         "impactPower": {
                             "type": "object",
+                            "title": "衝突力",
                             "description": "衝突力。",
                             "required": ["x", "y"],
                             "properties": {
                                 "x": {
                                     "type": "number",
-                                    "description": "x軸成分。"
+                                    "title": "x成分",
+                                    "description": "x成分。"
                                 },
                                 "y": {
                                     "type": "number",
-                                    "description": "y軸成分。"
+                                    "title": "y成分",
+                                    "description": "y成分。"
                                 }
                             }
                         },
                         "impactSpeed": {
                             "type": "number",
+                            "title": "衝突速度",
                             "description": "衝突速度(単位: cm/s)"
                         },
                         "impactTimestamp": {
                             "type": "integer",
                             "format": "int64",
+                            "title": "衝突時刻",
                             "description": "衝突した時間のタイムスタンプ(単位: ミリ秒)"
                         }
                     }
@@ -511,23 +533,28 @@
             "properties": {
                 "locator": {
                     "type": "object",
+                    "title": "位置",
                     "description": "Spheroの位置座標オブジェクト。",
                     "required": ["positionX", "positionY", "velocityX", "velocityY"],
                     "properties": {
                         "positionX": {
                             "type": "number",
+                            "title": "x座標",
                             "description": "位置のx座標 (単位: cm)"
                         },
                         "positionY": {
                             "type": "number",
+                            "title": "y座標",
                             "description": "位置のy座標 (単位: cm)"
                         },
                         "velocityX": {
                             "type": "number",
+                            "title": "x成分",
                             "description": "速度のx成分 (単位:cm/s)"
                         },
                         "velocityY": {
                             "type": "number",
+                            "title": "y成分",
                             "description": "速度のy成分 (単位:cm/s)"
                         }
                     }
@@ -556,28 +583,34 @@
             "properties": {
                 "quaternion": {
                     "type": "object",
+                    "title": "四元数",
                     "description": "四元数オブジェクト。",
                     "required": ["q0", "q1", "q2", "q3", "interval"],
                     "properties": {
                         "q0": {
                             "type": "number",
+                            "title": "i軸",
                             "description": "i軸"
                         },
                         "q1": {
                             "type": "number",
+                            "title": "j軸",
                             "description": "j軸"
                         },
                         "q2": {
                             "type": "number",
+                            "title": "k軸",
                             "description": "k軸"
                         },
                         "q3": {
                             "type": "number",
+                            "title": "s軸",
                             "description": "s軸"
                         },
                         "interval": {
                             "type": "integer",
                             "format": "int64",
+                            "title": "インターバル",
                             "description": "計測のインターバル。(単位: ミリ秒)"
                         }
                     }
@@ -610,18 +643,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -637,18 +674,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

@@ -13,6 +13,7 @@
     "paths": {
         "/onPoseEstimation": {
             "get": {
+                "operationId": "poseEstimationOnPoseEstimationGet",
                 "x-type": "one-shot",
                 "summary": "デバイスの姿勢推定計測イベントを取得する。",
                 "description": "",
@@ -47,6 +48,7 @@
                 }
             },
             "put": {
+                "operationId": "poseEstimationOnPoseEstimationPut",
                 "x-type": "event",
                 "summary": "デバイスの姿勢推定計測イベントを開始する。",
                 "description": "",
@@ -101,6 +103,7 @@
                 }
             },
             "delete": {
+                "operationId": "poseEstimationOnPoseEstimationDelete",
                 "x-type": "event",
                 "summary": "デバイスの姿勢推定計測イベントを停止する。",
                 "description": "",
@@ -163,6 +166,7 @@
             "properties": {
                 "pose": {
                     "type": "object",
+                    "title": "姿勢情報",
                     "required": [
                         "state",
                         "timeStamp",
@@ -203,18 +207,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -246,18 +254,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

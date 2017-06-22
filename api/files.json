@@ -10,6 +10,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "filesGet",
                 "x-type": "one-shot",
                 "summary": "各デバイスプラグインが持っているファイルにアクセスする。",
                 "description": "",

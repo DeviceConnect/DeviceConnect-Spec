@@ -13,6 +13,7 @@
     "paths": {
         "/property": {
             "get": {
+                "operationId": "echonetLitePropertyGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する。",
                 "description": "EPC:ECHONET Property Code",
@@ -62,6 +63,7 @@
                 }
             },
             "put": {
+                "operationId": "echonetLitePropertyPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う。",
                 "description": "",
@@ -134,12 +136,12 @@
                                 "properties": {
                                     "epc": {
                                         "type": "string",
-                                        "title": "ECHONET Property Code",
+                                        "title": "EPC",
                                         "description": "ECHONET Property Code"
                                     },
                                     "value": {
                                         "type": "string",
-                                        "title": "ECHONET Property Codeの設定値。",
+                                        "title": "設定値",
                                         "description": "ECHONET Property Codeの設定値。"
                                     }
                                 }
@@ -172,18 +174,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

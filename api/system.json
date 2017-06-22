@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/system",
     "info": {
         "title": "System Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "DeviceConnectシステム情報を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
@@ -13,12 +14,16 @@
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "operationId": "systemGet",
+                "summary": "DeviceConnectシステム情報を提供するAPI。",
+                "description": "DeviceConnectシステムのバージョンやサポートするAPI一覧、インストールされているプラグイン一覧などのアプリケーション情報を取得する。",
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/SystemResponse"
+                        }
                     }
                 }
             }
@@ -26,8 +31,9 @@
         "/device/wakeup": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "operationId": "systemDeviceWakeupPut",
+                "summary": "デバイスプラグインの機能を有効にする。",
+                "description": "プラグインによっては、設定画面が起動してデバイスとの接続を行う。",
                 "parameters": [
                     {
                         "name": "pluginId",
@@ -38,7 +44,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse"
+                        }
                     }
                 }
             }
@@ -46,12 +55,16 @@
         "/events": {
             "delete": {
                 "x-type": "one-shot",
-                "summary": "",
+                "operationId": "systemEventsDelete",
+                "summary": "リクエスト送信元のオリジンに紐づくイベントを一挙に解除する。",
                 "description": "",
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse"
+                        }
                     }
                 }
             }
@@ -59,13 +72,109 @@
         "/keyword": {
             "put": {
                 "x-type": "one-shot",
-                "summary": "",
+                "operationId": "systemKeywordPut",
+                "summary": "DeviceConnectシステムに対し、ユーザーが登録したキーワードの表示要求をする。",
                 "description": "",
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse"
+                        }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "SystemResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": ["supports", "plugins"],
+                    "properties": {
+                        "supports": {
+                            "title": "プロファイル一覧",
+                            "description": "Device Connect Managerのサポートするプロファイル名の配列。",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "plugins": {
+                            "title": "プラグイン一覧",
+                            "description": "DeviceConnectシステムにインストールされているプラグインについての情報の配列。",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": ["id", "name", "version", "supports"],
+                                "properties": {
+                                    "id": {
+                                        "title": "ID",
+                                        "description": "DeviceConnectシステム上でプラグインを識別するためのID。",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "title": "名前",
+                                        "description": "プラグインの名前。",
+                                        "type": "string"
+                                    },
+                                    "version": {
+                                        "title": "バージョン",
+                                        "description": "プラグインのバージョン名。",
+                                        "type": "string"
+                                    },
+                                    "supports": {
+                                        "title": "プロファイル一覧",
+                                        "description": "プラグインのサポートするプロファイル名の配列。",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "packageName": {
+                                        "title": "パッケージ名",
+                                        "description": "DeviceConnectシステムの実行環境(例:Android)でプラグインを識別するための名前。",
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "title": "処理結果",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

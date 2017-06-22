@@ -13,6 +13,7 @@
     "paths": {
         "/notify": {
             "post": {
+                "operationId": "notificationNotifyPost",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスにノーティフィケーションの表示要求をする。",
                 "description": "ノーティフィケーションの表示要求の到達成否を応答として返却し、ノーティフィケーションの表示完了を待って応答をするわけではない。ノーティフィケーションの表示方法は表示要求を受けたスマートデバイスに依存する。",
@@ -87,6 +88,7 @@
                 }
             },
             "delete": {
+                "operationId": "notificationNotifyDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスにノーティフィケーションの消去要求をする。",
                 "description": "ノーティフィケーションの消去要求の到達成否を応答として返却し、ノーティフィケーションの消去完了を待って応答をするわけではない。",
@@ -125,6 +127,7 @@
         },
         "/onClick": {
             "get": {
+                "operationId": "notificationOnClickGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを取得する。",
                 "description": "スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。",
@@ -155,6 +158,7 @@
                 }
             },
             "put": {
+                "operationId": "notificationOnClickPut",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを開始する。",
                 "description": "スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。",
@@ -205,6 +209,7 @@
                 }
             },
             "delete": {
+                "operationId": "notificationOnClickDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを停止する。",
                 "description": "スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。",
@@ -236,6 +241,7 @@
         },
         "/onShow": {
             "get": {
+                "operationId": "notificationOnShowGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを取得する。",
                 "description": "スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。",
@@ -266,6 +272,7 @@
                 }
             },
             "put": {
+                "operationId": "notificationOnShowPut",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを開始する。",
                 "description": "スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。",
@@ -316,6 +323,7 @@
                 }
             },
             "delete": {
+                "operationId": "notificationOnShowDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを停止する。",
                 "description": "スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。",
@@ -347,6 +355,7 @@
         },
         "/onClose": {
             "get": {
+                "operationId": "notificationOnCloseGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを取得する。",
                 "description": "ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。",
@@ -377,6 +386,7 @@
                 }
             },
             "put": {
+                "operationId": "notificationOnClosePut",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを開始する。",
                 "description": "ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。",
@@ -427,6 +437,7 @@
                 }
             },
             "delete": {
+                "operationId": "notificationOnCloseDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを停止する。",
                 "description": "ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。",
@@ -458,6 +469,7 @@
         },
         "/onError": {
             "get": {
+                "operationId": "notificationOnErrorGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを取得する。",
                 "description": "スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。",
@@ -488,6 +500,7 @@
                 }
             },
             "put": {
+                "operationId": "notificationOnErrorPut",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを開始する。",
                 "description": "スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。",
@@ -538,6 +551,7 @@
                 }
             },
             "delete": {
+                "operationId": "notificationOnErrorDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを停止する。",
                 "description": "スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。",
@@ -726,18 +740,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -753,18 +771,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }
