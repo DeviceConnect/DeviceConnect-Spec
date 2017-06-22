@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "temperatureGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を取得する。",
                 "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。",
@@ -52,6 +53,7 @@
                 }
             },
             "put": {
+                "operationId": "temperaturePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を設定する。",
                 "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。<br>temperatureに設定できる値は、摂氏の場合は0以上50以下, 華氏の場合は32以上122以下。",
@@ -108,10 +110,12 @@
                 "properties": {
                     "tempareture": {
                         "type": "number",
+                        "title": "温度",
                         "description": "温度の値。"
                     },
                     "type": {
                         "type": "integer",
+                        "title": "単位",
                         "enum": [1, 2],
                         "description": "1:摂氏、2:華氏"
                     }
@@ -134,18 +138,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }

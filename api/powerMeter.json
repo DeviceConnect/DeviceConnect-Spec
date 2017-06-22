@@ -13,6 +13,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "powerMeterGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源状態を取得する。",
                 "description": "",
@@ -43,6 +44,7 @@
                 }
             },
             "put": {
+                "operationId": "powerMeterPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源を付ける。",
                 "description": "",
@@ -72,6 +74,7 @@
                 }
             },
             "delete": {
+                "operationId": "powerMeterDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの電源を消す。",
                 "description": "",
@@ -103,6 +106,7 @@
         },
         "/integratedPower": {
             "get": {
+                "operationId": "powerMeterIntegratedPowerGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスが計測した積算電力量を取得する。",
                 "description": "",
@@ -168,6 +172,7 @@
         },
         "/instantaneousPower": {
             "get": {
+                "operationId": "powerMeterInstantaneousPowerGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスが計測した瞬間電力量を取得する。",
                 "description": "",
@@ -302,18 +307,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

@@ -13,6 +13,7 @@
     "paths": {
         "/sound/volume": {
             "get": {
+                "operationId": "settingSoundVolumeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの音量を取得する。",
                 "description": "",
@@ -51,6 +52,7 @@
                 }
             },
             "put": {
+                "operationId": "settingSoundVolumePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの音量の設定依頼を送る。",
                 "description": "",
@@ -99,6 +101,7 @@
         },
         "/date": {
             "get": {
+                "operationId": "settingDateGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの日時を取得する。",
                 "description": "",
@@ -129,6 +132,7 @@
                 }
             },
             "put": {
+                "operationId": "settingDatePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの日時の設定依頼を送る。",
                 "description": "",
@@ -168,6 +172,7 @@
         },
         "/display/brightness": {
             "get": {
+                "operationId": "settingDisplayBrightnessGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのライト明度を取得する。",
                 "description": "",
@@ -198,6 +203,7 @@
                 }
             },
             "put": {
+                "operationId": "settingDisplayBrightnessPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのライト明度の設定依頼を送る。",
                 "description": "",
@@ -238,6 +244,7 @@
         },
         "/display/sleep": {
             "get": {
+                "operationId": "settingDisplaySleepGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの画面消灯設定を取得する。",
                 "description": "",
@@ -268,6 +275,7 @@
                 }
             },
             "put": {
+                "operationId": "settingDisplaySleepPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの画面消灯設定依頼を送る。",
                 "description": "",
@@ -317,6 +325,7 @@
                 "properties": {
                     "level": {
                         "type": "number",
+                        "title": "音量",
                         "description": "音量を割合で示す。(0.0 <= level <= 1.0)",
                         "minimum": 0.0,
                         "maximum": 1.0
@@ -335,6 +344,7 @@
                     "date": {
                         "type": "string",
                         "format": "date-time",
+                        "title": "日付",
                         "description": "RFC3339形式の日付。 例: 2014-01-01T00:00:00+0900"
                     }
                 }
@@ -350,6 +360,7 @@
                 "properties": {
                     "level": {
                         "type": "number",
+                        "title": "輝度",
                         "description": "ディスプレイの輝度を割合で示す 範囲 (0.0 <= level <= 1.0)",
                         "minimum": 0.0,
                         "maximum": 1.0
@@ -368,6 +379,7 @@
                     "time": {
                         "type": "integer",
                         "format": "int64",
+                        "title": "消灯するまでの時間",
                         "description": "ディスプレイが消灯するまでの時間 (ミリ秒)"
                     }
                 }
@@ -389,18 +401,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }

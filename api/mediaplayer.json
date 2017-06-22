@@ -13,6 +13,7 @@
     "paths": {
         "/media": {
             "get": {
+                "operationId": "mediaPlayerMediaGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の情報を取得する。",
                 "description": "",
@@ -75,6 +76,7 @@
                 }
             },
             "put": {
+                "operationId": "mediaPlayerMediaPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）を変更する。",
                 "description": "メディア再生中にmediaIdを再指定した場合は、新たに指定されたメディアの再生が始まる事とする。",
@@ -113,6 +115,7 @@
         },
         "/mediaList": {
             "get": {
+                "operationId": "mediaPlayerMediaListGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の一覧を取得する。",
                 "description": "",
@@ -278,6 +281,7 @@
         },
         "/playStatus": {
             "get": {
+                "operationId": "mediaPlayerPlayStatusGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態（音声・映像の再生・一時停止・ミュート）を取得する。",
                 "description": "再生中のメディアが無い場合はエラーを返却する。",
@@ -310,6 +314,7 @@
         },
         "/play": {
             "put": {
+                "operationId": "mediaPlayerPlayPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を再生中に変更する。",
                 "description": "再生中のメディアが無い場合はエラーを返却する。停止状態以外の状態で呼び出された場合はエラーを返却する。",
@@ -341,6 +346,7 @@
         },
         "/stop": {
             "put": {
+                "operationId": "mediaPlayerStopPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を停止に変更する。",
                 "description": "再生中のメディアが無い場合はエラーを返却する。再生中以外の状態で呼び出された場合はエラーを返却する。",
@@ -372,6 +378,7 @@
         },
         "/pause": {
             "put": {
+                "operationId": "mediaPlayerPausePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を一時停止に変更する。",
                 "description": "再生中のメディアが無い場合はエラーを返却する。再生中以外の状態で呼び出された場合はエラーを返却する。",
@@ -403,6 +410,7 @@
         },
         "/resume": {
             "put": {
+                "operationId": "mediaPlayerResumePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を再生中に変更する。",
                 "description": "再生中のメディアが無い場合はエラーを返却する。一時停止以外の状態で呼び出された場合はエラーを返却する。",
@@ -434,6 +442,7 @@
         },
         "/seek": {
             "put": {
+                "operationId": "mediaPlayerSeekPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を変更する。",
                 "description": "再生中のメディアが無い場合はエラーを返却する。",
@@ -472,6 +481,7 @@
                 }
             },
             "get": {
+                "operationId": "mediaPlayerSeekGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を取得する。",
                 "description": "再生中のメディアが無い場合はエラーを返却する。",
@@ -504,6 +514,7 @@
         },
         "/volume": {
             "put": {
+                "operationId": "mediaPlayerVolumePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのメディアプレイヤーの再生音量を変更する。",
                 "description": "システム全体の音量を変更したい場合はSettingプロファイルのVolume Setting APIを用いる事。",
@@ -542,6 +553,7 @@
                 }
             },
             "get": {
+                "operationId": "mediaPlayerVolumeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのメディアプレイヤーの再生音量を取得する。",
                 "description": "システム全体の音量を取得したい場合はSettingプロファイルのVolume Setting APIを用いる事。",
@@ -574,6 +586,7 @@
         },
         "/mute": {
             "put": {
+                "operationId": "mediaPlayerMutePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのメディアプレイヤー再生音量のミュートを有効にする。",
                 "description": "",
@@ -603,6 +616,7 @@
                 }
             },
             "delete": {
+                "operationId": "mediaPlayerMuteDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのメディアプレイヤー再生音量のミュートを解除する。",
                 "description": "",
@@ -632,6 +646,7 @@
                 }
             },
             "get": {
+                "operationId": "mediaPlayerMuteGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのメディアプレイヤー再生音量のミュート状態を取得する。",
                 "description": "",
@@ -664,6 +679,7 @@
         },
         "/onStatusChange": {
             "get": {
+                "operationId": "mediaPlayerOnStatusChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを取得する。",
                 "description": "再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。",
@@ -700,6 +716,7 @@
                 }
             },
             "put": {
+                "operationId": "mediaPlayerOnStatusChangePut",
                 "x-type": "event",
                 "summary": "スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを開始する。",
                 "description": "再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。",
@@ -756,6 +773,7 @@
                 }
             },
             "delete": {
+                "operationId": "mediaPlayerOnStatusChangeDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを停止する。",
                 "description": "再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。",
@@ -1252,18 +1270,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         },
@@ -1279,22 +1297,22 @@
                 "serviceId": {
                     "type": "string",
                     "title": "サービスID",
-                    "description": ""
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
                     "title": "プロファイル名",
-                    "description": ""
+                    "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
                     "title": "インターフェース名",
-                    "description": ""
+                    "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
                     "title": "アトリビュート名",
-                    "description": ""
+                    "description": "アトリビュート名。"
                 }
             }
         }

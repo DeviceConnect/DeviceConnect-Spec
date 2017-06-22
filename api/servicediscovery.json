@@ -1,57 +1,267 @@
 {
     "swagger": "2.0",
+    "basePath": "/gotapi/serviceDiscovery",
     "info": {
         "title": "ServiceDiscovery Profile",
         "version": "2.0.0",
-        "description": ""
+        "description": "DeviceConnectシステム上のサービス検索機能を提供するAPI。"
     },
-    "consumes": [],
+    "consumes": [
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
     "paths": {
         "/": {
             "get": {
                 "x-type": "one-shot",
-                "summary": "",
-                "description": "",
+                "operationId": "serviceDiscoveryGet",
+                "summary": "DeviceConnectサービスの検索を行う。",
+                "description": "DeviceConnectサービス検索機能を提供するAPI。 取得できる情報としては、サービスID、サービス名、ネットワーク種別、利用可能状態やデバイス固有のコンフィグ情報がある。",
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceDiscoveryResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "services": [{
+                                    "id": "example-service-id",
+                                    "name": "Example Service",
+                                    "online": true
+                                }]
+                            }
+                        }
                     }
                 }
             }
         },
         "/onServiceChange": {
-            "get": {
-                "x-type": "one-shot",
-                "summary": "",
-                "description": "",
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            },
             "put": {
                 "x-type": "event",
-                "summary": "",
-                "description": "",
+                "operationId": "serviceDiscoveryOnServiceChangePut",
+                "summary": "DeviceConnectサービス一覧の変更通知を受領する。",
+                "description": "DeviceConnectサービスの追加・削除・利用可能状態変更を通知するためのイベント。",
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnServiceChangeEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "profile": "serviceDiscovery",
+                            "attribute": "onServiceChange",
+                            "networkService": {
+                                "services": [{
+                                    "id": "example-service-id",
+                                    "name": "Example Service",
+                                    "online": true
+                                }]
+                            }
+                        }
                     }
                 }
             },
             "delete": {
                 "x-type": "event",
-                "summary": "",
+                "operationId": "serviceDiscoveryOnServiceChangeDelete",
+                "summary": "DeviceConnectサービス一覧の変更通知の受領を停止する。",
                 "description": "",
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceDiscoveryResponse": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "required": ["services"],
+                    "properties": {
+                        "services": {
+                            "type": "array",
+                            "title": "サービス一覧",
+                            "description": "DeviceConnectサービスの配列。",
+                            "items": {
+                                "$ref": "#/definitions/Service"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "Service": {
+            "type": "object",
+            "required": ["id", "name", "online"],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "サービスID",
+                    "description": "サービスを識別するためのID。"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "サービス名",
+                    "description": "サービスの名前。"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "ネットワーク種別",
+                    "description": "ホストデバイスと接続するためのネットワークの種別。"
+                },
+                "online": {
+                    "type": "boolean",
+                    "title": "利用可能状態",
+                    "description": "サービスが利用可能であるかどうかを示すフラグ。"
+                },
+                "config": {
+                    "type": "string",
+                    "title": "コンフィグ",
+                    "description": "サービス固有の設定がある場合には、ここに文字列として格納される。"
+                }
+            }
+        },
+        "OnServiceChangeEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "type": "object",
+                    "required": ["networkService"],
+                    "properties": {
+                        "networkService": {
+                            "type": "object",
+                            "title": "オブジェクト",
+                            "description": "イベントの内容を保持するオブジェクト。",
+                            "required": ["services"],
+                            "properties": {
+                                "services": {
+                                    "type": "array",
+                                    "title": "サービス一覧",
+                                    "description": "DeviceConnectサービスの配列。",
+                                    "items": {
+                                        "$ref": "#/definitions/Service"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "EventRegistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "EventUnregistrationResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                }
+            ]
+        },
+        "CommonResponse": {
+            "type": "object",
+            "required": [
+                "result",
+                "product",
+                "version"
+            ],
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "title": "処理結果",
+                    "description": "0:正常応答<br>0以外:異常応答"
+                },
+                "product": {
+                    "type": "string",
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
+                },
+                "version": {
+                    "type": "string",
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
+                },
+                "hmac": {
+                    "type": "string",
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                }
+            }
+        },
+        "CommonEvent": {
+            "type": "object",
+            "required": [
+                "serviceId",
+                "profile",
+                "interface",
+                "attribute"
+            ],
+            "properties": {
+                "serviceId": {
+                    "type": "string",
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
+                },
+                "profile": {
+                    "type": "string",
+                    "title": "プロファイル名",
+                    "description": "プロファイル名。"
+                },
+                "interface": {
+                    "type": "string",
+                    "title": "インターフェース名",
+                    "description": "インターフェース名。"
+                },
+                "attribute": {
+                    "type": "string",
+                    "title": "アトリビュート名",
+                    "description": "アトリビュート名。"
                 }
             }
         }
