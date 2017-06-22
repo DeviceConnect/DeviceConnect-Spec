@@ -1102,7 +1102,7 @@
                     "properties": {
                         "exist": {
                             "type": "boolean",
-                            "title": "人が検出されたかどうかのフラグ。",
+                            "title": "人検出フラグ",
                             "description": "検出された : true<br>検出されない : false"
                         }
                     }

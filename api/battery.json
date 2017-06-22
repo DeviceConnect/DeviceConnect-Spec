@@ -436,24 +436,24 @@
                     "properties": {
                         "charging": {
                             "type": "boolean",
-                            "title": "充電状態フラグ。",
+                            "title": "充電状態フラグ",
                             "description": "充電中:true<br>非充電中:false"
                         },
                         "chargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "title": "完全充電までの時間(秒)。",
+                            "title": "完全充電までの時間 (秒)",
                             "description": "満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
                         },
                         "dischargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "title": "完全放電までの時間(秒)。",
+                            "title": "完全放電までの時間 (秒)",
                             "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE"
                         },
                         "level": {
                             "type": "number",
-                            "title": "バッテリー残量。",
+                            "title": "バッテリー残量",
                             "description": "範囲: 0.0 <= level <= 1.0"
                         }
                     }
@@ -496,7 +496,7 @@
                         "chargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "title": "完全充電までの時間(秒)。",
+                            "title": "完全充電までの時間 (秒)",
                             "description": "満充電、または非充電中の場合は0。システムとして取得出来ない場合はNumber.MAX_VALUE。"
                         }
                     }
@@ -518,7 +518,7 @@
                         "dischargingTime": {
                             "type": "integer",
                             "format": "int64",
-                            "title": "完全放電までの時間(秒)。",
+                            "title": "完全放電までの時間 (秒)",
                             "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
                         }
                     }
@@ -539,7 +539,7 @@
                     "properties": {
                         "level": {
                             "type": "number",
-                            "title": "バッテリー残量。",
+                            "title": "バッテリー残量",
                             "description": "範囲: 0.0 <= level <= 1.0"
                         }
                     }
@@ -627,18 +627,18 @@
                                 "chargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "title": "完全充電までの時間(秒)。",
+                                    "title": "完全充電までの時間 (秒)",
                                     "description": "満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "dischargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "title": "完全放電までの時間(秒)。",
+                                    "title": "完全放電までの時間 (秒)",
                                     "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "level": {
                                     "type": "number",
-                                    "title": "バッテリー残量。",
+                                    "title": "バッテリー残量",
                                     "description": "範囲: 0.0 <= level <= 1.0"
                                 }
                             }
@@ -670,18 +670,18 @@
                                 "chargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "title": "完全充電までの時間(秒)。",
+                                    "title": "完全充電までの時間 (秒)",
                                     "description": "満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "dischargingTime": {
                                     "type": "integer",
                                     "format": "int64",
-                                    "title": "完全放電までの時間(秒)。",
+                                    "title": "完全放電までの時間 (秒)",
                                     "description": "充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。"
                                 },
                                 "level": {
                                     "type": "number",
-                                    "title": "バッテリー残量。",
+                                    "title": "バッテリー残量",
                                     "description": "範囲: 0.0 <= level <= 1.0"
                                 }
                             }

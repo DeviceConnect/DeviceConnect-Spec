@@ -106,22 +106,22 @@
                             "properties": {
                                 "wifi": {
                                     "type": "boolean",
-                                    "title": "Wi-Fiの接続フラグ。",
+                                    "title": "Wi-Fi接続フラグ",
                                     "description": "Wi-Fiの接続を提供しない場合は省略。"
                                 },
                                 "bluetooth": {
                                     "type": "boolean",
-                                    "title": "Bluetoothの接続フラグ。",
+                                    "title": "Bluetooth接続フラグ",
                                     "description": "Bluetoothの接続を提供しない場合は省略。"
                                 },
                                 "ble": {
                                     "type": "boolean",
-                                    "title": "BLEの接続フラグ。",
+                                    "title": "BLE接続フラグ",
                                     "description": "BLEの接続を提供しない場合は省略。"
                                 },
                                 "NFC": {
                                     "type": "boolean",
-                                    "title": "NFCの接続フラグ。",
+                                    "title": "NFC接続フラグ",
                                     "description": "NFCの接続を提供しない場合は省略。"
                                 }
                             }

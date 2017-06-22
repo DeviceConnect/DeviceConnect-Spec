@@ -585,8 +585,8 @@
                                 "properties": {
                                     "path": {
                                         "type": "string",
-                                        "title": "ファイル名を含めたファイルの存在するパス。",
-                                        "description": ""
+                                        "title": "ファイルパス",
+                                        "description": "ファイル名を含めたファイルの存在するパス。"
                                     },
                                     "mimeType": {
                                         "type": "string",
@@ -613,7 +613,7 @@
                                     },
                                     "fileSize": {
                                         "type": "integer",
-                                        "title": "ファイルのサイズ。",
+                                        "title": "ファイルサイズ",
                                         "description": "単位はbyte。"
                                     }
                                 }

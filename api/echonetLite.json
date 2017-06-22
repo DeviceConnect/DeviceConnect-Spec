@@ -136,12 +136,12 @@
                                 "properties": {
                                     "epc": {
                                         "type": "string",
-                                        "title": "ECHONET Property Code",
+                                        "title": "EPC",
                                         "description": "ECHONET Property Code"
                                     },
                                     "value": {
                                         "type": "string",
-                                        "title": "ECHONET Property Codeの設定値。",
+                                        "title": "設定値",
                                         "description": "ECHONET Property Codeの設定値。"
                                     }
                                 }
