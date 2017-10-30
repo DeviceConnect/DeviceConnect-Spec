@@ -1396,6 +1396,7 @@
                     "description": "レコーディング情報",
                     "required": [
                         "status",
+                        "uri",
                         "path",
                         "mimeType"
                     ],
