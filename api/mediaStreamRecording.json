@@ -1446,6 +1446,11 @@
                             "type": "string",
                             "title": "URI",
                             "description": "動画または音声のURI。"
+                        },
+                        "path": {
+                            "type": "string",
+                            "title": "ファイルパス",
+                            "description": "動画または音声へのファイルパス。ルートはデバイスプラグインごとに異なる。File APIのパラメータとして使用可能。"
                         }
                     }
                 }
