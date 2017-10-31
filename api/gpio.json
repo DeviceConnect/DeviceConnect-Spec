@@ -3082,8 +3082,16 @@
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0"
+                                "version": "1.0.0",
+                            "pins" : {
+                                "14": 1023,
+                                "15": 111,
+                                "16": 201,
+                                "17": 0,
+                                "18": 1014,
+                                "19": 99
                             }
+                          }
                         }
                     }
                 }
@@ -3124,8 +3132,8 @@
                     "examples": {
                         "application/json": {
                             "serviceId": "Host.dummyId.localhost.deviceconnect.org",
-                            "profile": "connect",
-                            "attribute": "onbluetoothchange",
+                            "profile": "gpio",
+                            "attribute": "onchange",
                             "pins" : {
                                 "14": 1023,
                                 "15": 111,
