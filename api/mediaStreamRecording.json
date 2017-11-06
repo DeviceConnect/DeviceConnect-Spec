@@ -1396,8 +1396,6 @@
                     "description": "レコーディング情報",
                     "required": [
                         "status",
-                        "uri",
-                        "path",
                         "mimeType"
                     ],
                     "properties": {
@@ -1439,9 +1437,6 @@
                 },
                 {
                     "type": "object",
-                    "required": [
-                        "uri"
-                    ],
                     "properties": {
                         "uri": {
                             "type": "string",
