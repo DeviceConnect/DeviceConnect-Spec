@@ -301,7 +301,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/RecorderControlResponse"
+                            "$ref": "#/definitions/RecorderStopResponse"
                         },
                         "examples": {
                             "application/json": {
@@ -1151,10 +1151,6 @@
                 },
                 {
                     "type": "object",
-                    "required": [
-                        "uri",
-                        "path"
-                    ],
                     "properties": {
                         "uri": {
                             "type": "string",
@@ -1400,7 +1396,6 @@
                     "description": "レコーディング情報",
                     "required": [
                         "status",
-                        "path",
                         "mimeType"
                     ],
                     "properties": {
@@ -1410,10 +1405,15 @@
                             "description": "レコーディングの状態を識別する文字列。",
                             "enum": ["recording", "stop", "pause", "resume", "mutetrack", "unmutetrack", "error", "warning"]
                         },
+                        "uri": {
+                            "type": "string",
+                            "title": "URI",
+                            "description": "動画または音声のURI。"
+                        },
                         "path": {
                             "type": "string",
                             "title": "ファイルパス",
-                            "description": "ファイルが存在するパス。ルートはデバイスプラグインごとに違う。File APIで使用可能。"
+                            "description": "ファイルが存在するパス。ルートはデバイスプラグインごとに違う。"
                         },
                         "mimeType": {
                             "type": "string",
@@ -1428,6 +1428,29 @@
                     }
                 }
             }
+        },
+        "RecorderStopResponse": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonResponse"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "uri": {
+                            "type": "string",
+                            "title": "URI",
+                            "description": "動画または音声のURI。"
+                        },
+                        "path": {
+                            "type": "string",
+                            "title": "ファイルパス",
+                            "description": "動画または音声へのファイルパス。ルートはデバイスプラグインごとに異なる。File APIのパラメータとして使用可能。"
+                        }
+                    }
+                }
+            ]
         },
         "RecorderControlResponse": {
             "type": "object",
