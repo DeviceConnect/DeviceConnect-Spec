@@ -120,7 +120,7 @@
                     },
                     {
                         "name": "date",
-                        "description": "取得日付。<br>RFC 3339 例: 2014-01-01T00:00:00+0900<br>省略時はAPI実行日時が指定される",
+                        "description": "取得日付。<br>RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」形式<br>省略時はAPI実行日時が指定される",
                         "in": "query",
                         "required": false,
                         "type": "string",

@@ -368,7 +368,8 @@
                                     "y": 75
                                 },
                                 "impactSpeed": 0,
-                                "impactTimestamp": 1483241696789,
+                                "impactTimeStamp": 1483241696789,
+                                "impactTimeStampString": "2015-05-17T10:02:20+09:00",
                                 "impactAcceleration": {
                                     "x": -1.57421875,
                                     "y": -1.53076171875,
@@ -501,11 +502,17 @@
                             "title": "衝突速度",
                             "description": "衝突速度(単位: cm/s)"
                         },
-                        "impactTimestamp": {
+                        "impactTimeStamp": {
                             "type": "integer",
                             "format": "int64",
                             "title": "衝突時刻",
                             "description": "衝突した時間のタイムスタンプ(単位: ミリ秒)"
+                        },
+                        "impactTimeStampString": {
+                            "type": "string",
+                            "format": "date-time",
+                            "title": "衝突時刻の文字列",
+                            "description": "衝突した時間のタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                         }
                     }
                 }

@@ -63,7 +63,7 @@
                                         "speed": 0
                                     },
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 }
                             }
                         }
@@ -123,7 +123,7 @@
                                         "speed": 0
                                     },
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 }
                             }
                         }
@@ -194,7 +194,7 @@
                                     "speed": 0
                                 },
                                 "timeStamp": 1483241696789,
-                                "timeStampString": "20170101123456.789+0900"
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
@@ -330,9 +330,10 @@
                             "description": "エポックからのミリ秒"
                         },
                         "timeStampString": {
-                            "type": "string",
+							"type": "string",
+							"format": "date-time",
                             "title": "測位時刻 (文字列)",
-                            "description": "測位時刻を文字列表記<br>[YYYYMMDDHHMMSS.sss+/-HHMM]形式"
+                            "description": "測位時刻を文字列表記<br>RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式"
                         }
                     }
                 }

@@ -46,7 +46,7 @@
                                         "unit": "beat per min",
                                         "unitCode": 264864,
                                         "timeStamp": 1483241696789,
-                                        "timeStampString": "20170101123456.789+0900"
+                                        "timeStampString": "2015-05-17T10:02:20+09:00"
                                     },
                                     "rr": {
                                         "value": 909.1796875,
@@ -56,7 +56,7 @@
                                         "unit": "ms",
                                         "unitCode": 264338,
                                         "timeStamp": 1483241696789,
-                                        "timeStampString": "20170101123456.789+0900"
+                                        "timeStampString": "2015-05-17T10:02:20+09:00"
                                     },
                                     "energy": {
                                         "value": 0,
@@ -66,7 +66,7 @@
                                         "unit": "Calories",
                                         "unitCode": 6784,
                                         "timeStamp": 1483241696789,
-                                        "timeStampString": "20170101123456.789+0900"
+                                        "timeStampString": "2015-05-17T10:02:20+09:00"
                                     },
                                     "device": {
                                         "productName": "DUMMY DEVICE",
@@ -142,7 +142,7 @@
                                     "unit": "beat per min",
                                     "unitCode": 264864,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 },
                                 "rr": {
                                     "value": 909.1796875,
@@ -152,7 +152,7 @@
                                     "unit": "ms",
                                     "unitCode": 264338,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 },
                                 "energy": {
                                     "value": 0,
@@ -162,7 +162,7 @@
                                     "unit": "Calories",
                                     "unitCode": 6784,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 },
                                 "device": {
                                     "productName": "DUMMY DEVICE",
@@ -248,7 +248,7 @@
                                         "unit": "beat per min",
                                         "unitCode": 264864,
                                         "timeStamp": 1483241696789,
-                                        "timeStampString": "20170101123456.789+0900"
+                                        "timeStampString": "2015-05-17T10:02:20+09:00"
                                     },
                                     "rr": {
                                         "value": 909.1796875,
@@ -258,7 +258,7 @@
                                         "unit": "ms",
                                         "unitCode": 264338,
                                         "timeStamp": 1483241696789,
-                                        "timeStampString": "20170101123456.789+0900"
+                                        "timeStampString": "2015-05-17T10:02:20+09:00"
                                     },
                                     "energy": {
                                         "value": 0,
@@ -268,7 +268,7 @@
                                         "unit": "Calories",
                                         "unitCode": 6784,
                                         "timeStamp": 1483241696789,
-                                        "timeStampString": "20170101123456.789+0900"
+                                        "timeStampString": "2015-05-17T10:02:20+09:00"
                                     },
                                     "device": {
                                         "productName": "DUMMY DEVICE",
@@ -344,7 +344,7 @@
                                     "unit": "beat per min",
                                     "unitCode": 264864,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 },
                                 "rr": {
                                     "value": 909.1796875,
@@ -354,7 +354,7 @@
                                     "unit": "ms",
                                     "unitCode": 264338,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 },
                                 "energy": {
                                     "value": 0,
@@ -364,7 +364,7 @@
                                     "unit": "Calories",
                                     "unitCode": 6784,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 },
                                 "device": {
                                     "productName": "DUMMY DEVICE",
@@ -658,9 +658,10 @@
                                     "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                                 },
                                 "timeStampString": {
-                                    "type": "string",
+									"type": "string",
+									"format": "date-time",
                                     "title": "心拍数のタイムスタンプ文字列",
-                                    "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                                    "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                                 }
                             }
                         },
@@ -706,9 +707,10 @@
                                     "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                                 },
                                 "timeStampString": {
-                                    "type": "string",
+									"type": "string",
+									"format": "date-time",
                                     "title": "RR間隔のタイムスタンプ文字列",
-                                    "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                                    "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                                 }
                             }
                         },
@@ -754,9 +756,10 @@
                                     "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                                 },
                                 "timeStampString": {
-                                    "type": "string",
+									"type": "string",
+									"format": "date-time",
                                     "title": "消費エネルギーのタイムスタンプ文字列",
-                                    "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                                    "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                                 }
                             }
                         },

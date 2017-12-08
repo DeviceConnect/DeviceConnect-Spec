@@ -34,7 +34,9 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "illuminance": 240
+                                "illuminance": 240,
+                                "timeStamp": 1431856940275,
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
@@ -60,6 +62,18 @@
                             "type": "number",
                             "title": "照度",
                             "description": "照度センサーが検知した照度。単位はルクス(lx)。"
+                        },
+                        "timeStamp": {
+                            "type": "integer",
+                            "format": "int64",
+                            "title": "照度のタイムスタンプ",
+                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+                        },
+                        "timeStampString": {
+							"type": "string",
+							"format": "date-time",
+                            "title": "照度のタイムスタンプ文字列",
+                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                         }
                     }
                 }

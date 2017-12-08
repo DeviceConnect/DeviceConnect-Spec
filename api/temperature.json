@@ -46,7 +46,9 @@
                                 "version": "1.0",
                                 "result": 0,
                                 "temperature":25,
-                                "type":1
+                                "type":1,
+                                "timeStamp": 1431856940275,
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
@@ -118,7 +120,19 @@
                         "title": "単位",
                         "enum": [1, 2],
                         "description": "1:摂氏、2:華氏"
-                    }
+                    },
+					"timeStamp": {
+						"type": "integer",
+						"format": "int64",
+						"title": "温度のタイムスタンプ",
+						"description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+					},
+					"timeStampString": {
+						"type": "string",
+						"format": "date-time",
+						"title": "温度のタイムスタンプ文字列",
+						"description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
+					}
                 }
             }]
         },
