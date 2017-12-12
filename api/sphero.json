@@ -300,6 +300,7 @@
                                     },
                                     "impactSpeed": 0,
                                     "impactTimestamp": 1483241696789,
+                                	"impactTimeStampString": "2015-05-17T10:02:20+09:00",
                                     "impactAcceleration": {
                                         "x": -1.57421875,
                                         "y": -1.53076171875,
