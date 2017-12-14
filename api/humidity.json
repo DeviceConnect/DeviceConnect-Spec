@@ -37,7 +37,9 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "humidity": 0.1
+                                "humidity": 0.1,
+                                "timeStamp": 1431856940275,
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
@@ -65,6 +67,18 @@
                             "description": "湿度センサーが検知した湿度を通知する。<br>範囲: 0.0 ~ 1.0",
                             "minimum": 0.0,
                             "maximum": 1.0
+                        },
+                        "timeStamp": {
+                            "type": "integer",
+                            "format": "int64",
+                            "title": "湿度のタイムスタンプ",
+                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+                        },
+                        "timeStampString": {
+							"type": "string",
+							"format": "date-time",
+                            "title": "湿度のタイムスタンプ文字列",
+                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                         }
                     }
                 }

@@ -87,6 +87,7 @@
                                         "messengerType": "facebook",
                                         "from" : "abcdef",
                                         "timeStamp" : 1234567890,
+                                	 	"timeStampString": "2015-05-17T10:02:20+09:00",
                                         "channelId" : "1",
                                         "text" :  "ライトをつけて",
                                         "resource" : "http://www.gclue.io/a.png",
@@ -189,6 +190,7 @@
                                      "messengerType": "xxxx",
                                      "from" : "abcdef",
                                      "timeStamp" : 1234567890,
+                                	 "timeStampString": "2015-05-17T10:02:20+09:00",
                                      "channelId" : "1",
                                      "text" :  "ライトをつけて",
                                      "resource" : "http://org.deviceconnect/test.png",
@@ -250,6 +252,7 @@
                                  "messengerType": "xxxx",
                                  "from" : "abcdef",
                                  "timeStamp" : 1234567890,
+                                 "timeStampString": "2015-05-17T10:02:20+09:00"
                                  "channelId" : "1",
                                  "text" :  "ライトをつけて",
                                  "resource" : "http://org.deviceconnect/test.png",
@@ -362,7 +365,8 @@
                                     "messagerType",
                                     "from",
                                     "channelId",
-                                    "timeStamp"
+                                    "timeStamp",
+                                    "timeStampString"
                                 ],
                                 "properties": {
                                     "messagerType": {
@@ -387,6 +391,12 @@
                                         "title": "投稿した時間",
                                         "description": ""
                                     },
+									"timeStampString": {
+										"type": "string",
+										"format": "date-time",
+										"title": "投稿した時間の文字列",
+										"description": "投稿した時間をRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
+									},
                                     "text": {
                                         "type": "string",
                                         "title": "チャンネル名",
@@ -457,7 +467,8 @@
                         "messagerType",
                         "from",
                         "channelId",
-                        "timeStamp"
+                        "timeStamp",
+                        "timeStampString"
                     ],
                     "properties": {
                         "messagerType": {
@@ -482,6 +493,12 @@
                             "title": "投稿した時間",
                             "description": ""
                         },
+						"timeStampString": {
+							"type": "string",
+							"format": "date-time",
+							"title": "投稿した時間の文字列",
+							"description": "投稿した時間をRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
+						},
                         "text": {
                             "type": "string",
                             "title": "チャンネル名",

@@ -278,7 +278,7 @@
                                         "path" : "/test/file1.txt",
                                         "fileName" : "file1.txt",
                                         "mimeType": "text/plain",
-                                        "updateDate":"2014-05-02 T10:32:10+0900",
+                                        "updateDate":"2015-05-17T10:02:20+09:00",
                                         "fileSize": 123,
                                         "fileType": 0
                                     }
@@ -361,7 +361,7 @@
                                         "path" : "/test/file1.txt",
                                         "fileName" : "file1.txt",
                                         "mimeType": "text/plain",
-                                        "updateDate":"2014-05-02 T10:32:10+0900",
+                                        "updateDate":"2015-05-17T10:02:20+09:00",
                                         "fileSize": 123,
                                         "fileType": 0
                                     }
@@ -607,9 +607,10 @@
                                         "description": ""
                                     },
                                     "updateDate": {
-                                        "type": "string",
+										"type": "string",
+										"format": "date-time",
                                         "title": "更新時間",
-                                        "description": "RFC 3339"
+                                        "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                                     },
                                     "fileSize": {
                                         "type": "integer",

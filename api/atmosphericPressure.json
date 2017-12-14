@@ -39,7 +39,7 @@
                                 "version": "1.0.0",
                                 "atmosphericPressure": 1016.12,
                                 "timeStamp": 1431856940275,
-                                "timeStampString": "20150517100220.000-0000"
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
@@ -57,9 +57,7 @@
                 {
                     "type": "object",
                     "required": [
-                        "atmosphericPressure",
-                        "timeStamp",
-                        "timeStampString"
+                        "atmosphericPressure"
                     ],
                     "properties": {
                         "atmosphericPressure": {
@@ -74,9 +72,10 @@
                             "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                         },
                         "timeStampString": {
-                            "type": "string",
+							"type": "string",
+							"format": "date-time",
                             "title": "気圧のタイムスタンプ文字列",
-                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                         }
                     }
                 }

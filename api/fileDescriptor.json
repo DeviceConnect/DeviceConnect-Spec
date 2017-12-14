@@ -450,13 +450,13 @@
                                 },
                                 "curr": {
                                     "type": "string",
-                                    "title": "現在の更新時間（RFC 3339）",
-                                    "description": "例: 2014-01-01T00:00:00+0900"
+                                    "title": "現在の更新時間（RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す）。",
+                                    "description": "例: 2015-05-17T10:02:20+09:00"
                                 },
                                 "prev": {
                                     "type": "string",
-                                    "title": "以前の更新時間（RFC 3339）",
-                                    "description": "例: 2014-01-01T00:00:00+0900"
+                                    "title": "以前の更新時間（RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す）。",
+                                    "description": "例: 2015-05-17T10:02:20+09:00"
                                 }
 
 
