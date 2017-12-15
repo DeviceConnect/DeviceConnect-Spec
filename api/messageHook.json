@@ -252,7 +252,7 @@
                                  "messengerType": "xxxx",
                                  "from" : "abcdef",
                                  "timeStamp" : 1234567890,
-                                 "timeStampString": "2015-05-17T10:02:20+09:00"
+                                 "timeStampString": "2015-05-17T10:02:20+09:00",
                                  "channelId" : "1",
                                  "text" :  "ライトをつけて",
                                  "resource" : "http://org.deviceconnect/test.png",
