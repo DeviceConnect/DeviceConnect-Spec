@@ -43,8 +43,6 @@
                 },
                 {
                     "type": "object",
-                    "required": [
-                    ],
                     "properties": {
                         "name": {
                             "type": "string",
