@@ -45,7 +45,7 @@
                                     "unit": "mVolt * milliSecond",
                                     "unitCode": 3328,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 }
                             }
                         }
@@ -106,7 +106,7 @@
                                 "unit": "mVolt * milliSecond",
                                 "unitCode": 3328,
                                 "timeStamp": 1483241696789,
-                                "timeStampString": "20170101123456.789+0900"
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
@@ -226,9 +226,10 @@
                             "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                         },
                         "timeStampString": {
-                            "type": "string",
+							"type": "string",
+							"format": "date-time",
                             "title": "ECGのタイムスタンプ文字列",
-                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                         }
                     }
                 }

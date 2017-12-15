@@ -125,7 +125,7 @@
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
-                                "date": "2017-01-01 12:34:56+0900"
+                                "date": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
@@ -146,7 +146,7 @@
                     },
                     {
                         "name": "date",
-                        "description": "RFC3339形式の日付。 例: 2014-01-01T00:00:00+0900",
+                        "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。 例: 2015-05-17T10:02:20+09:00",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -345,7 +345,7 @@
                         "type": "string",
                         "format": "date-time",
                         "title": "日付",
-                        "description": "RFC3339形式の日付。 例: 2014-01-01T00:00:00+0900"
+                        "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。 例: 2015-05-17T10:02:20+09:00"
                     }
                 }
             }]
