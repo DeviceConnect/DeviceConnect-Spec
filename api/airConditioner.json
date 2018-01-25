@@ -271,7 +271,7 @@
                 }
             }
         },
-        "/temperature": {
+        "/targetTemperature": {
             "get": {
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの温度設定値を取得する。",
