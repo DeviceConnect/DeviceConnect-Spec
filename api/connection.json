@@ -13,6 +13,7 @@
     "paths": {
         "/wifi": {
             "get": {
+                "operationId": "connectionWifiGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)を取得する。",
                 "description": "",
@@ -43,6 +44,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionWifiPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのWIFI機能有効状態を有効に設定する。",
                 "description": "",
@@ -72,6 +74,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionWifiDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのWIFI機能有効状態を無効に設定する。",
                 "description": "",
@@ -103,6 +106,7 @@
         },
         "/onWifiChange": {
             "get": {
+                "operationId": "connectionOnWifiChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "WIFI機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -135,6 +139,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionOnWifiChangePut",
                 "x-type": "event",
                 "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
                 "description": "WIFI機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -187,6 +192,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionOnWifiChangeDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
                 "description": "WIFI機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -218,6 +224,7 @@
         },
         "/bluetooth": {
             "get": {
+                "operationId": "connectionBluetoothGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBluetooth機能有効状態(ON/OFF)を取得する。",
                 "description": "",
@@ -248,6 +255,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionBluetoothPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBluetooth機能有効状態を有効に設定する。",
                 "description": "",
@@ -277,6 +285,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionBluetoothDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBluetooth機能有効状態を無効に設定する。",
                 "description": "",
@@ -308,6 +317,7 @@
         },
         "/onBluetoothChange": {
             "get": {
+                "operationId": "connectionOnBluetoothChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -340,6 +350,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionOnBluetoothChangePut",
                 "x-type": "event",
                 "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
                 "description": "Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -392,6 +403,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionOnBluetoothChangeDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
                 "description": "Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -423,6 +435,7 @@
         },
         "/bluetooth/discoverable": {
             "put": {
+                "operationId": "connectionBluetoothDiscoverablePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBluetooth検索可能状態を有効に設定する。",
                 "description": "",
@@ -452,6 +465,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionBluetoothDiscoverableDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBluetooth検索可能状態を無効に設定する。",
                 "description": "",
@@ -483,6 +497,7 @@
         },
         "/nfc": {
             "get": {
+                "operationId": "connectionNfcGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)を取得する。",
                 "description": "",
@@ -513,6 +528,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionNfcPut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのNFC機能有効状態を有効に設定する。",
                 "description": "",
@@ -542,6 +558,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionNfcDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのNFC機能有効状態を無効に設定する。",
                 "description": "",
@@ -573,6 +590,7 @@
         },
         "/onNfcChange": {
             "get": {
+                "operationId": "connectionOnNfcChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "NFC機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -605,6 +623,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionOnNfcChangePut",
                 "x-type": "event",
                 "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
                 "description": "NFC機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -657,6 +676,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionOnNfcChangeDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのNFC機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
                 "description": "NFC機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -688,6 +708,7 @@
         },
         "/ble": {
             "get": {
+                "operationId": "connectionBleGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)を取得する。",
                 "description": "",
@@ -718,6 +739,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionBlePut",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBLE機能有効状態を有効に設定する。",
                 "description": "",
@@ -747,6 +769,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionBleDelete",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBLE機能有効状態を無効に設定する。",
                 "description": "",
@@ -778,6 +801,7 @@
         },
         "/onBleChange": {
             "get": {
+                "operationId": "connectionOnBleChangeGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)の変化を通知するイベントを取得する。",
                 "description": "BLE機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -810,6 +834,7 @@
                 }
             },
             "put": {
+                "operationId": "connectionOnBleChangePut",
                 "x-type": "event",
                 "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)の変化を通知するイベントを開始する。",
                 "description": "BLE機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -862,6 +887,7 @@
                 }
             },
             "delete": {
+                "operationId": "connectionOnBleChangeDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスのBLE機能有効状態(ON/OFF)の変化を通知するイベントを停止する。",
                 "description": "BLE機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。",
@@ -943,6 +969,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -971,6 +998,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1036,6 +1064,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1064,6 +1093,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1145,6 +1175,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1173,6 +1204,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1238,6 +1270,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1266,6 +1299,7 @@
                     "properties": {
                         "connectStatus": {
                             "type": "object",
+                            "title": "接続情報",
                             "required": [
                                 "enable"
                             ],
@@ -1312,18 +1346,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         },
@@ -1338,18 +1372,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

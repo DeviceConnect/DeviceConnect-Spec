@@ -13,6 +13,7 @@
     "paths": {
         "/roi": {
             "put": {
+                "operationId": "omnidirectionalImageRoiPut",
                 "x-type": "streaming",
                 "summary": "ROI画像の受信を開始するAPI。",
                 "description": "本APIのレスポンスで返されるURIでROI画像を参照できる。",
@@ -50,6 +51,7 @@
                 }
             },
             "delete": {
+                "operationId": "omnidirectionalImageRoiDelete",
                 "x-type": "streaming",
                 "summary": "ROI画像の受信を終了する。",
                 "description": "",
@@ -88,6 +90,7 @@
         },
         "/roi/settings" :{
             "put": {
+                "operationId": "omnidirectionalImageRoiSettingsPut",
                 "x-type": "one-shot",
                 "summary": "ROI画像の設定を変更する。",
                 "description": "注1: OpenGLで実装する場合、ワールド座標上の長さ1は実世界上の1メートルに換算する。",
@@ -267,18 +270,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }

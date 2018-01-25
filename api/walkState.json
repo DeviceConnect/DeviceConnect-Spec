@@ -13,6 +13,7 @@
     "paths": {
         "/onWalkState": {
             "get": {
+                "operationId": "walkStateOnWalkStateGet",
                 "x-type": "one-shot",
                 "summary": "該当デバイスの歩行状態計測イベントを取得する。",
                 "description": "",
@@ -43,7 +44,7 @@
                                     "distance": 12.3456,
                                     "balance": 0.16,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 }
                             }
                         }
@@ -51,6 +52,7 @@
                 }
             },
             "put": {
+                "operationId": "walkStateOnWalkStatePut",
                 "x-type": "event",
                 "summary": "該当デバイスの歩行状態計測イベントを通知する。",
                 "description": "",
@@ -102,13 +104,14 @@
                                 "distance": 12.3456,
                                 "balance": 0.16,
                                 "timeStamp": 1483241696789,
-                                "timeStampString": "20170101123456.789+0900"
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
                 }
             },
             "delete": {
+                "operationId": "walkStateOnWalkStateDelete",
                 "x-type": "event",
                 "summary": "該当デバイスの歩行状態計測イベントを停止する。",
                 "description": "",
@@ -170,6 +173,7 @@
             "properties": {
                 "walk": {
                     "type": "object",
+                    "title": "歩行情報",
                     "required": [
                         "step",
                         "state",
@@ -182,6 +186,7 @@
                         "step": {
                             "type": "number",
                             "format": "double",
+                            "title": "歩数",
                             "description": "歩数。単位は歩。"
                         },
                         "state": {
@@ -191,26 +196,38 @@
                                 "Walking",
                                 "Running"
                             ],
+                            "title": "歩行状態",
                             "description": "<ul><li>Stop:停止</li><li>Walking:歩行</li><li>Running:走行</li></ul>"
                         },
                         "speed": {
                             "type": "number",
                             "format": "double",
+                            "title": "速度",
+                            "description": "速度。単位はkm/h。"
+                        },
+                        "distance": {
+                            "type": "number",
+                            "format": "double",
+                            "title": "距離",
                             "description": "距離。単位はkm。"
                         },
                         "balance": {
                             "type": "number",
                             "format": "double",
+                            "title": "左右バランス",
                             "description": "左右のバランス。1に近いほど左右のバランスが良い。<br>-1.0〜1.0"
                         },
                         "timeStamp": {
                             "type": "integer",
                             "format": "int64",
+                            "title": "タイムスタンプ (Unix時刻)",
                             "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                         },
                         "timeStampString": {
-                            "type": "string",
-                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+							"type": "string",
+							"format": "date-time",
+                            "title": "タイムスタンプ (日付)",
+                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                         }
                     }
                 }
@@ -242,18 +259,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -269,18 +290,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

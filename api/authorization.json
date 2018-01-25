@@ -10,6 +10,7 @@
     "paths": {
         "/grant": {
             "get": {
+                "operationId": "authorizationGrantGet",
                 "x-type": "one-shot",
                 "summary": "Device Connect ManagerにLocal OAuthを行うためのクライアントの作成要求を行う。",
                 "description": "同じオリジンから送信された場合には、以前のクライアントを削除して新たにクライアントを作成する。<br>それに伴い、クライアントに紐づいていたアクセストークンもすべて破棄される。",
@@ -34,6 +35,7 @@
         },
         "/accessToken": {
             "get": {
+                "operationId": "authorizationAccessTokenGet",
                 "x-type": "one-shot",
                 "summary": "DeviceConnectManagerにLocal OAuthを行うためのアクセストークンの作成要求を行う。",
                 "description": "各プロファイルにアクセスするためには、このAPIで作成したアクセストークンが必要になる。<br>また、アクセストークンには有効期限が存在するので、有効期限が切れた場合には再度アクセストークンを作成し直す必要がある。",
@@ -182,18 +184,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

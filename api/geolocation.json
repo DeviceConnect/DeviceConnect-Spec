@@ -13,6 +13,7 @@
     "paths": {
         "/currentPosition": {
             "get": {
+                "operationId": "geolocationCurrentPositionGet",
                 "x-type": "one-shot",
                 "summary": "該当デバイスの現在の位置情報を取得する。",
                 "description": "",
@@ -62,7 +63,7 @@
                                         "speed": 0
                                     },
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 }
                             }
                         }
@@ -72,6 +73,7 @@
         },
         "/onWatchPosition": {
             "get": {
+                "operationId": "geolocationOnWatchPositionGet",
                 "x-type": "one-shot",
                 "summary": "該当デバイスの位置情報定期通知イベントを取得する。",
                 "description": "",
@@ -121,7 +123,7 @@
                                         "speed": 0
                                     },
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 }
                             }
                         }
@@ -129,6 +131,7 @@
                 }
             },
             "put": {
+                "operationId": "geolocationOnWatchPositionPut",
                 "x-type": "event",
                 "summary": "該当デバイスの位置情報定期通知イベントを開始する。",
                 "description": "",
@@ -191,13 +194,14 @@
                                     "speed": 0
                                 },
                                 "timeStamp": 1483241696789,
-                                "timeStampString": "20170101123456.789+0900"
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
                 }
             },
             "delete": {
+                "operationId": "geolocationOnWatchPositionDelete",
                 "x-type": "event",
                 "summary": "該当デバイスの位置情報定期通知イベントを停止する。",
                 "description": "",
@@ -271,6 +275,7 @@
             "properties": {
                 "position": {
                     "type": "object",
+                    "title": "位置情報",
                     "required": [
                         "coordinates",
                         "timeStamp",
@@ -325,9 +330,10 @@
                             "description": "エポックからのミリ秒"
                         },
                         "timeStampString": {
-                            "type": "string",
+							"type": "string",
+							"format": "date-time",
                             "title": "測位時刻 (文字列)",
-                            "description": "測位時刻を文字列表記<br>[YYYYMMDDHHMMSS.sss+/-HHMM]形式"
+                            "description": "測位時刻を文字列表記<br>RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式"
                         }
                     }
                 }
@@ -343,18 +349,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -386,18 +396,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

@@ -1,26 +1,26 @@
 {
     "swagger": "2.0",
-    "basePath": "/gotapi/atmosphericPressure",
+    "basePath": "/gotapi/device",
     "info": {
-        "title": "Atmospheric Pressure Profile",
+        "title": "device Profile",
         "version": "2.0.0",
-        "description": "気圧の値を取得する機能を提供するAPI。"
+        "description": "スマートデバイスへの接続関連の機能を提供するAPI。"
     },
     "consumes": [
         "application/x-www-form-urlencoded",
         "multipart/form-data"
     ],
     "paths": {
-        "/": {
-            "get": {
-                "operationId": "atmosphericPressureGet",
+        "/pairing": {
+            "post": {
+                "operationId": "devicePairingPost",
                 "x-type": "one-shot",
-                "summary": "スマートデバイスの気圧情報を取得する。",
+                "summary": "スマートデバイスとペアリングする。",
                 "description": "",
                 "parameters": [
                     {
                         "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
+                        "description": "サービスID。<br>ペアリング対象スマートデバイス",
                         "in": "query",
                         "required": true,
                         "type": "string"
@@ -30,16 +30,43 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/GetAtmosphericPressureResponse"
+                            "$ref": "#/definitions/PairingResponse"
                         },
                         "examples": {
                             "application/json": {
                                 "result": 0,
                                 "product": "Example System",
-                                "version": "1.0.0",
-                                "atmosphericPressure": 1016.12,
-                                "timeStamp": 1431856940275,
-                                "timeStampString": "2015-05-17T10:02:20+09:00"
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "devicePairingDelete",
+                "x-type": "one-shot",
+                "summary": "スマートデバイスとペアリングを解除する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。<br>ペアリング解除対象スマートデバイス",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/PairingReleaseResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
                             }
                         }
                     }
@@ -48,36 +75,19 @@
         }
     },
     "definitions": {
-        "GetAtmosphericPressureResponse": {
+        "PairingResponse": {
             "type": "object",
             "allOf": [
                 {
                     "$ref": "#/definitions/CommonResponse"
-                },
+                }
+            ]
+        },
+        "PairingReleaseResponse": {
+            "type": "object",
+            "allOf": [
                 {
-                    "type": "object",
-                    "required": [
-                        "atmosphericPressure"
-                    ],
-                    "properties": {
-                        "atmosphericPressure": {
-                            "type": "number",
-                            "title": "気圧",
-                            "description": "気圧<br>単位: ヘクトパスカル(hPa)"
-                        },
-                        "timeStamp": {
-                            "type": "integer",
-                            "format": "int64",
-                            "title": "気圧のタイムスタンプ",
-                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
-                        },
-                        "timeStampString": {
-							"type": "string",
-							"format": "date-time",
-                            "title": "気圧のタイムスタンプ文字列",
-                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
-                        }
-                    }
+                    "$ref": "#/definitions/CommonResponse"
                 }
             ]
         },

@@ -13,6 +13,7 @@
     "paths": {
         "/onDeviceProximity": {
             "get": {
+                "operationId": "proximityOnDeviceProximityGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの近接センサーの物の検知を通知するイベントを取得する。",
                 "description": "スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。",
@@ -49,6 +50,7 @@
                 }
             },
             "put": {
+                "operationId": "proximityOnDeviceProximityPut",
                 "x-type": "event",
                 "summary": "スマートデバイスの近接センサーの物の検知を通知するイベントを開始する。",
                 "description": "スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。",
@@ -106,6 +108,7 @@
                 }
             },
             "delete": {
+                "operationId": "proximityOnDeviceProximityDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスの近接センサーの物の検知を通知するイベントを停止する。",
                 "description": "スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。",
@@ -142,6 +145,7 @@
         },
         "/onUserProximity": {
             "get": {
+                "operationId": "proximityOnUserProximityGet",
                 "x-type": "one-shot",
                 "summary": "スマートデバイスの近接センサーのユーザ検知を通知するイベントを取得する。",
                 "description": "ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。",
@@ -174,6 +178,7 @@
                 }
             },
             "put": {
+                "operationId": "proximityOnUserProximityPut",
                 "x-type": "event",
                 "summary": "スマートデバイスの近接センサーのユーザ検知を通知するイベントを開始する。",
                 "description": "ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。",
@@ -227,6 +232,7 @@
                 }
             },
             "delete": {
+                "operationId": "proximityOnUserProximityDelete",
                 "x-type": "event",
                 "summary": "スマートデバイスの近接センサーのユーザ検知を通知するイベントを停止する。",
                 "description": "ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。",
@@ -294,6 +300,7 @@
             "properties": {
                 "proximity": {
                     "type": "object",
+                    "title": "近接イベント",
                     "properties": {
                         "value": {
                             "type": "integer",
@@ -355,6 +362,7 @@
             "properties": {
                 "proximity": {
                     "type": "object",
+                    "title": "近接イベント",
                     "required": [
                         "near"
                     ],
@@ -399,18 +407,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         },
@@ -426,22 +434,22 @@
                 "serviceId": {
                     "type": "string",
                     "title": "サービスID",
-                    "description": ""
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
                     "title": "プロファイル名",
-                    "description": ""
+                    "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
                     "title": "インターフェース名",
-                    "description": ""
+                    "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
                     "title": "アトリビュート名",
-                    "description": ""
+                    "description": "アトリビュート名。"
                 }
             }
         }

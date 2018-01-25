@@ -10,6 +10,7 @@
     "paths": {
         "/": {
             "get": {
+                "operationId": "availabilityGet",
                 "x-type": "one-shot",
                 "summary": "Device Connect Managerが起動しているかどうかを確認する。",
                 "description": "",
@@ -42,8 +43,6 @@
                 },
                 {
                     "type": "object",
-                    "required": [
-                    ],
                     "properties": {
                         "name": {
                             "type": "string",
@@ -69,18 +68,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         }

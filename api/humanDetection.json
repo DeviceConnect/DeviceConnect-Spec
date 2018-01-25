@@ -13,6 +13,7 @@
     "paths": {
         "/onDetection": {
             "get": {
+                "operationId": "humanDetectionOnDetectionGet",
                 "x-type": "one-shot",
                 "summary": "人を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -45,6 +46,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnDetectionPut",
                 "x-type": "event",
                 "summary": "人を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -98,6 +100,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnDetectionDelete",
                 "x-type": "event",
                 "summary": "人を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -130,6 +133,7 @@
         },
         "/onBodyDetection": {
             "get": {
+                "operationId": "humanDetectionOnBodyDetectionGet",
                 "x-type": "one-shot",
                 "summary": "体を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -239,6 +243,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnBodyDetectionPut",
                 "x-type": "event",
                 "summary": "体を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を停止する。",
@@ -367,6 +372,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnBodyDetectionDelete",
                 "x-type": "event",
                 "summary": "体を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -399,6 +405,7 @@
         },
         "/onHandDetection": {
             "get": {
+                "operationId": "humanDetectionOnHandDetectionGet",
                 "x-type": "one-shot",
                 "summary": "手を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -492,6 +499,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnHandDetectionPut",
                 "x-type": "event",
                 "summary": "手を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -606,6 +614,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnHandDetectionDelete",
                 "x-type": "event",
                 "summary": "手を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -638,6 +647,7 @@
         },
         "/onFaceDetection": {
             "get": {
+                "operationId": "humanDetectionOnFaceDetectionGet",
                 "x-type": "one-shot",
                 "summary": "顔を検出したときの通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -820,6 +830,7 @@
                 }
             },
             "put": {
+                "operationId": "humanDetectionOnFaceDetectionPut",
                 "x-type": "event",
                 "summary": "顔を検出したときの通知イベントを開始する。",
                 "description": "当該イベントの通知を開始する。",
@@ -1021,6 +1032,7 @@
                 }
             },
             "delete": {
+                "operationId": "humanDetectionOnFaceDetectionDelete",
                 "x-type": "event",
                 "summary": "顔を検出したときの通知イベントを停止する。",
                 "description": "当該イベントの通知を停止する。",
@@ -1083,13 +1095,14 @@
             "properties": {
                 "humanDetect": {
                     "type": "object",
+                    "title": "人検出情報",
                     "required": [
                         "exist"
                     ],
                     "properties": {
                         "exist": {
                             "type": "boolean",
-                            "title": "人が検出されたかどうかのフラグ。",
+                            "title": "人検出フラグ",
                             "description": "検出された : true<br>検出されない : false"
                         }
                     }
@@ -1273,6 +1286,7 @@
                         "properties": {
                           "eyePoints": {
                               "type": "object",
+                              "title": "目検出情報",
                               "properties": {
                                   "leftEyeX": {
                                       "type": "number",
@@ -1323,6 +1337,7 @@
                           },
                           "nosePoints": {
                               "type": "object",
+                              "title": "鼻検出情報",
                               "properties": {
                                   "noseX": {
                                       "type": "number",
@@ -1353,6 +1368,7 @@
                           },
                           "mouthPoints": {
                               "type": "object",
+                              "title": "口検出情報",
                               "properties": {
                                   "mouthX": {
                                       "type": "number",
@@ -1383,6 +1399,7 @@
                           },
                           "blinkResults": {
                               "type": "object",
+                              "title": "まばたき検出情報",
                               "properties": {
                                   "leftEye": {
                                       "type": "number",
@@ -1403,6 +1420,7 @@
                           },
                           "ageResults": {
                               "type": "object",
+                              "title": "年齢判定結果",
                               "properties": {
                                   "age": {
                                       "type": "integer",
@@ -1418,6 +1436,7 @@
                           },
                           "genderResults": {
                               "type": "object",
+                              "title": "性別判定結果",
                               "properties": {
                                   "gender": {
                                       "type": "string",
@@ -1436,6 +1455,7 @@
                           },
                           "faceDirectionResults": {
                               "type": "object",
+                              "title": "顔の向き判定結果",
                               "properties": {
                                   "yaw": {
                                       "type": "integer",
@@ -1461,6 +1481,7 @@
                           },
                           "gazeResults": {
                               "type": "object",
+                              "title": "目の向き判定結果",
                               "properties": {
                                   "gazeLR": {
                                       "type": "integer",
@@ -1481,6 +1502,7 @@
                           },
                           "expressionResults": {
                               "type": "object",
+                              "title": "表情判定結果",
                               "properties": {
                                   "expression": {
                                       "type": "string",
@@ -1512,18 +1534,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -1555,18 +1581,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

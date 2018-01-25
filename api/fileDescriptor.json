@@ -13,6 +13,7 @@
     "paths": {
         "/open": {
             "get": {
+                "operationId": "fileDescriptorOpenGet",
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのファイルを開くように要求する。",
@@ -60,6 +61,7 @@
         },
         "/close": {
             "put": {
+                "operationId": "fileDescriptorClosePut",
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのファイルを閉じるように要求する。",
@@ -99,6 +101,7 @@
         },
         "/read": {
             "get": {
+                "operationId": "fileDescriptorReadGet",
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのファイルを指定したサイズ分取得する。",
@@ -159,6 +162,7 @@
         },
         "/write": {
             "put": {
+                "operationId": "fileDescriptorWritePut",
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのファイルへの書き込みを要求する。",
@@ -221,6 +225,7 @@
         },
         "/onWatchFile": {
             "get": {
+                "operationId": "fileDescriptorOnWatchFileGet",
                 "deprecated": true,
                 "x-type": "one-shot",
                 "summary": "スマートデバイスのファイルの更新時間が変化したことを取得する。",
@@ -256,6 +261,7 @@
                 }
             },
             "put": {
+                "operationId": "fileDescriptorOnWatchFilePut",
                 "deprecated": true,
                 "x-type": "event",
                 "summary": "スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録する。",
@@ -311,6 +317,7 @@
                 }
             },
             "delete": {
+                "operationId": "fileDescriptorOnWatchFileDelete",
                 "deprecated": true,
                 "x-type": "event",
                 "summary": "スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録解除する。",
@@ -429,6 +436,7 @@
                     "properties": {
                         "file": {
                             "type": "object",
+                            "title": "ファイル情報",
                             "required": [
                                 "path",
                                 "curr",
@@ -442,13 +450,13 @@
                                 },
                                 "curr": {
                                     "type": "string",
-                                    "title": "現在の更新時間（RFC 3339）",
-                                    "description": "例: 2014-01-01T00:00:00+0900"
+                                    "title": "現在の更新時間（RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す）。",
+                                    "description": "例: 2015-05-17T10:02:20+09:00"
                                 },
                                 "prev": {
                                     "type": "string",
-                                    "title": "以前の更新時間（RFC 3339）",
-                                    "description": "例: 2014-01-01T00:00:00+0900"
+                                    "title": "以前の更新時間（RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す）。",
+                                    "description": "例: 2015-05-17T10:02:20+09:00"
                                 }
 
 
@@ -489,18 +497,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "DeviceConnectシステムの名前",
-                    "description": ""
+                    "title": "システム名",
+                    "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
-                    "title": "DeviceConnectシステムのバージョン名",
-                    "description": ""
+                    "title": "システムバージョン",
+                    "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
-                    "title": "レスポンスに対する署名",
-                    "description": "アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+                    "title": "署名",
+                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
         },
@@ -515,18 +523,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

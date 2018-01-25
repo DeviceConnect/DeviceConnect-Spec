@@ -13,6 +13,7 @@
     "paths": {
         "/channel": {
             "get": {
+                "operationId": "messageHookChannelGet",
                 "x-type": "one-shot",
                 "summary": "チャンネル一覧を取得する。",
                 "description": "",
@@ -57,6 +58,7 @@
         },
         "/message": {
             "get": {
+                "operationId": "messageHookMessageGet",
                 "x-type": "one-shot",
                 "summary": "直近に受信したメッセージの一覧を取得する。",
                 "description": "",
@@ -85,6 +87,7 @@
                                         "messengerType": "facebook",
                                         "from" : "abcdef",
                                         "timeStamp" : 1234567890,
+                                	 	"timeStampString": "2015-05-17T10:02:20+09:00",
                                         "channelId" : "1",
                                         "text" :  "ライトをつけて",
                                         "resource" : "http://www.gclue.io/a.png",
@@ -99,6 +102,7 @@
                 }
             },
             "post": {
+                "operationId": "messageHookMessagePost",
                 "x-type": "one-shot",
                 "summary": "メッセージを投稿する。",
                 "description": "",
@@ -158,6 +162,7 @@
         },
         "/onMessage": {
             "get": {
+                "operationId": "messageHookOnMessageGet",
                 "x-type": "one-shot",
                 "summary": "直近に受信したメッセージの一覧を取得する。",
                 "description": "",
@@ -185,6 +190,7 @@
                                      "messengerType": "xxxx",
                                      "from" : "abcdef",
                                      "timeStamp" : 1234567890,
+                                	 "timeStampString": "2015-05-17T10:02:20+09:00",
                                      "channelId" : "1",
                                      "text" :  "ライトをつけて",
                                      "resource" : "http://org.deviceconnect/test.png",
@@ -197,6 +203,7 @@
                 }
             },
             "put": {
+                "operationId": "messageHookOnMessagePut",
                 "x-type": "event",
                 "summary": "直近に受信したメッセージ取得イベントを開始する。",
                 "description": "",
@@ -245,6 +252,7 @@
                                  "messengerType": "xxxx",
                                  "from" : "abcdef",
                                  "timeStamp" : 1234567890,
+                                 "timeStampString": "2015-05-17T10:02:20+09:00",
                                  "channelId" : "1",
                                  "text" :  "ライトをつけて",
                                  "resource" : "http://org.deviceconnect/test.png",
@@ -256,6 +264,7 @@
                 }
             },
             "delete": {
+                "operationId": "messageHookOnMessageDelete",
                 "x-type": "event",
                 "summary": "直近に受信したメッセージ取得イベントを停止する。",
                 "description": "",
@@ -356,7 +365,8 @@
                                     "messagerType",
                                     "from",
                                     "channelId",
-                                    "timeStamp"
+                                    "timeStamp",
+                                    "timeStampString"
                                 ],
                                 "properties": {
                                     "messagerType": {
@@ -381,6 +391,12 @@
                                         "title": "投稿した時間",
                                         "description": ""
                                     },
+									"timeStampString": {
+										"type": "string",
+										"format": "date-time",
+										"title": "投稿した時間の文字列",
+										"description": "投稿した時間をRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
+									},
                                     "text": {
                                         "type": "string",
                                         "title": "チャンネル名",
@@ -446,11 +462,13 @@
             "properties": {
                 "message": {
                     "type": "object",
+                    "title": "メッセージ",
                     "required": [
                         "messagerType",
                         "from",
                         "channelId",
-                        "timeStamp"
+                        "timeStamp",
+                        "timeStampString"
                     ],
                     "properties": {
                         "messagerType": {
@@ -475,6 +493,12 @@
                             "title": "投稿した時間",
                             "description": ""
                         },
+						"timeStampString": {
+							"type": "string",
+							"format": "date-time",
+							"title": "投稿した時間の文字列",
+							"description": "投稿した時間をRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
+						},
                         "text": {
                             "type": "string",
                             "title": "チャンネル名",
@@ -525,18 +549,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -552,18 +580,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }

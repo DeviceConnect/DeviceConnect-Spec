@@ -13,6 +13,7 @@
     "paths": {
         "/onECG": {
             "get": {
+                "operationId": "ecgOnECGGet",
                 "x-type": "one-shot",
                 "summary": "デバイスのECG計測通知イベントを取得する。",
                 "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
@@ -44,7 +45,7 @@
                                     "unit": "mVolt * milliSecond",
                                     "unitCode": 3328,
                                     "timeStamp": 1483241696789,
-                                    "timeStampString": "20170101123456.789+0900"
+                                    "timeStampString": "2015-05-17T10:02:20+09:00"
                                 }
                             }
                         }
@@ -52,6 +53,7 @@
                 }
             },
             "put": {
+                "operationId": "ecgOnECGPut",
                 "x-type": "event",
                 "summary": "デバイスのECG計測値を通知するイベントを開始する。",
                 "description": "",
@@ -104,13 +106,14 @@
                                 "unit": "mVolt * milliSecond",
                                 "unitCode": 3328,
                                 "timeStamp": 1483241696789,
-                                "timeStampString": "20170101123456.789+0900"
+                                "timeStampString": "2015-05-17T10:02:20+09:00"
                             }
                         }
                     }
                 }
             },
             "delete": {
+                "operationId": "ecgOnECGDelete",
                 "x-type": "event",
                 "summary": "デバイスのECG計測値を通知するイベントを停止する。",
                 "description": "",
@@ -223,9 +226,10 @@
                             "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
                         },
                         "timeStampString": {
-                            "type": "string",
+							"type": "string",
+							"format": "date-time",
                             "title": "ECGのタイムスタンプ文字列",
-                            "description": "タイムスタンプと同じタイムスタンプを「YYYYMMDDHHMMSS.sss+/-HHMM」の形式で返す。"
+                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
                         }
                     }
                 }
@@ -241,18 +245,22 @@
             "properties": {
                 "result": {
                     "type": "integer",
+                    "title": "処理結果",
                     "description": "0:正常応答<br>0以外:異常応答"
                 },
                 "product": {
                     "type": "string",
+                    "title": "システム名",
                     "description": "DeviceConnectシステムの名前。"
                 },
                 "version": {
                     "type": "string",
+                    "title": "システムバージョン",
                     "description": "DeviceConnectシステムのバージョン名。"
                 },
                 "hmac": {
                     "type": "string",
+                    "title": "署名",
                     "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
                 }
             }
@@ -284,18 +292,22 @@
             "properties": {
                 "serviceId": {
                     "type": "string",
-                    "description": "0:正常応答<br>0以外:異常応答"
+                    "title": "サービスID",
+                    "description": "イベントを送信したサービスのID"
                 },
                 "profile": {
                     "type": "string",
+                    "title": "プロファイル名",
                     "description": "プロファイル名。"
                 },
                 "interface": {
                     "type": "string",
+                    "title": "インターフェース名",
                     "description": "インターフェース名。"
                 },
                 "attribute": {
                     "type": "string",
+                    "title": "アトリビュート名",
                     "description": "アトリビュート名。"
                 }
             }
