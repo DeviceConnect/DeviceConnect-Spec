@@ -50,7 +50,7 @@
                     },
                     {
                         "name": "body",
-                        "description": "サービスID。取得対象スマートデバイス",
+                        "description": "表示させる文字列。",
                         "in": "formData",
                         "required": false,
                         "type": "string"
