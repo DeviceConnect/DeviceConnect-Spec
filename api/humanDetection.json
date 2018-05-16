@@ -787,7 +787,7 @@
                     },
                     {
                         "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションはデバイスプラグインによって違う。<br>例)eye, nose, mouth, blink,age,gender,faceDirection,gaze,expressionをカンマ区切りで指定することで、それぞれの検出値がある場合はレスポンスに含めることができる。ただし、デバイスによって対応していない値がある。",
                         "in": "query",
                         "required": false,
                         "type": "array",
@@ -809,6 +809,11 @@
                                 "version": "1.0.0",
                                 "faceDetects": [
                                     {
+                                      "x": 0.9515625,
+                                      "y": 0.9592592592592593,
+                                      "width": 0.03177083333333333,
+                                      "height": 0.05648148148148148,
+                                      "confidence": 0.619,
                                        "ageResults":{
                                            "age":"35",
                                            "confidence":"0.82"
@@ -978,7 +983,7 @@
                     },
                     {
                         "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
+                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションはデバイスプラグインによって違う。<br>例)eye, nose, mouth, blink,age,gender,faceDirection,gaze,expressionをカンマ区切りで指定することで、それぞれの検出値がある場合はレスポンスに含めることができる。ただし、デバイスによって対応していない値がある。",
                         "in": "formData",
                         "required": false,
                         "type": "array",
@@ -1013,6 +1018,11 @@
                             "attribute": "onfacedetection",
                             "faceDetects": [
                                 {
+                                  "x": 0.9515625,
+                                  "y": 0.9592592592592593,
+                                  "width": 0.03177083333333333,
+                                  "height": 0.05648148148148148,
+                                  "confidence": 0.619,
                                    "ageResults":{
                                        "age":"35",
                                        "confidence":"0.82"
@@ -1283,7 +1293,37 @@
                     "description": "検出された数分出現する。",
                     "items": {
                         "type": "object",
+                        "required": [
+                            "x",
+                            "y",
+                            "confidence"
+                        ],
                         "properties": {
+                          "x": {
+                              "type": "number",
+                              "title": "検出領域の中心X座標",
+                              "description": "0.0~1.0"
+                          },
+                          "y": {
+                              "type": "number",
+                              "title": "検出領域の中心Y座標",
+                              "description": "0.0~1.0"
+                          },
+                          "width": {
+                              "type": "number",
+                              "title": "検出領域のX方向の幅",
+                              "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                          },
+                          "height": {
+                              "type": "number",
+                              "title": "検出領域のY方向の幅",
+                              "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
+                          },
+                          "confidence": {
+                              "type": "number",
+                              "title": "解析の信頼度",
+                              "description": "0.0~1.0"
+                          },
                           "eyePoints": {
                               "type": "object",
                               "title": "目検出情報",
