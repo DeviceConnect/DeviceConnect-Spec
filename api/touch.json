@@ -850,7 +850,148 @@
                     }
                 }
             }
+        },
+        "/onTouchChange": {
+            "get": {
+                "operationId": "touchOnTouchChangeGet",
+                "x-type": "one-shot",
+                "summary": "デバイスでタッチされた座標と状態をイベントとして取得する。",
+                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/OnTouchChangeResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0",
+                                "touch": {
+                                    "touches": [
+                                        {
+                                            "x": 192,
+                                            "y": 168,
+                                            "id": 0
+                                        },
+                                        {
+                                            "x": 54,
+                                            "y": 200,
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "operationId": "touchOnTouchChangePut",
+                "x-type": "event",
+                "summary": "デバイスでタッチされた座標と状態をイベントとしての受信を開始する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "description": "イベント受信間隔。単位：mSec",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventRegistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                },
+                "x-event": {
+                    "schema": {
+                        "$ref": "#/definitions/OnTouchChangeEvent"
+                    },
+                    "examples": {
+                        "application/json": {
+                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+                            "profile": "touch",
+                            "attribute": "ondoubletap",
+                            "touch": {
+                                "touches": [
+                                    {
+                                        "x": 192,
+                                        "y": 168,
+                                        "id": 0
+                                    },
+                                    {
+                                        "x": 54,
+                                        "y": 200,
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "touchOnTouchChangeDelete",
+                "x-type": "event",
+                "summary": "当該イベントの通知を停止する。",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "description": "サービスID。",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EventUnregistrationResponse"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "result": 0,
+                                "product": "Example System",
+                                "version": "1.0.0"
+                            }
+                        }
+                    }
+                }
+            }
         }
+
     },
     "definitions": {
         "OnTouchResponse": {
@@ -949,6 +1090,25 @@
                 "$ref": "#/definitions/OnTouchInfo"
             }]
         },
+        "OnTouchChangeResponse": {
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/CommonResponse"
+            },{
+                "$ref": "#/definitions/OnTouchChangeInfo"
+            }]
+        },
+        "OnTouchChangeEvent": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/CommonEvent"
+                },
+                {
+                    "$ref": "#/definitions/OnTouchChangeInfo"
+                }
+            ]
+        },
         "OnTouchInfo": {
             "type": "object",
             "required": ["touch"],
@@ -987,6 +1147,46 @@
                         }
                     }
                 }
+            }
+        },
+        "OnTouchChangeInfo": {
+            "type": "object",
+            "required": [
+                "touches"
+            ],
+            "properties": {
+                "state": {
+                    "type": "string",
+                    "title": "タッチの状態",
+                    "description": "start:タッチを開始した。<br>end:タッチが終了した。<br>doubletap:ダブルタップが行われた。<br>move:タッチされ続けている。<br>cancel:タッチが中断された。<br>"
+                },
+                "touches": {
+                    "type": "array",
+                    "title": "タッチ情報の配列",
+                    "description": "各タッチに関する情報の配列。",
+                    "items": {
+                        "type": "object",
+                        "required": ["id", "x", "y"],
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "title": "ID",
+                                "description": "タッチを開始すると割り振られる、ユニーク（唯一）な識別番号。"
+                            },
+                            "x": {
+                                "type": "integer",
+                                "title": "x座標",
+                                "description": "デバイスが持つ空間の左上を原点としたx座標。"
+                            },
+                            "y": {
+                                "type": "integer",
+                                "title": "y座標",
+                                "description": "デバイスが持つ空間の左上を原点としたy座標。"
+                            }
+                        }
+                    }
+                }
+
             }
         },
         "EventRegistrationResponse": {
