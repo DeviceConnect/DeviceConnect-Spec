@@ -826,6 +826,16 @@
                         },
                         "examples": {
                             "application/json": {
+                              "streams": [
+                                   {
+                                       "mimeType" : "video/x-mjpeg",
+                                       "uri" : "http://localhost:9000/xxxxxx"
+                                   },
+                                   {
+                                        "mimeType" : "video/x-rtp",
+                                        "uri" : "rtsp://localhost:8086"
+                                   }
+                               ],
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
