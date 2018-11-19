@@ -506,8 +506,8 @@
                     "properties": {
                         "state": {
                             "type": "string",
-                            "title": "押されたKeyのID",
-                            "description": ""
+                            "title": "押された、もしくは離された時の状態",
+                            "description": "up:Keyが離された。<br>down:Keyが押された。"
                         },
                         "id": {
                             "type": "integer",
