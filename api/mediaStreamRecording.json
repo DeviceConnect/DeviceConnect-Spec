@@ -1335,6 +1335,30 @@
                             "title": "プレビュー配信URI",
                             "description": "開始したプレビューの配信用URI。形式はMotionJPEGとする。"
                         },
+                        "streams": {
+                            "type": "array",
+                            "title": "ストリームのリスト",
+                            "description": "ストリーム情報の配列。",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "mimeType",
+                                    "uri"
+                                ],
+                                "properties": {
+                                    "mimeType": {
+                                        "type": "string",
+                                        "title": "ストリームのMIMEType",
+                                        "description": "ストリームのMIMEType。"
+                                    },
+                                    "uri": {
+                                        "type": "string",
+                                        "title": "ストリームのURI",
+                                        "description": "ストリームのURI。"
+                                    }
+                                }
+                            }
+                        },
                         "audio": {
                             "type": "object",
                             "title": "音声配信情報",
