@@ -826,6 +826,16 @@
                         },
                         "examples": {
                             "application/json": {
+                              "streams": [
+                                   {
+                                       "mimeType" : "video/x-mjpeg",
+                                       "uri" : "http://localhost:9000/xxxxxx"
+                                   },
+                                   {
+                                        "mimeType" : "video/x-rtp",
+                                        "uri" : "rtsp://localhost:8086"
+                                   }
+                               ],
                                 "result": 0,
                                 "product": "Example System",
                                 "version": "1.0.0",
@@ -1334,6 +1344,30 @@
                             "type": "string",
                             "title": "プレビュー配信URI",
                             "description": "開始したプレビューの配信用URI。形式はMotionJPEGとする。"
+                        },
+                        "streams": {
+                            "type": "array",
+                            "title": "ストリームのリスト",
+                            "description": "ストリーム情報の配列。",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "mimeType",
+                                    "uri"
+                                ],
+                                "properties": {
+                                    "mimeType": {
+                                        "type": "string",
+                                        "title": "ストリームのMIMEType",
+                                        "description": "ストリームのMIMEType。"
+                                    },
+                                    "uri": {
+                                        "type": "string",
+                                        "title": "ストリームのURI",
+                                        "description": "ストリームのURI。"
+                                    }
+                                }
+                            }
                         },
                         "audio": {
                             "type": "object",
