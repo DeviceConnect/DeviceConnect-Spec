@@ -806,167 +806,170 @@
             "required": ["oncall"],
             "properties": {
                 "oncall": {
-                    "type": "object",
-                    "title": "発信元情報",
-                    "required": ["name", "addressId"],
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "title": "デバイス名",
-                            "description": "発信元のデバイス名。"
-                        },
-                        "addressId": {
-                            "type": "string",
-                            "title": "アドレスID",
-                            "description": "発信元のアドレスID。"
-                        },
-                        "remote": {
-                            "type": "object",
-                            "title": "相手局リソース情報",
-                            "description": "相手局リソース情報",
-                            "properties": {
-                                "video": {
-                                    "type": "object",
-                                    "title": "映像関連情報",
-                                    "description": "映像関連情報",
-                                    "properties": {
-                                        "uri": {
-                                            "type": "string",
-                                            "title": "映像リソースURI",
-                                            "description": "映像のリソースURI。省略された場合は映像無し。但し、videoとaudioの両方が省略されることは無い"
-                                        },
-                                        "mimeType": {
-                                            "type": "string",
-                                            "title": "MIMEタイプ",
-                                            "description": "映像リソースのMIMEタイプ。"
-                                        },
-                                        "frameRate": {
-                                            "type": "number",
-                                            "title": "フレームレート",
-                                            "description": "映像リソースのフレームレート。"
-                                        },
-                                        "width": {
-                                            "type": "integer",
-                                            "title": "幅",
-                                            "description": "通知時点での幅（可変）"
-                                        },
-                                        "height": {
-                                            "type": "integer",
-                                            "title": "高さ",
-                                            "description": "通知時点での高さ（可変）"
+                    "type": "array",
+                    "title": "発信元情報一覧",
+                    "items": {
+                        "title": "発信元情報",
+                        "required": ["name", "addressId"],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "title": "デバイス名",
+                                "description": "発信元のデバイス名。"
+                            },
+                            "addressId": {
+                                "type": "string",
+                                "title": "アドレスID",
+                                "description": "発信元のアドレスID。"
+                            },
+                            "remote": {
+                                "type": "object",
+                                "title": "相手局リソース情報",
+                                "description": "相手局リソース情報",
+                                "properties": {
+                                    "video": {
+                                        "type": "object",
+                                        "title": "映像関連情報",
+                                        "description": "映像関連情報",
+                                        "properties": {
+                                            "uri": {
+                                                "type": "string",
+                                                "title": "映像リソースURI",
+                                                "description": "映像のリソースURI。省略された場合は映像無し。但し、videoとaudioの両方が省略されることは無い"
+                                            },
+                                            "mimeType": {
+                                                "type": "string",
+                                                "title": "MIMEタイプ",
+                                                "description": "映像リソースのMIMEタイプ。"
+                                            },
+                                            "frameRate": {
+                                                "type": "number",
+                                                "title": "フレームレート",
+                                                "description": "映像リソースのフレームレート。"
+                                            },
+                                            "width": {
+                                                "type": "integer",
+                                                "title": "幅",
+                                                "description": "通知時点での幅（可変）"
+                                            },
+                                            "height": {
+                                                "type": "integer",
+                                                "title": "高さ",
+                                                "description": "通知時点での高さ（可変）"
+                                            }
                                         }
-                                    }
-                                },
-                                "audio": {
-                                    "type": "object",
-                                    "title": "音声関連情報",
-                                    "description": "音声関連情報",
-                                    "properties": {
-                                        "uri": {
-                                            "type": "string",
-                                            "title": "音声リソースURI",
-                                            "description": "音声のリソースURI。省略された場合は音声無し。但し、videoとaudioの両方が省略されることは無い。"
-                                        },
-                                        "mimeType": {
-                                            "type": "string",
-                                            "title": "MIMEタイプ",
-                                            "description": "音声リソースのMIMEタイプ。"
-                                        },
-                                        "sampleRate": {
-                                            "type": "integer",
-                                            "title": "サンプルレート",
-                                            "description": "音声リソースのサンプルレート。"
-                                        },
-                                        "channels": {
-                                            "type": "integer",
-                                            "title": "チャンネル数",
-                                            "description": "音声リソースのチャンネル数。"
-                                        },
-                                        "sampleSize": {
-                                            "type": "integer",
-                                            "title": "サンプルサイズ",
-                                            "description": "音声リソースのサンプルサイズ。"
-                                        },
-                                        "blockSize": {
-                                            "type": "integer",
-                                            "title": "ブロックサイズ",
-                                            "description": "音声リソースのブロックサイズ。"
+                                    },
+                                    "audio": {
+                                        "type": "object",
+                                        "title": "音声関連情報",
+                                        "description": "音声関連情報",
+                                        "properties": {
+                                            "uri": {
+                                                "type": "string",
+                                                "title": "音声リソースURI",
+                                                "description": "音声のリソースURI。省略された場合は音声無し。但し、videoとaudioの両方が省略されることは無い。"
+                                            },
+                                            "mimeType": {
+                                                "type": "string",
+                                                "title": "MIMEタイプ",
+                                                "description": "音声リソースのMIMEタイプ。"
+                                            },
+                                            "sampleRate": {
+                                                "type": "integer",
+                                                "title": "サンプルレート",
+                                                "description": "音声リソースのサンプルレート。"
+                                            },
+                                            "channels": {
+                                                "type": "integer",
+                                                "title": "チャンネル数",
+                                                "description": "音声リソースのチャンネル数。"
+                                            },
+                                            "sampleSize": {
+                                                "type": "integer",
+                                                "title": "サンプルサイズ",
+                                                "description": "音声リソースのサンプルサイズ。"
+                                            },
+                                            "blockSize": {
+                                                "type": "integer",
+                                                "title": "ブロックサイズ",
+                                                "description": "音声リソースのブロックサイズ。"
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        },
-                        "local": {
-                            "type": "object",
-                            "title": "自局リソース情報",
-                            "description": "自局リソース情報",
-                            "properties": {
-                                "video": {
-                                    "type": "object",
-                                    "title": "映像関連情報",
-                                    "description": "映像関連情報",
-                                    "properties": {
-                                        "uri": {
-                                            "type": "string",
-                                            "title": "映像リソースURI",
-                                            "description": "映像のリソースURI。省略された場合は映像無し。但し、videoとaudioの両方が省略されることは無い"
-                                        },
-                                        "mimeType": {
-                                            "type": "string",
-                                            "title": "MIMEタイプ",
-                                            "description": "映像リソースのMIMEタイプ。"
-                                        },
-                                        "frameRate": {
-                                            "type": "number",
-                                            "title": "フレームレート",
-                                            "description": "映像リソースのフレームレート。"
-                                        },
-                                        "width": {
-                                            "type": "integer",
-                                            "title": "幅",
-                                            "description": "通知時点での幅（可変）"
-                                        },
-                                        "height": {
-                                            "type": "integer",
-                                            "title": "高さ",
-                                            "description": "通知時点での高さ（可変）"
+                            },
+                            "local": {
+                                "type": "object",
+                                "title": "自局リソース情報",
+                                "description": "自局リソース情報",
+                                "properties": {
+                                    "video": {
+                                        "type": "object",
+                                        "title": "映像関連情報",
+                                        "description": "映像関連情報",
+                                        "properties": {
+                                            "uri": {
+                                                "type": "string",
+                                                "title": "映像リソースURI",
+                                                "description": "映像のリソースURI。省略された場合は映像無し。但し、videoとaudioの両方が省略されることは無い"
+                                            },
+                                            "mimeType": {
+                                                "type": "string",
+                                                "title": "MIMEタイプ",
+                                                "description": "映像リソースのMIMEタイプ。"
+                                            },
+                                            "frameRate": {
+                                                "type": "number",
+                                                "title": "フレームレート",
+                                                "description": "映像リソースのフレームレート。"
+                                            },
+                                            "width": {
+                                                "type": "integer",
+                                                "title": "幅",
+                                                "description": "通知時点での幅（可変）"
+                                            },
+                                            "height": {
+                                                "type": "integer",
+                                                "title": "高さ",
+                                                "description": "通知時点での高さ（可変）"
+                                            }
                                         }
-                                    }
-                                },
-                                "audio": {
-                                    "type": "object",
-                                    "title": "音声関連情報",
-                                    "description": "音声関連情報",
-                                    "properties": {
-                                        "uri": {
-                                            "type": "string",
-                                            "title": "音声リソースURI",
-                                            "description": "音声のリソースURI。省略された場合は音声無し。但し、videoとaudioの両方が省略されることは無い。"
-                                        },
-                                        "mimeType": {
-                                            "type": "string",
-                                            "title": "MIMEタイプ",
-                                            "description": "音声リソースのMIMEタイプ。"
-                                        },
-                                        "sampleRate": {
-                                            "type": "integer",
-                                            "title": "サンプルレート",
-                                            "description": "音声リソースのサンプルレート。"
-                                        },
-                                        "channels": {
-                                            "type": "integer",
-                                            "title": "チャンネル数",
-                                            "description": "音声リソースのチャンネル数。"
-                                        },
-                                        "sampleSize": {
-                                            "type": "integer",
-                                            "title": "サンプルサイズ",
-                                            "description": "音声リソースのサンプルサイズ。"
-                                        },
-                                        "blockSize": {
-                                            "type": "integer",
-                                            "title": "ブロックサイズ",
-                                            "description": "音声リソースのブロックサイズ。"
+                                    },
+                                    "audio": {
+                                        "type": "object",
+                                        "title": "音声関連情報",
+                                        "description": "音声関連情報",
+                                        "properties": {
+                                            "uri": {
+                                                "type": "string",
+                                                "title": "音声リソースURI",
+                                                "description": "音声のリソースURI。省略された場合は音声無し。但し、videoとaudioの両方が省略されることは無い。"
+                                            },
+                                            "mimeType": {
+                                                "type": "string",
+                                                "title": "MIMEタイプ",
+                                                "description": "音声リソースのMIMEタイプ。"
+                                            },
+                                            "sampleRate": {
+                                                "type": "integer",
+                                                "title": "サンプルレート",
+                                                "description": "音声リソースのサンプルレート。"
+                                            },
+                                            "channels": {
+                                                "type": "integer",
+                                                "title": "チャンネル数",
+                                                "description": "音声リソースのチャンネル数。"
+                                            },
+                                            "sampleSize": {
+                                                "type": "integer",
+                                                "title": "サンプルサイズ",
+                                                "description": "音声リソースのサンプルサイズ。"
+                                            },
+                                            "blockSize": {
+                                                "type": "integer",
+                                                "title": "ブロックサイズ",
+                                                "description": "音声リソースのブロックサイズ。"
+                                            }
                                         }
                                     }
                                 }
