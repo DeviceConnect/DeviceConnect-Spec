@@ -1,0 +1,931 @@
+swagger: '2.0'
+basePath: /gotapi/mediaPlayer
+info:
+  title: MediaPlayer Profile
+  version: 2.0.0
+  description: スマートデバイス上のメディアの再生状態の変更要求を通知するAPI。
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /media:
+    get:
+      operationId: mediaPlayerMediaGet
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の情報を取得する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+        - name: mediaId
+          description: メディアID。メディアを識別するID。メディアIDは同プロファイルのMediaList APIで取得する。
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GetMediaResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              mediaId: '1234'
+              mimeType: audio/mpeg
+              title: Test Music 1
+              type: Music
+              language: ja
+              description: ''
+              imageUri: ''
+              duration: 100
+              creators:
+                - creator: Tester 1
+                  role: Artist
+                - creator: Tester 1
+                  role: Composer
+              keywords:
+                - Test1
+                - Sample
+              genres:
+                - J-POP
+                - Sample
+    put:
+      operationId: mediaPlayerMediaPut
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）を変更する。
+      description: メディア再生中にmediaIdを再指定した場合は、新たに指定されたメディアの再生が始まる事とする。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: mediaId
+          description: メディアID。メディアを識別するID。メディアIDは同プロファイルのMediaList APIで取得する。
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SetMediaResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /mediaList:
+    get:
+      operationId: mediaPlayerMediaListGet
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の一覧を取得する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+        - name: mediaId
+          description: メディアID。メディアを識別するID。メディアIDは同プロファイルのMediaList APIで取得する。
+          in: query
+          required: false
+          type: string
+        - name: query
+          description: >-
+            検索する文字列。部分一致検索を行い、一致対象はレスポンスパラメータのタイトル名（title）、制作者名（creators/creator）。
+          in: query
+          required: false
+          type: string
+        - name: mimeType
+          description: MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)video%2F
+          in: query
+          required: false
+          type: string
+        - name: order
+          description: >-
+            検索結果の並び順。検索結果の並び順。辞書順ソートの基準にするレスポンスパラメータの物理名と昇順・降順をカンマ区切りで指定する。物理名を最初に指定し、次に昇順はascを、降順はdescを指定する。省略時は、order=title,ascをしたのと同等となる。例)duration,asc
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+        - name: offset
+          description: >-
+            一覧の開始エントリ位置オフセット。全検索結果エントリの内、取得する一覧の開始エントリの位置を指定する。省略時は全検索結果の先頭エントリからの取得となり、offset=0と同義。レスポンスパラメータの
+            count と併用して、検索結果のページングを実現する。
+          in: query
+          required: false
+          type: integer
+          minimum: 0
+        - name: limit
+          description: >-
+            一覧エントリ数の上限。取得する一覧のエントリ数の上限。省略もしくは0が指定された場合、全検索結果エントリを返却する。レスポンスパラメータの
+            count と併用して、検索結果のページングを実現する。
+          in: query
+          required: false
+          type: integer
+          minimum: 0
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MediaListResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              count: 3
+              media:
+                - mediaId: '1234'
+                  mimeType: audio/mpeg
+                  title: Test Music 1
+                  type: Music
+                  language: ja
+                  description: ''
+                  imageUri: ''
+                  duration: 100
+                  creators:
+                    - creator: Tester 1
+                      role: Artist
+                    - creator: Tester 1
+                      role: Composer
+                  keywords:
+                    - Test1
+                    - Sample
+                  genres:
+                    - J-POP
+                    - Sample
+                - mediaId: '2345'
+                  mimeType: audio/mpeg
+                  title: Test Music 2
+                  type: Music
+                  language: ja
+                  description: ''
+                  imageUri: ''
+                  duration: 200
+                  creators:
+                    - creator: Tester 2
+                      role: Artist
+                    - creator: Tester 2
+                      role: Composer
+                  keywords:
+                    - Test 2
+                    - Sample
+                  genres:
+                    - J-POP
+                    - Sample
+                - mediaId: '3456'
+                  mimeType: audio/mpeg
+                  title: Test Music 3
+                  type: Music
+                  language: ja
+                  description: ''
+                  imageUri: ''
+                  duration: 300
+                  creators:
+                    - creator: Tester 3
+                      role: Artist
+                    - creator: Tester 3
+                      role: Composer
+                  keywords:
+                    - Test 3
+                    - Sample
+                  genres:
+                    - J-POP
+                    - Sample
+  /playStatus:
+    get:
+      operationId: mediaPlayerPlayStatusGet
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態（音声・映像の再生・一時停止・ミュート）を取得する。
+      description: 再生中のメディアが無い場合はエラーを返却する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlayStatusResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              status: stop
+  /play:
+    put:
+      operationId: mediaPlayerPlayPut
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を再生中に変更する。
+      description: 再生中のメディアが無い場合はエラーを返却する。停止状態以外の状態で呼び出された場合はエラーを返却する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlayResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /stop:
+    put:
+      operationId: mediaPlayerStopPut
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を停止に変更する。
+      description: 再生中のメディアが無い場合はエラーを返却する。再生中以外の状態で呼び出された場合はエラーを返却する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StopResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /pause:
+    put:
+      operationId: mediaPlayerPausePut
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を一時停止に変更する。
+      description: 再生中のメディアが無い場合はエラーを返却する。再生中以外の状態で呼び出された場合はエラーを返却する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PauseResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /resume:
+    put:
+      operationId: mediaPlayerResumePut
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を再生中に変更する。
+      description: 再生中のメディアが無い場合はエラーを返却する。一時停止以外の状態で呼び出された場合はエラーを返却する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ResumeResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /seek:
+    put:
+      operationId: mediaPlayerSeekPut
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を変更する。
+      description: 再生中のメディアが無い場合はエラーを返却する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: pos
+          description: >-
+            再生位置。秒単位。最大値はMedia API（GET）やMediaList APIで取得できるパラメータ duration
+            に相当する。<br>範囲(0 ≤ pos ≤ duration)
+          in: formData
+          required: true
+          type: integer
+          format: int64
+          minimum: 0
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SetSeekResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    get:
+      operationId: mediaPlayerSeekGet
+      x-type: one-shot
+      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を取得する。
+      description: 再生中のメディアが無い場合はエラーを返却する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GetSeekResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              pos: 60
+  /volume:
+    put:
+      operationId: mediaPlayerVolumePut
+      x-type: one-shot
+      summary: スマートデバイスのメディアプレイヤーの再生音量を変更する。
+      description: システム全体の音量を変更したい場合はSettingプロファイルのVolume Setting APIを用いる事。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: volume
+          description: 設定したいメディア再生音量。メディアの再生音量を0から1の割合で表す。<br>範囲 (0.0 <= voleme <= 1.0)
+          in: formData
+          required: true
+          type: number
+          minimum: 0
+          maximum: 1
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SetVolumeResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    get:
+      operationId: mediaPlayerVolumeGet
+      x-type: one-shot
+      summary: スマートデバイスのメディアプレイヤーの再生音量を取得する。
+      description: システム全体の音量を取得したい場合はSettingプロファイルのVolume Setting APIを用いる事。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GetVolumeResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              volume: 0.25
+  /mute:
+    put:
+      operationId: mediaPlayerMutePut
+      x-type: one-shot
+      summary: スマートデバイスのメディアプレイヤー再生音量のミュートを有効にする。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MuteOnResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    delete:
+      operationId: mediaPlayerMuteDelete
+      x-type: one-shot
+      summary: スマートデバイスのメディアプレイヤー再生音量のミュートを解除する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MuteOffResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    get:
+      operationId: mediaPlayerMuteGet
+      x-type: one-shot
+      summary: スマートデバイスのメディアプレイヤー再生音量のミュート状態を取得する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GetMuteResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              mute: false
+  /onStatusChange:
+    get:
+      operationId: mediaPlayerOnStatusChangeGet
+      x-type: one-shot
+      summary: スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを取得する。
+      description: 再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlayerStatusResponse'
+          examples:
+            application/json:
+              serviceId: Host.dummyId.localhost.deviceconnect.org
+              profile: mediaplayer
+              attribute: onstatuschange
+              mediaPlayer:
+                status: media
+                mediaId: '1234'
+                mimeType: application/ogg
+                pos: 0
+                volume: 1
+    put:
+      operationId: mediaPlayerOnStatusChangePut
+      x-type: event
+      summary: スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを開始する。
+      description: 再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: interval
+          description: デバイスプラグインがイベントを送信する間隔。
+          in: formData
+          required: false
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/EventRegistrationResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+      x-event:
+        schema:
+          $ref: '#/definitions/PlayerStatusEvent'
+        examples:
+          application/json:
+            serviceId: Host.dummyId.localhost.deviceconnect.org
+            profile: mediaplayer
+            attribute: onstatuschange
+            mediaPlayer:
+              status: media
+              mediaId: '1234'
+              mimeType: application/ogg
+              pos: 0
+              volume: 1
+    delete:
+      operationId: mediaPlayerOnStatusChangeDelete
+      x-type: event
+      summary: スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを停止する。
+      description: 再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/EventUnregistrationResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+definitions:
+  SetMediaResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  GetMediaResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - required:
+          - duration
+        properties:
+          mimeType:
+            type: string
+            title: MimeType
+            description: 録画・録音する際のエンコードするMimeType。
+          title:
+            type: string
+            title: タイトル名
+            description: 楽曲名や動画名等。
+          type:
+            type: string
+            title: タイプ名
+            description: タイトルの種別。「Music」（楽曲名）、「Movie」（動画名）など。
+          language:
+            type: string
+            title: 言語
+            description: 言語。BCP47で定義されている文字列を設定する。(例)「ja」「en-us」。
+          description:
+            type: string
+            title: 説明文
+            description: 内容についての説明。
+          imageUri:
+            type: string
+            title: 画像URI
+            description: アルバムカバーや動画サムネイルなどの画像へのURI。
+          duration:
+            type: number
+            title: 曲の長さ
+            description: 秒単位。
+          creators:
+            type: object
+            title: 制作者情報
+            description: ''
+            required:
+              - creator
+              - role
+            properties:
+              creator:
+                type: string
+                title: 制作者名
+                description: 制作を行った個人や法人の名称（楽曲のアーティスト名、動画の制作監督名、配給会社名など）。
+              role:
+                type: number
+                title: 役割
+                description: >-
+                  制作者の役割。「Artist」アーティスト名。「Lyrics」作詞者名。「Composer」作曲者名。「Film
+                  distributer」映画配給会社名。※上記以外の文字列を自由に設定してもよい。※W3Cでは明確な定義が無い。
+          keywords:
+            type: array
+            title: キーワード
+            description: 内容についての各種キーワードをstring配列で返す。
+            items:
+              type: string
+          genres:
+            type: array
+            title: ジャンル
+            description: ジャンルをstring配列で返す。
+            items:
+              type: string
+  MediaListResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - count
+          - media
+        properties:
+          count:
+            type: integer
+            title: 全検索結果の件数
+            description: 全検索結果の件数。リクエストパラメータの offset および limit と併用して、検索結果のページングを実現する。
+          media:
+            type: array
+            title: 検索にヒットしたメディアの情報
+            description: ''
+            items:
+              type: object
+              title: 検索にヒットしたメディアの情報
+              description: ''
+              required:
+                - mediaId
+              properties:
+                mediaId:
+                  type: string
+                  title: メディアID
+                  description: メディアを識別するID。
+                mimeType:
+                  type: string
+                  title: MimeType
+                  description: 録画・録音する際のエンコードするMimeType。
+                title:
+                  type: string
+                  title: タイトル名
+                  description: 楽曲名や動画名等。
+                type:
+                  type: string
+                  title: タイプ名
+                  description: タイトルの種別。「Music」（楽曲名）、「Movie」（動画名）など。
+                language:
+                  type: string
+                  title: 言語
+                  description: 言語。BCP47で定義されている文字列を設定する。(例)「ja」「en-us」。
+                description:
+                  type: string
+                  title: 説明文
+                  description: 内容についての説明。
+                imageUri:
+                  type: string
+                  title: 画像URI
+                  description: アルバムカバーや動画サムネイルなどの画像へのURI。
+                duration:
+                  type: number
+                  title: 曲の長さ
+                  description: 秒単位。
+                creators:
+                  type: object
+                  title: 制作者情報
+                  description: ''
+                  required:
+                    - creator
+                    - role
+                  properties:
+                    creator:
+                      type: string
+                      title: 制作者名
+                      description: 制作を行った個人や法人の名称（楽曲のアーティスト名、動画の制作監督名、配給会社名など）。
+                    role:
+                      type: number
+                      title: 役割
+                      description: >-
+                        制作者の役割。「Artist」アーティスト名。「Lyrics」作詞者名。「Composer」作曲者名。「Film
+                        distributer」映画配給会社名。※上記以外の文字列を自由に設定してもよい。※W3Cでは明確な定義が無い。
+                keywords:
+                  type: array
+                  title: キーワード
+                  description: 内容についての各種キーワードをstring配列で返す。
+                  items:
+                    type: string
+                genres:
+                  type: array
+                  title: ジャンル
+                  description: ジャンルをstring配列で返す。
+                  items:
+                    type: string
+  PlayStatusResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - status
+        properties:
+          status:
+            type: string
+            title: 再生状態
+            description: '・play : 再生<br>・stop : 停止<br>・pause : 一時停止'
+            enum:
+              - play
+              - stop
+              - pause
+  PlayResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  StopResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  PauseResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  ResumeResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  GetSeekResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - pos
+        properties:
+          pos:
+            type: integer
+            title: 再生位置
+            description: >-
+              秒単位。最大値はMedia API（GET）やMediaList APIで取得できるパラメータ duration
+              に相当する。<br>範囲(0 ≤ pos ≤ duration)
+            minimum: 0
+  SetSeekResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  GetVolumeResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - volume
+        properties:
+          volume:
+            type: number
+            title: 設定したいメディア再生音量
+            description: メディアの再生音量を0から1の割合で表す。<br>範囲 (0.0 <= voleme <= 1.0)
+            minimum: 0
+            maximum: 1
+  SetVolumeResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  GetMuteResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - mute
+        properties:
+          mute:
+            type: boolean
+            title: ミュート状態
+            description: '再生音量のミュート状態を表す。<br>true: ミュート有り<br>false: ミュート無し'
+  MuteOnResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  MuteOffResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  PlayerStatusResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - $ref: '#/definitions/PlayerStatusInfo'
+  PlayerStatusEvent:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonEvent'
+      - $ref: '#/definitions/PlayerStatusInfo'
+  PlayerStatusInfo:
+    type: object
+    required:
+      - mediaPlayer
+    properties:
+      mediaPlayer:
+        type: object
+        title: Player情報
+        description: ''
+        required:
+          - status
+          - mediaId
+        properties:
+          status:
+            type: string
+            title: 状態
+            description: >-
+              メディアプレイヤーの状態。<br>play : 再生<br>stop : 再生停止<br>mute : ミュート<br>unmute
+              : ミュート解除<br>pause : 一時停止<br>resume : 一時停止解除<br>media :
+              再生コンテンツ変更<br>volume : 音量変更<br>complete : 再生完了
+            enum:
+              - play
+              - stop
+              - mute
+              - unmute
+              - pause
+              - resume
+              - media
+              - volume
+              - complete
+          mediaId:
+            type: string
+            title: メディアID
+            description: メディアを識別するID。
+          mimeType:
+            type: string
+            title: MimeType
+            description: 録画・録音が開始されたメディアのMimeType。このタイプで、動画、音声などを識別する。
+          pos:
+            type: string
+            title: 再生位置
+            description: トラックの再生位置を秒単位で返す。
+          volume:
+            type: string
+            title: メディア再生音量
+            description: メディアの再生音量を0から1の割合で表す。<br>範囲 (0.0 <= volume <= 1.0)
+            minimum: 0
+            maximum: 1
+  EventRegistrationResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  EventUnregistrationResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: '0: 正常応答<br>0以外: 異常応答'
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+  CommonEvent:
+    type: object
+    required:
+      - serviceId
+      - profile
+      - interface
+      - attribute
+    properties:
+      serviceId:
+        type: string
+        title: サービスID
+        description: イベントを送信したサービスのID
+      profile:
+        type: string
+        title: プロファイル名
+        description: プロファイル名。
+      interface:
+        type: string
+        title: インターフェース名
+        description: インターフェース名。
+      attribute:
+        type: string
+        title: アトリビュート名
+        description: アトリビュート名。

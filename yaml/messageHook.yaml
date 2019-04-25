@@ -1,0 +1,433 @@
+swagger: '2.0'
+basePath: /gotapi/messageHook
+info:
+  title: MessageHook Profile
+  version: 2.0.0
+  description: メッセージ送受信の機能を提供するAPI。
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /channel:
+    get:
+      operationId: messageHookChannelGet
+      x-type: one-shot
+      summary: チャンネル一覧を取得する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ChannelResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              channels:
+                - id: xxxxxxxx
+                  name: 名前
+                  type: slack
+                - id: xxxxxxxx
+                  name: 名前
+                  type: slack
+  /message:
+    get:
+      operationId: messageHookMessageGet
+      x-type: one-shot
+      summary: 直近に受信したメッセージの一覧を取得する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GetMessageResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              messages:
+                - messengerType: facebook
+                  from: abcdef
+                  timeStamp: 1234567890
+                  timeStampString: '2015-05-17T10:02:20+09:00'
+                  channelId: '1'
+                  text: ライトをつけて
+                  resource: 'http://www.gclue.io/a.png'
+                  mimeType: image/png
+                  messageType: direct
+    post:
+      operationId: messageHookMessagePost
+      x-type: one-shot
+      summary: メッセージを投稿する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: channelId
+          description: チャンネルID。メッセージの投稿先チャンネルID。
+          in: formData
+          required: true
+          type: string
+        - name: text
+          description: テキスト。送信する文言。<br>リソースURIが指定されていない時は省略できない。
+          in: formData
+          required: false
+          type: string
+        - name: resource
+          description: リソースURI。画像、音声、映像などのリソースへのURI。<br>テキストが指定されていない時は省略できない。
+          in: formData
+          required: false
+          type: string
+        - name: mimeType
+          description: MimeType。送信するリソースのタイプ。<br>リソースURIが指定されている時は省略できない。
+          in: formData
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SendMessageResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /onMessage:
+    get:
+      operationId: messageHookOnMessageGet
+      x-type: one-shot
+      summary: 直近に受信したメッセージの一覧を取得する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MessageResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              message:
+                messengerType: xxxx
+                from: abcdef
+                timeStamp: 1234567890
+                timeStampString: '2015-05-17T10:02:20+09:00'
+                channelId: '1'
+                text: ライトをつけて
+                resource: 'http://org.deviceconnect/test.png'
+                mimeType: image/png
+                messageType: direct
+    put:
+      operationId: messageHookOnMessagePut
+      x-type: event
+      summary: 直近に受信したメッセージ取得イベントを開始する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: interval
+          description: デバイスプラグインがイベントを送信する間隔。
+          in: formData
+          required: false
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/EventRegistrationResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+      x-event:
+        schema:
+          $ref: '#/definitions/MessageEvent'
+        examples:
+          application/json:
+            serviceId: Host.dummyId.localhost.deviceconnect.org
+            profile: messageHook
+            attribute: onMessage
+            message:
+              messengerType: xxxx
+              from: abcdef
+              timeStamp: 1234567890
+              timeStampString: '2015-05-17T10:02:20+09:00'
+              channelId: '1'
+              text: ライトをつけて
+              resource: 'http://org.deviceconnect/test.png'
+              mimeType: image/png
+              messageType: direct
+    delete:
+      operationId: messageHookOnMessageDelete
+      x-type: event
+      summary: 直近に受信したメッセージ取得イベントを停止する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/EventUnregistrationResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+definitions:
+  ChannelResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - channels
+        properties:
+          channels:
+            type: array
+            title: チャンネル
+            description: チャンネルを格納する配列。
+            items:
+              type: object
+              required:
+                - id
+                - name
+                - type
+              properties:
+                id:
+                  type: string
+                  title: チャンネル識別子
+                  description: チャンネルを識別するID。
+                name:
+                  type: string
+                  title: チャンネル名
+                  description: チャンネルの名前。
+                type:
+                  type: string
+                  title: チャンネルタイプ
+                  description: チャンネルのタイプ<br>・facebook<br>・line<br>・slack<br>など
+  GetMessageResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - messages
+        properties:
+          messages:
+            type: array
+            title: メッセージ
+            description: メッセージ情報。
+            items:
+              type: object
+              required:
+                - messagerType
+                - from
+                - channelId
+                - timeStamp
+                - timeStampString
+              properties:
+                messagerType:
+                  type: string
+                  title: メッセンジャータイプ
+                  description: メッセンジャーのタイプ<br>・facebook<br>・line<br>・slack<br>など。
+                from:
+                  type: integer
+                  format: int64
+                  title: 送信元ID
+                  description: ''
+                channelId:
+                  type: string
+                  title: チャンネルID
+                  description: チャンネルを識別するID。
+                timeStamp:
+                  type: integer
+                  format: int64
+                  title: 投稿した時間
+                  description: ''
+                timeStampString:
+                  type: string
+                  format: date-time
+                  title: 投稿した時間の文字列
+                  description: '投稿した時間をRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+                text:
+                  type: string
+                  title: チャンネル名
+                  description: チャンネルの名前。
+                resource:
+                  type: string
+                  title: リソースURI
+                  description: 送られてきたメッセージのリソースへのURI。<br>メッセージが指定されていない時は省略されない。
+                mimeType:
+                  type: string
+                  title: MimeType
+                  description: リソースのタイプ。<br>メッセージが指定されていない時は省略されない。
+                messageType:
+                  type: string
+                  title: メッセージタイプ
+                  description: >-
+                    normal, direct, mention の文字列（複数になる場合がある「direct,
+                    mention」など）<br>・normal: 通常メッセージ<br>・direct:
+                    ダイレクトメッセージ<br>・mention:
+                    メンション付きメッセージ<br>＃メンション付きのメッセージのtextはメンション部分が削除されます。
+  SendMessageResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  MessageResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - $ref: '#/definitions/MessageInfo'
+  MessageEvent:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonEvent'
+      - $ref: '#/definitions/MessageInfo'
+  MessageInfo:
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: object
+        title: メッセージ
+        required:
+          - messagerType
+          - from
+          - channelId
+          - timeStamp
+          - timeStampString
+        properties:
+          messagerType:
+            type: string
+            title: メッセンジャータイプ
+            description: メッセンジャーのタイプ<br>・facebook<br>・line<br>・slack<br>など。
+          from:
+            type: integer
+            format: int64
+            title: 送信元ID
+            description: ''
+          channelId:
+            type: string
+            title: チャンネルID
+            description: チャンネルを識別するID。
+          timeStamp:
+            type: integer
+            format: int64
+            title: 投稿した時間
+            description: ''
+          timeStampString:
+            type: string
+            format: date-time
+            title: 投稿した時間の文字列
+            description: '投稿した時間をRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+          text:
+            type: string
+            title: チャンネル名
+            description: チャンネルの名前。
+          resource:
+            type: string
+            title: リソースURI
+            description: 送られてきたメッセージのリソースへのURI。<br>メッセージが指定されていない時は省略されない。
+          mimeType:
+            type: string
+            title: MimeType
+            description: リソースのタイプ。<br>メッセージが指定されていない時は省略されない。
+          messageType:
+            type: string
+            title: メッセージタイプ
+            description: >-
+              normal, direct, mention の文字列（複数になる場合がある「direct,
+              mention」など）<br>・normal: 通常メッセージ<br>・direct:
+              ダイレクトメッセージ<br>・mention:
+              メンション付きメッセージ<br>＃メンション付きのメッセージのtextはメンション部分が削除されます。
+  EventRegistrationResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  EventUnregistrationResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: '0:正常応答<br>0以外:異常応答'
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+  CommonEvent:
+    type: object
+    required:
+      - serviceId
+      - profile
+      - interface
+      - attribute
+    properties:
+      serviceId:
+        type: string
+        title: サービスID
+        description: イベントを送信したサービスのID
+      profile:
+        type: string
+        title: プロファイル名
+        description: プロファイル名。
+      interface:
+        type: string
+        title: インターフェース名
+        description: インターフェース名。
+      attribute:
+        type: string
+        title: アトリビュート名
+        description: アトリビュート名。

@@ -1,0 +1,81 @@
+swagger: '2.0'
+basePath: /gotapi/atmosphericPressure
+info:
+  title: Atmospheric Pressure Profile
+  version: 2.0.0
+  description: 気圧の値を取得する機能を提供するAPI。
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /:
+    get:
+      operationId: atmosphericPressureGet
+      x-type: one-shot
+      summary: スマートデバイスの気圧情報を取得する。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GetAtmosphericPressureResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              atmosphericPressure: 1016.12
+              timeStamp: 1431856940275
+              timeStampString: '2015-05-17T10:02:20+09:00'
+definitions:
+  GetAtmosphericPressureResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - atmosphericPressure
+        properties:
+          atmosphericPressure:
+            type: number
+            title: 気圧
+            description: '気圧<br>単位: ヘクトパスカル(hPa)'
+          timeStamp:
+            type: integer
+            format: int64
+            title: 気圧のタイムスタンプ
+            description: 測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。
+          timeStampString:
+            type: string
+            format: date-time
+            title: 気圧のタイムスタンプ文字列
+            description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: '0: 正常応答<br>0以外: 異常応答'
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。

@@ -1,0 +1,234 @@
+swagger: '2.0'
+basePath: /gotapi/light
+info:
+  title: Light Profile
+  version: 2.0.0
+  description: スマートデバイスのライト機能を提供するAPI。
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /:
+    get:
+      operationId: lightGet
+      x-type: one-shot
+      summary: ライトを識別するIDなどを取得するAPI。
+      description: スマートデバイスが認識しているライトデバイスの一覧を取得する。取得できる情報には、ライトの識別子、ライトの名前と状態を持つ。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/LightStatusResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              lights:
+                - config: ''
+                  'on': false
+                  name: Example Light 1
+                  lightId: '0'
+                - config: ''
+                  'on': true
+                  name: Example Light 2
+                  lightId: '1'
+    post:
+      operationId: lightPost
+      x-type: one-shot
+      summary: ライトを点灯するAPI。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: lightId
+          description: ライトID。操作の対象となるライト。省略された場合、デフォルトのライトが選択される。
+          in: formData
+          type: string
+          required: false
+        - name: brightness
+          description: ライトの明るさ。ライトの明るさを0.0-1.0で表す。
+          in: formData
+          type: number
+          format: float
+          required: false
+          minimum: 0
+          maximum: 1
+        - name: color
+          description: ライトの色。RGB形式の16進数で指定。
+          in: formData
+          type: string
+          format: rgb
+          required: false
+        - name: flashing
+          description: ライトの点滅間隔。点滅間隔をカンマ区切りの msecで点灯、消灯を繰り返し指定できる。このパラメータを指定しなかった場合は、 常時点灯。
+          in: formData
+          type: array
+          items:
+            type: integer
+            format: int64
+            minimum: 1
+          required: false
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/LightControlResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    delete:
+      operationId: lightDelete
+      x-type: one-shot
+      summary: ライトを消灯するAPI。
+      description: ''
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+        - name: lightId
+          description: ライトID。操作の対象となるライト。省略された場合、デフォルトのライトが選択される。
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/LightControlResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    put:
+      operationId: lightPut
+      x-type: one-shot
+      summary: ライトのステータスを変更するAPI。
+      description: ライトの色、明るさ及び、名前の変更ができる。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: lightId
+          description: ライトID。操作の対象となるライト。省略された場合、デフォルトのライトが選択される。
+          in: formData
+          type: string
+          required: false
+        - name: name
+          description: ライト名。
+          in: formData
+          type: string
+          required: true
+        - name: brightness
+          description: ライトの明るさ。ライトの明るさを0.0-1.0で表す。
+          in: formData
+          type: number
+          format: float
+          required: false
+          minimum: 0
+          maximum: 1
+        - name: color
+          description: ライトの色。RGB形式の16進数で指定。
+          in: formData
+          type: string
+          format: rgb
+          required: false
+        - name: flashing
+          description: ライトの点滅間隔。点滅間隔をカンマ区切りの msecで点灯、消灯を繰り返し指定できる。このパラメータを指定しなかった場合は、 常時点灯。
+          in: formData
+          type: array
+          items:
+            type: integer
+            format: int64
+            minimum: 1
+          required: false
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/LightControlResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+definitions:
+  LightStatusResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - lights
+        properties:
+          lights:
+            type: array
+            title: ライト一覧
+            description: ライト一覧を格納する配列。
+            items:
+              type: object
+              required:
+                - lightId
+                - name
+                - 'on'
+                - config
+              properties:
+                lightId:
+                  type: string
+                  title: ライトID
+                  description: ライトを識別するID。
+                name:
+                  type: string
+                  title: ライト名
+                  description: ライト名。
+                'on':
+                  type: boolean
+                  title: ライトの点灯状態
+                  description: 'ライトの点灯状態を示す。<br>true: 点灯<br>false: 消灯'
+                config:
+                  type: string
+                  title: コンフィグ
+                  description: ライトに設定がある場合には、ここに文字列としてデータが格納されている。
+  LightControlResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: '0: 正常応答<br>0以外: 異常応答'
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
