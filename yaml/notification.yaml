@@ -14,7 +14,9 @@ paths:
       x-type: one-shot
       summary: スマートデバイスにノーティフィケーションの表示要求をする。
       description: >-
-        ノーティフィケーションの表示要求の到達成否を応答として返却し、ノーティフィケーションの表示完了を待って応答をするわけではない。ノーティフィケーションの表示方法は表示要求を受けたスマートデバイスに依存する。
+        ノーティフィケーションの表示要求の到達成否を応答として返却し、
+        ノーティフィケーションの表示完了を待って応答をするわけではない。<br>
+        ノーティフィケーションの表示方法は表示要求を受けたスマートデバイスに依存する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +24,12 @@ paths:
           required: true
           type: string
         - name: type
-          description: '通知タイプ。通知のタイプを識別する。<br>0: 音声通話着信<br>1: メール着信<br>2: SMS着信<br>3: イベント'
+          description: >-
+            通知タイプ。通知のタイプを識別する。<br>
+            0: 音声通話着信<br>
+            1: メール着信<br>
+            2: SMS着信<br>
+            3: イベント
           in: formData
           required: true
           type: integer
@@ -32,7 +39,11 @@ paths:
             - 2
             - 3
         - name: dir
-          description: '向き。メッセージの文字の向き。<br>auto: 自動<br>rtl: 右から左<br>ltr: 左から右'
+          description: >-
+            向き。メッセージの文字の向き。<br>
+            auto: 自動<br>
+            rtl: 右から左<br>
+            ltr: 左から右
           in: formData
           required: false
           type: string
@@ -75,7 +86,9 @@ paths:
       operationId: notificationNotifyDelete
       x-type: one-shot
       summary: スマートデバイスにノーティフィケーションの消去要求をする。
-      description: ノーティフィケーションの消去要求の到達成否を応答として返却し、ノーティフィケーションの消去完了を待って応答をするわけではない。
+      description: >-
+        ノーティフィケーションの消去要求の到達成否を応答として返却し、
+        ノーティフィケーションの消去完了を待って応答をするわけではない。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -101,8 +114,12 @@ paths:
     get:
       operationId: notificationOnClickGet
       x-type: one-shot
-      summary: スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを取得する。
-      description: スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを
+        取得する。
+      description: >-
+        スマートデバイスでノーティフィケーションがクリック(タップ)された時に
+        イベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -123,8 +140,12 @@ paths:
     put:
       operationId: notificationOnClickPut
       x-type: event
-      summary: スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを開始する。
-      description: スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを
+        開始する。
+      description: >-
+        スマートデバイスでノーティフィケーションがクリック(タップ)された時に
+        イベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -159,8 +180,12 @@ paths:
     delete:
       operationId: notificationOnClickDelete
       x-type: event
-      summary: スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを停止する。
-      description: スマートデバイスでノーティフィケーションがクリック(タップ)された時にイベントが発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションがクリックされたことを通知するイベントを
+        停止する。
+      description: >-
+        スマートデバイスでノーティフィケーションがクリック(タップ)
+        された時にイベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -181,8 +206,11 @@ paths:
     get:
       operationId: notificationOnShowGet
       x-type: one-shot
-      summary: スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを取得する。
-      description: スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを
+        取得する。
+      description: >-
+        スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -203,8 +231,11 @@ paths:
     put:
       operationId: notificationOnShowPut
       x-type: event
-      summary: スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを開始する。
-      description: スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを
+        開始する。
+      description: >-
+        スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -239,8 +270,11 @@ paths:
     delete:
       operationId: notificationOnShowDelete
       x-type: event
-      summary: スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを停止する。
-      description: スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションが表示されたことを通知するイベントを
+        停止する。
+      description: >-
+        スマートデバイスでノーティフィケーションが表示された時にイベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -261,8 +295,12 @@ paths:
     get:
       operationId: notificationOnCloseGet
       x-type: one-shot
-      summary: スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを取得する。
-      description: ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを
+        取得する。
+      description: >-
+        ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでも
+        イベントは発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -283,8 +321,12 @@ paths:
     put:
       operationId: notificationOnClosePut
       x-type: event
-      summary: スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを開始する。
-      description: ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを
+        開始する。
+      description: >-
+        ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでも
+        イベントは発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -319,8 +361,12 @@ paths:
     delete:
       operationId: notificationOnCloseDelete
       x-type: event
-      summary: スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを停止する。
-      description: ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでもイベントは発行される。
+      summary: >-
+        スマートデバイスのノーティフィケーションが消去されたことを通知するイベントを
+        停止する。
+      description: >-
+        ユーザ操作による消去、プログラムからの消去要求による消去のいずれのイベントでも
+        イベントは発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -341,9 +387,14 @@ paths:
     get:
       operationId: notificationOnErrorGet
       x-type: one-shot
-      summary: スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを取得する。
+      summary: >-
+        スマートデバイスのノーティフィケーション操作でエラーが発生したことを
+        通知するイベントを取得する。
       description: >-
-        スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。
+        スマートデバイスでノーティフィケーション操作でエラーが発生した時に
+        イベントが発行される。<br>
+        表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが
+        通知される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -364,9 +415,14 @@ paths:
     put:
       operationId: notificationOnErrorPut
       x-type: event
-      summary: スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを開始する。
+      summary: >-
+        スマートデバイスのノーティフィケーション操作でエラーが発生したことを
+        通知するイベントを開始する。
       description: >-
-        スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。
+        スマートデバイスでノーティフィケーション操作でエラーが発生した時に
+        イベントが発行される。<br>
+        表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが
+        通知される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -401,9 +457,14 @@ paths:
     delete:
       operationId: notificationOnErrorDelete
       x-type: event
-      summary: スマートデバイスのノーティフィケーション操作でエラーが発生したことを通知するイベントを停止する。
+      summary: >-
+        スマートデバイスのノーティフィケーション操作でエラーが発生したことを
+        通知するイベントを停止する。
       description: >-
-        スマートデバイスでノーティフィケーション操作でエラーが発生した時にイベントが発行される。表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが通知される。
+        スマートデバイスでノーティフィケーション操作でエラーが発生した時に
+        イベントが発行される。<br>
+        表示要求に対する表示失敗のエラー、非表示要求に対する消去失敗のエラーなどが
+        通知される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -516,7 +577,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

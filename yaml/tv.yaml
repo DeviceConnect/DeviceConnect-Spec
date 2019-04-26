@@ -3,7 +3,9 @@ basePath: /gotapi/tv
 info:
   title: TV Profile
   version: 2.0.0
-  description: 'スマートデバイスが持つTV機器を操作する機能を提供するAPI。<br>※TV:television'
+  description: >-
+    スマートデバイスが持つTV機器を操作する機能を提供するAPI。<br>
+    ※TV:television
 consumes:
   - application/x-www-form-urlencoded
   - multipart/form-data
@@ -103,7 +105,10 @@ paths:
             - '11'
             - '12'
         - name: control
-          description: '操作。<br>next : 次局選局<br>previous : 前局選局'
+          description: >-
+            操作。<br>
+            next : 次局選局<br>
+            previous : 前局選局
           in: formData
           required: false
           type: string
@@ -133,7 +138,10 @@ paths:
           required: true
           type: string
         - name: control
-          description: '操作。<br>up : ボリュームを上げる<br>down : ボリュームを下げる'
+          description: >-
+            操作。<br>
+            up : ボリュームを上げる<br>
+            down : ボリュームを下げる
           in: formData
           required: true
           type: string
@@ -163,7 +171,11 @@ paths:
           required: true
           type: string
         - name: select
-          description: '放送波選択。<br>DTV : 地上波デジタル放送<br>BS : BS放送波<br>CS : CS放送波'
+          description: >-
+            放送波選択。<br>
+            DTV : 地上波デジタル放送<br>
+            BS : BS放送波<br>
+            CS : CS放送波
           in: formData
           required: true
           type: string
@@ -228,7 +240,9 @@ paths:
     get:
       operationId: tvEnlPropertyGet
       x-type: one-shot
-      summary: スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する（必須プロパティのみ）。
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの
+        設定内容を取得する（必須プロパティのみ）。
       description: '※enlproperty:ECHONET Lite Propertyのこと。'
       parameters:
         - name: serviceId
@@ -261,7 +275,9 @@ paths:
     put:
       operationId: tvEnlPropertyPut
       x-type: one-shot
-      summary: スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う（必須プロパティのみ）。
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite機器オブジェクトプロパティに
+        設定を行う（必須プロパティのみ）。
       description: '※enlproperty:ECHONET Lite Propertyのこと。'
       parameters:
         - name: serviceId
@@ -303,7 +319,10 @@ definitions:
           powerstatus:
             type: string
             title: 電源状態
-            description: 'ON:電源オン<br>OFF:電源オフ<br>UNKNOWN:不明'
+            description: >-
+              ON:電源オン<br>
+              OFF:電源オフ<br>
+              UNKNOWN:不明
             enum:
               - 'ON'
               - 'OFF'
@@ -388,4 +407,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

@@ -781,7 +781,11 @@ definitions:
         type: string
         title: タッチの状態
         description: >-
-          start:タッチを開始した。<br>end:タッチが終了した。<br>doubletap:ダブルタップが行われた。<br>move:タッチされ続けている。<br>cancel:タッチが中断された。<br>
+          start:タッチを開始した。<br>
+          end:タッチが終了した。<br>
+          doubletap:ダブルタップが行われた。<br>
+          move:タッチされ続けている。<br>
+          cancel:タッチが中断された。<br>
       touches:
         type: array
         title: タッチ情報の配列
@@ -835,7 +839,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

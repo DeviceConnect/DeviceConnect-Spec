@@ -26,30 +26,45 @@ paths:
           type: string
           required: false
         - name: data
-          description: ファイルのbinary。表示する画像ファイルのbinary。uriと同時に省略することはできない。両方指定した場合の挙動は未定義。
+          description: >-
+            ファイルのbinary。
+            表示する画像ファイルのbinary。
+            uriと同時に省略することはできない。
+            両方指定した場合の挙動は未定義。
           in: formData
           type: file
           required: false
         - name: uri
-          description: ファイルのURI。表示する画像ファイルのURI。dataと同時に省略することはできない。両方指定した場合の挙動は未定義。
+          description: >-
+            ファイルのURI。
+            表示する画像ファイルのURI。
+            dataと同時に省略することはできない。
+            両方指定した場合の挙動は未定義。
           in: formData
           type: string
           required: false
         - name: x
-          description: デバイスが持つ空間の左上を原点としたx座標。0～デバイスの空間領域。等倍描画モードの場合のみ有効。
+          description: >-
+            デバイスが持つ空間の左上を原点としたx座標。
+            0～デバイスの空間領域。
+            等倍描画モードの場合のみ有効。
           in: formData
           type: integer
           required: false
         - name: 'y'
-          description: デバイスが持つ空間の左上を原点としたy座標。0～デバイスの空間領域。等倍描画モードの場合のみ有効。
+          description: >-
+            デバイスが持つ空間の左上を原点としたy座標。
+            0～デバイスの空間領域。
+            等倍描画モードの場合のみ有効。
           in: formData
           type: integer
           required: false
         - name: mode
           description: >-
-            画像描画モード。(省略時)：等倍描画モード。座標(x,
-            y)に画像の左上隅がくるように描画する。<br>scales：スケールモード。アスペクト比を保持して最大限に拡大して画面中央に描画する。x,
-            y座標は無効。<br>fills：フィルモード。等倍の画像を並べて画面全体に敷き詰めるように描画する。x, y座標は無効。
+            画像描画モード。<br>
+            (省略時)：等倍描画モード。座標(x,y)に画像の左上隅がくるように描画する。<br>
+            scales：スケールモード。アスペクト比を保持して最大限に拡大して画面中央に描画する。x,y座標は無効。<br>
+            fills：フィルモード。等倍の画像を並べて画面全体に敷き詰めるように描画する。x, y座標は無効。
           in: formData
           type: string
           required: false

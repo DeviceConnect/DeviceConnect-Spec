@@ -13,7 +13,9 @@ paths:
       operationId: proximityOnDeviceProximityGet
       x-type: one-shot
       summary: スマートデバイスの近接センサーの物の検知を通知するイベントを取得する。
-      description: スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。
+      description: >-
+        スマートデバイスの近接センサーの情報を
+        近接距離最小/最大値の範囲で連続的にイベント発行する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -40,7 +42,9 @@ paths:
       operationId: proximityOnDeviceProximityPut
       x-type: event
       summary: スマートデバイスの近接センサーの物の検知を通知するイベントを開始する。
-      description: スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。
+      description: >-
+        スマートデバイスの近接センサーの情報を
+        近接距離最小/最大値の範囲で連続的にイベント発行する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -81,7 +85,9 @@ paths:
       operationId: proximityOnDeviceProximityDelete
       x-type: event
       summary: スマートデバイスの近接センサーの物の検知を通知するイベントを停止する。
-      description: スマートデバイスの近接センサーの情報を近接距離最小/最大値の範囲で連続的にイベント発行する。
+      description: >-
+        スマートデバイスの近接センサーの情報を
+        近接距離最小/最大値の範囲で連続的にイベント発行する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -106,7 +112,9 @@ paths:
       operationId: proximityOnUserProximityGet
       x-type: one-shot
       summary: スマートデバイスの近接センサーのユーザ検知を通知するイベントを取得する。
-      description: ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。
+      description: >-
+        ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に
+        発生する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -129,7 +137,9 @@ paths:
       operationId: proximityOnUserProximityPut
       x-type: event
       summary: スマートデバイスの近接センサーのユーザ検知を通知するイベントを開始する。
-      description: ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。
+      description: >-
+        ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に
+        発生する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -166,7 +176,9 @@ paths:
       operationId: proximityOnUserProximityDelete
       x-type: event
       summary: スマートデバイスの近接センサーのユーザ検知を通知するイベントを停止する。
-      description: ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に発生する。
+      description: >-
+        ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に
+        発生する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -255,7 +267,10 @@ definitions:
           near:
             type: boolean
             title: 近接の有無
-            description: 'ユーザがデバイスに近接しているかどうか。<br>true: 近接している<br>false: 近接していない'
+            description: >-
+              ユーザがデバイスに近接しているかどうか。<br>
+              true: 近接している<br>
+              false: 近接していない'
   EventRegistrationResponse:
     type: object
     allOf:
@@ -286,7 +301,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

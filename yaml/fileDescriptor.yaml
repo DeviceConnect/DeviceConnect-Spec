@@ -22,12 +22,18 @@ paths:
           required: true
           type: string
         - name: path
-          description: ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。
+          description: >-
+            ファイルパス。ファイルが存在するパス。<br>
+            ルートはデバイスプラグインごとに異なる。<br>
+            ディレクトリを指定した場合はエラーを返す。
           in: query
           required: true
           type: string
         - name: flag
-          description: 'フラグ。r : 読み込みのみ<br>rw : 読み込み＆書き込み'
+          description: >-
+            フラグ。<br>
+            r : 読み込みのみ<br>
+            rw : 読み込み＆書き込み
           in: query
           required: true
           type: string
@@ -58,7 +64,10 @@ paths:
           required: true
           type: string
         - name: path
-          description: ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。
+          description: >-
+            ファイルパス。ファイルが存在するパス。<br>
+            ルートはデバイスプラグインごとに異なる。<br>
+            ディレクトリを指定した場合はエラーを返す。
           in: formData
           required: true
           type: string
@@ -78,7 +87,9 @@ paths:
       deprecated: true
       x-type: one-shot
       summary: スマートデバイスのファイルを指定したサイズ分取得する。
-      description: スマートデバイスのファイルが読み込み完了していない場合には、再度このAPIを呼び出して取得を行う。
+      description: >-
+        スマートデバイスのファイルが読み込み完了していない場合には、
+        再度このAPIを呼び出して取得を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -86,12 +97,17 @@ paths:
           required: true
           type: string
         - name: path
-          description: ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。
+          description: >-
+            ファイルパス。ファイルが存在するパス。<br>
+            ルートはデバイスプラグインごとに異なる。<br>
+            ディレクトリを指定した場合はエラーを返す。
           in: query
           required: true
           type: string
         - name: length
-          description: 読み込みサイズ。一度の読み込みで取得する最大サイズ。length > 0
+          description: >-
+            読み込みサイズ。一度の読み込みで取得する最大サイズ。<br>
+            length > 0
           in: query
           required: true
           type: integer
@@ -100,8 +116,9 @@ paths:
           exclusiveMinimum: true
         - name: position
           description: >-
-            読み込み開始位置。読み込みファイルの開始位置を指定する。省略された場合には、現在ファイルが読み込んでいる位置から読み込む。position
-            >= 0
+            読み込み開始位置。読み込みファイルの開始位置を指定する。<br>
+            省略された場合には、現在ファイルが読み込んでいる位置から読み込む。<br>
+            position >= 0
           in: query
           required: false
           type: integer
@@ -134,23 +151,33 @@ paths:
           required: true
           type: string
         - name: path
-          description: ファイルパス。ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。
+          description: >-
+            ファイルパス。ファイルが存在するパス。<br>
+            ルートはデバイスプラグインごとに異なる。<br>
+            ディレクトリを指定した場合はエラーを返す。
           in: formData
           required: true
           type: string
         - name: uri
-          description: URI。dataと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。
+          description: >-
+            URI。dataと同時に省略することはできない。<br>
+            両方指定した場合はdataが優先され、uriは無視される。
           in: formData
           required: false
           type: string
         - name: data
           description: >-
-            ファイルのbinary。送信するファイルのbinary。uriと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。
+            ファイルのbinary。送信するファイルのbinary。<br>
+            uriと同時に省略することはできない。<br>
+            両方指定した場合はdataが優先され、uriは無視される。
           in: formData
           required: false
           type: file
         - name: position
-          description: ファイルオフセット。ファイルの書き込み開始位置を指定する。省略された場合には、現在ファイルが書き込んでいる位置から書き込む。
+          description: >-
+            ファイルオフセット。<br>
+            ファイルの書き込み開始位置を指定する。<br>
+            省略された場合には、現在ファイルが書き込んでいる位置から書き込む。
           in: formData
           required: false
           type: integer
@@ -197,8 +224,10 @@ paths:
       operationId: fileDescriptorOnWatchFilePut
       deprecated: true
       x-type: event
-      summary: スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録する。
-      description: スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。
+      summary: >-
+        スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録する。
+      description: >-
+        スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -237,8 +266,10 @@ paths:
       operationId: fileDescriptorOnWatchFileDelete
       deprecated: true
       x-type: event
-      summary: スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録解除する。
-      description: スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。
+      summary: >-
+        スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録解除する。
+      description: >-
+        スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -313,7 +344,10 @@ definitions:
               path:
                 type: string
                 title: ファイルパス
-                description: ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。ディレクトリを指定した場合はエラーを返す。
+                description: >-
+                  ファイルが存在するパス。<br>
+                  ルートはデバイスプラグインごとに異なる。<br>
+                  ディレクトリを指定した場合はエラーを返す。
               curr:
                 type: string
                 title: '現在の更新時間（RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す）。'
@@ -352,7 +386,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

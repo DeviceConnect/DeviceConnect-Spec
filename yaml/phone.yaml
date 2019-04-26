@@ -22,7 +22,9 @@ paths:
           type: string
         - name: phoneNumber
           description: >-
-            電話番号。電話番号を示す文字列。文字には数字の0〜9のみを使用可能。長さは11桁または13桁のいずれかとする。11桁は国内電話、13桁は国際電話として扱う。
+            電話番号。電話番号を示す文字列。文字には数字の0〜9のみを使用可能。<br>
+            長さは11桁または13桁のいずれかとする。<br>
+            11桁は国内電話、13桁は国際電話として扱う。
           in: formData
           required: true
           type: string
@@ -40,7 +42,9 @@ paths:
     put:
       operationId: phoneSetPut
       x-type: one-shot
-      summary: スマートフォンに対して電話に関する設定項目(サイレント・マナー・音あり)の設定をリクエストする。
+      summary: >-
+        スマートフォンに対して電話に関する設定項目(サイレント・マナー・音あり)
+        の設定をリクエストする。
       description: ''
       parameters:
         - name: serviceId
@@ -49,7 +53,11 @@ paths:
           required: true
           type: string
         - name: mode
-          description: '電話のモード。電話のモードを指定<br>0:サイレント<br>1:マナー<br>2:音あり'
+          description: >-
+            電話のモード。電話のモードを指定<br>
+            0:サイレント<br>
+            1:マナー<br>
+            2:音あり
           in: formData
           required: true
           type: integer
@@ -72,7 +80,8 @@ paths:
       operationId: phoneOnConnectGet
       x-type: one-shot
       summary: >-
-        スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを取得する。
+        スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、
+        通話の失敗、通話の終了状態を、周辺機器に通知するイベントを取得する。
       description: ''
       parameters:
         - name: serviceId
@@ -97,7 +106,8 @@ paths:
       operationId: phoneOnConnectPut
       x-type: event
       summary: >-
-        スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを開始する。
+        スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、
+        通話の失敗、通話の終了状態を、周辺機器に通知するイベントを開始する。
       description: ''
       parameters:
         - name: serviceId
@@ -136,7 +146,8 @@ paths:
       operationId: phoneOnConnectDelete
       x-type: event
       summary: >-
-        スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、通話の失敗、通話の終了状態を、周辺機器に通知するイベントを停止する。
+        スマートフォンに対して行った電話発信要求によるスマートフォン上での通話の開始、
+        通話の失敗、通話の終了状態を、周辺機器に通知するイベントを停止する。
       description: ''
       parameters:
         - name: serviceId
@@ -173,7 +184,8 @@ definitions:
       phoneStatus:
         type: object
         title: 電話機能の状態
-        description: 電話機能の状態を保持するオブジェクト。特定の相手先との通話状態の変化を通知する。
+        description: >-
+          電話機能の状態を保持するオブジェクト。特定の相手先との通話状態の変化を通知する。
         required:
           - phoneNumber
           - state
@@ -182,11 +194,17 @@ definitions:
             type: string
             title: 電話番号
             description: >-
-              相手先の電話番号を示す文字列。文字には数字の0〜9のみを使用可能。長さは11桁または13桁のいずれかとする。11桁は国内電話、13桁は国際電話として扱う。
+              相手先の電話番号を示す文字列。文字には数字の0〜9のみを使用可能。<br>
+              長さは11桁または13桁のいずれかとする。
+              11桁は国内電話、13桁は国際電話として扱う。
           state:
             type: number
             title: 通話状態
-            description: '通話状態を示す定数。<br>0: 通話開始<br>1: 通話失敗<br>2: 通話終了'
+            description: >-
+              通話状態を示す定数。<br>
+              0: 通話開始<br>
+              1: 通話失敗<br>
+              2: 通話終了
             enum:
               - 0
               - 1
@@ -225,7 +243,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

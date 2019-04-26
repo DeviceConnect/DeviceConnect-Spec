@@ -280,8 +280,8 @@ definitions:
             format: date-time
             title: 日付
             description: >-
-              RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。 例:
-              2015-05-17T10:02:20+09:00
+              RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。
+              例: 2015-05-17T10:02:20+09:00
   GetDisplayBrightnessSettingResponse:
     type: object
     allOf:
@@ -335,4 +335,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

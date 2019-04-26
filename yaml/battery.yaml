@@ -345,7 +345,9 @@ definitions:
             type: integer
             format: int64
             title: 完全充電までの時間 (秒)
-            description: 満充電、または非充電中の場合は0。システムとして取得出来ない場合はNumber.MAX_VALUE。
+            description: >-
+              満充電、または非充電中の場合は0。<br>
+              システムとして取得出来ない場合はNumber.MAX_VALUE。
   DischargingTimeResponse:
     type: object
     allOf:
@@ -387,7 +389,9 @@ definitions:
               charging:
                 type: boolean
                 title: 充電状態フラグ
-                description: '充電中:true<br>非充電中:false'
+                description: >-
+                  充電中:true<br>
+                  非充電中:false
   OnChargingChangeResponse:
     type: object
     allOf:
@@ -404,7 +408,9 @@ definitions:
               charging:
                 type: boolean
                 title: 充電状態フラグ
-                description: '充電中:true<br>非充電中:false'
+                description: >-
+                  充電中:true<br>
+                  非充電中:false
   OnBatteryChangeEvent:
     type: object
     allOf:
@@ -424,7 +430,9 @@ definitions:
                 type: integer
                 format: int64
                 title: 完全充電までの時間 (秒)
-                description: 満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。
+                description: >-
+                  満充電、または非充電中の場合は0。<br>
+                  システムとして取得出来ない場合はNumber.MAX_VALUE。
               dischargingTime:
                 type: integer
                 format: int64

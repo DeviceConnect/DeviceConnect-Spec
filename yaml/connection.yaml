@@ -651,7 +651,10 @@ definitions:
           enable:
             type: boolean
             title: WIFI機能有効状態
-            description: 'WIFI機能有効状態。<br>ON : true<br>OFF : false'
+            description: >-
+              WIFI機能有効状態。<br>
+              ON : true<br>
+              OFF : false
   WifiOnResponse:
     type: object
     allOf:
@@ -676,7 +679,10 @@ definitions:
               enable:
                 type: boolean
                 title: WIFI機能有効状態
-                description: 'WIFI機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  WIFI機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   WifiChangeEvent:
     type: object
     allOf:
@@ -693,7 +699,10 @@ definitions:
               enable:
                 type: boolean
                 title: WIFI機能有効状態
-                description: 'WIFI機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  WIFI機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   GetBluetoothResponse:
     type: object
     allOf:
@@ -705,7 +714,10 @@ definitions:
           enable:
             type: boolean
             title: Bluetooth機能有効状態
-            description: 'Bluetooth機能有効状態。<br>ON : true<br>OFF : false'
+            description: >-
+              Bluetooth機能有効状態。<br>
+              ON : true<br>
+              OFF : false
   BluetoothOnResponse:
     type: object
     allOf:
@@ -730,7 +742,10 @@ definitions:
               enable:
                 type: boolean
                 title: Bluetooth機能有効状態
-                description: 'Bluetooth機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  Bluetooth機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   BluetoothChangeEvent:
     type: object
     allOf:
@@ -747,7 +762,10 @@ definitions:
               enable:
                 type: boolean
                 title: Bluetooth機能有効状態
-                description: 'Bluetooth機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  Bluetooth機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   BluetoothDiscoverableStartResponse:
     type: object
     allOf:
@@ -767,7 +785,10 @@ definitions:
           enable:
             type: boolean
             title: NFC機能有効状態
-            description: 'NFC機能有効状態。<br>ON : true<br>OFF : false'
+            description: >-
+              NFC機能有効状態。<br>
+              ON : true<br>
+              OFF : false
   NfcOnResponse:
     type: object
     allOf:
@@ -792,7 +813,10 @@ definitions:
               enable:
                 type: boolean
                 title: NFC機能有効状態
-                description: 'NFC機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  NFC機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   NfcChangeEvent:
     type: object
     allOf:
@@ -809,7 +833,10 @@ definitions:
               enable:
                 type: boolean
                 title: NFC機能有効状態
-                description: 'NFC機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  NFC機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   GetBleResponse:
     type: object
     allOf:
@@ -821,7 +848,10 @@ definitions:
           enable:
             type: boolean
             title: BLE有効状態
-            description: 'BLE機能有効状態。<br>ON : true<br>OFF : false'
+            description: >-
+              BLE機能有効状態。<br>
+              ON : true<br>
+              OFF : false
   BleOnResponse:
     type: object
     allOf:
@@ -846,7 +876,10 @@ definitions:
               enable:
                 type: boolean
                 title: BLE機能有効状態
-                description: 'BLE機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  BLE機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   BleChangeEvent:
     type: object
     allOf:
@@ -863,7 +896,10 @@ definitions:
               enable:
                 type: boolean
                 title: BLE機能有効状態
-                description: 'BLE機能有効状態<br>ON: true<br>OFF: false'
+                description: >-
+                  BLE機能有効状態<br>
+                  ON: true<br>
+                  OFF: false
   EventRegistrationResponse:
     type: object
     allOf:

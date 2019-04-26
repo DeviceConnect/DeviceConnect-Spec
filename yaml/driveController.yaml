@@ -21,14 +21,18 @@ paths:
           required: true
           type: string
         - name: angle
-          description: 角度。デバイスの方向 (degree)<br>0~360
+          description: >-
+            角度。デバイスの方向 (degree)<br>
+            0~360
           in: formData
           required: true
           type: number
           minimum: 0
           maximum: 360
         - name: speed
-          description: 速度。デバイスの動く速度<br>0.0~1.0
+          description: >-
+            速度。デバイスの動く速度<br>
+            0.0~1.0
           in: formData
           required: true
           type: number
@@ -79,7 +83,9 @@ paths:
           required: true
           type: string
         - name: angle
-          description: 角度。デバイスの方向 (degree)<br>0~360
+          description: >-
+            角度。デバイスの方向 (degree)<br>
+            0~360
           in: formData
           required: true
           type: number

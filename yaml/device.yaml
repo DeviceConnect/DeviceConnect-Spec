@@ -16,7 +16,9 @@ paths:
       description: ''
       parameters:
         - name: serviceId
-          description: サービスID。<br>ペアリング対象スマートデバイス
+          description: >-
+            サービスID。<br>
+            ペアリング対象スマートデバイス
           in: query
           required: true
           type: string
@@ -37,7 +39,9 @@ paths:
       description: ''
       parameters:
         - name: serviceId
-          description: サービスID。<br>ペアリング解除対象スマートデバイス
+          description: >-
+            サービスID。<br>
+            ペアリング解除対象スマートデバイス
           in: query
           required: true
           type: string

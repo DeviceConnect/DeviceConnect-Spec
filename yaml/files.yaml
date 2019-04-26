@@ -4,9 +4,14 @@ info:
   title: Files Profile
   version: 2.0.0
   description: >-
-    各デバイスプラグインが持っているファイルにアクセスするためのAPI。<br>Javascriptからは、バイナリを直接操作することができない。その為にURIという形にして返却することになる。<br>その為にFile
-    Receive
-    APIでファイルを取得する際には、Filesプロファイルを経由して取得できるURIにしている。<br>例えば、Javascriptでは、取得したURIが画像の場合には、imgタグのsrcに設定して画像を表示する。<br>テキストの場合には、XMLHttpRequestでテキストを取得する。
+    各デバイスプラグインが持っているファイルにアクセスするためのAPI。<br>
+    Javascriptからは、バイナリを直接操作することができない。<br>
+    その為にURIという形にして返却することになる。<br>
+    その為にFile Receive APIでファイルを取得する際には、
+    Filesプロファイルを経由して取得できるURIにしている。<br>
+    例えば、Javascriptでは、取得したURIが画像の場合には、
+    imgタグのsrcに設定して画像を表示する。<br>
+    テキストの場合には、XMLHttpRequestでテキストを取得する。
 consumes: []
 paths:
   /:
@@ -23,4 +28,6 @@ paths:
           type: string
       responses:
         '200':
-          description: バイナリーデータが直接返ってくる。<br>FileProfileなどで設定したファイルにより、ファイルのタイプなどが変わってくる。
+          description: >-
+            バイナリーデータが直接返ってくる。<br>
+            FileProfileなどで設定したファイルにより、ファイルのタイプなどが変わってくる。

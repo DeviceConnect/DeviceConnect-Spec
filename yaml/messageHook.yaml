@@ -86,17 +86,23 @@ paths:
           required: true
           type: string
         - name: text
-          description: テキスト。送信する文言。<br>リソースURIが指定されていない時は省略できない。
+          description: >-
+            テキスト。送信する文言。<br>
+            リソースURIが指定されていない時は省略できない。
           in: formData
           required: false
           type: string
         - name: resource
-          description: リソースURI。画像、音声、映像などのリソースへのURI。<br>テキストが指定されていない時は省略できない。
+          description: >-
+            リソースURI。画像、音声、映像などのリソースへのURI。<br>
+            テキストが指定されていない時は省略できない。
           in: formData
           required: false
           type: string
         - name: mimeType
-          description: MimeType。送信するリソースのタイプ。<br>リソースURIが指定されている時は省略できない。
+          description: >-
+            MimeType。送信するリソースのタイプ。<br>
+            リソースURIが指定されている時は省略できない。
           in: formData
           required: false
           type: string
@@ -239,7 +245,11 @@ definitions:
                 type:
                   type: string
                   title: チャンネルタイプ
-                  description: チャンネルのタイプ<br>・facebook<br>・line<br>・slack<br>など
+                  description: >-
+                    チャンネルのタイプ<br>
+                    ・facebook<br>
+                    ・line<br>
+                    ・slack<br>など
   GetMessageResponse:
     type: object
     allOf:
@@ -264,7 +274,11 @@ definitions:
                 messagerType:
                   type: string
                   title: メッセンジャータイプ
-                  description: メッセンジャーのタイプ<br>・facebook<br>・line<br>・slack<br>など。
+                  description: >-
+                    メッセンジャーのタイプ<br>
+                    ・facebook<br>
+                    ・line<br>
+                    ・slack<br>など。
                 from:
                   type: integer
                   format: int64
@@ -283,7 +297,8 @@ definitions:
                   type: string
                   format: date-time
                   title: 投稿した時間の文字列
-                  description: '投稿した時間をRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+                  description: >-
+                    投稿した時間をRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
                 text:
                   type: string
                   title: チャンネル名
@@ -300,10 +315,12 @@ definitions:
                   type: string
                   title: メッセージタイプ
                   description: >-
-                    normal, direct, mention の文字列（複数になる場合がある「direct,
-                    mention」など）<br>・normal: 通常メッセージ<br>・direct:
-                    ダイレクトメッセージ<br>・mention:
-                    メンション付きメッセージ<br>＃メンション付きのメッセージのtextはメンション部分が削除されます。
+                    normal, direct, mention の文字列
+                    （複数になる場合がある「direct,mention」など）<br>
+                    ・normal: 通常メッセージ<br>
+                    ・direct: ダイレクトメッセージ<br>
+                    ・mention: メンション付きメッセージ<br>
+                    ＃メンション付きのメッセージのtextはメンション部分が削除されます。
   SendMessageResponse:
     type: object
     allOf:
@@ -336,7 +353,11 @@ definitions:
           messagerType:
             type: string
             title: メッセンジャータイプ
-            description: メッセンジャーのタイプ<br>・facebook<br>・line<br>・slack<br>など。
+            description: >-
+              メッセンジャーのタイプ<br>
+              ・facebook<br>
+              ・line<br>
+              ・slack<br>など。
           from:
             type: integer
             format: int64
@@ -355,7 +376,8 @@ definitions:
             type: string
             format: date-time
             title: 投稿した時間の文字列
-            description: '投稿した時間をRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+            description: >-
+              投稿した時間をRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
           text:
             type: string
             title: チャンネル名
@@ -363,19 +385,25 @@ definitions:
           resource:
             type: string
             title: リソースURI
-            description: 送られてきたメッセージのリソースへのURI。<br>メッセージが指定されていない時は省略されない。
+            description: >-
+              送られてきたメッセージのリソースへのURI。<br>
+              メッセージが指定されていない時は省略されない。
           mimeType:
             type: string
             title: MimeType
-            description: リソースのタイプ。<br>メッセージが指定されていない時は省略されない。
+            description: >-
+              リソースのタイプ。<br>
+              メッセージが指定されていない時は省略されない。
           messageType:
             type: string
             title: メッセージタイプ
             description: >-
-              normal, direct, mention の文字列（複数になる場合がある「direct,
-              mention」など）<br>・normal: 通常メッセージ<br>・direct:
-              ダイレクトメッセージ<br>・mention:
-              メンション付きメッセージ<br>＃メンション付きのメッセージのtextはメンション部分が削除されます。
+              normal, direct, mention の文字列
+              （複数になる場合がある「direct, mention」など）<br>
+              ・normal : 通常メッセージ<br>
+              ・direct : ダイレクトメッセージ<br>
+              ・mention: メンション付きメッセージ<br>
+              ＃メンション付きのメッセージのtextはメンション部分が削除されます。
   EventRegistrationResponse:
     type: object
     allOf:
@@ -406,7 +434,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

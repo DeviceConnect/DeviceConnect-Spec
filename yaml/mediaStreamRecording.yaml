@@ -94,7 +94,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -115,7 +118,9 @@ paths:
       operationId: mediaStreamRecordingRecordPost
       x-type: one-shot
       summary: スマートデバイスに対して、動画撮影や音声録音の開始リクエストを送る。
-      description: MediaStreamRecording Stopされない場合は各デバイスが撮影できる最大時間まで撮影を行い、その後撮影を停止する。
+      description: >-
+        MediaStreamRecording Stopされない場合は各デバイスが撮影できる最大時間まで
+        撮影を行い、 その後撮影を停止する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -124,13 +129,20 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
         - name: timeslice
           description: >-
-            タイムスライス。動画・音声入力などから得られた1フレームを新たに出力先メディアに書き出すまでの待ち時間。単位はミリ秒。1000/timesliceが出力メディアの固定フレームレート（フレーム/秒）に相当する。省略された場合には、デバイス毎の挙動でフレーム書き出しを行う。
+            タイムスライス。<br>
+            動画・音声入力などから得られた1フレームを新たに出力先メディアに
+            書き出すまでの待ち時間。単位はミリ秒。<br>
+            1000/timesliceが出力メディアの固定フレームレート（フレーム/秒）
+            に相当する。省略された場合には、デバイス毎の挙動でフレーム書き出しを行う。
           in: formData
           required: false
           minimum: 0
@@ -162,7 +174,9 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -180,7 +194,9 @@ paths:
     put:
       operationId: mediaStreamRecordingResumePut
       x-type: one-shot
-      summary: スマートデバイスに対して一時停止状態にある動画撮影または音声録音の再開リクエストを送る。
+      summary: >-
+        スマートデバイスに対して一時停止状態にある動画撮影または音声録音の
+        再開リクエストを送る。
       description: ''
       parameters:
         - name: serviceId
@@ -190,7 +206,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -218,7 +237,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -237,7 +259,9 @@ paths:
       operationId: mediaStreamRecordingMuteTrackPut
       x-type: one-shot
       summary: スマートデバイスに対して動画撮影や音声録音のミュート依頼を送る。
-      description: ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、オーディオトラックがミュートされる。
+      description: >-
+        ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、
+        オーディオトラックがミュートされる。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -246,7 +270,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -265,7 +292,9 @@ paths:
       operationId: mediaStreamRecordingUnmuteTrackPut
       x-type: one-shot
       summary: スマートデバイスに対して動画撮影や音声録音のミュート解除依頼を送る。
-      description: ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、オーディオトラックがミュート解除される。
+      description: >-
+        ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、
+        オーディオトラックがミュート解除される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -274,7 +303,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -292,7 +324,9 @@ paths:
     get:
       operationId: mediaStreamRecordingOptionsGet
       x-type: one-shot
-      summary: スマートデバイスからサポートしている写真撮影、動画撮影や音声録音のオプションを取得する。
+      summary: >-
+        スマートデバイスからサポートしている写真撮影、
+        動画撮影や音声録音のオプションを取得する。
       description: ''
       parameters:
         - name: serviceId
@@ -302,7 +336,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: query
           required: false
           type: string
@@ -383,7 +420,9 @@ paths:
     put:
       operationId: mediaStreamRecordingOptionsPut
       x-type: one-shot
-      summary: スマートデバイスからサポートしている写真撮影、動画撮影や音声録音のオプションを設定する。
+      summary: >-
+        スマートデバイスからサポートしている写真撮影、
+        動画撮影や音声録音のオプションを設定する。
       description: ''
       parameters:
         - name: serviceId
@@ -393,7 +432,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -406,22 +448,22 @@ paths:
           type: integer
         - name: imageHeight
           description: >-
-            撮影時の縦幅。単位はピクセル。previewWidthを指定するときは省略不可。Options API
-            GETで返された値以外を指定した場合はパラメータエラー。
+            撮影時の縦幅。単位はピクセル。previewWidthを指定するときは省略不可。<br>
+            Options API GETで返された値以外を指定した場合はパラメータエラー。
           in: formData
           required: false
           type: integer
         - name: previewWidth
           description: >-
-            プレビュー時の横幅。単位はピクセル。previewHeightを指定するときは省略不可。Options API
-            GETで返された値以外を指定した場合はパラメータエラー。
+            プレビュー時の横幅。単位はピクセル。previewHeightを指定するときは省略不可。<br>
+            Options API GETで返された値以外を指定した場合はパラメータエラー。
           in: formData
           required: false
           type: integer
         - name: previewHeight
           description: >-
-            プレビュー時の縦幅。単位はピクセル。previewWidthを指定するときは省略不可。Options API
-            GETで返された値以外を指定した場合はパラメータエラー。
+            プレビュー時の縦幅。単位はピクセル。previewWidthを指定するときは省略不可。<br>
+            Options API GETで返された値以外を指定した場合はパラメータエラー。
           in: formData
           required: false
           type: integer
@@ -536,7 +578,10 @@ paths:
       operationId: mediaStreamRecordingPreviewGet
       x-type: one-shot
       summary: スマートデバイスでの動画撮影中に、動画のプレビュー画像を取得する。
-      description: このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。JPEGでデータを受信する。
+      description: >-
+        このイベント通知を行うタイミングに規定は無く、
+        デバイスプラグインの実装依存とする。<br>
+        JPEGでデータを受信する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -545,7 +590,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: query
           required: false
           type: string
@@ -563,8 +611,11 @@ paths:
     put:
       operationId: mediaStreamRecordingPreviewPut
       x-type: streaming
-      summary: スマートデバイスでの動画撮影中に、動画のプレビュー画像を受信を開始する。
-      description: このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。
+      summary: >-
+        スマートデバイスでの動画撮影中に、動画のプレビュー画像を受信を開始する。
+      description: >-
+        このイベント通知を行うタイミングに規定は無く、
+        デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -573,7 +624,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
@@ -597,7 +651,10 @@ paths:
       operationId: mediaStreamRecordingPreviewDelete
       x-type: streaming
       summary: スマートデバイスでの動画撮影中に、動画のプレビュー画像を受信を停止する。
-      description: このイベント通知を行うタイミングに規定は無く、デバイスプラグインの実装依存とする。MotionJPEGでデータを受信する。
+      description: >-
+        このイベント通知を行うタイミングに規定は無く、
+        デバイスプラグインの実装依存とする。<br>
+        MotionJPEGなどでデータを受信する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -606,7 +663,10 @@ paths:
           type: string
         - name: target
           description: >-
-            ターゲット。レコーダーを識別するID。省略された場合にはデフォルトのレコーダーを使用する。デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: query
           required: false
           type: string
@@ -624,7 +684,9 @@ paths:
     get:
       operationId: mediaStreamRecordingOnRecordingChangeGet
       x-type: one-shot
-      summary: スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを取得する。
+      summary: >-
+        スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを
+        取得する。
       description: ''
       parameters:
         - name: serviceId
@@ -649,7 +711,9 @@ paths:
     put:
       operationId: mediaStreamRecordingOnRecordingChangePut
       x-type: event
-      summary: スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを開始する。
+      summary: >-
+        スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを
+        開始する。
       description: ''
       parameters:
         - name: serviceId
@@ -688,7 +752,9 @@ paths:
     delete:
       operationId: mediaStreamRecordingOnRecordingChangeDelete
       x-type: event
-      summary: スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを停止する。
+      summary: >-
+        スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを
+        停止する。
       description: ''
       parameters:
         - name: serviceId
@@ -751,27 +817,34 @@ definitions:
                 config:
                   type: string
                   title: コンフィグ
-                  description: カメラに設定がある場合には、ここに文字列としてデータが格納されている。
+                  description: >-
+                    カメラに設定がある場合には、ここに文字列としてデータが格納されている。
                 imageWidth:
                   type: integer
                   title: 画像の横幅
-                  description: レコーダーの現在の横幅。単位はピクセル。録音の場合は省略可。
+                  description: >-
+                    レコーダーの現在の横幅。単位はピクセル。録音の場合は省略可。
                 imageHeight:
                   type: integer
                   title: 画像の縦幅
-                  description: レコーダーの現在の縦幅。単位はピクセル。録音の場合は省略可。
+                  description: >-
+                    レコーダーの現在の縦幅。単位はピクセル。録音の場合は省略可。
                 previewWidth:
                   type: integer
                   title: プレビューの横幅
-                  description: プレビューの現在の横幅。単位はピクセル。録音の場合は省略可。
+                  description: >-
+                    プレビューの現在の横幅。単位はピクセル。録音の場合は省略可。
                 previewHeight:
                   type: integer
                   title: プレビューの縦幅
-                  description: プレビューの現在の縦幅。単位はピクセル。録音の場合は省略可。
+                  description: >-
+                    プレビューの現在の縦幅。単位はピクセル。録音の場合は省略可。
                 previewMaxFrameRate:
                   type: number
                   title: プレビューの最大フレームレート
-                  description: 現在のプレビューのフレームレートの最大値。単位はfps。録音の場合は省略可。
+                  description: >-
+                    現在のプレビューのフレームレートの最大値。単位はfps。<br>
+                    録音の場合は省略可。
                 audio:
                   type: object
                   title: 音声情報
@@ -814,7 +887,9 @@ definitions:
           path:
             type: string
             title: ファイルパス
-            description: 撮影された写真へのファイルパス。ルートはデバイスプラグインごとに異なる。File APIのパラメータとして使用可能。
+            description: >-
+              撮影された写真へのファイルパス。ルートはデバイスプラグインごとに異なる。<br>
+              File APIのパラメータとして使用可能。
   RecordResponse:
     type: object
     allOf:
@@ -828,7 +903,9 @@ definitions:
           path:
             type: string
             title: ファイルパス
-            description: 動画または音声へのファイルパス。ルートはデバイスプラグインごとに異なる。File APIのパラメータとして使用可能。
+            description: >-
+              動画または音声へのファイルパス。ルートはデバイスプラグインごとに異なる。<br>
+              File APIのパラメータとして使用可能。
   OptionsResponse:
     type: object
     allOf:
@@ -845,7 +922,9 @@ definitions:
           imageSizes:
             type: array
             title: 撮影時の解像度の一覧
-            description: レコーダーのサポートする画像の解像度の一覧。録音の場合は省略可。プラグイン側でリサイズすることでサポートするサイズも含めてよい。
+            description: >-
+              レコーダーのサポートする画像の解像度の一覧。録音の場合は省略可。<br>
+              プラグイン側でリサイズすることでサポートするサイズも含めてよい。
             items:
               type: object
               title: 解像度
@@ -866,8 +945,9 @@ definitions:
             type: array
             title: プレビュー時の解像度の一覧
             description: >-
-              プレビューで利用可能な解像度の一覧。録音の場合、またはプレビューを
-              提供しない場合は省略可。プラグイン側でリサイズすることでサポートするサイズも含めてよい。
+              プレビューで利用可能な解像度の一覧。<br>
+              録音の場合、またはプレビューを提供しない場合は省略可。<br>
+              プラグイン側でリサイズすることでサポートするサイズも含めてよい。
             items:
               type: object
               title: 解像度
@@ -914,11 +994,14 @@ definitions:
           path:
             type: string
             title: ファイルパス
-            description: ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。File APIで使用可能。
+            description: >-
+              ファイルが存在するパス。ルートはデバイスプラグインごとに異なる。<br>
+              File APIで使用可能。
           mimeType:
             type: string
             title: MIME Type
-            description: 撮影された写真のMIME Type。動画・音声を識別するために使用する。
+            description: >-
+              撮影された写真のMIME Type。動画・音声を識別するために使用する。
   PreviewGetResponse:
     type: object
     allOf:
@@ -964,7 +1047,8 @@ definitions:
           audio:
             type: object
             title: 音声配信情報
-            description: 音声配信に関する情報。音声のみの配信をサポートしない場合は省略可。
+            description: >-
+              音声配信に関する情報。音声のみの配信をサポートしない場合は省略可。
             required:
               - uri
             properties:
@@ -1019,15 +1103,20 @@ definitions:
           path:
             type: string
             title: ファイルパス
-            description: ファイルが存在するパス。ルートはデバイスプラグインごとに違う。
+            description: >-
+              ファイルが存在するパス。ルートはデバイスプラグインごとに違う。
           mimeType:
             type: string
             title: MIME Type
-            description: 録画・録音が開始されたメディアのMIME Type。このタイプで、動画、音声などを識別する。
+            description: >-
+              録画・録音が開始されたメディアのMIME Type。<br>
+              このタイプで、動画、音声などを識別する。
           errorMessasge:
             type: string
             title: エラーメッセージ
-            description: エラー、警告内容を伝える文字列。状態が error、warning の時のみ付加される。省略可能。
+            description: >-
+              エラー、警告内容を伝える文字列。<br>
+              状態が error、warning の時のみ付加される。省略可能。
   RecorderStopResponse:
     type: object
     allOf:
@@ -1041,7 +1130,10 @@ definitions:
           path:
             type: string
             title: ファイルパス
-            description: 動画または音声へのファイルパス。ルートはデバイスプラグインごとに異なる。File APIのパラメータとして使用可能。
+            description: >-
+              動画または音声へのファイルパス。<br>
+              ルートはデバイスプラグインごとに異なる。<br>
+              File APIのパラメータとして使用可能。
   RecorderControlResponse:
     type: object
     allOf:
@@ -1076,7 +1168,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

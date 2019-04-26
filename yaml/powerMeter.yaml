@@ -78,7 +78,9 @@ paths:
       operationId: powerMeterIntegratedPowerGet
       x-type: one-shot
       summary: スマートデバイスが計測した積算電力量を取得する。
-      description: 指定した日時から過去24時間分の計測値を24または48分割して返す。（1時間または30分ごとの値を返す。）
+      description: >-
+        指定した日時から過去24時間分の計測値を24または48分割して返す。<br>
+        （1時間または30分ごとの値を返す。）
       parameters:
         - name: serviceId
           description: サービスID。<br>取得対象スマートデバイス
@@ -86,20 +88,26 @@ paths:
           required: true
           type: string
         - name: date
-          description: '取得日付。<br>RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」形式<br>省略時はAPI実行日時が指定される'
+          description: >-
+            取得日付。<br>
+            RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」形式<br>
+            省略時はAPI実行日時が指定される
           in: query
           required: false
           type: string
           format: date-time
         - name: unit
-          description: 積算電力量単位。積算電力量の単位を指定。<br>省略時は'Wh'
+          description: >-
+            積算電力量単位。積算電力量の単位を指定。<br>
+            省略時は'Wh'
           in: query
           required: false
           type: string
         - name: count
           description: >-
-            積算電力量コマ数。24時間分の積算電力量を指定数で返す。<br>24: 24分割＝１時間単位（デフォルト）<br>48:
-            48分割＝30分単位
+            積算電力量コマ数。24時間分の積算電力量を指定数で返す。<br>
+            24: 24分割＝１時間単位（デフォルト）<br>
+            48: 48分割＝30分単位
           in: query
           required: false
           type: integer
@@ -110,8 +118,10 @@ paths:
         - name: powerFlow
           in: query
           description: >-
-            積算電力量方向指定。取得する積算電力量の方向を指定。<br>normal : 正方向<br>reverse :
-            逆方向<br>省略時はnormal (正方向)
+            積算電力量方向指定。取得する積算電力量の方向を指定。<br>
+            normal : 正方向<br>
+            reverse : 逆方向<br>
+            省略時はnormal (正方向)
           required: false
           type: string
           enum:
@@ -163,12 +173,19 @@ paths:
       description: ''
       parameters:
         - name: serviceId
-          description: サービスID。<br>取得対象スマートデバイス
+          description: >-
+            サービスID。<br>
+            取得対象スマートデバイス
           in: query
           required: true
           type: string
         - name: unit
-          description: 瞬時電力量単位。瞬時電力量の単位を指定。<br>例：<br>'W'<br>'kW'<br>省略時は'W'
+          description: >-
+            瞬時電力量単位。瞬時電力量の単位を指定。<br>
+            例：<br>
+            'W'<br>
+            'kW'<br>
+            省略時は'W'
           in: query
           required: false
           type: string
@@ -197,7 +214,12 @@ paths:
           required: true
           type: string
         - name: unit
-          description: 瞬時電流量単位。瞬時電流量の単位を指定。<br>例：<br>'mA'<br>'A'<br>省略時は'A'
+          description: >-
+            瞬時電流量単位。瞬時電流量の単位を指定。<br>
+            例：<br>
+            'mA'<br>
+            'A'<br>
+            省略時は'A'
           in: query
           required: false
           type: string
@@ -248,10 +270,17 @@ definitions:
         type: array
         title: 積算電力量
         description: >-
-          24時間分の計測値を返す。<br>サイズが24または48のnumberの配列。各値は積算電力量を表す実数。単位はパラメーター設定による。時間順に格納されているため、最初の要素は24時間前のもの。<br><br>例:
-          リクエストで date=2015-08-24T15:14:00+0900, count=24 
-          を指定した場合、0から23までの各インデックスに対応する時間帯は下記のとおり。<br>0 : 2015-08-23T15:00 ~
-          15:59<br> :<br>23 :2015-08-24T14:00 ~ 14:59
+          24時間分の計測値を返す。<br>
+          サイズが24または48のnumberの配列。各値は積算電力量を表す実数。<br>
+          単位はパラメーター設定による。
+          時間順に格納されているため、最初の要素は24時間前のもの。<br>
+          <br>
+          例:
+          リクエストで date=2015-08-24T15:14:00+0900, count=24を指定した場合、
+          0から23までの各インデックスに対応する時間帯は下記のとおり。<br>
+          0 : 2015-08-23T15:00 ~ 15:59<br>
+          :<br>
+          23 :2015-08-24T14:00 ~ 14:59
         items:
           type: number
           format: double
@@ -343,4 +372,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

@@ -103,7 +103,9 @@ paths:
           required: true
           type: string
         - name: threshold
-          description: '検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出しきい値。省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -111,8 +113,9 @@ paths:
           maximum: 1
         - name: minWidth
           description: >-
-            検出最小サイズ(w)。minHeight <
-            maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(w)。<br>
+            minHeight < maxHeightとすること、省略時デバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -120,15 +123,19 @@ paths:
           maximum: 1
         - name: minHeight
           description: >-
-            検出最小サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: maxWidth
-          description: '検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出最大サイズ(w)。<br>
+            minWidth < maxWidthとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -136,15 +143,19 @@ paths:
           maximum: 1
         - name: maxHeight
           description: >-
-            検出最大サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最大サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: options
-          description: 利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。
+          description: >-
+            利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br>
+            省略時は指定なし。<br>
+            ※使用できるオプションは無し。
           in: query
           required: false
           type: array
@@ -188,7 +199,9 @@ paths:
           required: true
           type: string
         - name: threshold
-          description: '検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出しきい値。省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -196,8 +209,9 @@ paths:
           maximum: 1
         - name: minWidth
           description: >-
-            検出最小サイズ(w)。minHeight <
-            maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(w)。<br>
+            minHeight < maxHeightとすること、省略時デバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -205,15 +219,19 @@ paths:
           maximum: 1
         - name: minHeight
           description: >-
-            検出最小サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: maxWidth
-          description: '検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出最大サイズ(w)。<br>
+            minWidth < maxWidthとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -221,8 +239,9 @@ paths:
           maximum: 1
         - name: maxHeight
           description: >-
-            検出最大サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最大サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -235,7 +254,10 @@ paths:
           type: integer
           format: int64
         - name: options
-          description: 利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。
+          description: >-
+            利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br>
+            省略時は指定なし。<br>
+            ※使用できるオプションは無し。
           in: formData
           required: false
           type: array
@@ -309,7 +331,9 @@ paths:
           required: true
           type: string
         - name: threshold
-          description: '検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出しきい値。省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -317,8 +341,9 @@ paths:
           maximum: 1
         - name: minWidth
           description: >-
-            検出最小サイズ(w)。minHeight <
-            maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(w)。<br>
+            minHeight < maxHeightとすること、省略時デバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -326,15 +351,19 @@ paths:
           maximum: 1
         - name: minHeight
           description: >-
-            検出最小サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: maxWidth
-          description: '検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出最大サイズ(w)。<br>
+            minWidth < maxWidthとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0'
           in: query
           required: false
           type: number
@@ -342,15 +371,19 @@ paths:
           maximum: 1
         - name: maxHeight
           description: >-
-            検出最大サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最大サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: options
-          description: 利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。
+          description: >-
+            利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br>
+            省略時は指定なし。<br>
+            ※使用できるオプションは無し。
           in: query
           required: false
           type: array
@@ -384,7 +417,8 @@ paths:
           required: true
           type: string
         - name: threshold
-          description: '検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -392,8 +426,9 @@ paths:
           maximum: 1
         - name: minWidth
           description: >-
-            検出最小サイズ(w)。minHeight <
-            maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(w)。<br>
+            minHeight < maxHeightとすること、省略時デバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -401,15 +436,19 @@ paths:
           maximum: 1
         - name: minHeight
           description: >-
-            検出最小サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: maxWidth
-          description: '検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出最大サイズ(w)。<br>
+            minWidth < maxWidthとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -417,8 +456,9 @@ paths:
           maximum: 1
         - name: maxHeight
           description: >-
-            検出最大サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最大サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -431,7 +471,10 @@ paths:
           type: integer
           format: int64
         - name: options
-          description: 利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。
+          description: >-
+            利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br>
+            省略時は指定なし。<br>
+            ※使用できるオプションは無し。
           in: formData
           required: false
           type: array
@@ -495,7 +538,9 @@ paths:
           required: true
           type: string
         - name: threshold
-          description: '検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出しきい値。省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -503,8 +548,9 @@ paths:
           maximum: 1
         - name: minWidth
           description: >-
-            検出最小サイズ(w)。minHeight <
-            maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(w)。<br>
+            minHeight < maxHeightとすること、省略時デバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -512,15 +558,19 @@ paths:
           maximum: 1
         - name: minHeight
           description: >-
-            検出最小サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: maxWidth
-          description: '検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出最大サイズ(w)。<br>
+            minWidth < maxWidthとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -528,71 +578,90 @@ paths:
           maximum: 1
         - name: maxHeight
           description: >-
-            検出最大サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最大サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: eyeThreshold
-          description: '目の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            目の座標検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: noseThreshold
-          description: '鼻の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            鼻の座標検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: mouthThreshold
-          description: '口の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            口の座標検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: blinkThreshold
-          description: '目つむり検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            目つむり検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: ageThreshold
-          description: '年齢推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            年齢推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: genderThreshold
-          description: '性別推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            性別推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: faceDirectionThreshold
-          description: '顔向き推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            顔向き推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: gazeThreshold
-          description: '視線推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            視線推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: expressionThreshold
-          description: '表情推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            表情推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: query
           required: false
           type: number
@@ -600,9 +669,14 @@ paths:
           maximum: 1
         - name: options
           description: >-
-            利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションはデバイスプラグインによって違う。<br>例)eye,
-            nose, mouth,
-            blink,age,gender,faceDirection,gaze,expressionをカンマ区切りで指定することで、それぞれの検出値がある場合はレスポンスに含めることができる。ただし、デバイスによって対応していない値がある。
+            利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br>
+            省略時は指定なし。<br>
+            ※使用できるオプションはデバイスプラグインによって違う。<br>
+            例)<br>
+            eye,nose, mouth,blink,age,gender,faceDirection,gaze,expression<br>
+            をカンマ区切りで指定することで、
+            それぞれの検出値がある場合はレスポンスに含めることができる。<br>
+            ただし、デバイスによって対応していない値がある。
           in: query
           required: false
           type: array
@@ -645,7 +719,9 @@ paths:
           required: true
           type: string
         - name: threshold
-          description: '検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出しきい値。省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -653,8 +729,9 @@ paths:
           maximum: 1
         - name: minWidth
           description: >-
-            検出最小サイズ(w)。minHeight <
-            maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(w)。<br>
+            minHeight < maxHeightとすること、省略時デバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -662,15 +739,19 @@ paths:
           maximum: 1
         - name: minHeight
           description: >-
-            検出最小サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0
+            検出最小サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: maxWidth
-          description: '検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            検出最大サイズ(w)。<br>
+            minWidth < maxWidthとすること、省略時はデバイス初期値<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -678,71 +759,90 @@ paths:
           maximum: 1
         - name: maxHeight
           description: >-
-            検出最大サイズ(h)。minHeight <
-            maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0
+            検出最大サイズ(h)。<br>
+            minHeight < maxHeightとすること、省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: eyeThreshold
-          description: '目の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            目の座標検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: noseThreshold
-          description: '鼻の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            鼻の座標検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: mouthThreshold
-          description: '口の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            口の座標検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: blinkThreshold
-          description: '目つむり検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            目つむり検出しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: ageThreshold
-          description: '年齢推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            年齢推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: genderThreshold
-          description: '性別推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            性別推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: faceDirectionThreshold
-          description: '顔向き推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            顔向き推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: gazeThreshold
-          description: '視線推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            視線推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: expressionThreshold
-          description: '表情推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0'
+          description: >-
+            表情推定しきい値。省略時はデバイス初期値。<br>
+            設定できる値の範囲:0.0~1.0
           in: formData
           required: false
           type: number
@@ -756,9 +856,14 @@ paths:
           format: int64
         - name: options
           description: >-
-            利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションはデバイスプラグインによって違う。<br>例)eye,
-            nose, mouth,
-            blink,age,gender,faceDirection,gaze,expressionをカンマ区切りで指定することで、それぞれの検出値がある場合はレスポンスに含めることができる。ただし、デバイスによって対応していない値がある。
+            利用するオプション機能。利用するオプション機能を指定する。<br>
+            複数指定可能。省略時は指定なし。<br>
+            ※使用できるオプションはデバイスプラグインによって違う。<br>
+            例)<br>
+            eye,nose, mouth,blink,age,gender,faceDirection,gaze,expression<br>
+            をカンマ区切りで指定することで、
+            それぞれの検出値がある場合はレスポンスに含めることができる。<br>
+            ただし、デバイスによって対応していない値がある。
           in: formData
           required: false
           type: array
@@ -843,7 +948,9 @@ definitions:
           exist:
             type: boolean
             title: 人検出フラグ
-            description: '検出された : true<br>検出されない : false'
+            description: >-
+              検出された : true<br>
+              検出されない : false'
   BodyDetectionResponse:
     type: object
     allOf:
@@ -881,11 +988,15 @@ definitions:
             width:
               type: number
               title: 検出領域のX方向の幅
-              description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+              description: >-
+                ※領域幅が提供できない場合は出現しない。<br>
+                0.0~1.0
             height:
               type: number
               title: 検出領域のY方向の幅
-              description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+              description: >-
+                ※領域幅が提供できない場合は出現しない。<br>
+                0.0~1.0
             confidence:
               type: number
               title: 解析の信頼度
@@ -927,11 +1038,15 @@ definitions:
             width:
               type: number
               title: 検出領域のX方向の幅
-              description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+              description: >-
+                ※領域幅が提供できない場合は出現しない。<br>
+                0.0~1.0
             height:
               type: number
               title: 検出領域のY方向の幅
-              description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+              description: >-
+                ※領域幅が提供できない場合は出現しない。<br>
+                0.0~1.0
             confidence:
               type: number
               title: 解析の信頼度
@@ -973,11 +1088,15 @@ definitions:
             width:
               type: number
               title: 検出領域のX方向の幅
-              description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+              description: >-
+                ※領域幅が提供できない場合は出現しない。<br>
+                0.0~1.0
             height:
               type: number
               title: 検出領域のY方向の幅
-              description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+              description: >-
+                ※領域幅が提供できない場合は出現しない。<br>
+                0.0~1.0
             confidence:
               type: number
               title: 解析の信頼度
@@ -997,11 +1116,15 @@ definitions:
                 leftEyeWidth:
                   type: number
                   title: 左目の領域幅(w)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 leftEyeHeight:
                   type: number
                   title: 左目の領域幅(h)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 rightEyeX:
                   type: number
                   title: 右目の中心座標(x)
@@ -1013,11 +1136,15 @@ definitions:
                 rightEyeWidth:
                   type: number
                   title: 右目の領域幅(w)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 rightEyeHeight:
                   type: number
                   title: 右目の領域幅(h)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 confidence:
                   type: number
                   title: 解析の信頼度
@@ -1037,11 +1164,15 @@ definitions:
                 noseWidth:
                   type: number
                   title: 鼻の領域幅(w)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 noseHeight:
                   type: number
                   title: 鼻の領域幅(h)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 confidence:
                   type: number
                   title: 解析の信頼度
@@ -1061,11 +1192,15 @@ definitions:
                 mouthWidth:
                   type: number
                   title: 口の領域幅(w)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 mouthHeight:
                   type: number
                   title: 口の領域幅(h)
-                  description: ※領域幅が提供できない場合は出現しない。<br>0.0~1.0
+                  description: >-
+                    ※領域幅が提供できない場合は出現しない。<br>
+                    0.0~1.0
                 confidence:
                   type: number
                   title: 解析の信頼度
@@ -1105,7 +1240,9 @@ definitions:
                 gender:
                   type: string
                   title: 性別
-                  description: 'male : 男性<br>female : 女性'
+                  description: >-
+                    male : 男性<br>
+                    female : 女性
                   enum:
                     - male
                     - female
@@ -1157,8 +1294,11 @@ definitions:
                   type: string
                   title: 左右角度
                   description: >-
-                    unknown : 無表情<br>smile : 笑 い/喜び<br>surprise : 驚き<br>mad :
-                    怒り<br>sad : 悲しみ
+                    unknown : 無表情<br>
+                    smile : 笑い/喜び<br>
+                    surprise : 驚き<br>
+                    mad : 怒り<br>
+                    sad : 悲しみ
                   enum:
                     - unknown
                     - smile
@@ -1191,7 +1331,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   EventRegistrationResponse:
     type: object
     allOf:

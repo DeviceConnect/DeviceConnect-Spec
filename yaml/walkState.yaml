@@ -141,7 +141,12 @@ definitions:
               - Walking
               - Running
             title: 歩行状態
-            description: '<ul><li>Stop:停止</li><li>Walking:歩行</li><li>Running:走行</li></ul>'
+            description: >-
+              <ul>
+              <li>Stop:停止</li>
+              <li>Walking:歩行</li>
+              <li>Running:走行</li>
+              </ul>
           speed:
             type: number
             format: double
@@ -156,7 +161,9 @@ definitions:
             type: number
             format: double
             title: 左右バランス
-            description: 左右のバランス。1に近いほど左右のバランスが良い。<br>-1.0〜1.0
+            description: >-
+              左右のバランス。1に近いほど左右のバランスが良い。<br>
+              -1.0〜1.0
           timeStamp:
             type: integer
             format: int64
@@ -166,7 +173,9 @@ definitions:
             type: string
             format: date-time
             title: タイムスタンプ (日付)
-            description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+            description: >-
+              タイムスタンプと同じタイムスタンプをRFC3339
+              「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
   EventRegistrationResponse:
     type: object
     allOf:
@@ -197,7 +206,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

@@ -43,7 +43,10 @@ paths:
           required: true
           type: string
         - name: direction
-          description: 方向。ズームの方向<br>in<br>out
+          description:  >-
+            方向。ズームの方向<br>
+            in<br>
+            out
           in: formData
           required: true
           type: string
@@ -84,7 +87,12 @@ definitions:
           zoomPosition:
             type: number
             title: カメラの倍率
-            description: 'カメラの倍率(%)<br>例)<br>QX-10の場合<br>0(%):拡大なし<br>50(%):倍率5倍での拡大'
+            description: >-
+              カメラの倍率(%)<br>
+              例)<br>
+              QX-10の場合<br>
+              0(%):拡大なし<br>
+              50(%):倍率5倍での拡大
   CameraSetZoomResponse:
     type: object
     allOf:

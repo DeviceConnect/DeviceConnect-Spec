@@ -45,7 +45,9 @@ definitions:
           atmosphericPressure:
             type: number
             title: 気圧
-            description: '気圧<br>単位: ヘクトパスカル(hPa)'
+            description: >-
+              気圧<br>
+              単位: ヘクトパスカル(hPa)
           timeStamp:
             type: integer
             format: int64

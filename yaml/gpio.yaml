@@ -21,7 +21,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -53,7 +58,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -85,7 +95,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -117,7 +132,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -149,7 +169,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -181,7 +206,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -213,7 +243,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -245,7 +280,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT'
           in: query
           required: true
           type: number
@@ -277,7 +317,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -309,7 +354,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -341,7 +391,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -373,7 +428,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -405,7 +465,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -437,7 +502,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -469,7 +539,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -501,7 +576,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -533,7 +613,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -565,7 +650,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT'
           in: query
           required: true
           type: number
@@ -597,7 +687,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -629,7 +724,12 @@ paths:
           required: true
           type: string
         - name: mode
-          description: 'モード。設定するモード<br>0:デジタルIN<br>1:デジタルOUT<br>2:アナログIN<br>3:アナログOUT'
+          description: >-
+            モード。設定するモード<br>
+            0:デジタルIN<br>
+            1:デジタルOUT<br>
+            2:アナログIN<br>
+            3:アナログOUT
           in: query
           required: true
           type: number
@@ -725,7 +825,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -819,7 +921,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -913,7 +1017,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -1007,7 +1113,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -1101,7 +1209,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -1195,7 +1305,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -1289,7 +1401,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)'
           in: formData
           required: true
           type: integer
@@ -1383,7 +1497,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -1477,7 +1593,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -1571,7 +1689,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)'
           in: formData
           required: true
           type: integer
@@ -1665,7 +1785,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -1759,7 +1881,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)'
           in: formData
           required: true
           type: integer
@@ -1853,7 +1977,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -2290,7 +2416,9 @@ paths:
     put:
       operationId: gpioOnChangePut
       x-type: event
-      summary: 各ピンで、入力状態のモードに設定されているピンの値を定期的に送信するイベントを開始する。
+      summary: >-
+        各ピンで、入力状態のモードに設定されているピンの値を定期的に
+        送信するイベントを開始する。
       description: ''
       parameters:
         - name: serviceId
@@ -2326,7 +2454,9 @@ paths:
     delete:
       operationId: gpioOnChangeDelete
       x-type: event
-      summary: 各ピンで、入力状態のモードに設定されているピンの値を定期的に送信するイベントを停止する。
+      summary: >-
+        各ピンで、入力状態のモードに設定されているピンの値を定期的に
+        送信するイベントを停止する。
       description: ''
       parameters:
         - name: serviceId
@@ -2426,7 +2556,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

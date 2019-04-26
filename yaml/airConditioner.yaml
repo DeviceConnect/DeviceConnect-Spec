@@ -108,7 +108,11 @@ paths:
           required: true
           type: string
         - name: powersaving
-          description: 節電動作設定。<br>PowerSaving：節電動作中<br>Normal：通常動作中<br>Unknown：不明
+          description: >-
+            節電動作設定。<br>
+            PowerSaving：節電動作中<br>
+            Normal：通常動作中<br>
+            Unknown：不明
           in: formData
           required: true
           type: string
@@ -162,7 +166,13 @@ paths:
           type: string
         - name: modesetting
           description: >-
-            運転モード設定。<br>Automatic:自動<br>Cooling:冷房<br>Heating:暖房<br>Dehumidification:除湿<br>AirCirculator:送風<br>Other:その他
+            運転モード設定。<br>
+            Automatic:自動<br>
+            Cooling:冷房<br>
+            Heating:暖房<br>
+            Dehumidification:除湿<br>
+            AirCirculator:送風<br>
+            Other:その他
           in: formData
           required: true
           type: string
@@ -241,7 +251,8 @@ paths:
           required: true
           type: string
         - name: temperature
-          description: 温度設定値。<br>0〜50 (℃)
+          description: '温度設定値。<br>
+          0〜50 (℃)'
           in: formData
           required: true
           type: integer
@@ -293,14 +304,18 @@ paths:
           required: true
           type: string
         - name: airflow
-          description: 風量設定値。<br>0.0〜1.0
+          description: >-
+            風量設定値。<br>
+            0.0〜1.0
           in: formData
           required: false
           type: number
           minimum: 0
           maximum: 1
         - name: airflowauto
-          description: '風量自動モード設定。true : 自動モード有効<br>false : 自動モード無効'
+          description: '風量自動モード設定。<br>
+          true : 自動モード有効<br>
+          false : 自動モード無効'
           in: formData
           required: false
           type: boolean
@@ -327,7 +342,9 @@ paths:
           required: true
           type: string
         - name: epc
-          description: 取得プロパティのEPC。取得するプロパティのEPCをカンマ区切りで列挙。10進または16進(0xXX)の値
+          description: >-
+            取得プロパティのEPC。<br>
+            取得するプロパティのEPCをカンマ区切りで列挙。10進または16進(0xXX)の値
           in: query
           required: true
           type: array
@@ -360,7 +377,9 @@ paths:
           required: true
           type: string
         - name: epc
-          description: EPC。<br>ECHONET Property Code
+          description: >-
+            EPC。<br>
+            ECHONET Property Code
           in: formData
           required: true
           type: string
@@ -393,7 +412,10 @@ definitions:
           powerstatus:
             type: string
             title: 電源状態
-            description: 'ON:電源オン<br>OFF:電源オフ<br>UNKNOWN:不明'
+            description: >-
+              ON:電源オン<br>
+              OFF:電源オフ<br>
+              UNKNOWN:不明
             enum:
               - 'ON'
               - 'OFF'
@@ -417,7 +439,10 @@ definitions:
           powersaving:
             type: string
             title: 節電動作設定
-            description: PowerSaving：節電動作中<br>Normal：通常動作中<br>Unknown：不明
+            description: >-
+              PowerSaving：節電動作中<br>
+              Normal：通常動作中<br>
+              Unknown：不明
             enum:
               - PowerSaving
               - Normal
@@ -438,7 +463,12 @@ definitions:
             type: string
             title: 運転モード設定
             description: >-
-              Automatic:自動<br>Cooling:冷房<br>Heating:暖房<br>Dehumidification:除湿<br>AirCirculator:送風<br>Other:その他
+              Automatic:自動<br>
+              Cooling:冷房<br>
+              Heating:暖房<br>
+              Dehumidification:除湿<br>
+              AirCirculator:送風<br>
+              Other:その他
             enum:
               - Automatic
               - Cooling
@@ -494,8 +524,10 @@ definitions:
             type: boolean
             title: 風量自動モード設定
             description: >-
-              true:自動モード有効<br>false:自動モード無効<br>※(注1)
-              風量自動モード設定をtrue設定した時のみ省略可。<br>※(注2) 省略時及びfalse設定時は、「風量設定値」が反映される。
+              true:自動モード有効<br>
+              false:自動モード無効<br>
+              ※(注1)風量自動モード設定をtrue設定した時のみ省略可。<br>
+              ※(注2) 省略時及びfalse設定時は、「風量設定値」が反映される。
   SetAirFlowResponse:
     type: object
     allOf:

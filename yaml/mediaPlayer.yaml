@@ -21,7 +21,9 @@ paths:
           required: true
           type: string
         - name: mediaId
-          description: メディアID。メディアを識別するID。メディアIDは同プロファイルのMediaList APIで取得する。
+          description: >-
+            メディアID。メディアを識別するID。<br>
+            メディアIDは同プロファイルのMediaList APIで取得する。
           in: query
           required: true
           type: string
@@ -57,8 +59,11 @@ paths:
     put:
       operationId: mediaPlayerMediaPut
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）を変更する。
-      description: メディア再生中にmediaIdを再指定した場合は、新たに指定されたメディアの再生が始まる事とする。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）を変更する。
+      description: >-
+        メディア再生中にmediaIdを再指定した場合は、
+        新たに指定されたメディアの再生が始まる事とする。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -66,7 +71,9 @@ paths:
           required: true
           type: string
         - name: mediaId
-          description: メディアID。メディアを識別するID。メディアIDは同プロファイルのMediaList APIで取得する。
+          description: >-
+            メディアID。メディアを識別するID。<br>
+            メディアIDは同プロファイルのMediaList APIで取得する。
           in: formData
           required: true
           type: string
@@ -93,24 +100,37 @@ paths:
           required: true
           type: string
         - name: mediaId
-          description: メディアID。メディアを識別するID。メディアIDは同プロファイルのMediaList APIで取得する。
+          description: >-
+            メディアID。メディアを識別するID。<br>
+            メディアIDは同プロファイルのMediaList APIで取得する。
           in: query
           required: false
           type: string
         - name: query
           description: >-
-            検索する文字列。部分一致検索を行い、一致対象はレスポンスパラメータのタイトル名（title）、制作者名（creators/creator）。
+            検索する文字列。<br>
+            部分一致検索を行い、一致対象はレスポンスパラメータのタイトル名（title）、
+            制作者名（creators/creator）。
           in: query
           required: false
           type: string
         - name: mimeType
-          description: MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)video%2F
+          description: >-
+            MimeType。<br>
+            情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する。<br>
+            例)<br>
+            video%2F
           in: query
           required: false
           type: string
         - name: order
           description: >-
-            検索結果の並び順。検索結果の並び順。辞書順ソートの基準にするレスポンスパラメータの物理名と昇順・降順をカンマ区切りで指定する。物理名を最初に指定し、次に昇順はascを、降順はdescを指定する。省略時は、order=title,ascをしたのと同等となる。例)duration,asc
+            検索結果の並び順。検索結果の並び順。<br>
+            辞書順ソートの基準にするレスポンスパラメータの物理名と
+            昇順・降順をカンマ区切りで指定する。<br>
+            物理名を最初に指定し、次に昇順はascを、降順はdescを指定する。<br>
+            省略時は、order=title,ascをしたのと同等となる。<br>
+            例)duration,asc
           in: query
           required: false
           type: array
@@ -118,16 +138,19 @@ paths:
             type: string
         - name: offset
           description: >-
-            一覧の開始エントリ位置オフセット。全検索結果エントリの内、取得する一覧の開始エントリの位置を指定する。省略時は全検索結果の先頭エントリからの取得となり、offset=0と同義。レスポンスパラメータの
-            count と併用して、検索結果のページングを実現する。
+            一覧の開始エントリ位置オフセット。<br>
+            全検索結果エントリの内、取得する一覧の開始エントリの位置を指定する。<br>
+            省略時は全検索結果の先頭エントリからの取得となり、offse=0と同義。<br>
+            レスポンスパラメータのcountと併用して、検索結果のページングを実現する。
           in: query
           required: false
           type: integer
           minimum: 0
         - name: limit
           description: >-
-            一覧エントリ数の上限。取得する一覧のエントリ数の上限。省略もしくは0が指定された場合、全検索結果エントリを返却する。レスポンスパラメータの
-            count と併用して、検索結果のページングを実現する。
+            一覧エントリ数の上限。取得する一覧のエントリ数の上限。<br>
+            省略もしくは0が指定された場合、全検索結果エントリを返却する。<br>
+            レスポンスパラメータのcount と併用して、検索結果のページングを実現する。
           in: query
           required: false
           type: integer
@@ -205,7 +228,9 @@ paths:
     get:
       operationId: mediaPlayerPlayStatusGet
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態（音声・映像の再生・一時停止・ミュート）を取得する。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）
+        の再生状態（音声・映像の再生・一時停止・ミュート）を取得する。
       description: 再生中のメディアが無い場合はエラーを返却する。
       parameters:
         - name: serviceId
@@ -228,8 +253,12 @@ paths:
     put:
       operationId: mediaPlayerPlayPut
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を再生中に変更する。
-      description: 再生中のメディアが無い場合はエラーを返却する。停止状態以外の状態で呼び出された場合はエラーを返却する。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）
+        の再生状態を再生中に変更する。
+      description: >-
+        再生中のメディアが無い場合はエラーを返却する。<br>
+        停止状態以外の状態で呼び出された場合はエラーを返却する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -250,8 +279,12 @@ paths:
     put:
       operationId: mediaPlayerStopPut
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を停止に変更する。
-      description: 再生中のメディアが無い場合はエラーを返却する。再生中以外の状態で呼び出された場合はエラーを返却する。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）
+        の再生状態を停止に変更する。
+      description: >-
+        再生中のメディアが無い場合はエラーを返却する。<br>
+        再生中以外の状態で呼び出された場合はエラーを返却する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -272,8 +305,12 @@ paths:
     put:
       operationId: mediaPlayerPausePut
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を一時停止に変更する。
-      description: 再生中のメディアが無い場合はエラーを返却する。再生中以外の状態で呼び出された場合はエラーを返却する。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）
+        の再生状態を一時停止に変更する。
+      description: >-
+        再生中のメディアが無い場合はエラーを返却する。<br>
+        再生中以外の状態で呼び出された場合はエラーを返却する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -294,8 +331,12 @@ paths:
     put:
       operationId: mediaPlayerResumePut
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生状態を再生中に変更する。
-      description: 再生中のメディアが無い場合はエラーを返却する。一時停止以外の状態で呼び出された場合はエラーを返却する。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）
+        の再生状態を再生中に変更する。
+      description: >-
+        再生中のメディアが無い場合はエラーを返却する。<br>
+        一時停止以外の状態で呼び出された場合はエラーを返却する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -316,7 +357,8 @@ paths:
     put:
       operationId: mediaPlayerSeekPut
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を変更する。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を変更する。
       description: 再生中のメディアが無い場合はエラーを返却する。
       parameters:
         - name: serviceId
@@ -326,8 +368,10 @@ paths:
           type: string
         - name: pos
           description: >-
-            再生位置。秒単位。最大値はMedia API（GET）やMediaList APIで取得できるパラメータ duration
-            に相当する。<br>範囲(0 ≤ pos ≤ duration)
+            再生位置。秒単位。<br>
+            最大値はMedia API(GET)やMediaList APIで取得できる
+            パラメータdurationに相当する。<br>
+            範囲(0 ≤ pos ≤ duration)
           in: formData
           required: true
           type: integer
@@ -346,7 +390,8 @@ paths:
     get:
       operationId: mediaPlayerSeekGet
       x-type: one-shot
-      summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を取得する。
+      summary: >-
+        スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の再生位置を取得する。
       description: 再生中のメディアが無い場合はエラーを返却する。
       parameters:
         - name: serviceId
@@ -370,7 +415,9 @@ paths:
       operationId: mediaPlayerVolumePut
       x-type: one-shot
       summary: スマートデバイスのメディアプレイヤーの再生音量を変更する。
-      description: システム全体の音量を変更したい場合はSettingプロファイルのVolume Setting APIを用いる事。
+      description: >-
+        システム全体の音量を変更したい場合はSettingプロファイルの
+        Volume Setting APIを用いる事。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -378,7 +425,9 @@ paths:
           required: true
           type: string
         - name: volume
-          description: 設定したいメディア再生音量。メディアの再生音量を0から1の割合で表す。<br>範囲 (0.0 <= voleme <= 1.0)
+          description: >-
+            設定したいメディア再生音量。メディアの再生音量を0から1の割合で表す。<br>
+            範囲 (0.0 <= voleme <= 1.0)
           in: formData
           required: true
           type: number
@@ -398,7 +447,9 @@ paths:
       operationId: mediaPlayerVolumeGet
       x-type: one-shot
       summary: スマートデバイスのメディアプレイヤーの再生音量を取得する。
-      description: システム全体の音量を取得したい場合はSettingプロファイルのVolume Setting APIを用いる事。
+      description: >-
+        システム全体の音量を取得したい場合は
+        SettingプロファイルのVolume Setting APIを用いる事。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -485,8 +536,13 @@ paths:
     get:
       operationId: mediaPlayerOnStatusChangeGet
       x-type: one-shot
-      summary: スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを取得する。
-      description: 再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
+      summary: >-
+        スマートデバイスのコンテンツ再生状態の変化
+        （音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）
+        通知イベントを取得する。
+      description: >-
+        再生位置の変化はイベント通知対象ではないが、
+        先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -512,8 +568,13 @@ paths:
     put:
       operationId: mediaPlayerOnStatusChangePut
       x-type: event
-      summary: スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを開始する。
-      description: 再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
+      summary: >-
+        スマートデバイスのコンテンツ再生状態の変化
+        （音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）
+        通知イベントを開始する。
+      description: >-
+        再生位置の変化はイベント通知対象ではないが、
+        先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -553,8 +614,13 @@ paths:
     delete:
       operationId: mediaPlayerOnStatusChangeDelete
       x-type: event
-      summary: スマートデバイスのコンテンツ再生状態の変化（音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）通知イベントを停止する。
-      description: 再生位置の変化はイベント通知対象ではないが、先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
+      summary: >-
+        スマートデバイスのコンテンツ再生状態の変化
+        （音声または映像の再生・一時停止・ミュート、再生コンテンツ変更、音量変更）
+        通知イベントを停止する。
+      description: >-
+        再生位置の変化はイベント通知対象ではないが、
+        先述のコンテンツ再生状態の変化通知の際、再生位置が併せて通知される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -594,11 +660,14 @@ definitions:
           type:
             type: string
             title: タイプ名
-            description: タイトルの種別。「Music」（楽曲名）、「Movie」（動画名）など。
+            description: >-
+              タイトルの種別。「Music」（楽曲名）、「Movie」（動画名）など。
           language:
             type: string
             title: 言語
-            description: 言語。BCP47で定義されている文字列を設定する。(例)「ja」「en-us」。
+            description: >-
+              言語。BCP47で定義されている文字列を設定する。<br>
+              (例)「ja」「en-us」。
           description:
             type: string
             title: 説明文
@@ -622,13 +691,20 @@ definitions:
               creator:
                 type: string
                 title: 制作者名
-                description: 制作を行った個人や法人の名称（楽曲のアーティスト名、動画の制作監督名、配給会社名など）。
+                description: >-
+                  制作を行った個人や法人の名称
+                  （楽曲のアーティスト名、動画の制作監督名、配給会社名など）。
               role:
                 type: number
                 title: 役割
                 description: >-
-                  制作者の役割。「Artist」アーティスト名。「Lyrics」作詞者名。「Composer」作曲者名。「Film
-                  distributer」映画配給会社名。※上記以外の文字列を自由に設定してもよい。※W3Cでは明確な定義が無い。
+                  制作者の役割。<br>
+                  「Artist」アーティスト名。<br>
+                  「Lyrics」作詞者名。<br>
+                  「Composer」作曲者名。<br>
+                  「Film distributer」映画配給会社名。<br>
+                  ※上記以外の文字列を自由に設定してもよい。<br>
+                  ※W3Cでは明確な定義が無い。
           keywords:
             type: array
             title: キーワード
@@ -653,7 +729,10 @@ definitions:
           count:
             type: integer
             title: 全検索結果の件数
-            description: 全検索結果の件数。リクエストパラメータの offset および limit と併用して、検索結果のページングを実現する。
+            description: >-
+              全検索結果の件数。<br>
+              リクエストパラメータのoffsetおよびlimitと併用して、
+              検索結果のページングを実現する。
           media:
             type: array
             title: 検索にヒットしたメディアの情報
@@ -672,7 +751,8 @@ definitions:
                 mimeType:
                   type: string
                   title: MimeType
-                  description: 録画・録音する際のエンコードするMimeType。
+                  description: >-
+                    録画・録音する際のエンコードするMimeType。
                 title:
                   type: string
                   title: タイトル名
@@ -680,11 +760,15 @@ definitions:
                 type:
                   type: string
                   title: タイプ名
-                  description: タイトルの種別。「Music」（楽曲名）、「Movie」（動画名）など。
+                  description: >-
+                    タイトルの種別。<br>
+                    「Music」（楽曲名）、「Movie」（動画名）など。
                 language:
                   type: string
                   title: 言語
-                  description: 言語。BCP47で定義されている文字列を設定する。(例)「ja」「en-us」。
+                  description: >-
+                    言語。BCP47で定義されている文字列を設定する。<br>
+                    (例)「ja」「en-us」。
                 description:
                   type: string
                   title: 説明文
@@ -708,13 +792,20 @@ definitions:
                     creator:
                       type: string
                       title: 制作者名
-                      description: 制作を行った個人や法人の名称（楽曲のアーティスト名、動画の制作監督名、配給会社名など）。
+                      description: >-
+                        制作を行った個人や法人の名称
+                        （楽曲のアーティスト名、動画の制作監督名、配給会社名など）。
                     role:
                       type: number
                       title: 役割
                       description: >-
-                        制作者の役割。「Artist」アーティスト名。「Lyrics」作詞者名。「Composer」作曲者名。「Film
-                        distributer」映画配給会社名。※上記以外の文字列を自由に設定してもよい。※W3Cでは明確な定義が無い。
+                        制作者の役割。<br>
+                        「Artist」アーティスト名。<br>
+                        「Lyrics」作詞者名。<br>
+                        「Composer」作曲者名。<br>
+                        「Film distributer」映画配給会社名。<br>
+                        ※上記以外の文字列を自由に設定してもよい。<br>
+                        ※W3Cでは明確な定義が無い。
                 keywords:
                   type: array
                   title: キーワード
@@ -738,7 +829,10 @@ definitions:
           status:
             type: string
             title: 再生状態
-            description: '・play : 再生<br>・stop : 停止<br>・pause : 一時停止'
+            description: >-
+              play : 再生<br>
+              stop : 停止<br>
+              pause : 一時停止
             enum:
               - play
               - stop
@@ -771,8 +865,10 @@ definitions:
             type: integer
             title: 再生位置
             description: >-
-              秒単位。最大値はMedia API（GET）やMediaList APIで取得できるパラメータ duration
-              に相当する。<br>範囲(0 ≤ pos ≤ duration)
+              秒単位。<br>
+              最大値はMedia API（GET）やMediaList APIで
+              取得できるパラメータdurationに相当する。<br>
+              範囲(0 ≤ pos ≤ duration)
             minimum: 0
   SetSeekResponse:
     type: object
@@ -789,7 +885,9 @@ definitions:
           volume:
             type: number
             title: 設定したいメディア再生音量
-            description: メディアの再生音量を0から1の割合で表す。<br>範囲 (0.0 <= voleme <= 1.0)
+            description: >-
+              メディアの再生音量を0から1の割合で表す。<br>
+              範囲 (0.0 <= voleme <= 1.0)
             minimum: 0
             maximum: 1
   SetVolumeResponse:
@@ -807,7 +905,10 @@ definitions:
           mute:
             type: boolean
             title: ミュート状態
-            description: '再生音量のミュート状態を表す。<br>true: ミュート有り<br>false: ミュート無し'
+            description: >-
+              再生音量のミュート状態を表す。<br>
+              ミュート有り : true<br>
+              ミュート無し : false
   MuteOnResponse:
     type: object
     allOf:
@@ -843,9 +944,16 @@ definitions:
             type: string
             title: 状態
             description: >-
-              メディアプレイヤーの状態。<br>play : 再生<br>stop : 再生停止<br>mute : ミュート<br>unmute
-              : ミュート解除<br>pause : 一時停止<br>resume : 一時停止解除<br>media :
-              再生コンテンツ変更<br>volume : 音量変更<br>complete : 再生完了
+              メディアプレイヤーの状態。<br>
+              play : 再生<br>
+              stop : 再生停止<br>
+              mute : ミュート<br>unmute
+              : ミュート解除<br>
+              pause : 一時停止<br>
+              resume : 一時停止解除<br>
+              media : 再生コンテンツ変更<br>
+              volume : 音量変更<br>
+              complete : 再生完了
             enum:
               - play
               - stop
@@ -863,7 +971,9 @@ definitions:
           mimeType:
             type: string
             title: MimeType
-            description: 録画・録音が開始されたメディアのMimeType。このタイプで、動画、音声などを識別する。
+            description: >-
+              録画・録音が開始されたメディアのMimeType。<br>
+              このタイプで、動画、音声などを識別する。
           pos:
             type: string
             title: 再生位置
@@ -871,7 +981,9 @@ definitions:
           volume:
             type: string
             title: メディア再生音量
-            description: メディアの再生音量を0から1の割合で表す。<br>範囲 (0.0 <= volume <= 1.0)
+            description: >-
+              メディアの再生音量を0から1の割合で表す。<br>
+              範囲 (0.0 <= volume <= 1.0)
             minimum: 0
             maximum: 1
   EventRegistrationResponse:
@@ -904,7 +1016,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

@@ -14,8 +14,9 @@ paths:
       operationId: serviceDiscoveryGet
       summary: DeviceConnectサービスの検索を行う。
       description: >-
-        DeviceConnectサービス検索機能を提供するAPI。
-        取得できる情報としては、サービスID、サービス名、ネットワーク種別、利用可能状態やデバイス固有のコンフィグ情報がある。
+        DeviceConnectサービス検索機能を提供するAPI。<br>
+        取得できる情報としては、サービスID、サービス名、ネットワーク種別、
+        利用可能状態やデバイス固有のコンフィグ情報がある。
       parameters: []
       responses:
         '200':
@@ -36,7 +37,8 @@ paths:
       x-type: event
       operationId: serviceDiscoveryOnServiceChangePut
       summary: DeviceConnectサービス一覧の変更通知を受領する。
-      description: DeviceConnectサービスの追加・削除・利用可能状態変更を通知するためのイベント。
+      description: >-
+        DeviceConnectサービスの追加・削除・利用可能状態変更を通知するためのイベント。
       parameters: []
       responses:
         '200':
@@ -168,7 +170,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

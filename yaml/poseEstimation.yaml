@@ -122,7 +122,17 @@ definitions:
             type: string
             title: 姿勢状態
             description: >-
-              ターゲットデバイスによって測定された姿勢状態を返す。<br><ul><li>Forward:前屈</li><li>Backward:後屈</li><li>Rightside:右傾き</li><li>Leftside:左傾き</li><li>FaceUp:仰向け</li><li>FaceLeft:左向き</li><li>FaceDown:うつ伏せ</li><li>FaceRight:右向き</li><li>Standing:直立</li></ul>
+              ターゲットデバイスによって測定された姿勢状態を返す。<br>
+              <ul>
+              <li>Forward:前屈</li>
+              <li>Backward:後屈</li>
+              <li>Rightside:右傾き</li>
+              <li>Leftside:左傾き</li>
+              <li>FaceUp:仰向け</li>
+              <li>FaceLeft:左向き</li>
+              <li>FaceDown:うつ伏せ</li>
+              <li>FaceRight:右向き</li>
+              <li>Standing:直立</li></ul>
             enum:
               - Forward
               - Backward
@@ -141,7 +151,9 @@ definitions:
             type: string
             format: date-time
             title: 姿勢推定のタイムスタンプ文字列
-            description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+            description: >-
+              タイムスタンプと同じタイムスタンプを
+              RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
   CommonResponse:
     type: object
     required:
@@ -164,7 +176,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   EventRegistrationResponse:
     type: object
     allOf:

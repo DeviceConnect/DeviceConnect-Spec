@@ -45,7 +45,9 @@ definitions:
           humidity:
             type: number
             title: 湿度
-            description: '湿度センサーが検知した湿度を通知する。<br>範囲: 0.0 ~ 1.0'
+            description: >-
+              湿度センサーが検知した湿度を通知する。<br>
+              範囲: 0.0 ~ 1.0
             minimum: 0
             maximum: 1
           timeStamp:
@@ -57,7 +59,9 @@ definitions:
             type: string
             format: date-time
             title: 湿度のタイムスタンプ文字列
-            description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+            description: >-
+              タイムスタンプと同じタイムスタンプを
+              RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
   CommonResponse:
     type: object
     required:

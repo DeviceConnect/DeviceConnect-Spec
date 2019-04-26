@@ -12,7 +12,10 @@ paths:
     get:
       operationId: fileGet
       x-type: one-shot
-      summary: スマートデバイスへの、テキスト（歩数、消費カロリー、睡眠時間などのバイナリーの任意のデータ）や画像、音声、動画（リソースも含む）を受け取る。
+      summary: >-
+        スマートデバイスへの、
+        テキスト（歩数、消費カロリー、睡眠時間などのバイナリーの任意のデータ）や
+        画像、音声、動画（リソースも含む）を受け取る。
       description: ''
       parameters:
         - name: serviceId
@@ -40,7 +43,8 @@ paths:
     post:
       operationId: filePost
       x-type: one-shot
-      summary: スマートデバイスに対して、テキストや画像、音声、動画（リソースも含む）を渡す。
+      summary: >-
+        スマートデバイスに対して、テキストや画像、音声、動画（リソースも含む）を渡す。
       description: ''
       parameters:
         - name: serviceId
@@ -60,20 +64,25 @@ paths:
           type: string
         - name: uri
           description: >-
-            URI。このURIに送信するデータを格納する。dataと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。
+            URI。このURIに送信するデータを格納する。<br>
+            dataと同時に省略することはできない。<br>
+            両方指定した場合はdataが優先され、uriは無視される。
           in: formData
           required: false
           type: string
         - name: data
           description: >-
-            ファイルのbinary。送信するファイルのbinary。uriと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。
+            ファイルのbinary。送信するファイルのbinary。<br>
+            uriと同時に省略することはできない。<br>
+            両方指定した場合はdataが優先され、uriは無視される。
           in: formData
           required: false
           type: file
         - name: forceOverwrite
           description: >-
-            上書きフラグ。<br>true : 既にpath名と同じファイルがある場合は上書きされる。<br>false :
-            既にpath名と同じファイルがある場合は上書きされない。
+            上書きフラグ。<br>
+            true : 既にpath名と同じファイルがある場合は上書きされる。<br>
+            false : 既にpath名と同じファイルがある場合は上書きされない。
           in: formData
           required: false
           type: boolean
@@ -90,7 +99,9 @@ paths:
     put:
       operationId: filePut
       x-type: one-shot
-      summary: ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）の名前を変更、移動をする。
+      summary: >-
+        ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）の名前を
+        変更、移動をする。
       description: ''
       parameters:
         - name: serviceId
@@ -99,19 +110,24 @@ paths:
           required: true
           type: string
         - name: oldPath
-          description: 移動前のファイル名を含んだファイルパス。ファイル名を含む。
+          description: >-
+            移動前のファイル名を含んだファイルパス。<br>
+            ファイル名を含む。
           in: formData
           required: true
           type: string
         - name: newPath
-          description: 移動先のファイル名を含んだファイルパス。ファイル名を含まなくても良い。
+          description: >-
+            移動先のファイル名を含んだファイルパス。<br>
+            ファイル名を含まなくても良い。
           in: formData
           required: true
           type: string
         - name: forceOverwrite
           description: >-
-            上書きフラグ。<br>true : 既にpath名と同じファイルがある場合は上書きされる。<br>false :
-            既にpath名と同じファイルがある場合は上書きされない。
+            上書きフラグ。<br>
+            true : 既にpath名と同じファイルがある場合は上書きされる。<br>
+            false : 既にpath名と同じファイルがある場合は上書きされない。
           in: formData
           required: false
           type: boolean
@@ -165,32 +181,45 @@ paths:
           type: string
         - name: path
           description: >-
-            パス。検索対象のディレクトリ。省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。
+            パス。検索対象のディレクトリ。<br>
+            省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。<br>
             例)/files/test/
           in: query
           required: false
           type: string
         - name: mimeType
-          description: MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)image/png
+          description: >-
+            MimeType。<br>
+            情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する。<br>
+            例)image/png
           in: query
           required: false
           type: string
         - name: order
           description: >-
-            取得ファイルの並び順。取得する一覧のエントリの並び順。昇順はascで、降順はdescを後ろに指定する。並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。例)updateDate,asc
+            取得ファイルの並び順。<br>
+            取得する一覧のエントリの並び順。<br>
+            昇順はascで、降順はdescを後ろに指定する。<br>
+            並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。<br>
+            例)updateDate,asc
           in: query
           required: false
           type: array
           items:
             type: string
         - name: offset
-          description: 取得件数の始まり。取得できるファイル数が多いときに、表示開始位置を指定できる。例)4
+          description: >-
+            取得件数の始まり。<br>
+            取得できるファイル数が多いときに、表示開始位置を指定できる。<br>
+            例)4
           in: query
           required: false
           type: integer
           minimum: 0
         - name: limit
-          description: 取得件数の制限。取得できるファイル数を制限するときに、その件数を指定できる。例)30
+          description: >-
+            取得件数の制限。<br>
+            取得できるファイル数を制限するときに、その件数を指定できる。例)30
           in: query
           required: false
           type: integer
@@ -227,32 +256,46 @@ paths:
           type: string
         - name: path
           description: >-
-            パス。検索対象のディレクトリ。省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。
+            パス。検索対象のディレクトリ。<br>
+            省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。<br>
             例)/files/test/
           in: query
           required: false
           type: string
         - name: mimeType
-          description: MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)image/png
+          description: >-
+            MimeType。<br>
+            情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する。<br>
+            例)image/png
           in: query
           required: false
           type: string
         - name: order
           description: >-
-            取得ファイルの並び順。取得する一覧のエントリの並び順。昇順はascで、降順はdescを後ろに指定する。並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。例)updateDate,asc
+            取得ファイルの並び順。<br>
+            取得する一覧のエントリの並び順。<br>
+            昇順はascで、降順はdescを後ろに指定する。<br>
+            並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。<br>
+            例)updateDate,asc
           in: query
           required: false
           type: array
           items:
             type: string
         - name: offset
-          description: 取得件数の始まり。取得できるファイル数が多いときに、表示開始位置を指定できる。例)4
+          description: >-
+            取得件数の始まり。<br>
+            取得できるファイル数が多いときに、表示開始位置を指定できる。<br>
+            例)4
           in: query
           required: false
           type: integer
           minimum: 0
         - name: limit
-          description: 取得件数の制限。取得できるファイル数を制限するときに、その件数を指定できる。例)30
+          description: >-
+            取得件数の制限。<br>
+            取得できるファイル数を制限するときに、その件数を指定できる。<br>
+            例)30
           in: query
           required: false
           type: integer
@@ -350,7 +393,10 @@ paths:
           type: string
         - name: forceRemove
           description: >-
-            強制削除フラグ。trueが指定された場合には、空ではないディレクトリも削除する。falseが指定された場合には、空でないディレクトリは削除できない。省略された場合には、falseと同じ動作となる。
+            強制削除フラグ。<br>
+            trueが指定された場合には、空ではないディレクトリも削除する。<br>
+            falseが指定された場合には、空でないディレクトリは削除できない。<br>
+            省略された場合には、falseと同じ動作となる。
           in: query
           required: false
           type: boolean
@@ -381,7 +427,9 @@ definitions:
           uri:
             type: string
             title: URI
-            description: ContentProviderのURI<br>このURIからデータを読み込む
+            description: >-
+              ContentProviderのURI<br>
+              このURIからデータを読み込む
   FileReceiveResponse:
     type: object
     allOf:

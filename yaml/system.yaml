@@ -14,7 +14,8 @@ paths:
       operationId: systemGet
       summary: DeviceConnectシステム情報を提供するAPI。
       description: >-
-        DeviceConnectシステムのバージョンやサポートするAPI一覧、インストールされているプラグイン一覧などのアプリケーション情報を取得する。
+        DeviceConnectシステムのバージョンやサポートするAPI一覧、
+        インストールされているプラグイン一覧などのアプリケーション情報を取得する。
       parameters: []
       responses:
         '200':
@@ -78,7 +79,8 @@ definitions:
               type: string
           plugins:
             title: プラグイン一覧
-            description: DeviceConnectシステムにインストールされているプラグインについての情報の配列。
+            description: >-
+              DeviceConnectシステムにインストールされているプラグインについての情報の配列。
             type: array
             items:
               type: object
@@ -108,7 +110,9 @@ definitions:
                     type: string
                 packageName:
                   title: パッケージ名
-                  description: 'DeviceConnectシステムの実行環境(例:Android)でプラグインを識別するための名前。'
+                  description: >-
+                    DeviceConnectシステムの実行環境
+                    (例:Android)でプラグインを識別するための名前。
                   type: string
   CommonResponse:
     type: object
@@ -132,4 +136,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

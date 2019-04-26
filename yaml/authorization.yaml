@@ -12,7 +12,8 @@ paths:
       x-type: one-shot
       summary: Device Connect ManagerにLocal OAuthを行うためのクライアントの作成要求を行う。
       description: >-
-        同じオリジンから送信された場合には、以前のクライアントを削除して新たにクライアントを作成する。<br>それに伴い、クライアントに紐づいていたアクセストークンもすべて破棄される。
+        同じオリジンから送信された場合には、以前のクライアントを削除して新たにクライアントを作成する。<br>
+        それに伴い、クライアントに紐づいていたアクセストークンもすべて破棄される。
       parameters: []
       responses:
         '200':
@@ -31,7 +32,8 @@ paths:
       x-type: one-shot
       summary: DeviceConnectManagerにLocal OAuthを行うためのアクセストークンの作成要求を行う。
       description: >-
-        各プロファイルにアクセスするためには、このAPIで作成したアクセストークンが必要になる。<br>また、アクセストークンには有効期限が存在するので、有効期限が切れた場合には再度アクセストークンを作成し直す必要がある。
+        各プロファイルにアクセスするためには、このAPIで作成したアクセストークンが必要になる。<br>
+        また、アクセストークンには有効期限が存在するので、有効期限が切れた場合には再度アクセストークンを作成し直す必要がある。
       parameters:
         - name: clientId
           description: クライアントID。Authorization Create Client APIで取得したclientIdを使用する。
@@ -40,12 +42,17 @@ paths:
           type: string
         - name: applicationName
           description: >-
-            アプリケーション名。承認確認画面に表示するアプリケーション名を指定する。<br>例:「Twitterイベントプラグイン」と指定した場合は、「TwitterイベントプラグインがdConnectにアクセスする許可をしますか？」と確認メッセージが表示される。
+            アプリケーション名。承認確認画面に表示するアプリケーション名を指定する。<br>
+            例:「Twitterイベントプラグイン」と指定した場合は、
+            「TwitterイベントプラグインがdConnectにアクセスする許可をしますか？」と
+            確認メッセージが表示される。
           in: query
           required: true
           type: string
         - name: scope
-          description: 'スコープ。使用するプロファイルの一覧をカンマ区切りで定義する。<br>例)file,notification,vibration'
+          description: >-
+            スコープ。使用するプロファイルの一覧をカンマ区切りで定義する。<br>
+            例)file,notification,vibration'
           in: query
           required: true
           type: array
@@ -118,7 +125,9 @@ definitions:
                   type: number
                   title: スコープの有効期限
                   description: >-
-                    アクセストークンの有効期限。スコープ毎に設定されている。<br>アクセストークンが作成されてから使用できる間の時間(秒)を返す。<br>この時間を過ぎるとアクセストークンが使用できなくなる。
+                    アクセストークンの有効期限。スコープ毎に設定されている。<br>
+                    アクセストークンが作成されてから使用できる間の時間(秒)を返す。<br>
+                    この時間を過ぎるとアクセストークンが使用できなくなる。
   CommonResponse:
     type: object
     required:

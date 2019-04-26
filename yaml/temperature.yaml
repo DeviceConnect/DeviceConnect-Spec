@@ -47,7 +47,8 @@ paths:
       x-type: one-shot
       summary: スマートデバイスの温度設定値を設定する。
       description: >-
-        typeはそれぞれ、1:摂氏、2:華氏を表している。<br>temperatureに設定できる値は、摂氏の場合は0以上50以下,
+        typeはそれぞれ、1:摂氏、2:華氏を表している。<br>
+        temperatureに設定できる値は、摂氏の場合は0以上50以下,
         華氏の場合は32以上122以下。
       parameters:
         - name: serviceId
@@ -108,7 +109,9 @@ definitions:
             type: string
             format: date-time
             title: 温度のタイムスタンプ文字列
-            description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+            description: >-
+              タイムスタンプと同じタイムスタンプをRFC3339
+              「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
   PutTemperatureResponse:
     type: object
     allOf:
@@ -135,4 +138,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
