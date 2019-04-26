@@ -16,7 +16,7 @@ Device Connect API の作成ガイドラインは[こちら](https://github.com/
 
 ```
 $ curl -LkO https://github.com/DeviceConnect/DeviceConnect-Experiments/releases/download/codegen-v1.8.3/deviceconnect-codegen-project-1.8.3-dist.zip
-$ unzip deviceconnect-codegen-project-1.0.0.dist.zip
+$ unzip deviceconnect-codegen-project-1.8.3-dist.zip
 ```
 
 DeviceConnect-Spec から最新の定義ファイルをダウンロードします。
