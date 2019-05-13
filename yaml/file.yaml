@@ -478,7 +478,7 @@ definitions:
                   title: MimeType
                   description: fileのエンコードするタイプ。
                 fileType:
-                  type: string
+                  type: number
                   title: ファイルの種別
                   description: '0: ファイル<br>1: ディレクトリ'
                   enum:
