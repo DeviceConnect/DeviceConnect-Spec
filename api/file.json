@@ -594,7 +594,7 @@
                                         "description": "fileのエンコードするタイプ。"
                                     },
                                     "fileType": {
-                                        "type": "string",
+                                        "type": "integer",
                                         "title": "ファイルの種別",
                                         "description": "0: ファイル<br>1: ディレクトリ",
                                         "enum": [
