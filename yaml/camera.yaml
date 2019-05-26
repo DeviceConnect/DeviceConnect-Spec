@@ -13,7 +13,7 @@ paths:
       operationId: cameraZoomGet
       x-type: one-shot
       summary: Cameraデバイスの現在の倍率を取得する。
-      description: ''
+      description: 倍率の値は0.0〜1.0で表現する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +22,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            Cameraの現在の倍率を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CameraGetZoomResponse'
           examples:
@@ -35,7 +37,9 @@ paths:
       operationId: cameraZoomPut
       x-type: one-shot
       summary: Cameraデバイスに対してレンズのズームイン・アウトリクエストを送る。
-      description: ''
+      description: >-
+        ズームイン・アウトの倍率は、なるべく標準化し、
+        どのデバイスでも同じように動くようにすること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -55,8 +59,9 @@ paths:
             - out
         - name: movement
           description: >-
-            動作。ズームの動作<br>in-startで開始して
-            in-stopで終了。<br>1shotは開始してから所定位置まで動作する。<br>maxはin-startと同じ動作を行う。
+            動作。ズームの動作<br>in-startで開始してin-stopで終了。<br>
+            1shotは開始してから所定位置まで動作する。<br>
+            maxはin-startと同じ動作を行う。
           in: formData
           required: true
           type: string
@@ -67,7 +72,9 @@ paths:
             - max
       responses:
         '200':
-          description: ''
+          description: >-
+            ズームイン・アウトのリクエスト結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CameraSetZoomResponse'
           examples:
@@ -107,7 +114,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -119,4 +128,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

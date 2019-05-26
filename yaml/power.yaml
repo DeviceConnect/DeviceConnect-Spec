@@ -13,7 +13,7 @@ paths:
       operationId: powerGet
       x-type: one-shot
       summary: 機器の電源の状態を取得する。
-      description: ''
+      description: 状態が不明の場合はUNKNOWNを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +22,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源の状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerStatusGetResponse'
           examples:
@@ -35,7 +37,7 @@ paths:
       operationId: powerPut
       x-type: one-shot
       summary: 機器の電源をONにする。
-      description: ''
+      description: 既にONの場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -44,7 +46,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源をONにした結果を返す。
+            ONにしようとして失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerOnResponse'
           examples:
@@ -56,7 +60,7 @@ paths:
       operationId: powerDelete
       x-type: one-shot
       summary: 機器の電源をOFFにする。
-      description: ''
+      description: 既にOFFの場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -65,7 +69,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源をOFFにした結果を返す。
+            OFFにしようとして失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerOffResponse'
           examples:
@@ -85,7 +91,10 @@ definitions:
           powerstatus:
             type: string
             title: 電源状態
-            description: 'ON:電源オン<br>OFF:電源オフ<br>UNKNOWN:不明'
+            description: >-
+              ON:電源オン<br>
+              OFF:電源オフ<br>
+              UNKNOWN:不明
             enum:
               - 'ON'
               - 'OFF'
@@ -108,7 +117,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -120,4 +131,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

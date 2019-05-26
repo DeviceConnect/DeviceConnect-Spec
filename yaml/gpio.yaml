@@ -13,7 +13,8 @@ paths:
       operationId: gpioExportD0Post
       x-type: one-shot
       summary: D0ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの0番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -29,7 +30,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -37,7 +38,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -50,7 +53,8 @@ paths:
       operationId: gpioExportD1Post
       x-type: one-shot
       summary: D1ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの1番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -66,7 +70,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -74,7 +78,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -87,7 +93,8 @@ paths:
       operationId: gpioExportD2Post
       x-type: one-shot
       summary: D2ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの2番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -103,7 +110,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -111,7 +118,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -124,7 +133,8 @@ paths:
       operationId: gpioExportD3Post
       x-type: one-shot
       summary: D3ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの3番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -140,7 +150,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -148,7 +158,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -161,7 +173,8 @@ paths:
       operationId: gpioExportD4Post
       x-type: one-shot
       summary: D4ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの4番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -177,7 +190,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -185,7 +198,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -198,7 +213,8 @@ paths:
       operationId: gpioExportD5Post
       x-type: one-shot
       summary: D5ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの5番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -214,7 +230,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -222,7 +238,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -235,7 +253,8 @@ paths:
       operationId: gpioExportD6Post
       x-type: one-shot
       summary: D6ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの6番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -251,7 +270,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -259,7 +278,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -272,7 +293,8 @@ paths:
       operationId: gpioExportD7Post
       x-type: one-shot
       summary: D7ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの7番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -288,7 +310,7 @@ paths:
             3:アナログOUT'
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -296,7 +318,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -309,7 +333,8 @@ paths:
       operationId: gpioExportD8Post
       x-type: one-shot
       summary: D8ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの8番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -325,7 +350,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -333,7 +358,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -346,7 +373,8 @@ paths:
       operationId: gpioExportD9Post
       x-type: one-shot
       summary: D9ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの9番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -362,7 +390,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -370,7 +398,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -383,7 +413,8 @@ paths:
       operationId: gpioExportD10Post
       x-type: one-shot
       summary: D10ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの10番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -399,7 +430,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -407,7 +438,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -420,7 +453,8 @@ paths:
       operationId: gpioExportD11Post
       x-type: one-shot
       summary: D11ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの11番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -436,7 +470,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -444,7 +478,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -457,7 +493,8 @@ paths:
       operationId: gpioExportD12Post
       x-type: one-shot
       summary: D12ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの12番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -473,7 +510,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -481,7 +518,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -494,7 +533,8 @@ paths:
       operationId: gpioExportD13Post
       x-type: one-shot
       summary: D13ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        デジタル信号を扱うピンの13番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -510,7 +550,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -518,7 +558,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -531,7 +573,8 @@ paths:
       operationId: gpioExportA0Post
       x-type: one-shot
       summary: A0ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        アナログ信号を扱うピンの0番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -547,7 +590,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -555,7 +598,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -568,7 +613,8 @@ paths:
       operationId: gpioExportA1Post
       x-type: one-shot
       summary: A1ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        アナログ信号を扱うピンの1番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -584,7 +630,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -592,7 +638,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -605,7 +653,8 @@ paths:
       operationId: gpioExportA2Post
       x-type: one-shot
       summary: A2ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        アナログ信号を扱うピンの2番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -621,7 +670,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -629,7 +678,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -642,7 +693,8 @@ paths:
       operationId: gpioExportA3Post
       x-type: one-shot
       summary: A3ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        アナログ信号を扱うピンの3番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -658,7 +710,7 @@ paths:
             3:アナログOUT'
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -666,7 +718,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -679,7 +733,8 @@ paths:
       operationId: gpioExportA4Post
       x-type: one-shot
       summary: A4ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        アナログ信号を扱うピンの4番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -695,7 +750,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -703,7 +758,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -716,7 +773,8 @@ paths:
       operationId: gpioExportA5Post
       x-type: one-shot
       summary: A5ピンの出力/入力の種類を設定する。
-      description: ''
+      description: >-
+        アナログ信号を扱うピンの5番目の入出力の設定を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -732,7 +790,7 @@ paths:
             3:アナログOUT
           in: query
           required: true
-          type: number
+          type: integer
           enum:
             - 0
             - 1
@@ -740,7 +798,9 @@ paths:
             - 3
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの入出力設定を行なった結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -752,8 +812,9 @@ paths:
     get:
       operationId: gpioDigitalD0Get
       x-type: one-shot
-      summary: D0ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D0ピンにデジタル値 HIGH(1)またはLOW(0)かを取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -762,7 +823,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -775,7 +838,8 @@ paths:
       operationId: gpioDigitalD0Put
       x-type: one-shot
       summary: D0ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -784,7 +848,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -796,7 +862,8 @@ paths:
       operationId: gpioDigitalD0Delete
       x-type: one-shot
       summary: D0ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -805,7 +872,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -817,7 +886,8 @@ paths:
       operationId: gpioDigitalD0Post
       x-type: one-shot
       summary: D0ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -836,7 +906,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -848,8 +920,9 @@ paths:
     get:
       operationId: gpioDigitalD1Get
       x-type: one-shot
-      summary: D1ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D1ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -858,7 +931,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -871,7 +946,8 @@ paths:
       operationId: gpioDigitalD1Put
       x-type: one-shot
       summary: D1ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -880,7 +956,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -892,7 +970,8 @@ paths:
       operationId: gpioDigitalD1Delete
       x-type: one-shot
       summary: D1ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -901,7 +980,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -913,7 +994,8 @@ paths:
       operationId: gpioDigitalD1Post
       x-type: one-shot
       summary: D1ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -932,7 +1014,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -944,8 +1028,9 @@ paths:
     get:
       operationId: gpioDigitalD2Get
       x-type: one-shot
-      summary: D2ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D2ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -954,7 +1039,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -967,7 +1054,8 @@ paths:
       operationId: gpioDigitalD2Put
       x-type: one-shot
       summary: D2ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -976,7 +1064,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -988,7 +1078,8 @@ paths:
       operationId: gpioDigitalD2Delete
       x-type: one-shot
       summary: D2ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -997,7 +1088,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1009,7 +1102,8 @@ paths:
       operationId: gpioDigitalD2Post
       x-type: one-shot
       summary: D2ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1028,7 +1122,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1040,8 +1136,9 @@ paths:
     get:
       operationId: gpioDigitalD3Get
       x-type: one-shot
-      summary: D3ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D3ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1050,7 +1147,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1063,7 +1162,8 @@ paths:
       operationId: gpioDigitalD3Put
       x-type: one-shot
       summary: D3ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1072,7 +1172,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1084,7 +1186,8 @@ paths:
       operationId: gpioDigitalD3Delete
       x-type: one-shot
       summary: D3ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1093,7 +1196,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1105,7 +1210,8 @@ paths:
       operationId: gpioDigitalD3Post
       x-type: one-shot
       summary: D3ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1124,7 +1230,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1136,8 +1244,9 @@ paths:
     get:
       operationId: gpioDigitalD4Get
       x-type: one-shot
-      summary: D4ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D4ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1146,7 +1255,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1159,7 +1270,8 @@ paths:
       operationId: gpioDigitalD4Put
       x-type: one-shot
       summary: D4ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1168,7 +1280,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1180,7 +1294,8 @@ paths:
       operationId: gpioDigitalD4Delete
       x-type: one-shot
       summary: D4ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1189,7 +1304,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1201,7 +1318,8 @@ paths:
       operationId: gpioDigitalD4Post
       x-type: one-shot
       summary: D4ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1220,7 +1338,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1232,8 +1352,9 @@ paths:
     get:
       operationId: gpioDigitalD5Get
       x-type: one-shot
-      summary: D5ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D5ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1242,7 +1363,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1255,7 +1378,8 @@ paths:
       operationId: gpioDigitalD5Put
       x-type: one-shot
       summary: D5ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1264,7 +1388,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1276,7 +1402,8 @@ paths:
       operationId: gpioDigitalD5Delete
       x-type: one-shot
       summary: D5ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1285,7 +1412,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1297,7 +1426,8 @@ paths:
       operationId: gpioDigitalD5Post
       x-type: one-shot
       summary: D5ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1316,7 +1446,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1328,8 +1460,9 @@ paths:
     get:
       operationId: gpioDigitalD6Get
       x-type: one-shot
-      summary: D6ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D6ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1338,7 +1471,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1351,7 +1486,8 @@ paths:
       operationId: gpioDigitalD6Put
       x-type: one-shot
       summary: D6ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1360,7 +1496,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1372,7 +1510,8 @@ paths:
       operationId: gpioDigitalD6Delete
       x-type: one-shot
       summary: D6ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1381,7 +1520,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1393,7 +1534,8 @@ paths:
       operationId: gpioDigitalD6Post
       x-type: one-shot
       summary: D6ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1412,7 +1554,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1424,8 +1568,9 @@ paths:
     get:
       operationId: gpioDigitalD7Get
       x-type: one-shot
-      summary: D7ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D7ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1434,7 +1579,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1447,7 +1594,8 @@ paths:
       operationId: gpioDigitalD7Put
       x-type: one-shot
       summary: D7ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1456,7 +1604,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1468,7 +1618,8 @@ paths:
       operationId: gpioDigitalD7Delete
       x-type: one-shot
       summary: D7ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1477,7 +1628,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1489,7 +1642,8 @@ paths:
       operationId: gpioDigitalD7Post
       x-type: one-shot
       summary: D7ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1508,7 +1662,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1520,8 +1676,9 @@ paths:
     get:
       operationId: gpioDigitalD8Get
       x-type: one-shot
-      summary: D8ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D8ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1530,7 +1687,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1543,7 +1702,8 @@ paths:
       operationId: gpioDigitalD8Put
       x-type: one-shot
       summary: D8ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1552,7 +1712,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1564,7 +1726,8 @@ paths:
       operationId: gpioDigitalD8Delete
       x-type: one-shot
       summary: D8ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1573,7 +1736,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1585,7 +1750,8 @@ paths:
       operationId: gpioDigitalD8Post
       x-type: one-shot
       summary: D8ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1604,7 +1770,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1616,8 +1784,9 @@ paths:
     get:
       operationId: gpioDigitalD9Get
       x-type: one-shot
-      summary: D9ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D9ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1626,7 +1795,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1639,7 +1810,8 @@ paths:
       operationId: gpioDigitalD9Put
       x-type: one-shot
       summary: D9ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1648,7 +1820,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1660,7 +1834,8 @@ paths:
       operationId: gpioDigitalD9Delete
       x-type: one-shot
       summary: D9ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1669,7 +1844,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1681,7 +1858,8 @@ paths:
       operationId: gpioDigitalD9Post
       x-type: one-shot
       summary: D9ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1700,7 +1878,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1713,7 +1893,8 @@ paths:
       operationId: gpioDigitalD10Get
       x-type: one-shot
       summary: D10ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1722,7 +1903,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1735,7 +1918,8 @@ paths:
       operationId: gpioDigitalD10Put
       x-type: one-shot
       summary: D10ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1744,7 +1928,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1756,7 +1942,8 @@ paths:
       operationId: gpioDigitalD10Delete
       x-type: one-shot
       summary: D10ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1765,7 +1952,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            LOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1777,7 +1966,8 @@ paths:
       operationId: gpioDigitalD10Post
       x-type: one-shot
       summary: D10ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1796,7 +1986,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1808,8 +2000,9 @@ paths:
     get:
       operationId: gpioDigitalD11Get
       x-type: one-shot
-      summary: D11ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D11ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1818,7 +2011,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -1831,7 +2026,8 @@ paths:
       operationId: gpioDigitalD11Put
       x-type: one-shot
       summary: D11ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1840,7 +2036,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1852,7 +2050,8 @@ paths:
       operationId: gpioDigitalD11Delete
       x-type: one-shot
       summary: D11ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1861,7 +2060,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -1873,103 +2074,8 @@ paths:
       operationId: gpioDigitalD11Post
       x-type: one-shot
       summary: D11ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
-      parameters:
-        - name: serviceId
-          description: サービスID。取得対象スマートデバイス
-          in: formData
-          required: true
-          type: string
-        - name: value
-          description: >-
-            値。出力する値<br>
-            LOW(0), HIGH(1)'
-          in: formData
-          required: true
-          type: integer
-          enum:
-            - 0
-            - 1
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/GPIOResponse'
-          examples:
-            application/json:
-              result: 0
-              product: Example System
-              version: 1.0.0
-  /digital/D12:
-    get:
-      operationId: gpioDigitalD12Get
-      x-type: one-shot
-      summary: D12ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
-      parameters:
-        - name: serviceId
-          description: サービスID。取得対象スマートデバイス
-          in: query
-          required: true
-          type: string
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/GPIODigitalValueResponse'
-          examples:
-            application/json:
-              result: 0
-              product: Example System
-              version: 1.0.0
-              value: 1
-    put:
-      operationId: gpioDigitalD12Put
-      x-type: one-shot
-      summary: D12ピンにデジタル値のHIGH(1)を出力。
-      description: ''
-      parameters:
-        - name: serviceId
-          description: サービスID。取得対象スマートデバイス
-          in: formData
-          required: true
-          type: string
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/GPIOResponse'
-          examples:
-            application/json:
-              result: 0
-              product: Example System
-              version: 1.0.0
-    delete:
-      operationId: gpioDigitalD12Delete
-      x-type: one-shot
-      summary: D12ピンにデジタル値のLOW(0)を出力。
-      description: ''
-      parameters:
-        - name: serviceId
-          description: サービスID。取得対象スマートデバイス
-          in: query
-          required: true
-          type: string
-      responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/GPIOResponse'
-          examples:
-            application/json:
-              result: 0
-              product: Example System
-              version: 1.0.0
-    post:
-      operationId: gpioDigitalD12Post
-      x-type: one-shot
-      summary: D12ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -1988,7 +2094,117 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GPIOResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /digital/D12:
+    get:
+      operationId: gpioDigitalD12Get
+      x-type: one-shot
+      summary: D12ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GPIODigitalValueResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              value: 1
+    put:
+      operationId: gpioDigitalD12Put
+      x-type: one-shot
+      summary: D12ピンにデジタル値のHIGH(1)を出力。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GPIOResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    delete:
+      operationId: gpioDigitalD12Delete
+      x-type: one-shot
+      summary: D12ピンにデジタル値のLOW(0)を出力。
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GPIOResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    post:
+      operationId: gpioDigitalD12Post
+      x-type: one-shot
+      summary: D12ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: value
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
+          in: formData
+          required: true
+          type: integer
+          enum:
+            - 0
+            - 1
+      responses:
+        '200':
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2000,8 +2216,9 @@ paths:
     get:
       operationId: gpioDigitalD13Get
       x-type: one-shot
-      summary: D13ピンにデジタル値 HIGH(1)またはLOW(1)を入力。
-      description: ''
+      summary: D13ピンにデジタル値 HIGH(1)またはLOW(1)の状態を取得する。
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2010,7 +2227,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デジタルピンの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIODigitalValueResponse'
           examples:
@@ -2023,7 +2242,8 @@ paths:
       operationId: gpioDigitalD13Put
       x-type: one-shot
       summary: D13ピンにデジタル値のHIGH(1)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2032,7 +2252,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGH出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2044,7 +2266,8 @@ paths:
       operationId: gpioDigitalD13Delete
       x-type: one-shot
       summary: D13ピンにデジタル値のLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでLOWになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2053,7 +2276,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2065,7 +2290,8 @@ paths:
       operationId: gpioDigitalD13Post
       x-type: one-shot
       summary: D13ピンにデジタル値のHIGH(1)またはLOW(0)を出力。
-      description: ''
+      description: >-
+        何VでHIGHになるかなどはデバイスあるいはデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2073,7 +2299,9 @@ paths:
           required: true
           type: string
         - name: value
-          description: '値。出力する値<br>LOW(0), HIGH(1)'
+          description: >-
+            値。出力する値<br>
+            LOW(0), HIGH(1)
           in: formData
           required: true
           type: integer
@@ -2082,7 +2310,9 @@ paths:
             - 1
       responses:
         '200':
-          description: ''
+          description: >-
+            HIGHまたはLOW出力を行なった結果を返す。
+            出力に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2094,8 +2324,9 @@ paths:
     get:
       operationId: gpioAnalogA0Get
       x-type: one-shot
-      summary: A0ピンのアナログ値を入力
-      description: ''
+      summary: A0ピンのアナログ値を取得。
+      description: >-
+        取得できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2104,7 +2335,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在のアナログ値を返す。
+            アナログ値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOAnalogValueResponse'
           examples:
@@ -2116,8 +2349,9 @@ paths:
     post:
       operationId: gpioAnalogA0Post
       x-type: one-shot
-      summary: A0ピンのアナログ値を出力
-      description: ''
+      summary: A0ピンの出力するアナログ値を設定する。
+      description: >-
+        設定できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2131,7 +2365,9 @@ paths:
           type: number
       responses:
         '200':
-          description: ''
+          description: >-
+            アナログ値の設定結果を返す。
+            設定できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2144,7 +2380,8 @@ paths:
       operationId: gpioAnalogA1Get
       x-type: one-shot
       summary: A1ピンのアナログ値を入力
-      description: ''
+      description: >-
+        取得できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2153,7 +2390,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在のアナログ値を返す。
+            アナログ値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOAnalogValueResponse'
           examples:
@@ -2166,7 +2405,8 @@ paths:
       operationId: gpioAnalogA1Post
       x-type: one-shot
       summary: A1ピンのアナログ値を出力
-      description: ''
+      description: >-
+        設定できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2180,7 +2420,9 @@ paths:
           type: number
       responses:
         '200':
-          description: ''
+          description: >-
+            アナログ値の設定結果を返す。
+            設定できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2193,7 +2435,8 @@ paths:
       operationId: gpioAnalogA2Get
       x-type: one-shot
       summary: A2ピンのアナログ値を入力
-      description: ''
+      description: >-
+        取得できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2202,7 +2445,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在のアナログ値を返す。
+            アナログ値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOAnalogValueResponse'
           examples:
@@ -2215,7 +2460,8 @@ paths:
       operationId: gpioAnalogA2Post
       x-type: one-shot
       summary: A2ピンのアナログ値を出力
-      description: ''
+      description: >-
+        設定できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2229,7 +2475,9 @@ paths:
           type: number
       responses:
         '200':
-          description: ''
+          description: >-
+            アナログ値の設定結果を返す。
+            設定できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2242,7 +2490,8 @@ paths:
       operationId: gpioAnalogA3Get
       x-type: one-shot
       summary: A3ピンのアナログ値を入力
-      description: ''
+      description: >-
+        取得できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2251,7 +2500,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在のアナログ値を返す。
+            アナログ値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOAnalogValueResponse'
           examples:
@@ -2264,7 +2515,8 @@ paths:
       operationId: gpioAnalogA3Post
       x-type: one-shot
       summary: A3ピンのアナログ値を出力
-      description: ''
+      description: >-
+        設定できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2278,7 +2530,9 @@ paths:
           type: number
       responses:
         '200':
-          description: ''
+          description: >-
+            アナログ値の設定結果を返す。
+            設定できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2291,7 +2545,8 @@ paths:
       operationId: gpioAnalogA4Get
       x-type: one-shot
       summary: A4ピンのアナログ値を入力
-      description: ''
+      description: >-
+        取得できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2300,7 +2555,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在のアナログ値を返す。
+            アナログ値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOAnalogValueResponse'
           examples:
@@ -2313,7 +2570,8 @@ paths:
       operationId: gpioAnalogA4Post
       x-type: one-shot
       summary: A4ピンのアナログ値を出力
-      description: ''
+      description: >-
+        設定できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2327,7 +2585,9 @@ paths:
           type: number
       responses:
         '200':
-          description: ''
+          description: >-
+            アナログ値の設定結果を返す。
+            設定できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2340,7 +2600,8 @@ paths:
       operationId: gpioAnalogA5Get
       x-type: one-shot
       summary: A5ピンのアナログ値を入力
-      description: ''
+      description: >-
+        取得できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2349,7 +2610,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在のアナログ値を返す。
+            アナログ値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOAnalogValueResponse'
           examples:
@@ -2362,7 +2625,8 @@ paths:
       operationId: gpioAnalogA5Post
       x-type: one-shot
       summary: A5ピンのアナログ値を出力
-      description: ''
+      description: >-
+        設定できるアナログ値の範囲などはデバイスおよびデバイスプラグイン側で決めること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2376,7 +2640,9 @@ paths:
           type: number
       responses:
         '200':
-          description: ''
+          description: >-
+            アナログ値の設定結果を返す。
+            設定できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOResponse'
           examples:
@@ -2389,7 +2655,8 @@ paths:
       operationId: gpioOnChangeGet
       x-type: one-shot
       summary: 各ピンで、入力状態のモードに設定されているピンの値を取得する
-      description: ''
+      description: >-
+        入力状態のモードに設定されているピンの値を全て取得する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2398,7 +2665,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            入力状態のモードになっているピンの現在の値を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GPIOChangeResponse'
           examples:
@@ -2418,8 +2687,10 @@ paths:
       x-type: event
       summary: >-
         各ピンで、入力状態のモードに設定されているピンの値を定期的に
-        送信するイベントを開始する。
-      description: ''
+        通知するイベントを開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2428,7 +2699,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの値を定期的に通知するイベント開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -2456,8 +2729,10 @@ paths:
       x-type: event
       summary: >-
         各ピンで、入力状態のモードに設定されているピンの値を定期的に
-        送信するイベントを停止する。
-      description: ''
+        通知するイベントを停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -2466,7 +2741,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ピンの値を定期的に通知するイベント停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -2544,7 +2821,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

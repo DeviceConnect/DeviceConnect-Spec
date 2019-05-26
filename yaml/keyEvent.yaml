@@ -22,7 +22,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            押されたキーの情報を返す。
+            情報を返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/KeyEventDownResponse'
           examples:
@@ -37,7 +39,9 @@ paths:
       operationId: keyEventOnDownPut
       x-type: event
       summary: デバイスのキーが押されたことを通知するイベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -52,7 +56,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            キーが押されたことを通知するイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -75,7 +81,9 @@ paths:
       operationId: keyEventOnDownDelete
       x-type: event
       summary: デバイスのキーが押されたことを通知するイベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -84,7 +92,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            キーが押されたことを通知するイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -106,7 +116,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのキーが離されたときの情報を返す。
+            情報が返せなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/KeyEventUpResponse'
           examples:
@@ -121,7 +133,9 @@ paths:
       operationId: keyEventOnUpPut
       x-type: event
       summary: デバイスのキーが離されたことを通知するイベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -136,7 +150,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのキーが離されたことを通知するイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -159,7 +175,9 @@ paths:
       operationId: keyEventOnUpDelete
       x-type: event
       summary: デバイスのキーが離されたことを通知するイベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -168,7 +186,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのキーが離されたことを通知するイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -180,7 +200,7 @@ paths:
     get:
       operationId: keyEventOnKeyChangeGet
       x-type: one-shot
-      summary: デバイスのキーが押された、離された時の情報を取得する。
+      summary: デバイスのキーが押された時あるいは離された時の情報を取得する。
       description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
       parameters:
         - name: serviceId
@@ -190,7 +210,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのキーの押下情報を返す。
+            情報が取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/KeyEventChangeResponse'
           examples:
@@ -206,7 +228,9 @@ paths:
       operationId: keyEventOnKeyChangePut
       x-type: event
       summary: デバイスのキーが押された、または離されたことを通知するイベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -215,7 +239,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのキーが押された、または離されたことを通知するイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -239,7 +265,9 @@ paths:
       operationId: keyEventOnKeyChangeDelete
       x-type: event
       summary: デバイスのキーが押された、または離されたことを通知するイベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -248,7 +276,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのキーが押された、または離されたことを通知するイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -282,11 +312,13 @@ definitions:
           id:
             type: integer
             title: 離されたKeyのID
-            description: ''
+            description: >-
+              すでに標準化されているKeyのIDがある場合は、そちらを利用すること。
           config:
             type: string
             title: 離されたKeyのConfig
-            description: ''
+            description: >-
+              特にConfigがない場合は空文字を返すこと。
   KeyEventUpResponse:
     type: object
     allOf:
@@ -312,11 +344,13 @@ definitions:
           id:
             type: integer
             title: 押されたKeyのID
-            description: ''
+            description: >-
+              すでに標準化されているKeyのIDがある場合は、そちらを利用すること。
           config:
             type: string
             title: 押されたKeyのConfig
-            description: ''
+            description: >-
+              特にConfigがない場合は空文字を返すこと。
   KeyEventChangeResponse:
     type: object
     allOf:
@@ -343,15 +377,19 @@ definitions:
           state:
             type: string
             title: 押された、もしくは離された時の状態
-            description: 'up:Keyが離された。<br>down:Keyが押された。'
+            description: >-
+              up:Keyが離された。<br>
+              down:Keyが押された。
           id:
             type: integer
             title: 押された、もしくは離された時のKeyのID
-            description: ''
+            description: >-
+              すでに標準化されているKeyのIDがある場合は、そちらを利用すること。
           config:
             type: string
             title: 押された、もしくは離された時のKeyのConfig
-            description: ''
+            description: >-
+              特にConfigがない場合は空文字を返すこと。
   CommonResponse:
     type: object
     required:
@@ -362,7 +400,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名
@@ -374,7 +414,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   EventRegistrationResponse:
     type: object
     allOf:

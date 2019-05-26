@@ -13,7 +13,8 @@ paths:
       operationId: connectionWifiGet
       x-type: one-shot
       summary: スマートデバイスのWIFI機能有効状態(ON/OFF)を取得する。
-      description: ''
+      description: >-
+        スマートデバイスのWIFI機能有効状態が取得できない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +23,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスのWIFI機能有効状態(ON/OFF)を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetWifiResponse'
           examples:
@@ -35,7 +38,8 @@ paths:
       operationId: connectionWifiPut
       x-type: one-shot
       summary: スマートデバイスのWIFI機能有効状態を有効に設定する。
-      description: ''
+      description: >-
+        スマートデバイスのWIFI機能有効状態が変更できない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -44,7 +48,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            WIFI機能を有効化に設定した結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/WifiOnResponse'
           examples:
@@ -56,7 +62,8 @@ paths:
       operationId: connectionWifiDelete
       x-type: one-shot
       summary: スマートデバイスのWIFI機能有効状態を無効に設定する。
-      description: ''
+      description: >-
+        スマートデバイスのWIFI機能無効状態が変更できない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -65,7 +72,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            WIFI機能有効状態を無効に設定した結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/WifiOffResponse'
           examples:
@@ -87,7 +96,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            WIFI機能有効状態(ON/OFF)の変化を返す。
+            切り替わっていない場合は、切り替わる前にWIFI機能の有効状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/WifiChangeResponse'
           examples:
@@ -116,7 +128,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            WIFI機能有効状態(ON/OFF)の変化を通知するイベントの開始結果を返す。
+            登録に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -147,7 +161,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            WIFI機能有効状態の変化を通知するイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -160,7 +176,8 @@ paths:
       operationId: connectionBluetoothGet
       x-type: one-shot
       summary: スマートデバイスのBluetooth機能有効状態(ON/OFF)を取得する。
-      description: ''
+      description: >-
+        スマートデバイスでBluetooth機能有効状態がサポートされていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -169,7 +186,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスのBluetooth機能有効状態を返す。
+            状態取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetBluetoothResponse'
           examples:
@@ -182,7 +201,8 @@ paths:
       operationId: connectionBluetoothPut
       x-type: one-shot
       summary: スマートデバイスのBluetooth機能有効状態を有効に設定する。
-      description: ''
+      description: >-
+        スマートデバイスでBluetooth機能を有効にする機能がサポートされていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -193,7 +213,9 @@ paths:
         '200':
           schema:
             $ref: '#/definitions/BluetoothOnResponse'
-          description: ''
+          description: >-
+            Bluetooth機能有効状態を有効に設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           examples:
             application/json:
               result: 0
@@ -203,7 +225,9 @@ paths:
       operationId: connectionBluetoothDelete
       x-type: one-shot
       summary: スマートデバイスのBluetooth機能有効状態を無効に設定する。
-      description: ''
+      description: >-
+        スマートデバイスでBluetooth機能有効状態を無効に設定する機能が
+        サポートされていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -212,7 +236,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            Bluetooth有効機能を無効に設定した結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/BluetoothOffResponse'
           examples:
@@ -224,7 +250,7 @@ paths:
     get:
       operationId: connectionOnBluetoothChangeGet
       x-type: one-shot
-      summary: スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを取得する。
+      summary: スマートデバイスのBluetooth機能有効状態(ON/OFF)の変化を通知するイベントを取得する。
       description: Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。
       parameters:
         - name: serviceId
@@ -234,7 +260,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            Bluetooth機能有効状態(ON/OFF)を返す。
+            状態が変化していない時に実行された場合は、現在の状態を返す。
           schema:
             $ref: '#/definitions/BluetoothChangeResponse'
           examples:
@@ -247,7 +275,7 @@ paths:
     put:
       operationId: connectionOnBluetoothChangePut
       x-type: event
-      summary: スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを開始する。
+      summary: スマートデバイスのBluetooth機能有効状態(ON/OFF)の変化を通知するイベントを開始する。
       description: Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。
       parameters:
         - name: serviceId
@@ -263,7 +291,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            Bluetooth機能有効状態(ON/OFF)の変化を通知するイベントの開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -284,7 +314,7 @@ paths:
     delete:
       operationId: connectionOnBluetoothChangeDelete
       x-type: event
-      summary: スマートデバイスのWIFI機能有効状態(ON/OFF)の変化を通知するイベントを停止する。
+      summary: スマートデバイスのBluetooth機能有効状態(ON/OFF)の変化を通知するイベントを停止する。
       description: Bluetooth機能有効状態がONからOFFまたはOFFからONに変化したときに通知される。
       parameters:
         - name: serviceId
@@ -294,7 +324,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            Bluetooth機能有効状態(ON/OFF)の変化を通知するイベントの停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -307,7 +339,7 @@ paths:
       operationId: connectionBluetoothDiscoverablePut
       x-type: one-shot
       summary: スマートデバイスのBluetooth検索可能状態を有効に設定する。
-      description: ''
+      description: Bluetooth検索可能状態の有効がサポートされていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -316,7 +348,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            Bluetooth検索可能状態を有効に設定した結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/BluetoothDiscoverableStartResponse'
           examples:
@@ -328,7 +362,7 @@ paths:
       operationId: connectionBluetoothDiscoverableDelete
       x-type: one-shot
       summary: スマートデバイスのBluetooth検索可能状態を無効に設定する。
-      description: ''
+      description: Bluetooth検索可能状態の無効がサポートされていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -337,7 +371,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            Bluetooth検索可能状態を無効に設定した結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/BluetoothDiscoverableStopResponse'
           examples:
@@ -350,7 +386,8 @@ paths:
       operationId: connectionNfcGet
       x-type: one-shot
       summary: スマートデバイスのNFC機能有効状態(ON/OFF)を取得する。
-      description: ''
+      description: >-
+        NFC機能有効状態が取得をサポートしていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -359,7 +396,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            NFC機能有効状態を返す。
+            返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetNfcResponse'
           examples:
@@ -372,7 +411,8 @@ paths:
       operationId: connectionNfcPut
       x-type: one-shot
       summary: スマートデバイスのNFC機能有効状態を有効に設定する。
-      description: ''
+      description: >-
+        NFC有効状態の有効設定をサポートしていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -381,7 +421,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            NFC有効状態の設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/NfcOnResponse'
           examples:
@@ -393,7 +435,8 @@ paths:
       operationId: connectionNfcDelete
       x-type: one-shot
       summary: スマートデバイスのNFC機能有効状態を無効に設定する。
-      description: ''
+      description: >-
+        NFC有効状態の無効をサポートしていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -402,7 +445,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            NFC有効状態を無効に設定した結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/NfcOffResponse'
           examples:
@@ -424,7 +469,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            NFC機能有効状態を返す。
+            変化していない場合は、現在の状態を返す。
           schema:
             $ref: '#/definitions/NfcChangeResponse'
           examples:
@@ -453,7 +500,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            NFC機能有効状態の通知イベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -484,7 +533,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            NFC機能有効状態通知イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -497,7 +548,8 @@ paths:
       operationId: connectionBleGet
       x-type: one-shot
       summary: スマートデバイスのBLE機能有効状態(ON/OFF)を取得する。
-      description: ''
+      description: >-
+        BLE機能有効状態取得をサポートしていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -506,7 +558,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            BLE機能有効状態を返す。
+            返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetBleResponse'
           examples:
@@ -519,7 +573,8 @@ paths:
       operationId: connectionBlePut
       x-type: one-shot
       summary: スマートデバイスのBLE機能有効状態を有効に設定する。
-      description: ''
+      description: >-
+        BLE機能有効状態の設定をサポートしていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -528,7 +583,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            BLE機能有効状態の設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/BleOnResponse'
           examples:
@@ -540,7 +597,8 @@ paths:
       operationId: connectionBleDelete
       x-type: one-shot
       summary: スマートデバイスのBLE機能有効状態を無効に設定する。
-      description: ''
+      description: >-
+        BLE機能有効の無効化をサポートしていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -549,7 +607,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            BLE機能有効の無効に設定した結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/BleOffResponse'
           examples:
@@ -571,7 +631,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            BLE機能の有効状態を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/BleChangeResponse'
           examples:
@@ -600,7 +662,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            BLE機能有効状態の変化を通知するイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -631,7 +695,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            BLE機能有効状態通知イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -918,7 +984,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -930,7 +998,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

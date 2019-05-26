@@ -13,7 +13,7 @@ paths:
       operationId: videoChatProfileGet
       x-type: one-shot
       summary: プロフィール情報を取得する。
-      description: ''
+      description: WebRTCサービスによって情報の内容が違ってくる。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -27,7 +27,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            プロフィール情報取得結果を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetProfileResponse'
           examples:
@@ -41,7 +43,7 @@ paths:
       operationId: videoChatProfilePut
       x-type: one-shot
       summary: プロフィールを更新する。
-      description: ''
+      description: WebRTCサービスによって情報の内容が違ってくる。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -60,7 +62,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            プロフィールの更新結果を返す。
+            更新に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PutProfileResponse'
           examples:
@@ -73,7 +77,7 @@ paths:
       operationId: videoChatAddressGet
       x-type: one-shot
       summary: 接続先のアドレス一覧を取得する。
-      description: ''
+      description: WebRTCサービスによって情報の内容が違ってくる。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -94,7 +98,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            接続先のアドレス一覧を返す。
+            一覧の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetAddressResponse'
           examples:
@@ -117,7 +123,7 @@ paths:
       operationId: videoChatCallPost
       x-type: one-shot
       summary: VideoChatの接続を行う。
-      description: ''
+      description: WebRTCサービスによって挙動が違ってくる。
       parameters:
         - name: serviceId
           description: サービスID
@@ -226,7 +232,9 @@ paths:
             - Stereo
       responses:
         '200':
-          description: ''
+          description: >-
+            VideoChatの接続結果を返す。
+            接続に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PostCallResponse'
           examples:
@@ -238,7 +246,7 @@ paths:
       operationId: videoChatCallDelete
       x-type: one-shot
       summary: 接続中の VideoChat の切断を行う。
-      description: ''
+      description: WebRTCサービスによって挙動が違ってくる。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -257,7 +265,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            VideoChatの切断結果を返す。
+            切断に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/DeleteCallResponse'
           examples:
@@ -284,7 +294,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在の着信情報を返す。
+            現在の着信情報が取得できない場合は、キャッシュしている最新の着信情報を返す。
+            着信情報の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/OnIncommingResponse'
           examples:
@@ -298,8 +311,10 @@ paths:
     put:
       operationId: videoChatOnIncomingPut
       x-type: event
-      summary: 他デバイスからの着信イベントの受信を開始する。
-      description: ''
+      summary: 他デバイスからの着信イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -313,7 +328,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            着信イベントの通知の開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -335,8 +352,10 @@ paths:
     delete:
       operationId: videoChatOnIncomingDelete
       x-type: event
-      summary: 当該イベントの通知を停止する。
-      description: ''
+      summary: 他デバイスからの着信イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -345,7 +364,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            着信イベントの通知の停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -372,7 +393,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在の通話開始情報を返す。
+            現在の通話開始情報が取得できない場合は、キャッシュしている最新の通話開始情報を返す。
+            通話開始情報の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/OnCallResponse'
           examples:
@@ -387,7 +411,9 @@ paths:
       operationId: videoChatOnCallPut
       x-type: event
       summary: 通話開始イベントの受信を開始する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -407,7 +433,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            通話開始イベントの通知の開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -429,8 +457,10 @@ paths:
     delete:
       operationId: videoChatOnCallDelete
       x-type: event
-      summary: 当該イベントの通知を停止する。
-      description: ''
+      summary: 通話開始イベントの受信を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -439,7 +469,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            通話開始イベントの通知の停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -452,7 +484,7 @@ paths:
       operationId: videoChatOnHangupGet
       x-type: one-shot
       summary: VideoChatの切断イベントを取得する。
-      description: ''
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
       parameters:
         - name: serviceId
           description: サービスID
@@ -466,7 +498,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在の通話切断情報を返す。
+            現在の通話切断情報が取得できない場合は、キャッシュしている最新の通話切断情報を返す。
+            通話開切断情報の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/OnHangUpResponse'
           examples:
@@ -480,7 +515,9 @@ paths:
       operationId: videoChatOnHangupPut
       x-type: event
       summary: VideoChatの切断イベントの受信を開始する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -500,7 +537,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            通話切断イベントの通知の開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -521,8 +560,10 @@ paths:
     delete:
       operationId: videoChatOnHangupDelete
       x-type: event
-      summary: 当該イベントの通知を停止する。
-      description: ''
+      summary: VideoChatの切断イベントの受信を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -531,7 +572,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            通話切断イベントの通知の停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -840,7 +883,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

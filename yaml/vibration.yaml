@@ -12,8 +12,9 @@ paths:
     put:
       operationId: vibrationVibratePut
       x-type: one-shot
-      summary: スマートデバイスに対してバイブレーション依頼を送る。
-      description: ''
+      summary: スマートデバイスに対してバイブレーションリクエストを送る。
+      description: >-
+        バイブレーションの鳴動パターンは、できるだけDeviceConnectの仕様にあわせるようにする。
       parameters:
         - name: serviceId
           description: サービスID。取得対象デバイス
@@ -38,7 +39,9 @@ paths:
             minimum: 0
       responses:
         '200':
-          description: ''
+          description: >-
+            バイブレーションリクエストの送信結果を返す。
+            送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/VibrationControlResponse'
           examples:
@@ -49,8 +52,9 @@ paths:
     delete:
       operationId: vibrationVibrateDelete
       x-type: one-shot
-      summary: スマートデバイスに対してバイブレーション停止依頼を送る。
-      description: ''
+      summary: スマートデバイスに対してバイブレーション停止リクエストを送る。
+      description: >-
+        バイブレーションの鳴動パターンは、できるだけDeviceConnectの仕様にあわせるようにする。
       parameters:
         - name: serviceId
           description: サービスID。取得対象デバイス
@@ -59,7 +63,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            バイブレーション停止リクエストの送信結果を返す。
+            送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/VibrationControlResponse'
           examples:
@@ -82,7 +88,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

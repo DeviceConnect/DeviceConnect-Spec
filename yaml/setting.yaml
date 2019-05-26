@@ -13,7 +13,8 @@ paths:
       operationId: settingSoundVolumeGet
       x-type: one-shot
       summary: スマートデバイスの音量を取得する。
-      description: ''
+      description: >-
+        音量値については、デバイスプラグイン側で0.0〜1.0の間に正規化を行うこと。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -42,7 +43,7 @@ paths:
             - 6
       responses:
         '200':
-          description: ''
+          description: 音量の値を返す。値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetVolumeSettingResponse'
           examples:
@@ -54,8 +55,9 @@ paths:
     put:
       operationId: settingSoundVolumePut
       x-type: one-shot
-      summary: スマートデバイスの音量の設定依頼を送る。
-      description: ''
+      summary: スマートデバイスの音量の設定リクエストを送る。
+      description: >-
+        音量値については、デバイスプラグイン側で0.0〜1.0の値をデバイスに合う値に変換すること。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -91,7 +93,9 @@ paths:
           maximum: 1
       responses:
         '200':
-          description: ''
+          description: >-
+            音量の設定リクエストの送信結果を返す。
+            送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PutSettingResponse'
           examples:
@@ -104,7 +108,9 @@ paths:
       operationId: settingDateGet
       x-type: one-shot
       summary: スマートデバイスの日時を取得する。
-      description: ''
+      description: >-
+        デバイス側の日時の取り扱いがRFC3339になっていない場合は、
+        なるべくデバイスプラグイン側でRFC3339形式に変換するようにする。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -113,7 +119,7 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: 日時を返す。日時の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetDateSettingResponse'
           examples:
@@ -125,8 +131,10 @@ paths:
     put:
       operationId: settingDatePut
       x-type: one-shot
-      summary: スマートデバイスの日時の設定依頼を送る。
-      description: ''
+      summary: スマートデバイスの日時の設定リクエストを送る。
+      description: >-
+        デバイス側の日時の取り扱いがRFC3339になっていない場合は、
+        なるべくデバイスプラグイン側でRFC3339形式に変換するようにする。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -143,7 +151,9 @@ paths:
           format: date-time
       responses:
         '200':
-          description: ''
+          description: >-
+            日時の設定リクエストの送信結果を返す。
+            送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PutSettingResponse'
           examples:
@@ -156,7 +166,8 @@ paths:
       operationId: settingDisplayBrightnessGet
       x-type: one-shot
       summary: スマートデバイスのライト明度を取得する。
-      description: ''
+      description: >-
+        明度については、デバイスプラグイン側で0.0〜1.0の値をデバイスに合う値に変換すること。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -165,7 +176,7 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: ライト明度を返す。明度の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetDisplayBrightnessSettingResponse'
           examples:
@@ -177,8 +188,9 @@ paths:
     put:
       operationId: settingDisplayBrightnessPut
       x-type: one-shot
-      summary: スマートデバイスのライト明度の設定依頼を送る。
-      description: ''
+      summary: スマートデバイスのライト明度の設定リクエストを送る。
+      description: >-
+        明度については、デバイスプラグイン側で0.0〜1.0の値をデバイスに合う値に変換すること。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -194,7 +206,9 @@ paths:
           maximum: 1
       responses:
         '200':
-          description: ''
+          description: >-
+            ライト明度の設定リクエストの送信結果を返す。
+            送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PutSettingResponse'
           examples:
@@ -206,8 +220,8 @@ paths:
     get:
       operationId: settingDisplaySleepGet
       x-type: one-shot
-      summary: スマートデバイスの画面消灯設定を取得する。
-      description: ''
+      summary: スマートデバイスの画面消灯時間の設定値を取得する。
+      description: 消灯時間の単位はミリ秒とする。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -216,7 +230,7 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: 画面消灯時間を返す。取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetDisplaySleepSettingResponse'
           examples:
@@ -228,8 +242,8 @@ paths:
     put:
       operationId: settingDisplaySleepPut
       x-type: one-shot
-      summary: スマートデバイスの画面消灯設定依頼を送る。
-      description: ''
+      summary: スマートデバイスの画面消灯設定リクエストを送る。
+      description: 消灯時間の単位はミリ秒とする。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -244,7 +258,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            画面消灯時間の設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PutSettingResponse'
           examples:
@@ -293,7 +309,9 @@ definitions:
           level:
             type: number
             title: 輝度
-            description: ディスプレイの輝度を割合で示す 範囲 (0.0 <= level <= 1.0)
+            description: >-
+              ディスプレイの輝度を割合で示す。
+              範囲 (0.0 <= level <= 1.0)
             minimum: 0
             maximum: 1
   GetDisplaySleepSettingResponse:
@@ -323,7 +341,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

@@ -13,7 +13,8 @@ paths:
       operationId: mediaPlayerMediaGet
       x-type: one-shot
       summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の情報を取得する。
-      description: ''
+      description: >-
+        情報が取得できない項目については、空文字を返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -29,7 +30,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツの情報を返す。
+            情報が取得できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetMediaResponse'
           examples:
@@ -42,8 +45,8 @@ paths:
               title: Test Music 1
               type: Music
               language: ja
-              description: ''
-              imageUri: ''
+              description: 'Sample Music'
+              imageUri: 'http://xxx.com/xxx.jpg'
               duration: 100
               creators:
                 - creator: Tester 1
@@ -79,7 +82,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツの情報の変更結果を返す。
+            情報の変更に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetMediaResponse'
           examples:
@@ -92,7 +97,8 @@ paths:
       operationId: mediaPlayerMediaListGet
       x-type: one-shot
       summary: スマートデバイスの再生コンテンツ（再生対象の音楽、映像）の一覧を取得する。
-      description: ''
+      description: >-
+        再生コンテンツが一つも存在しない場合は、空の配列を返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -157,7 +163,9 @@ paths:
           minimum: 0
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツの一覧を返す。
+            一覧の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/MediaListResponse'
           examples:
@@ -172,8 +180,8 @@ paths:
                   title: Test Music 1
                   type: Music
                   language: ja
-                  description: ''
-                  imageUri: ''
+                  description: 'Test Music 1'
+                  imageUri: 'http://test.com/music1.mp3'
                   duration: 100
                   creators:
                     - creator: Tester 1
@@ -191,8 +199,8 @@ paths:
                   title: Test Music 2
                   type: Music
                   language: ja
-                  description: ''
-                  imageUri: ''
+                  description: 'Test Music 2'
+                  imageUri: 'http://test.com/music2.mp3'
                   duration: 200
                   creators:
                     - creator: Tester 2
@@ -210,8 +218,8 @@ paths:
                   title: Test Music 3
                   type: Music
                   language: ja
-                  description: ''
-                  imageUri: ''
+                  description: 'Test Music 3'
+                  imageUri: 'http://test.com/music3.mp3'
                   duration: 300
                   creators:
                     - creator: Tester 3
@@ -240,7 +248,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツの再生状態を返す。
+            再生状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PlayStatusResponse'
           examples:
@@ -267,7 +277,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツを再生中に変更した結果を返す。
+            再生状態に変更できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/PlayResponse'
           examples:
@@ -293,7 +305,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツを停止に変更した結果を返す。
+            停止状態に変更できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/StopResponse'
           examples:
@@ -319,7 +333,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツを一時停止に変更した結果を返す。
+            一時停止状態に変更できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/PauseResponse'
           examples:
@@ -345,7 +361,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツを一時停止状態から再生状態に変更した結果を返す。
+            一時停止状態から再生状態に変更できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/ResumeResponse'
           examples:
@@ -379,7 +397,9 @@ paths:
           minimum: 0
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツを再生位置の変更をした結果を返す。
+            再生位置を変更できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetSeekResponse'
           examples:
@@ -401,7 +421,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生コンテンツを再生位置を返す。
+            再生位置の取得に失敗する場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetSeekResponse'
           examples:
@@ -435,7 +457,9 @@ paths:
           maximum: 1
       responses:
         '200':
-          description: ''
+          description: >-
+            再生音量の変更結果を返す。
+            音量の変更に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetVolumeResponse'
           examples:
@@ -458,7 +482,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再生音量を返す。再生音量の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetVolumeResponse'
           examples:
@@ -472,7 +497,8 @@ paths:
       operationId: mediaPlayerMutePut
       x-type: one-shot
       summary: スマートデバイスのメディアプレイヤー再生音量のミュートを有効にする。
-      description: ''
+      description: >-
+        すでにミュートになっている場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -481,7 +507,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ミュートを有効にした結果を返す。
+            ミュートを有効にできない場合はエラーを返す。
           schema:
             $ref: '#/definitions/MuteOnResponse'
           examples:
@@ -493,7 +521,8 @@ paths:
       operationId: mediaPlayerMuteDelete
       x-type: one-shot
       summary: スマートデバイスのメディアプレイヤー再生音量のミュートを解除する。
-      description: ''
+      description: >-
+        すでにミュートが解除されている場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -502,7 +531,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ミュート解除にした結果を返す。
+            ミュート解除に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/MuteOffResponse'
           examples:
@@ -514,7 +545,8 @@ paths:
       operationId: mediaPlayerMuteGet
       x-type: one-shot
       summary: スマートデバイスのメディアプレイヤー再生音量のミュート状態を取得する。
-      description: ''
+      description: >-
+        ミュートをサポートしていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -523,7 +555,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ミュートの状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetMuteResponse'
           examples:
@@ -551,7 +585,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            コンテンツの再生状態を返す。
+            現在のコンテンツの再生状態を返せない場合は前回取得した再生状態を返す。
+            再生状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PlayerStatusResponse'
           examples:
@@ -589,7 +626,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            コンテンツ再生状態の変化通知イベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -629,7 +668,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            コンテンツ再生状態の変化通知イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -683,7 +724,8 @@ definitions:
           creators:
             type: object
             title: 制作者情報
-            description: ''
+            description: >-
+              再生コンテンツの製作者の情報。
             required:
               - creator
               - role
@@ -736,11 +778,13 @@ definitions:
           media:
             type: array
             title: 検索にヒットしたメディアの情報
-            description: ''
+            description: >-
+              メディアの情報を配列で持つ。
             items:
               type: object
               title: 検索にヒットしたメディアの情報
-              description: ''
+              description: >-
+                再生コンテンツのファイル情報、製作者情報などを持つ。
               required:
                 - mediaId
               properties:
@@ -784,7 +828,8 @@ definitions:
                 creators:
                   type: object
                   title: 制作者情報
-                  description: ''
+                  description: >-
+                    メディアの製作者情報。
                   required:
                     - creator
                     - role
@@ -935,7 +980,8 @@ definitions:
       mediaPlayer:
         type: object
         title: Player情報
-        description: ''
+        description: >-
+          スマートデバイスのMediaPlayerの再生状態を返す。
         required:
           - status
           - mediaId
@@ -947,8 +993,8 @@ definitions:
               メディアプレイヤーの状態。<br>
               play : 再生<br>
               stop : 再生停止<br>
-              mute : ミュート<br>unmute
-              : ミュート解除<br>
+              mute : ミュート<br>
+              unmute : ミュート解除<br>
               pause : 一時停止<br>
               resume : 一時停止解除<br>
               media : 再生コンテンツ変更<br>
@@ -1004,7 +1050,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

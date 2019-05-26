@@ -13,7 +13,9 @@ paths:
       operationId: geolocationCurrentPositionGet
       x-type: one-shot
       summary: 該当デバイスの現在の位置情報を取得する。
-      description: ''
+      description: >-
+        現在位置が取得できない場合は、取得するまでリクエストを待たせる。
+        以前の位置情報を返しても良い場合は、GET /geolocation/onWatchPositionを使用すること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -40,7 +42,9 @@ paths:
           format: double
       responses:
         '200':
-          description: ''
+          description: >-
+            現在の位置情報を返す。
+            現在の位置情報取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CurrentPositionResponse'
           examples:
@@ -64,7 +68,9 @@ paths:
       operationId: geolocationOnWatchPositionGet
       x-type: one-shot
       summary: 該当デバイスの位置情報定期通知イベントを取得する。
-      description: ''
+      description: >-
+        現在の位置情報の取得ができない場合は、以前取得した位置情報を返しても良い。
+        以前の位置情報も取得できなかった場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -88,7 +94,9 @@ paths:
           format: double
       responses:
         '200':
-          description: ''
+          description: >-
+            位置情報を返す。
+            位置情報が取得できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/OnWatchPositionResponse'
           examples:
@@ -111,7 +119,9 @@ paths:
       operationId: geolocationOnWatchPositionPut
       x-type: event
       summary: 該当デバイスの位置情報定期通知イベントを開始する。
-      description: ''
+      description: >-
+        該当デバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -135,7 +145,9 @@ paths:
           format: double
       responses:
         '200':
-          description: ''
+          description: >-
+            位置情報定期通知イベントを開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -166,7 +178,9 @@ paths:
       operationId: geolocationOnWatchPositionDelete
       x-type: event
       summary: 該当デバイスの位置情報定期通知イベントを停止する。
-      description: ''
+      description: >-
+        該当デバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -175,7 +189,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            位置情報定期通知イベントを停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -260,7 +276,8 @@ definitions:
             type: string
             format: date-time
             title: 測位時刻 (文字列)
-            description: '測位時刻を文字列表記<br>RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式'
+            description: >-
+              測位時刻を文字列表記<br>RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式
   CommonResponse:
     type: object
     required:
@@ -271,7 +288,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

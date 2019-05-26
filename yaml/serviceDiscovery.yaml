@@ -20,7 +20,9 @@ paths:
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            DeviceConnectで使用できるサービスの一覧を返す。
+            サービス一覧の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/ServiceDiscoveryResponse'
           examples:
@@ -42,7 +44,9 @@ paths:
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            DeviceConnectサービスの状態変更を通知するイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -65,12 +69,15 @@ paths:
     delete:
       x-type: event
       operationId: serviceDiscoveryOnServiceChangeDelete
-      summary: DeviceConnectサービス一覧の変更通知の受領を停止する。
-      description: ''
+      summary: DeviceConnectサービス一覧の変更通知イベントを停止する。
+      description: >-
+        DeviceConnectサービスの追加・削除・利用可能状態変更を通知するためのイベント。
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            DeviceConnectサービスの状態変更を通知するイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -158,7 +165,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

@@ -3,7 +3,9 @@ basePath: /gotapi/fileDescriptor
 info:
   title: File Descriptor Profile
   version: 2.0.0
-  description: スマートフォンまたは周辺機器から他方のスマートデバイスに対してのファイルディスクリプタ操作機能を提供するAPI。
+  description: >-
+    スマートフォンまたは周辺機器から他方のスマートデバイスに対しての
+    ファイルディスクリプタ操作機能を提供するAPI。
 consumes:
   - application/x-www-form-urlencoded
   - multipart/form-data
@@ -13,8 +15,8 @@ paths:
       operationId: fileDescriptorOpenGet
       deprecated: true
       x-type: one-shot
-      summary: スマートデバイスのファイルを開くように要求する。
-      description: ここで使用するpathは、File APIで取得できる。
+      summary: スマートデバイスのファイルオープンを要求する。
+      description: ここで使用するpathは、Fileプロファイルで取得できる。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -42,7 +44,9 @@ paths:
             - rw
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルオープンの要求結果を返す。
+            ファイルのオープンに失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileDescriptorOpenResponse'
           examples:
@@ -55,8 +59,10 @@ paths:
       operationId: fileDescriptorClosePut
       deprecated: true
       x-type: one-shot
-      summary: スマートデバイスのファイルを閉じるように要求する。
-      description: ''
+      summary: スマートデバイスのファイルのクローズを要求する。
+      description: >-
+        ファイルがクローズされるまで、
+        オープンされたファイルはFileプロファイルなどで参照できない。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -73,7 +79,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルのクローズ処理の結果を返す。
+            クローズに失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileDescriptorCloseResponse'
           examples:
@@ -89,7 +97,7 @@ paths:
       summary: スマートデバイスのファイルを指定したサイズ分取得する。
       description: >-
         スマートデバイスのファイルが読み込み完了していない場合には、
-        再度このAPIを呼び出して取得を行う。
+        再度このAPIを利用して取得を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -126,7 +134,9 @@ paths:
           minimum: 0
       responses:
         '200':
-          description: ''
+          description: >-
+            指定した分のファイルのバイナリーデータを返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileDescriptorReadResponse'
           examples:
@@ -143,7 +153,10 @@ paths:
       deprecated: true
       x-type: one-shot
       summary: スマートデバイスのファイルへの書き込みを要求する。
-      description: ''
+      description: >-
+        スマートデバイスのファイルが書き込み完了していない場合には、
+        デバイスプラグイン側で書き込みが終わるまで待つこと。
+        書き込み中の場合はエラーを返し、再度リクエストを出すこと。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -185,7 +198,9 @@ paths:
           minimum: 0
       responses:
         '200':
-          description: ''
+          description: >-
+            バイナリーファイルの書き込み結果を返す。
+            書き込みに失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileDescriptorWriteResponse'
           examples:
@@ -208,7 +223,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルの情報を返す。
+            情報に変化がない場合は、現在のファイル情報を返す。
+            情報の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/WatchFileResponse'
           examples:
@@ -225,7 +243,7 @@ paths:
       deprecated: true
       x-type: event
       summary: >-
-        スマートデバイスのファイルの更新時間が変化したことを通知するイベントを登録する。
+        スマートデバイスのファイルの更新時間が変化したことを通知するイベントを開始する。
       description: >-
         スマートデバイスのファイルへの書き込みが発生した時にイベントが発行される。
       parameters:
@@ -242,7 +260,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルの情報が変化したことを通知するイベント開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -278,7 +298,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルの情報が変化したことを通知するイベント停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -350,12 +372,16 @@ definitions:
                   ディレクトリを指定した場合はエラーを返す。
               curr:
                 type: string
-                title: '現在の更新時間（RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す）。'
-                description: '例: 2015-05-17T10:02:20+09:00'
+                title: >-
+                  現在の更新時間（RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す）。
+                description: >-
+                  例: 2015-05-17T10:02:20+09:00
               prev:
                 type: string
-                title: '以前の更新時間（RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す）。'
-                description: '例: 2015-05-17T10:02:20+09:00'
+                title: >-
+                  以前の更新時間（RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す）。
+                description: >-
+                  例: 2015-05-17T10:02:20+09:00
   EventRegistrationResponse:
     type: object
     allOf:
@@ -374,7 +400,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

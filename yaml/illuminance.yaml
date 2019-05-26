@@ -4,14 +4,17 @@ info:
   title: Illuminance Profile
   version: 2.0.0
   description: スマートデバイスが計測した照度を取得する機能を提供するAPI。
-consumes: []
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
 paths:
   /:
     get:
       operationId: illuminanceGet
       x-type: one-shot
       summary: スマートデバイスの照度を取得する機能を提供する。
-      description: ''
+      description: >-
+        照度の値はデバイスプラグイン側で0.0〜1.0の範囲に正規化して返すこと。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -20,7 +23,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            照度の値を返す。照度の値が取得できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/IlluminanceResponse'
           examples:
@@ -53,7 +57,9 @@ definitions:
             type: string
             format: date-time
             title: 照度のタイムスタンプ文字列
-            description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+            description: >-
+              タイムスタンプと同じタイムスタンプを
+              RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
   CommonResponse:
     type: object
     required:
@@ -64,7 +70,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名
@@ -76,4 +84,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

@@ -13,7 +13,9 @@ paths:
       operationId: messageHookChannelGet
       x-type: one-shot
       summary: チャンネル一覧を取得する。
-      description: ''
+      description: >-
+        公開権限が設定されており取得できないチャンネルについて、
+        取得するかどうかはプラグインの仕様に依存する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +24,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            チャンネル一覧の取得結果を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/ChannelResponse'
           examples:
@@ -42,7 +46,9 @@ paths:
       operationId: messageHookMessageGet
       x-type: one-shot
       summary: 直近に受信したメッセージの一覧を取得する。
-      description: ''
+      description: >-
+        公開権限が設定されており取得できないメッセージについて、
+        取得するかどうかはプラグインの仕様に依存する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -51,7 +57,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            直近に受信したメッセージの一覧を返す。
+            メッセージの一覧が取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetMessageResponse'
           examples:
@@ -73,7 +81,9 @@ paths:
       operationId: messageHookMessagePost
       x-type: one-shot
       summary: メッセージを投稿する。
-      description: ''
+      description: >-
+        権限が設定されており投稿できないメッセージについて、
+        投稿できるようにするかどうかはプラグインの仕様に依存する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -108,7 +118,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            メッセージの投稿結果を返す。
+            メッセージの投稿に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SendMessageResponse'
           examples:
@@ -121,7 +133,7 @@ paths:
       operationId: messageHookOnMessageGet
       x-type: one-shot
       summary: 直近に受信したメッセージの一覧を取得する。
-      description: ''
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -130,7 +142,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
+            メッセージを取得できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/MessageResponse'
           examples:
@@ -152,7 +166,9 @@ paths:
       operationId: messageHookOnMessagePut
       x-type: event
       summary: 直近に受信したメッセージ取得イベントを開始する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -167,7 +183,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            直近に受信したメッセージ取得イベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -197,7 +215,9 @@ paths:
       operationId: messageHookOnMessageDelete
       x-type: event
       summary: 直近に受信したメッセージ取得イベントを停止する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -206,7 +226,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            直近に受信したメッセージ取得イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -283,7 +305,8 @@ definitions:
                   type: integer
                   format: int64
                   title: 送信元ID
-                  description: ''
+                  description: >-
+                    送信元を識別するID。
                 channelId:
                   type: string
                   title: チャンネルID
@@ -306,11 +329,15 @@ definitions:
                 resource:
                   type: string
                   title: リソースURI
-                  description: 送られてきたメッセージのリソースへのURI。<br>メッセージが指定されていない時は省略されない。
+                  description: >-
+                    送られてきたメッセージのリソースへのURI。<br>
+                    メッセージが指定されていない時は省略されない。
                 mimeType:
                   type: string
                   title: MimeType
-                  description: リソースのタイプ。<br>メッセージが指定されていない時は省略されない。
+                  description: >-
+                    リソースのタイプ。<br>
+                    メッセージが指定されていない時は省略されない。
                 messageType:
                   type: string
                   title: メッセージタイプ
@@ -362,7 +389,8 @@ definitions:
             type: integer
             format: int64
             title: 送信元ID
-            description: ''
+            description: >-
+              送信元を識別するID。
           channelId:
             type: string
             title: チャンネルID
@@ -422,7 +450,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

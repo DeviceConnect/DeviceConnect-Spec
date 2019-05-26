@@ -13,7 +13,8 @@ paths:
       operationId: canvasDrawImagePost
       x-type: one-shot
       summary: デバイスに画像を描画する。
-      description: ''
+      description: >-
+        すでにCanvasで画像が表示されている場合は、画像が更新される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -63,8 +64,10 @@ paths:
           description: >-
             画像描画モード。<br>
             (省略時)：等倍描画モード。座標(x,y)に画像の左上隅がくるように描画する。<br>
-            scales：スケールモード。アスペクト比を保持して最大限に拡大して画面中央に描画する。x,y座標は無効。<br>
-            fills：フィルモード。等倍の画像を並べて画面全体に敷き詰めるように描画する。x, y座標は無効。
+            scales：スケールモード。アスペクト比を保持して最大限に拡大して画面中央に描画する。
+            x,y座標は無効。<br>
+            fills：フィルモード。等倍の画像を並べて画面全体に敷き詰めるように描画する。
+            x, y座標は無効。
           in: formData
           type: string
           required: false
@@ -73,7 +76,9 @@ paths:
             - fills
       responses:
         '200':
-          description: ''
+          description: >-
+            画像の描画結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CanvasControlResponse'
           examples:
@@ -85,7 +90,8 @@ paths:
       operationId: canvasDrawImageDelete
       x-type: one-shot
       summary: デバイスに描画した画像を削除する。
-      description: ''
+      description: >-
+        Canvasにより、デバイスに画像が描画されていない場合はエラーを返すこと。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -94,7 +100,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            画像削除結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CanvasControlResponse'
           examples:
@@ -117,7 +125,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名
@@ -129,4 +139,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

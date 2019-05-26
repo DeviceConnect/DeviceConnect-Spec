@@ -13,7 +13,11 @@ paths:
       operationId: temperatureGet
       x-type: one-shot
       summary: スマートデバイスの温度設定値を取得する。
-      description: 'typeはそれぞれ、1:摂氏、2:華氏を表している。'
+      description: >-
+        typeはそれぞれ<br>
+        1:摂氏<br>
+        2:華氏<br>
+        を表している。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -21,7 +25,9 @@ paths:
           required: true
           type: string
         - name: type
-          description: '1:摂氏、2:華氏'
+          description: >-
+            1:摂氏<br>
+            2:華氏
           in: query
           required: false
           type: integer
@@ -30,7 +36,9 @@ paths:
             - 2
       responses:
         '200':
-          description: ''
+          description: >-
+            温度設定値を返す。
+            設定値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetTemperatureResponse'
           examples:
@@ -47,7 +55,10 @@ paths:
       x-type: one-shot
       summary: スマートデバイスの温度設定値を設定する。
       description: >-
-        typeはそれぞれ、1:摂氏、2:華氏を表している。<br>
+        typeはそれぞれ<br>
+        1:摂氏<br>
+        2:華氏<br>
+        を表している。<br>
         temperatureに設定できる値は、摂氏の場合は0以上50以下,
         華氏の場合は32以上122以下。
       parameters:
@@ -62,7 +73,9 @@ paths:
           required: true
           type: integer
         - name: type
-          description: '1:摂氏、2:華氏'
+          description: >-
+            1:摂氏<br>
+            2:華氏
           in: formData
           required: false
           type: integer
@@ -71,7 +84,9 @@ paths:
             - 2
       responses:
         '200':
-          description: ''
+          description: >-
+            温度設定値の設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PutTemperatureResponse'
           examples:
@@ -99,7 +114,9 @@ definitions:
             enum:
               - 1
               - 2
-            description: '1:摂氏、2:華氏'
+            description: >-
+              1:摂氏<br>
+              2:華氏
           timeStamp:
             type: integer
             format: int64
@@ -110,8 +127,8 @@ definitions:
             format: date-time
             title: 温度のタイムスタンプ文字列
             description: >-
-              タイムスタンプと同じタイムスタンプをRFC3339
-              「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+              タイムスタンプと同じタイムスタンプを
+              RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
   PutTemperatureResponse:
     type: object
     allOf:
@@ -126,7 +143,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

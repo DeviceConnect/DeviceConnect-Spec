@@ -13,7 +13,7 @@ paths:
       operationId: powerMeterGet
       x-type: one-shot
       summary: スマートデバイスの電源状態を取得する。
-      description: ''
+      description: 状態が不明の場合はUNKNOWNを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +22,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源の状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerStatusResponse'
           examples:
@@ -34,8 +36,8 @@ paths:
     put:
       operationId: powerMeterPut
       x-type: one-shot
-      summary: スマートデバイスの電源を付ける。
-      description: ''
+      summary: スマートデバイスの電源をONにする。
+      description: 既にONの場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -44,7 +46,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源をONにした結果を返す。
+            ONにしようとして失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerControlResponse'
           examples:
@@ -56,7 +60,7 @@ paths:
       operationId: powerMeterDelete
       x-type: one-shot
       summary: スマートデバイスの電源を消す。
-      description: ''
+      description: 既にOFFの場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -65,7 +69,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源をOFFにした結果を返す。
+            OFFにしようとして失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerControlResponse'
           examples:
@@ -129,7 +135,9 @@ paths:
             - reverse
       responses:
         '200':
-          description: ''
+          description: >-
+            計測した積算電力量を返す。
+            積算電力量の取得に失敗したらエラーを返す。
           schema:
             $ref: '#/definitions/IntegratedPowerResponse'
           examples:
@@ -170,7 +178,9 @@ paths:
       operationId: powerMeterInstantaneousPowerGet
       x-type: one-shot
       summary: スマートデバイスが計測した瞬時電力量を取得する。
-      description: ''
+      description: >-
+        スマートデバイス側の計測値が仕様に合わない場合、
+        可能な限りデバイスプラグイン側でDeviceConnectに合わせた正規化を行うこと。
       parameters:
         - name: serviceId
           description: >-
@@ -191,7 +201,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            計測した瞬時電力量を返す。
+            計測値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/InstantaneousPowerResponse'
           examples:
@@ -206,7 +218,9 @@ paths:
       operationId: powerMeterInstantaneousCurrentGet
       x-type: one-shot
       summary: スマートデバイスが計測した瞬時電流量を取得する。
-      description: ''
+      description: >-
+        スマートデバイス側の計測値が仕様に合わない場合、
+        可能な限りデバイスプラグイン側でDeviceConnectに合わせた正規化を行うこと。
       parameters:
         - name: serviceId
           in: query
@@ -225,7 +239,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            計測値した瞬時電流量を返す。
+            計測値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/InstantaneousCurrentResponse'
           examples:
@@ -295,7 +311,10 @@ definitions:
       powerFlow:
         type: string
         title: 積算電力量方向
-        description: 積算電力量方向を表す。'normal' 'reverse'
+        description: >-
+          積算電力量方向を表す。<br>
+          'normal'<br>
+          'reverse'
   IntegratedPowerResponse:
     allOf:
       - $ref: '#/definitions/CommonResponse'
@@ -314,7 +333,9 @@ definitions:
       unit:
         type: string
         title: 瞬時電力量単位
-        description: 瞬時電力量の単位を表す。例：'W' 'kW'
+        description: >-
+          瞬時電力量の単位を表す。<br>
+          例：'W' 'kW'
   InstantaneousPowerResponse:
     allOf:
       - $ref: '#/definitions/CommonResponse'
@@ -341,7 +362,9 @@ definitions:
             title: T相瞬時電流量
           unit:
             type: string
-            description: 瞬時電流量の単位を表す。例：'mA' 'A'
+            description: >-
+              瞬時電流量の単位を表す。<br>
+              例：'mA' 'A'
             title: 瞬時電流量単位
         required:
           - rphase
@@ -360,7 +383,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

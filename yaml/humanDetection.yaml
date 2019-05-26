@@ -22,7 +22,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            人を検出したときの検出結果を返す。
+            検出に失敗した場合は、エラーを返す。
           schema:
             $ref: '#/definitions/HumanDetectionResponse'
           examples:
@@ -36,7 +38,9 @@ paths:
       operationId: humanDetectionOnDetectionPut
       x-type: event
       summary: 人を検出したときの通知イベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -51,7 +55,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            人を検出したときのイベントの開始結果を返す。
+            イベント開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -73,7 +79,9 @@ paths:
       operationId: humanDetectionOnDetectionDelete
       x-type: event
       summary: 人を検出したときの通知イベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -82,7 +90,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            人を検出した時の通知イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -163,7 +173,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            体を検知した時の情報を返す。
+            検知した情報の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/BodyDetectionResponse'
           examples:
@@ -191,7 +203,9 @@ paths:
       operationId: humanDetectionOnBodyDetectionPut
       x-type: event
       summary: 体を検出したときの通知イベントを開始する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -265,7 +279,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            体を検知した時の通知イベントの開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -301,7 +317,9 @@ paths:
       operationId: humanDetectionOnBodyDetectionDelete
       x-type: event
       summary: 体を検出したときの通知イベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -310,7 +328,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            体を検知した時の通知イベントの停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -391,7 +411,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            手を検出したときの情報を返す。
+            情報を取得できなかった時はエラーを返す。
           schema:
             $ref: '#/definitions/HandDetectionResponse'
           examples:
@@ -409,7 +431,9 @@ paths:
       operationId: humanDetectionOnHandDetectionPut
       x-type: event
       summary: 手を検出したときの通知イベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -482,7 +506,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            手を検出したときの通知イベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -508,7 +534,9 @@ paths:
       operationId: humanDetectionOnHandDetectionDelete
       x-type: event
       summary: 手を検出したときの通知イベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -517,7 +545,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            手を検出したときの通知イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -684,7 +714,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            顔を検出したときの情報を返す。
+            情報の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FaceDetectionResponse'
           examples:
@@ -711,7 +743,9 @@ paths:
       operationId: humanDetectionOnFaceDetectionPut
       x-type: event
       summary: 顔を検出したときの通知イベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -871,7 +905,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            顔を検出したときの通知イベントの開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -906,7 +942,9 @@ paths:
       operationId: humanDetectionOnFaceDetectionDelete
       x-type: event
       summary: 顔を検出したときの通知イベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -915,7 +953,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            顔を検出したときの通知イベントの停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -1319,7 +1359,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

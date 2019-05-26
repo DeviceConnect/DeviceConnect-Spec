@@ -3,7 +3,9 @@ basePath: /gotapi/echonetLite
 info:
   title: ECHONETLite Profile
   version: 2.0.0
-  description: スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を操作する。
+  description: >-
+    スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティ
+    の設定内容を操作する。
 consumes:
   - application/x-www-form-urlencoded
   - multipart/form-data
@@ -12,8 +14,11 @@ paths:
     get:
       operationId: echonetLitePropertyGet
       x-type: one-shot
-      summary: スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する。
-      description: 'EPC:ECHONET Property Code'
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティ
+        の設定内容を取得する。
+      description: >-
+        EPC:ECHONET Property Code
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -21,7 +26,10 @@ paths:
           required: true
           type: string
         - name: epc
-          description: 取得プロパティのEPC。取得するプロパティのEPCをカンマ区切りで列挙。10進または16進(0xXX)の値
+          description: >-
+            取得プロパティのEPC。<br>
+            取得するプロパティのEPCをカンマ区切りで列挙。
+            10進または16進(0xXX)の値
           in: query
           required: true
           type: array
@@ -29,7 +37,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ECHONET Lite機器オブジェクトのプロパティ設定値を返す。
+            設定値取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetEchonetPropertyCodeResponse'
           examples:
@@ -45,8 +55,11 @@ paths:
     put:
       operationId: echonetLitePropertyPut
       x-type: one-shot
-      summary: スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う。
-      description: ''
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティ
+        に設定を行う。
+      description: >-
+        EPC:ECHONET Property Code
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -65,7 +78,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ECHONET Lite機器オブジェクトのプロパティ設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetEchonetPropertyCodeResponse'
           examples:
@@ -116,7 +131,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -128,4 +145,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

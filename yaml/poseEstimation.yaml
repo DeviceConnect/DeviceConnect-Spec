@@ -13,7 +13,7 @@ paths:
       operationId: poseEstimationOnPoseEstimationGet
       x-type: one-shot
       summary: デバイスの姿勢推定計測イベントを取得する。
-      description: ''
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +22,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            姿勢推定計測値を返す。
+            現在の計測値が取得できない場合は最新のキャッシュしている計測値を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PoseResponse'
           examples:
@@ -38,7 +41,9 @@ paths:
       operationId: poseEstimationOnPoseEstimationPut
       x-type: event
       summary: デバイスの姿勢推定計測イベントを開始する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -53,7 +58,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            姿勢推定計測イベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -77,7 +84,9 @@ paths:
       operationId: poseEstimationOnPoseEstimationDelete
       x-type: event
       summary: デバイスの姿勢推定計測イベントを停止する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -86,7 +95,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            姿勢推定計測イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -164,7 +175,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

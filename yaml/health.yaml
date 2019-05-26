@@ -22,7 +22,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計の現在の値を返す。
+            取得できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/HeartResponse'
           examples:
@@ -60,21 +62,23 @@ paths:
                   timeStampString: '2015-05-17T10:02:20+09:00'
                 device:
                   productName: DUMMY DEVICE
-                  manufacturerName: ''
-                  modelNumber: ''
-                  firmwareRevision: ''
-                  serialNumber: ''
-                  softwareRevision: ''
-                  hardwareRevision: ''
-                  partNumber: ''
-                  protocolRevision: ''
+                  manufacturerName: DUMMY MANUFACTURE NAME
+                  modelNumber: DUMMY MODEL NUMBER
+                  firmwareRevision: DUMMY FIRMWARE REVISION
+                  serialNumber: DUMMY SERIAL NUMBER
+                  softwareRevision: DUMMY SOFTWARE REVISION
+                  hardwareRevision: DUMMY HARDWARE REVISION
+                  partNumber: DUMMY PART NUMBER
+                  protocolRevision: DUMMY PROTOCOL REVISION
                   systemId: '0x0'
                   batteryLevel: -1
     put:
       operationId: healthHeartPut
       x-type: event
       summary: デバイスの心拍数計測通知イベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -89,7 +93,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計測通知イベントの開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -135,21 +141,23 @@ paths:
                 timeStampString: '2015-05-17T10:02:20+09:00'
               device:
                 productName: DUMMY DEVICE
-                manufacturerName: ''
-                modelNumber: ''
-                firmwareRevision: ''
-                serialNumber: ''
-                softwareRevision: ''
-                hardwareRevision: ''
-                partNumber: ''
-                protocolRevision: ''
+                manufacturerName: DUMMY MANUFACTURE NAME
+                modelNumber: DUMMY MODEL NUMBER
+                firmwareRevision: DUMMY FIRMWARE REVISION
+                serialNumber: DUMMY SERIAL NUMBER
+                softwareRevision: DUMMY SOFTWARE REVISION
+                hardwareRevision: DUMMY HARDWARE REVISION
+                partNumber: DUMMY PART NUMBER
+                protocolRevision: DUMMY PROTOCOL REVISION
                 systemId: '0x0'
                 batteryLevel: -1
     delete:
       operationId: healthHeartDelete
       x-type: event
       summary: デバイスの心拍数計測通知イベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -158,7 +166,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計測通知イベントの停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -180,7 +190,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計の現在の値を返す。
+            取得できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/HeartResponse'
           examples:
@@ -218,21 +230,23 @@ paths:
                   timeStampString: '2015-05-17T10:02:20+09:00'
                 device:
                   productName: DUMMY DEVICE
-                  manufacturerName: ''
-                  modelNumber: ''
-                  firmwareRevision: ''
-                  serialNumber: ''
-                  softwareRevision: ''
-                  hardwareRevision: ''
-                  partNumber: ''
-                  protocolRevision: ''
+                  manufacturerName: DUMMY MANUFACTURE NAME
+                  modelNumber: DUMMY MODEL NUMBER
+                  firmwareRevision: DUMMY FIRMWARE REVISION
+                  serialNumber: DUMMY SERIAL NUMBER
+                  softwareRevision: DUMMY SOFTWARE REVISION
+                  hardwareRevision: DUMMY HARDWARE REVISION
+                  partNumber: DUMMY PART NUMBER
+                  protocolRevision: DUMMY PROTOCOL REVISION
                   systemId: '0x0'
                   batteryLevel: -1
     put:
       operationId: healthOnheartPut
       x-type: event
       summary: デバイスの心拍数計測通知イベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -247,7 +261,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計測通知イベントの開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -293,21 +309,23 @@ paths:
                 timeStampString: '2015-05-17T10:02:20+09:00'
               device:
                 productName: DUMMY DEVICE
-                manufacturerName: ''
-                modelNumber: ''
-                firmwareRevision: ''
-                serialNumber: ''
-                softwareRevision: ''
-                hardwareRevision: ''
-                partNumber: ''
-                protocolRevision: ''
+                manufacturerName: DUMMY MANUFACTURE NAME
+                modelNumber: DUMMY MODEL NUMBER
+                firmwareRevision: DUMMY FIRMWARE REVISION
+                serialNumber: DUMMY SERIAL NUMBER
+                softwareRevision: DUMMY SOFTWARE REVISION
+                hardwareRevision: DUMMY HARDWARE REVISION
+                partNumber: DUMMY PART NUMBER
+                protocolRevision: DUMMY PROTOCOL REVISION
                 systemId: '0x0'
                 batteryLevel: -1
     delete:
       operationId: healthOnheartDelete
       x-type: event
       summary: デバイスの心拍数計測通知イベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -316,7 +334,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計測通知イベントの停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -339,7 +359,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計の現在の値を返す。
+            取得できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/HeartRateResponse'
           examples:
@@ -352,7 +374,9 @@ paths:
       deprecated: true
       x-type: event
       summary: デバイスの心拍数計測通知イベントを開始する。
-      description: 当該イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -367,7 +391,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計測通知イベントの開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -389,7 +415,9 @@ paths:
       deprecated: true
       x-type: event
       summary: デバイスの心拍数計測通知イベントを停止する。
-      description: 当該イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -398,7 +426,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            心拍数計測通知イベントの停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -476,29 +506,41 @@ definitions:
               type:
                 type: string
                 title: 心拍数のタイプ
-                description: この値が「heart rate」であることを表す文字列を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  この値が「heart rate」であることを表す文字列を返す。
+                  取得できない場合は、空文字を返す。
               typeCode:
                 type: string
                 title: 心拍数のオブジェクトのタイプのコード
-                description: 「147842」という「heart rate」を意味するコードを返す。取得できない場合は、空文字を返す。
+                description: >-
+                  「147842」という「heart rate」を意味するコードを返す。
+                  取得できない場合は、空文字を返す。
               unit:
                 type: string
                 title: 心拍数の単位
-                description: 「beat per min」のように人間がわかるように単位を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  「beat per min」のように人間がわかるように単位を返す。
+                  取得できない場合は、空文字を返す。
               unitCode:
                 type: string
                 title: 心拍数の単位コード
-                description: 「264864」という「beat per min」を意味するコードを返す。取得できない場合は、空文字を返す。
+                description: >-
+                  「264864」という「beat per min」を意味するコードを返す。
+                  取得できない場合は、空文字を返す。
               timeStamp:
                 type: integer
                 format: int64
                 title: 心拍数のタイムスタンプ
-                description: 測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。
+                description: >-
+                  測定が行われた測定時間。
+                  ミリ秒のUnixタイムスタンプで返す。
               timeStampString:
                 type: string
                 format: date-time
                 title: 心拍数のタイムスタンプ文字列
-                description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+                description: >-
+                  タイムスタンプと同じタイムスタンプを
+                  RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
           rr:
             type: object
             title: RR間隔オブジェクト
@@ -515,29 +557,41 @@ definitions:
               type:
                 type: string
                 title: RR間隔のタイプ
-                description: RR間隔を表す「RR interval」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  RR間隔を表す「RR interval」を返す。
+                  取得できない場合は、空文字を返す。
               typeCode:
                 type: string
                 title: RR間隔のオブジェクトのタイプのコード
-                description: RR間隔を表す「147240」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  RR間隔を表す「147240」を返す。
+                  取得できない場合は、空文字を返す。
               unit:
                 type: string
                 title: RR間隔の単位
-                description: RR間隔の単位を表す「ms」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  RR間隔の単位を表す「ms」を返す。
+                  取得できない場合は、空文字を返す。
               unitCode:
                 type: string
                 title: RR間隔の単位コード
-                description: RR間隔の単位であるmsを表す「264338」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  RR間隔の単位であるmsを表す「264338」を返す。
+                  取得できない場合は、空文字を返す。
               timeStamp:
                 type: integer
                 format: int64
                 title: RR間隔のタイムスタンプ
-                description: 測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。
+                description: >-
+                  測定が行われた測定時間。
+                  ミリ秒のUnixタイムスタンプで返す。
               timeStampString:
                 type: string
                 format: date-time
                 title: RR間隔のタイムスタンプ文字列
-                description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+                description: >-
+                  タイムスタンプと同じタイムスタンプを
+                  RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
           energy:
             type: object
             title: 消費エネルギーオブジェクト
@@ -554,29 +608,41 @@ definitions:
               type:
                 type: string
                 title: 消費エネルギーのタイプ
-                description: 消費エネルギー値を表す「energy expended」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  消費エネルギー値を表す「energy expended」を返す。
+                  取得できない場合は、空文字を返す。
               typeCode:
                 type: string
                 title: 消費エネルギーのタイプコード
-                description: 消費エネルギー値を表す「119」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  消費エネルギー値を表す「119」を返す。
+                  取得できない場合は、空文字を返す。
               unit:
                 type: string
                 title: 消費エネルギーの単位
-                description: 消費エネルギー値の単位を表す「Calories」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  消費エネルギー値の単位を表す「Calories」を返す。
+                  取得できない場合は、空文字を返す。
               unitCode:
                 type: string
                 title: 消費エネルギーの単位コード
-                description: 消費エネルギー値の単位であるCaloriesを表す「6784」を返す。取得できない場合は、空文字を返す。
+                description: >-
+                  消費エネルギー値の単位であるCaloriesを表す「6784」を返す。
+                  取得できない場合は、空文字を返す。
               timeStamp:
                 type: integer
                 format: int64
                 title: 消費エネルギーのタイムスタンプ
-                description: 測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。
+                description: >-
+                  測定が行われた測定時間。
+                  ミリ秒のUnixタイムスタンプで返す。
               timeStampString:
                 type: string
                 format: date-time
                 title: 消費エネルギーのタイムスタンプ文字列
-                description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+                description: >-
+                  タイムスタンプと同じタイムスタンプを
+                  RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
           device:
             type: object
             title: デバイスオブジェクト
@@ -597,47 +663,70 @@ definitions:
               productName:
                 type: string
                 title: プロダクト名
-                description: ターゲットデバイスの製品名。取得できない時は任意のアルゴリズムでデバイス名を生成。
+                description: >-
+                  ターゲットデバイスの製品名。
+                  取得できない時は任意のアルゴリズムでデバイス名を生成。
               manufacturerName:
                 type: string
                 title: メーカ名
-                description: ターゲットデバイスのメーカ名。取得できない場合は空文字を指定。
+                description: >-
+                  ターゲットデバイスのメーカ名。
+                  取得できない場合は空文字を指定。
               modelNumber:
                 type: string
                 title: モデルの番号
-                description: ターゲットデバイスのモデル番号。取得できない場合は空文字を指定
+                description: >-
+                  ターゲットデバイスのモデル番号。
+                  取得できない場合は空文字を指定
               firmwareRevision:
                 type: string
                 title: ファームウェアリビジョン
-                description: ターゲットデバイスのファームウェアリビジョン。取得できない場合は空文字を指定。
+                description: >-
+                  ターゲットデバイスのファームウェアリビジョン。
+                  取得できない場合は空文字を指定。
               serialNumber:
                 type: string
                 title: シリアルナンバー
-                description: ターゲットデバイスのシリアル番号。取得できない場合は空文字を指定。
+                description: >-
+                  ターゲットデバイスのシリアル番号。
+                  取得できない場合は空文字を指定。
               softwareRevision:
                 type: string
                 title: ソフトウェアリビジョン
-                description: ターゲットデバイスのソフトウェアリビジョン。取得できない場合は空文字を指定。
+                description: >-
+                  ターゲットデバイスのソフトウェアリビジョン。
+                  取得できない場合は空文字を指定。
               hardwareRevision:
                 type: string
                 title: ハードウェアリビジョン
-                description: ターゲットデバイスのハードウェアリビジョン。取得できない場合は、空文字を指定。
+                description: >-
+                  ターゲットデバイスのハードウェアリビジョン。
+                  取得できない場合は、空文字を指定。
               partNumber:
                 type: string
                 title: パートナンバー
-                description: ターゲットデバイスのパート番号。取得できない場合は、空文字を指定。
+                description: >-
+                  ターゲットデバイスのパート番号。
+                  取得できない場合は、空文字を指定。
               protocolRevision:
                 type: string
                 title: プロトコルリビジョン
-                description: ターゲットデバイスのプロトコルリビジョン。取得できない場合は、空文字を指定。
+                description: >-
+                  ターゲットデバイスのプロトコルリビジョン。
+                  取得できない場合は、空文字を指定。
               systemId:
                 type: string
                 title: システムID
-                description: ターゲットデバイスのシステムID。16進数。取得できない場合は「0x0」。
+                description: >-
+                  ターゲットデバイスのシステムID。
+                  16進数。取得できない場合は「0x0」。
               batteryLevel:
                 type: number
                 title: バッテリーレベル
-                description: 'ターゲットデバイスのバッテリーレベル。取得できない場合は-1.0を返す。<br>範囲: 0.0〜1.0'
+                description: >-
+                  ターゲットデバイスのバッテリーレベル。
+                  取得できない場合は-1.0を返す。<br>
+                  範囲: 0.0〜1.0
   EventRegistrationResponse:
     type: object
     allOf:
@@ -656,7 +745,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名
@@ -668,7 +759,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

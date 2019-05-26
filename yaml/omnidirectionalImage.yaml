@@ -29,7 +29,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ROI画像の受信を開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/ROIStartResponse'
           examples:
@@ -42,7 +44,8 @@ paths:
       operationId: omnidirectionalImageRoiDelete
       x-type: streaming
       summary: ROI画像の受信を終了する。
-      description: ''
+      description: >-
+        本APIのレスポンスで返されるURIでROI画像を参照できなくする。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -56,7 +59,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ROI画像の受信を終了結果を返す。
+            終了に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/ROIStopResponse'
           examples:
@@ -183,7 +188,9 @@ paths:
           type: boolean
       responses:
         '200':
-          description: ''
+          description: >-
+            ROI画像の設定を変更結果を返す。
+            変更に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/ROISettingsResponse'
           examples:
@@ -224,7 +231,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

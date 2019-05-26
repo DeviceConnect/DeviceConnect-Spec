@@ -13,7 +13,7 @@ paths:
       operationId: airConditionerGet
       x-type: one-shot
       summary: スマートデバイスの電源状態を取得する。
-      description: ''
+      description: スマートデバイスの電源がONかOFFであるかを返す。状態を取得できない場合はUNKNOWNを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +22,7 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: スマートデバイスの電源状態を返す。
           schema:
             $ref: '#/definitions/GetPowerStatusResponse'
           examples:
@@ -35,7 +35,8 @@ paths:
       operationId: airConditionerPut
       x-type: one-shot
       summary: スマートデバイスの電源を点ける。
-      description: ''
+      description: >-
+        スマートデバイスの電源をONにする。取得に失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -44,7 +45,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの電源をONにした結果を返す。取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerOnResponse'
           examples:
@@ -56,7 +58,8 @@ paths:
       operationId: airConditionerDelete
       x-type: one-shot
       summary: スマートデバイスの電源を消す。
-      description: ''
+      description: >-
+        スマートデバイスの電源をOFFにした結果を返す。取得に失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -65,7 +68,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの電源をOFFの結果を返す。取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerOffResponse'
           examples:
@@ -78,7 +82,8 @@ paths:
       operationId: airConditionerPowerSavingGet
       x-type: one-shot
       summary: スマートデバイスの節電動作設定を取得する。
-      description: ''
+      description: >-
+        スマートデバイスの節電動作設定を取得する。取得に失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -87,7 +92,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの節電動作設定を返す。取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetPowerSavingResponse'
           examples:
@@ -100,7 +106,8 @@ paths:
       operationId: airConditionerPowerSavingPut
       x-type: one-shot
       summary: スマートデバイスの節電動作設定を設定する。
-      description: ''
+      description: >-
+        スマートデバイスの節電動作設定を設定する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -122,7 +129,8 @@ paths:
             - Unknown
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの節電動作設定を設定した結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetPowerSavingResponse'
           examples:
@@ -135,7 +143,8 @@ paths:
       operationId: airConditionerModeSettingGet
       x-type: one-shot
       summary: スマートデバイスの運転モード設定を取得する。
-      description: ''
+      description: >-
+        スマートデバイスの運転モード設定を取得する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -144,7 +153,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの運転モード設定を取得結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetModeSettingResponse'
           examples:
@@ -157,7 +167,8 @@ paths:
       operationId: airConditionerModeSettingPut
       x-type: one-shot
       summary: スマートデバイスの運転モード設定を設定する。
-      description: ''
+      description: >-
+        スマートデバイスの運転モード設定を設定する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -185,7 +196,8 @@ paths:
             - Other
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの運転モード設定を設定結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetModeSettingResponse'
           examples:
@@ -198,7 +210,8 @@ paths:
       operationId: airConditionerRoomTemperatureGet
       x-type: one-shot
       summary: スマートデバイスの室温計測値を取得する。
-      description: ''
+      description: >-
+        スマートデバイスの室温計測値を取得する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -207,7 +220,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの室温計測値を取得結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetRoomTemperatureResponse'
           examples:
@@ -221,7 +235,8 @@ paths:
       operationId: airConditionerTemperatureGet
       x-type: one-shot
       summary: スマートデバイスの温度設定値を取得する。
-      description: ''
+      description: >-
+        スマートデバイスの温度設定値を取得する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -230,7 +245,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの温度設定値を取得結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetTemperatureResponse'
           examples:
@@ -243,7 +259,8 @@ paths:
       operationId: airConditionerTemperaturePut
       x-type: one-shot
       summary: スマートデバイスの温度設定値を設定する。
-      description: ''
+      description: >-
+        スマートデバイスの温度設定値を設定する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -251,8 +268,9 @@ paths:
           required: true
           type: string
         - name: temperature
-          description: '温度設定値。<br>
-          0〜50 (℃)'
+          description: >-
+            温度設定値。<br>
+            0〜50 (℃)
           in: formData
           required: true
           type: integer
@@ -260,7 +278,8 @@ paths:
           maximum: 50
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの温度設定値を設定結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetTemperatureResponse'
           examples:
@@ -273,7 +292,8 @@ paths:
       operationId: airConditionerAirFlowGet
       x-type: one-shot
       summary: スマートデバイスの風量設定値を取得する。
-      description: ''
+      description: >-
+        スマートデバイスの風量設定値を取得する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -282,7 +302,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの風量設定値を取得結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetAirFlowResponse'
           examples:
@@ -296,7 +317,8 @@ paths:
       operationId: airConditionerAirFlowPut
       x-type: one-shot
       summary: スマートデバイスの風量設定値を設定する。
-      description: ''
+      description: >-
+        スマートデバイスの風量設定値を設定する。失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -321,7 +343,8 @@ paths:
           type: boolean
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの風量設定値を設定結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetAirFlowResponse'
           examples:
@@ -333,8 +356,11 @@ paths:
     get:
       operationId: airConditionerEnlPropertyGet
       x-type: one-shot
-      summary: スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの設定内容を取得する（必須プロパティのみ）。
-      description: '※enlproperty:ECHONET Lite Propertyのこと。'
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの
+        設定内容を取得する（必須プロパティのみ）。
+      description: >-
+        ※enlproperty:ECHONET Lite Propertyのこと。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -352,7 +378,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの
+            設定内容を取得結果を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetEnlPropertyResponse'
           examples:
@@ -368,8 +396,11 @@ paths:
     put:
       operationId: airConditionerEnlPropertyPut
       x-type: one-shot
-      summary: スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに設定を行う（必須プロパティのみ）。
-      description: '※enlproperty:ECHONET Lite Propertyのこと。'
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに
+        設定を行う（必須プロパティのみ）。
+      description: >-
+        ※enlproperty:ECHONET Lite Propertyのこと。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -390,7 +421,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティに
+            設定を行った結果を返す。失敗した場合は、エラーを返す。
           schema:
             $ref: '#/definitions/SetEnlPropertyResponse'
           examples:
@@ -417,8 +450,8 @@ definitions:
               OFF:電源オフ<br>
               UNKNOWN:不明
             enum:
-              - 'ON'
-              - 'OFF'
+              - ON
+              - OFF
               - UNKNOWN
   PowerOnResponse:
     type: object
@@ -572,7 +605,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -584,4 +619,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

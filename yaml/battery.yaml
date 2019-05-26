@@ -13,7 +13,9 @@ paths:
       operationId: batteryGet
       x-type: one-shot
       summary: スマートデバイスのバッテリー情報を取得する。
-      description: スマートデバイスのバッテリー情報として取得できない値がある場合は適切な値を代入してレスポンスを返却する。
+      description: >-
+        スマートデバイスのバッテリー情報として取得できない値がある場合は
+        適切な値を代入してレスポンスを返却する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +24,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスのバッテリー情報を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/AllResponse'
           examples:
@@ -39,7 +42,9 @@ paths:
       operationId: batteryChargingGet
       x-type: one-shot
       summary: スマートデバイスの充電状態フラグを取得する。
-      description: ''
+      description: >-
+        充電中:true<br>
+        非充電中:false
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -48,7 +53,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの充電状態フラグを返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/ChargingResponse'
           examples:
@@ -62,7 +68,8 @@ paths:
       operationId: batteryChargingTimeGet
       x-type: one-shot
       summary: スマートデバイスの充電完了時間を取得する。
-      description: ''
+      description: >-
+        スマートデバイスの充電が完了する時間を返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -71,7 +78,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスの充電完了時間を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/ChargingTimeResponse'
           examples:
@@ -85,7 +93,8 @@ paths:
       operationId: batteryDischargingTimeGet
       x-type: one-shot
       summary: スマートデバイスの放電完了時間を取得する。
-      description: ''
+      description: >-
+        スマートデバイスのバッテリー残量がなくなるまでの時間を返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -94,7 +103,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスのバッテリー残量がなくなるまでの時間を返す。
+            失敗した場合は、エラーを返す。
           schema:
             $ref: '#/definitions/DischargingTimeResponse'
           examples:
@@ -108,7 +119,8 @@ paths:
       operationId: batteryLevelGet
       x-type: one-shot
       summary: スマートデバイスのバッテリー残量を取得する。
-      description: ''
+      description: >-
+        スマートデバイスのバッテリー残量は0.0〜1.0の範囲で返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -117,7 +129,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            バッテリー残量を返す。失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/LevelResponse'
           examples:
@@ -140,7 +153,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            充電時間、放電時間、バッテリー残量を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/OnBatteryChangeResponse'
           examples:
@@ -171,7 +186,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            当該イベントの通知を開始結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -195,7 +212,7 @@ paths:
       operationId: batteryOnBatteryChangeDelete
       x-type: event
       summary: 当該イベントの通知を停止する。
-      description: ''
+      description: イベント通知の停止に失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -204,7 +221,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            当該イベントの通知を停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -226,7 +245,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスのバッテリー充電状態変化通知イベントを取得結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/OnChargingChangeResponse'
           examples:
@@ -239,8 +260,12 @@ paths:
     put:
       operationId: batteryOnChargingChangePut
       x-type: event
-      summary: スマートフォンもしくは周辺機器へ他方のスマートデバイスのバッテリーの充電状態が変化したことを通知する。
-      description: 充電中フラグの値がtrueからfalse、もしくは、falseからtrueへ変わった時にイベントが発行される。
+      summary: >-
+        スマートフォンもしくは周辺機器へ他方のスマートデバイスの
+        バッテリーの充電状態が変化したことを通知する。
+      description: >-
+        充電中フラグの値がtrueからfalse、
+        もしくは、falseからtrueへ変わった時にイベントが発行される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -255,7 +280,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            当該イベントの通知を開始結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -277,7 +304,7 @@ paths:
       operationId: batteryOnChargingChangeDelete
       x-type: event
       summary: 当該イベントの通知を停止する。
-      description: ''
+      description: イベント通知の停止に失敗した場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -286,7 +313,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            当該イベントの通知を停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -306,21 +335,27 @@ definitions:
           charging:
             type: boolean
             title: 充電状態フラグ
-            description: '充電中:true<br>非充電中:false'
+            description: >-
+              充電中:true<br>
+              非充電中:false
           chargingTime:
             type: integer
             format: int64
             title: 完全充電までの時間 (秒)
-            description: 満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。
+            description: >-
+              満充電、または非充電中の場合は0。<br>
+              システムとして取得出来ない場合はNumber.MAX_VALUE。
           dischargingTime:
             type: integer
             format: int64
             title: 完全放電までの時間 (秒)
-            description: 充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE
+            description: >-
+              充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE
           level:
             type: number
             title: バッテリー残量
-            description: '範囲: 0.0 <= level <= 1.0'
+            description: >-
+              範囲: 0.0 <= level <= 1.0
   ChargingResponse:
     type: object
     allOf:
@@ -332,7 +367,9 @@ definitions:
           charging:
             type: boolean
             title: 充電状態フラグ
-            description: '充電中:true<br>非充電中:false'
+            description: >-
+              充電中:true<br>
+              非充電中:false
   ChargingTimeResponse:
     type: object
     allOf:
@@ -360,7 +397,8 @@ definitions:
             type: integer
             format: int64
             title: 完全放電までの時間 (秒)
-            description: 充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。
+            description: >-
+              充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。
   LevelResponse:
     type: object
     allOf:
@@ -372,7 +410,8 @@ definitions:
           level:
             type: number
             title: バッテリー残量
-            description: '範囲: 0.0 <= level <= 1.0'
+            description:  >-
+              範囲: 0.0 <= level <= 1.0
   OnChargingChangeEvent:
     type: object
     allOf:
@@ -437,11 +476,13 @@ definitions:
                 type: integer
                 format: int64
                 title: 完全放電までの時間 (秒)
-                description: 充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。
+                description: >-
+                  充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。
               level:
                 type: number
                 title: バッテリー残量
-                description: '範囲: 0.0 <= level <= 1.0'
+                description:  >-
+                  範囲: 0.0 <= level <= 1.0
   OnBatteryChangeResponse:
     type: object
     allOf:
@@ -461,16 +502,20 @@ definitions:
                 type: integer
                 format: int64
                 title: 完全充電までの時間 (秒)
-                description: 満充電、または非充電中の場合は0。<br>システムとして取得出来ない場合はNumber.MAX_VALUE。
+                description: >-
+                  満充電、または非充電中の場合は0。<br>
+                  システムとして取得出来ない場合はNumber.MAX_VALUE。
               dischargingTime:
                 type: integer
                 format: int64
                 title: 完全放電までの時間 (秒)
-                description: 充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。
+                description: >-
+                  充電中、またはシステムとして取得出来ない場合はNumber.MAX_VALUE。
               level:
                 type: number
                 title: バッテリー残量
-                description: '範囲: 0.0 <= level <= 1.0'
+                description:  >-
+                  範囲: 0.0 <= level <= 1.0
   EventRegistrationResponse:
     type: object
     allOf:
@@ -489,7 +534,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -501,7 +548,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

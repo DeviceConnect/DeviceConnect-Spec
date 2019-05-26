@@ -15,7 +15,7 @@ paths:
       operationId: tvGet
       x-type: one-shot
       summary: スマートデバイスの電源状態を取得する。
-      description: ''
+      description: 状態が不明の場合はUNKNOWNを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -24,7 +24,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源の状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetPowerStatusResponse'
           examples:
@@ -36,7 +38,7 @@ paths:
       operationId: tvPut
       x-type: one-shot
       summary: スマートデバイスの電源をオンにする。
-      description: ''
+      description: 既にONの場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -45,7 +47,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源をONにした結果を返す。
+            ONにしようとして失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerOnResponse'
           examples:
@@ -57,7 +61,7 @@ paths:
       operationId: tvDelete
       x-type: one-shot
       summary: スマートデバイスの電源をオフにする。
-      description: ''
+      description: 既にOFFの場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -66,7 +70,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            電源をOFFにした結果を返す。
+            OFFにしようとして失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PowerOffResponse'
           examples:
@@ -79,7 +85,8 @@ paths:
       operationId: tvChannelPut
       x-type: one-shot
       summary: スマートデバイスのチャンネルを変更する。
-      description: ''
+      description: >-
+        チャンネル番号の拡張についてはデバイスプラグイン側に依存する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -90,20 +97,20 @@ paths:
           description: 選局。1〜12：チャンネル番号
           in: formData
           required: false
-          type: string
+          type: integer
           enum:
-            - '1'
-            - '2'
-            - '3'
-            - '4'
-            - '5'
-            - '6'
-            - '7'
-            - '8'
-            - '9'
-            - '10'
-            - '11'
-            - '12'
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
         - name: control
           description: >-
             操作。<br>
@@ -117,7 +124,9 @@ paths:
             - previous
       responses:
         '200':
-          description: ''
+          description: >-
+            チャンネルの変更結果を返す。
+            変更に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetChannelResponse'
           examples:
@@ -130,7 +139,7 @@ paths:
       operationId: tvVolumePut
       x-type: one-shot
       summary: スマートデバイスの音量を変更する。
-      description: ''
+      description: 変更できる音量の範囲については、デバイスの仕様に合わせる。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -140,8 +149,8 @@ paths:
         - name: control
           description: >-
             操作。<br>
-            up : ボリュームを上げる<br>
-            down : ボリュームを下げる
+            up : 音量を上げる<br>
+            down : 音量を下げる
           in: formData
           required: true
           type: string
@@ -150,7 +159,8 @@ paths:
             - down
       responses:
         '200':
-          description: ''
+          description: >-
+            音量変更結果を返す。変更に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetVolumeResponse'
           examples:
@@ -163,7 +173,7 @@ paths:
       operationId: tvBroadcastWavePut
       x-type: one-shot
       summary: スマートデバイスの選択放送波を変更する。
-      description: ''
+      description: 対応する放送波に関してはデバイス依存とする。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -185,7 +195,8 @@ paths:
             - CS
       responses:
         '200':
-          description: ''
+          description: >-
+            放送波の変更結果を返す。変更に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetBroadcastResponse'
           examples:
@@ -197,8 +208,8 @@ paths:
     put:
       operationId: tvMutePut
       x-type: one-shot
-      summary: スマートデバイスのミュートをオンにする。
-      description: ''
+      summary: スマートデバイスのミュートをONにする。
+      description: すでにミュートがONになっている場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -207,7 +218,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ミュートをONにした結果を返す。ONにするのに失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/MuteOnResponse'
           examples:
@@ -218,8 +230,8 @@ paths:
     delete:
       operationId: tvMuteDelete
       x-type: one-shot
-      summary: スマートデバイスのミュートをオフにする。
-      description: ''
+      summary: スマートデバイスのミュートをOFFにする。
+      description: すでにミュートがOFFになっている場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -228,7 +240,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ミュートをOFFにした結果を返す。OFFにするのに失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/MuteOffResponse'
           examples:
@@ -259,7 +272,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ECHONET Lite機器オブジェクトのプロパティ設定値を返す。
+            設定値取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GetEnlPropertyResponse'
           examples:
@@ -297,7 +312,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ECHONET Lite機器オブジェクトのプロパティ設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/SetEnlPropertyResponse'
           examples:
@@ -395,7 +412,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

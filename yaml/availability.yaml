@@ -3,19 +3,24 @@ basePath: /gotapi/availability
 info:
   title: Availability Profile
   version: 2.0.0
-  description: ホストデバイス上でDevice Connect Managerが起動しているかどうかを確認する機能を提供する。
-consumes: []
+  description: >-
+    ホストデバイス上でDevice Connect Managerが起動しているかどうかを確認する機能を提供する。
+consumes:
+  - application/x-www-form-urlencoded
 paths:
   /:
     get:
       operationId: availabilityGet
       x-type: one-shot
       summary: Device Connect Managerが起動しているかどうかを確認する。
-      description: ''
+      description: >-
+        Managerの設定によっては、Managerの名前を取得することができる。
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            Managerが起動している場合はレスポンスを返す。
+            Managerが起動していない場合はエラーを返す。
           schema:
             $ref: '#/definitions/AvailabilityResponse'
           examples:
@@ -34,7 +39,8 @@ definitions:
           name:
             type: string
             title: Managerの名前
-            description: Managerの設定画面の「Managerの名前を表示」をONにすることで追加される。
+            description: >-
+              Managerの設定画面の「Managerの名前を表示」をONにすることで追加される。
   CommonResponse:
     type: object
     required:
@@ -45,7 +51,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -57,4 +65,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

@@ -22,7 +22,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ストレス推定計測値を返す。
+            計測値を返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/StressEstimationResponse'
           examples:
@@ -37,8 +39,10 @@ paths:
     put:
       operationId: stressEstimationOnStressEstimationPut
       x-type: event
-      summary: デバイスのストレス推定計測イベントの受信を開始する。
-      description: ''
+      summary: デバイスのストレス推定計測イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -53,7 +57,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのストレス推定計測イベントを通知するイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -76,8 +82,10 @@ paths:
     delete:
       operationId: stressEstimationOnStressEstimationDelete
       x-type: event
-      summary: 当該イベントの通知を停止する。
-      description: ''
+      summary: デバイスのストレス推定計測イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。
@@ -86,7 +94,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスのストレス推定計測イベントを通知するイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -131,7 +141,9 @@ definitions:
             type: string
             format: date-time
             title: タイムスタンプ (日付)
-            description: 'タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+            description: >-
+              タイムスタンプと同じタイムスタンプを
+              RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
   EventRegistrationResponse:
     type: object
     allOf:
@@ -150,7 +162,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名
@@ -162,7 +176,9 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
   CommonEvent:
     type: object
     required:

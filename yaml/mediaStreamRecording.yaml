@@ -13,7 +13,10 @@ paths:
       operationId: mediaStreamRecordingMediaRecorderGet
       x-type: one-shot
       summary: スマートデバイスから使用可能なレコーダーの一覧を取得する。
-      description: ''
+      description: >-
+        ストリーミング配信する機能をレコーダーとして扱うことができる。
+        例えば、スマートフォンのカメラの映像や
+        スマートフォンのデスクトップのスクリーンキャストなどをレコーダとして扱ったりすることができる。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +25,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            レコーダの一覧を取得結果を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/MediaRecorderResponse'
           examples:
@@ -85,7 +90,9 @@ paths:
       operationId: mediaStreamRecordingTakePhotoPost
       x-type: one-shot
       summary: スマートデバイスに対して写真撮影リクエストを送る。
-      description: ''
+      description: >-
+        targetが指定されていない場合は、GET/mediaStreamRecording/mediaRecorderで
+        一番最初に見つかるレコーダーが指定される。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -103,7 +110,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            写真撮影結果を返す。
+            写真撮影に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/TakePhotoResponse'
           examples:
@@ -150,7 +159,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            動画撮影・音声録音開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecordResponse'
           examples:
@@ -164,8 +175,10 @@ paths:
     put:
       operationId: mediaStreamRecordingPausePut
       x-type: one-shot
-      summary: スマートデバイスに対して動画撮影または音声録音の一時停止依頼を送る。
-      description: ''
+      summary: スマートデバイスに対して動画撮影または音声録音の一時停止リクエストを送る。
+      description: >-
+        すでに撮影または録音が一時停止になっている場合や撮影または録音が行われていない場合は、
+        エラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -176,13 +189,16 @@ paths:
           description: >-
             ターゲット。レコーダーを識別するID。<br>
             省略された場合にはデフォルトのレコーダーを使用する。<br>
-            デバイスが音声・動画の両方のレコーダーをサポートする場合、どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
           in: formData
           required: false
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            動画撮影または音声録音の一時停止送信結果を返す。
+            一時停止送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecorderControlResponse'
           examples:
@@ -197,7 +213,8 @@ paths:
       summary: >-
         スマートデバイスに対して一時停止状態にある動画撮影または音声録音の
         再開リクエストを送る。
-      description: ''
+      description: >-
+        すでに撮影または録音状態になっている場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -215,7 +232,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            再開リクエストを送った結果を返す。
+            リクエストの送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecorderControlResponse'
           examples:
@@ -228,7 +247,8 @@ paths:
       operationId: mediaStreamRecordingStopPut
       x-type: one-shot
       summary: スマートデバイスに対して動画撮影または音声録音の終了リクエストを送る。
-      description: ''
+      description: >-
+        すでに撮影または録音が行われていない場合はエラーを返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -246,7 +266,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            終了リクエストを送った結果を返す。
+            終了リクエストの送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecorderStopResponse'
           examples:
@@ -258,7 +280,7 @@ paths:
     put:
       operationId: mediaStreamRecordingMuteTrackPut
       x-type: one-shot
-      summary: スマートデバイスに対して動画撮影や音声録音のミュート依頼を送る。
+      summary: スマートデバイスに対して動画撮影や音声録音のミュートリクエストを送る。
       description: >-
         ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、
         オーディオトラックがミュートされる。
@@ -279,7 +301,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ミュートリクエストを送った結果を返す。
+            ミュートリクエストの送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecorderControlResponse'
           examples:
@@ -291,7 +315,7 @@ paths:
     put:
       operationId: mediaStreamRecordingUnmuteTrackPut
       x-type: one-shot
-      summary: スマートデバイスに対して動画撮影や音声録音のミュート解除依頼を送る。
+      summary: スマートデバイスに対して動画撮影や音声録音のミュート解除リクエストを送る。
       description: >-
         ビデオとオーディオなどの複数トラックが含まれる撮影中メディアにおいては、
         オーディオトラックがミュート解除される。
@@ -312,7 +336,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ミュート解除リクエストを送った結果を返す。
+            ミュート解除リクエストの送信に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecorderControlResponse'
           examples:
@@ -327,7 +353,8 @@ paths:
       summary: >-
         スマートデバイスからサポートしている写真撮影、
         動画撮影や音声録音のオプションを取得する。
-      description: ''
+      description: >-
+        ターゲットがサポートしている解像度などの一覧を返す。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -345,7 +372,8 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            指定したターゲットのPreview/Picture解像度の一覧などを返す。
           schema:
             $ref: '#/definitions/OptionsResponse'
           examples:
@@ -423,7 +451,8 @@ paths:
       summary: >-
         スマートデバイスからサポートしている写真撮影、
         動画撮影や音声録音のオプションを設定する。
-      description: ''
+      description: >-
+        スマートデバイスのPreviewSize,PictureSizeや最大フレームレートなどを設定する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -481,7 +510,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            オプションの設定結果を返す。
+            設定に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecorderControlResponse'
           examples:
@@ -494,7 +525,7 @@ paths:
       operationId: mediaStreamRecordingOnPhotoGet
       x-type: one-shot
       summary: スマートデバイスの写真撮影通知イベントを取得する。
-      description: ''
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -503,7 +534,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            写真撮影された情報を返す。
+            情報が返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/PhotoResponse'
           examples:
@@ -517,7 +550,9 @@ paths:
       operationId: mediaStreamRecordingOnPhotoPut
       x-type: event
       summary: スマートデバイスの写真撮影通知イベントを開始する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -532,7 +567,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            通知イベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -556,7 +593,9 @@ paths:
       operationId: mediaStreamRecordingOnPhotoDelete
       x-type: event
       summary: スマートデバイスの写真撮影通知イベントを停止する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -565,7 +604,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            通知イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -599,7 +640,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ストリーミング映像のURIを返す。
+            映像のURIを返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/PreviewGetResponse'
           examples:
@@ -633,7 +676,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ストリーミング映像のURIを返す。
+            映像のURIを返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/PreviewStartResponse'
           examples:
@@ -672,7 +717,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ストリーミング映像のURIを返す。
+            映像のURIを返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/PreviewStopResponse'
           examples:
@@ -687,7 +734,7 @@ paths:
       summary: >-
         スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを
         取得する。
-      description: ''
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -696,7 +743,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            撮影または録音の状態を返す。
+            状態を返せない場合はエラーを返す。
           schema:
             $ref: '#/definitions/RecordingStatusResponse'
           examples:
@@ -714,7 +763,9 @@ paths:
       summary: >-
         スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを
         開始する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -729,7 +780,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            撮影または録音の状態変化通知イベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -755,7 +808,9 @@ paths:
       summary: >-
         スマートデバイスでの写真撮影、動画撮影または音声録音の状態変化通知イベントを
         停止する。
-      description: ''
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -764,7 +819,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            撮影または録音の状態変化通知イベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -1156,7 +1213,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

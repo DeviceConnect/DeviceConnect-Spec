@@ -16,7 +16,9 @@ paths:
         スマートデバイスへの、
         テキスト（歩数、消費カロリー、睡眠時間などのバイナリーの任意のデータ）や
         画像、音声、動画（リソースも含む）を受け取る。
-      description: ''
+      description: >-
+        このリクエストのレスポンスでURLを返し、
+        そのURLにアクセスすることでリソースにアクセスできるようにすること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -30,7 +32,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスに保存されているファイルをブラウザで取得するためのURLを返す。
+            ファイルのURLの取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileSendResponse'
           examples:
@@ -45,7 +49,9 @@ paths:
       x-type: one-shot
       summary: >-
         スマートデバイスに対して、テキストや画像、音声、動画（リソースも含む）を渡す。
-      description: ''
+      description: >-
+        マルチパート形式でファイルを送信する。
+        ファイルの容量制限に関しては、スマートデバイスごとにより異なる。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -88,7 +94,9 @@ paths:
           type: boolean
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルの送信結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileReceiveResponse'
           examples:
@@ -101,8 +109,10 @@ paths:
       x-type: one-shot
       summary: >-
         ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）の名前を
-        変更、移動をする。
-      description: ''
+        変更、ファイルの移動をする。
+      description: >-
+        ディレクトリの移動を行いたい場合は、
+        同プロファイルのPUT /file/directoryを使用すること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -133,7 +143,9 @@ paths:
           type: boolean
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルの移動結果を返す。
+            移動に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileMoveResponse'
           examples:
@@ -145,7 +157,9 @@ paths:
       operationId: fileDelete
       x-type: one-shot
       summary: ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）を削除する。
-      description: ''
+      description: >-
+        ディレクトリの削除を行いたい場合は、
+        同プロファイルのDELETE /file/directoryを使用すること。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -159,7 +173,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイルの削除結果を返す。
+            削除に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileRemoveResponse'
           examples:
@@ -171,8 +187,9 @@ paths:
     get:
       operationId: fileListGet
       x-type: one-shot
-      summary: 保存されているファイルの一覧を取得する。
-      description: ''
+      summary: スマートデバイスに保存されているファイルの一覧を取得する。
+      description: >-
+        GET /file/directoryと同じ動作を行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -226,7 +243,9 @@ paths:
           minimum: 0
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイル一覧取得の結果を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileListResponse'
           examples:
@@ -247,7 +266,8 @@ paths:
       operationId: fileDirectoryGet
       x-type: one-shot
       summary: 保存されているファイルの一覧を取得する。
-      description: ''
+      description: >-
+        /file/listと同じ動作をする。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -302,7 +322,9 @@ paths:
           minimum: 0
       responses:
         '200':
-          description: ''
+          description: >-
+            ファイル一覧取得の結果を返す。
+            取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/FileListResponse'
           examples:
@@ -322,7 +344,8 @@ paths:
       operationId: fileDirectoryPost
       x-type: one-shot
       summary: ディレクトリの作成要求を渡す。
-      description: ''
+      description: >-
+        ディレクトリの作成は、スマートデバイス上で行う。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -336,7 +359,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ディレクトリ作成結果を返す。
+            作成に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/MakeDirectoryResponse'
           examples:
@@ -348,7 +373,9 @@ paths:
       operationId: fileDirectoryPut
       x-type: one-shot
       summary: ディレクトリの名前の変更、移動要求を渡す。
-      description: ''
+      description: >-
+        移動するディレクトリ内にファイルがある場合に移動処理を行うかどうかは、
+        スマートデバイスおよびデバイスプラグインの仕様に依存する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -367,7 +394,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ディレクトリの名前の変更、ディレクトリの移動要求の結果を返す。
+            移動に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/MoveDirectoryResponse'
           examples:
@@ -379,7 +408,9 @@ paths:
       operationId: fileDirectoryDelete
       x-type: one-shot
       summary: ディレクトリの削除要求を渡す。
-      description: ''
+      description: >-
+        削除するディレクトリ内にファイルがある場合に削除処理を行うかどうかは、
+        スマートデバイスおよびデバイスプラグインの仕様に依存する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -402,7 +433,9 @@ paths:
           type: boolean
       responses:
         '200':
-          description: ''
+          description: >-
+            ディレクトリ削除要求の結果を返す。
+            削除に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/RemoveDirectoryResponse'
           examples:
@@ -480,19 +513,22 @@ definitions:
                 fileType:
                   type: integer
                   title: ファイルの種別
-                  description: '0: ファイル<br>1: ディレクトリ'
+                  description: >-
+                    0: ファイル<br>
+                    1: ディレクトリ
                   enum:
                     - 0
                     - 1
                 fileName:
                   type: string
                   title: ファイルの名前
-                  description: ''
+                  description: 拡張子を含む。ディレクトリ名は含まない。
                 updateDate:
                   type: string
                   format: date-time
                   title: 更新時間
-                  description: 'RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。'
+                  description: >-
+                    RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
                 fileSize:
                   type: integer
                   title: ファイルサイズ
@@ -519,7 +555,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -531,4 +569,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

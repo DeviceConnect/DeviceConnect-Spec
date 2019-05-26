@@ -24,7 +24,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ライト情報の一覧を返す。
+            情報の一覧の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/LightStatusResponse'
           examples:
@@ -33,11 +35,11 @@ paths:
               product: Example System
               version: 1.0.0
               lights:
-                - config: ''
+                - config: Bridge-1
                   'on': false
                   name: Example Light 1
                   lightId: '0'
-                - config: ''
+                - config: Bridge-1
                   'on': true
                   name: Example Light 2
                   lightId: '1'
@@ -45,7 +47,9 @@ paths:
       operationId: lightPost
       x-type: one-shot
       summary: ライトを点灯するAPI。
-      description: ''
+      description: >-
+        点灯するライトは、GET/serviceDiscoveryあるいはGET/lightで取得したもの。
+        lightIdが省略された場合は、GET/lightで一番最初に見つかるライトを点灯する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -87,7 +91,9 @@ paths:
           required: false
       responses:
         '200':
-          description: ''
+          description: >-
+            ライトの点灯結果を返す。
+            点灯に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/LightControlResponse'
           examples:
@@ -99,7 +105,9 @@ paths:
       operationId: lightDelete
       x-type: one-shot
       summary: ライトを消灯するAPI。
-      description: ''
+      description: >-
+        消灯するライトは、GET/serviceDiscoveryあるいはGET/lightで取得したもの。
+        lightIdが省略された場合は、GET/lightで一番最初に見つかるライトを消灯する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -115,7 +123,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            ライトの消灯結果を返す。
+            消灯に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/LightControlResponse'
           examples:
@@ -174,7 +184,9 @@ paths:
           required: false
       responses:
         '200':
-          description: ''
+          description: >-
+            ライトの名前変更結果を返す。
+            変更に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/LightControlResponse'
           examples:
@@ -236,7 +248,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

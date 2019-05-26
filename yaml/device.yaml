@@ -13,7 +13,8 @@ paths:
       operationId: devicePairingPost
       x-type: one-shot
       summary: スマートデバイスとペアリングする。
-      description: ''
+      description: >-
+        このAPIが実行される契機でプラグイン側でスマートデバイスとの接続処理を行わせる。
       parameters:
         - name: serviceId
           description: >-
@@ -24,7 +25,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスとのペアリング結果を返す。
+            ペアリングに失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PairingResponse'
           examples:
@@ -36,7 +39,8 @@ paths:
       operationId: devicePairingDelete
       x-type: one-shot
       summary: スマートデバイスとペアリングを解除する。
-      description: ''
+      description: >-
+        このAPIが実行される契機でプラグイン側でスマートデバイスとの接続を解除する。
       parameters:
         - name: serviceId
           description: >-
@@ -47,7 +51,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスとのペアリング解除結果を返す。
+            ペアリング解除に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/PairingReleaseResponse'
           examples:
@@ -74,7 +80,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -86,4 +94,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

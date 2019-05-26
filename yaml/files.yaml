@@ -19,7 +19,9 @@ paths:
       operationId: filesGet
       x-type: one-shot
       summary: 各デバイスプラグインが持っているファイルにアクセスする。
-      description: ''
+      description: >-
+        基本的にこのプロファイルを使用することはできない。
+        DeviceConnectManagerなどで内部的に使用しているプロファイルである。
       parameters:
         - name: uri
           description: リソースのURL。デバイスプラグインが持つファイルのURI。

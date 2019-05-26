@@ -12,8 +12,8 @@ paths:
     get:
       operationId: walkStateOnWalkStateGet
       x-type: one-shot
-      summary: 該当デバイスの歩行状態計測イベントを取得する。
-      description: ''
+      summary: スマートデバイスの歩行状態計測情報を取得する。
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +22,11 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            現在の歩行状態計測情報を返す。
+            現在の歩行状態計測情報が取得できない場合は、
+            キャッシュしている最新の歩行状態計測情報を返す。
+            歩行状態計測情報の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/WalkStateResponse'
           examples:
@@ -41,8 +45,10 @@ paths:
     put:
       operationId: walkStateOnWalkStatePut
       x-type: event
-      summary: 該当デバイスの歩行状態計測イベントを通知する。
-      description: ''
+      summary: スマートデバイスの歩行状態計測イベントを通知する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -57,7 +63,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            歩行状態計測イベントの通知の開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -84,8 +92,10 @@ paths:
     delete:
       operationId: walkStateOnWalkStateDelete
       x-type: event
-      summary: 該当デバイスの歩行状態計測イベントを停止する。
-      description: ''
+      summary: スマートデバイスの歩行状態計測イベントを停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -94,7 +104,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            歩行状態計測イベントの通知の停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -194,7 +206,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名

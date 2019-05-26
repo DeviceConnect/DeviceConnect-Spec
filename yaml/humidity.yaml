@@ -13,7 +13,8 @@ paths:
       operationId: humidityGet
       x-type: one-shot
       summary: スマートデバイスの湿度を取得する機能を提供する。
-      description: ''
+      description: >-
+        湿度の値はデバイスプラグイン側で0.0〜1.0の範囲に正規化して返すこと。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -22,7 +23,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            スマートデバイスが計測した湿度の値を返す。
+            湿度の値が取得できなかった場合はエラーを返す。
           schema:
             $ref: '#/definitions/HumidityResponse'
           examples:
@@ -72,7 +75,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名
@@ -84,4 +89,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

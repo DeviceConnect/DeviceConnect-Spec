@@ -12,7 +12,7 @@ paths:
     get:
       operationId: proximityOnDeviceProximityGet
       x-type: one-shot
-      summary: スマートデバイスの近接センサーの物の検知を通知するイベントを取得する。
+      summary: スマートデバイスの近接センサーが物体を検知した値を取得する。
       description: >-
         スマートデバイスの近接センサーの情報を
         近接距離最小/最大値の範囲で連続的にイベント発行する。
@@ -24,7 +24,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            近接センサーの値を返す。
+            センサーの値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/DeviceProximityResponse'
           examples:
@@ -41,7 +43,7 @@ paths:
     put:
       operationId: proximityOnDeviceProximityPut
       x-type: event
-      summary: スマートデバイスの近接センサーの物の検知を通知するイベントを開始する。
+      summary: スマートデバイスの近接センサーが物体を検知したことを通知するイベントを開始する。
       description: >-
         スマートデバイスの近接センサーの情報を
         近接距離最小/最大値の範囲で連続的にイベント発行する。
@@ -59,7 +61,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            近接センサーの物体を検知したイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -84,7 +88,7 @@ paths:
     delete:
       operationId: proximityOnDeviceProximityDelete
       x-type: event
-      summary: スマートデバイスの近接センサーの物の検知を通知するイベントを停止する。
+      summary: スマートデバイスの近接センサーが物体を検知したことを通知するイベントを停止する。
       description: >-
         スマートデバイスの近接センサーの情報を
         近接距離最小/最大値の範囲で連続的にイベント発行する。
@@ -96,7 +100,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            近接センサーの物体を検知したイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -111,7 +117,7 @@ paths:
     get:
       operationId: proximityOnUserProximityGet
       x-type: one-shot
-      summary: スマートデバイスの近接センサーのユーザ検知を通知するイベントを取得する。
+      summary: スマートデバイスの近接センサーが人体を検知した値を取得する。
       description: >-
         ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に
         発生する。
@@ -123,7 +129,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            近接センサーの値を返す。
+            センサーの値の取得に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/UserProximityResponse'
           examples:
@@ -136,7 +144,7 @@ paths:
     put:
       operationId: proximityOnUserProximityPut
       x-type: event
-      summary: スマートデバイスの近接センサーのユーザ検知を通知するイベントを開始する。
+      summary: スマートデバイスの近接センサーが人体を検知したことを通知するイベントを開始する。
       description: >-
         ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に
         発生する。
@@ -154,7 +162,9 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description:>-
+            近接センサーの人体を検知したイベントの開始結果を返す。
+            開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -175,7 +185,7 @@ paths:
     delete:
       operationId: proximityOnUserProximityDelete
       x-type: event
-      summary: スマートデバイスの近接センサーのユーザ検知を通知するイベントを停止する。
+      summary: スマートデバイスの近接センサーの人体を検知したことを通知するイベントを停止する。
       description: >-
         ユーザ検知とは、例えば通話時にスマートフォンの画面を耳元に近接させた場合等に
         発生する。
@@ -187,7 +197,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            近接センサーの人体を検知したイベントの停止結果を返す。
+            停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:
@@ -289,7 +301,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名

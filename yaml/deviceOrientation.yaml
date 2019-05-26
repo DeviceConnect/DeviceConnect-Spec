@@ -6,7 +6,6 @@ info:
   description: スマートデバイスの加速度センサー機能を提供するAPI。
 consumes:
   - application/x-www-form-urlencoded
-  - multipart/form-data
 paths:
   /onDeviceOrientation:
     get:
@@ -26,7 +25,11 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            加速度や重力込みの加速度（加速度センサー）、
+            そして角速度（ジャイロセンサー）が検知した値を返す。
+            現在のセンサー値が取得できなかった場合は、最後に取得できたセンサー値を返す。
+            センサー値が取得できない場合はエラーを返す。
           schema:
             $ref: '#/definitions/DeviceOrientationResponse'
           examples:
@@ -71,7 +74,10 @@ paths:
           format: int64
       responses:
         '200':
-          description: ''
+          description: >-
+            加速度や重力込みの加速度（加速度センサー）、
+            そして角速度（ジャイロセンサー）を通知するイベントの開始結果を返す。
+            イベントの開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventRegistrationResponse'
           examples:
@@ -118,7 +124,10 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            加速度や重力込みの加速度（加速度センサー）、
+            そして角速度（ジャイロセンサー）を通知するイベントの停止結果を返す。
+            イベントの停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/EventUnregistrationResponse'
           examples:

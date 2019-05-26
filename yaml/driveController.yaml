@@ -13,7 +13,10 @@ paths:
       operationId: driveControllerMovePost
       x-type: one-shot
       summary: スマートデバイスを指定された方向に移動開始する。
-      description: ''
+      description: >-
+        デバイスが動作する方向のキャリブレーションなどに関しては、
+        デバイスの仕様により変わってくる。
+        speedが指定されていない場合は移動を行わないこと。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -40,7 +43,9 @@ paths:
           maximum: 1
       responses:
         '200':
-          description: ''
+          description: >-
+            移動開始が成功したかどうかの結果を返す。
+            移動開始に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/DriveControllerMoveResponse'
           examples:
@@ -53,7 +58,9 @@ paths:
       operationId: driveControllerStopDelete
       x-type: one-shot
       summary: スマートデバイスに移動停止リクエストを送る。
-      description: ''
+      description: >-
+        すでにスマートデバイスが移動停止している場合に、
+        移動停止リクエストが送られた場合は、エラーを返すことが望ましい。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -62,7 +69,9 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            移動停止リクエストの結果を返す。
+            移動停止に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/DriveControllerStopResponse'
           examples:
@@ -75,7 +84,9 @@ paths:
       operationId: driveControllerRotatePut
       x-type: one-shot
       summary: スマートデバイスを指定された向きに回転を行う。
-      description: ''
+      description: >-
+        デバイスが動作する角度のキャリブレーションなどに関しては、
+        デバイスの仕様により変わってくる。
       parameters:
         - name: serviceId
           description: サービスID。取得対象スマートデバイス
@@ -93,7 +104,9 @@ paths:
           maximum: 360
       responses:
         '200':
-          description: ''
+          description: >-
+            回転が成功したかどうかの結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/DriveControllerRotateResponse'
           examples:
@@ -124,7 +137,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -136,4 +151,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

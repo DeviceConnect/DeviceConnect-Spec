@@ -4,7 +4,8 @@ info:
   title: Authorization Profile
   version: 2.0.0
   description: Local OAuthのクライアントを操作する機能を提供するAPI。
-consumes: []
+consumes:
+    - application/x-www-form-urlencoded
 paths:
   /grant:
     get:
@@ -17,7 +18,9 @@ paths:
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            Device Connect ManagerにLocal OAuthを行うためのクライアントの作成要求結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/GrantResponse'
           examples:
@@ -33,10 +36,13 @@ paths:
       summary: DeviceConnectManagerにLocal OAuthを行うためのアクセストークンの作成要求を行う。
       description: >-
         各プロファイルにアクセスするためには、このAPIで作成したアクセストークンが必要になる。<br>
-        また、アクセストークンには有効期限が存在するので、有効期限が切れた場合には再度アクセストークンを作成し直す必要がある。
+        また、アクセストークンには有効期限が存在するので、
+        有効期限が切れた場合には再度アクセストークンを作成し直す必要がある。
       parameters:
         - name: clientId
-          description: クライアントID。Authorization Create Client APIで取得したclientIdを使用する。
+          description: >-
+            クライアントID。
+            Authorization Create Client APIで取得したclientIdを使用する。
           in: query
           required: true
           type: string
@@ -60,7 +66,9 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            DeviceConnectManagerにLocal OAuthを行うためのアクセストークンの作成要求結果を返す。
+            失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/AccessTokenResponse'
           examples:
@@ -138,7 +146,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0: 正常応答<br>0以外: 異常応答'
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
       product:
         type: string
         title: システム名
@@ -150,4 +160,6 @@ definitions:
       hmac:
         type: string
         title: 署名
-        description: レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

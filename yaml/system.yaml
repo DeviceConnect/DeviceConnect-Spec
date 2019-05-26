@@ -19,7 +19,8 @@ paths:
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            DeviceConnectシステムの情報一覧を返す。
           schema:
             $ref: '#/definitions/SystemResponse'
   /device/wakeup:
@@ -35,31 +36,37 @@ paths:
           type: string
       responses:
         '200':
-          description: ''
+          description: >-
+            デバイスプラグインの設定画面起動結果を返す。
+            設定画面がない場合や画面起動に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CommonResponse'
   /events:
     delete:
       x-type: one-shot
       operationId: systemEventsDelete
-      summary: リクエスト送信元のオリジンに紐づくイベントを一挙に解除する。
-      description: ''
+      summary: リクエスト送信元のOriginに紐づくイベントを一挙に解除する。
+      description: デバイスプラグインの仕様によっては対応していない場合もある。
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            Originに紐づくイベントの解除結果を返す。
+            解除に失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CommonResponse'
   /keyword:
     put:
       x-type: one-shot
       operationId: systemKeywordPut
-      summary: DeviceConnectシステムに対し、ユーザーが登録したキーワードの表示要求をする。
-      description: ''
+      summary: DeviceConnectシステムに対し、ユーザーが登録したキーワードの表示リクエストをする。
+      description: デフォルト値はDeviceConnectシステム側で設定しておくものとする。
       parameters: []
       responses:
         '200':
-          description: ''
+          description: >-
+            キーワードの表示リクエスト結果を返す。
+            表示リクエストに失敗した場合はエラーを返す。
           schema:
             $ref: '#/definitions/CommonResponse'
 definitions:
@@ -124,7 +131,9 @@ definitions:
       result:
         type: integer
         title: 処理結果
-        description: '0:正常応答<br>0以外:異常応答'
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
       product:
         type: string
         title: システム名
