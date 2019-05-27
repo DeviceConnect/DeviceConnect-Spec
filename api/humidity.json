@@ -1,118 +1,117 @@
 {
-    "swagger": "2.0",
-    "basePath": "/gotapi/humidity",
-    "info": {
-        "title": "Humidity Profile",
-        "version": "2.0.0",
-        "description": "スマートデバイスが計測した湿度を取得する機能を提供するAPI。"
-    },
-    "consumes": [
-        "application/x-www-form-urlencoded",
-        "multipart/form-data"
-    ],
-    "paths": {
-        "/": {
-            "get": {
-                "operationId": "humidityGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの湿度を取得する機能を提供する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/HumidityResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "humidity": 0.1,
-                                "timeStamp": 1431856940275,
-                                "timeStampString": "2015-05-17T10:02:20+09:00"
-                            }
-                        }
-                    }
-                }
+  "swagger": "2.0",
+  "basePath": "/gotapi/humidity",
+  "info": {
+    "title": "Humidity Profile",
+    "version": "2.0.0",
+    "description": "スマートデバイスが計測した湿度を取得する機能を提供するAPI。"
+  },
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "humidityGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの湿度を取得する機能を提供する。",
+        "description": "湿度の値はデバイスプラグイン側で0.0〜1.0の範囲に正規化して返すこと。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "スマートデバイスが計測した湿度の値を返す。 湿度の値が取得できなかった場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/HumidityResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "humidity": 0.1,
+                "timeStamp": 1431856940275,
+                "timeStampString": "2015-05-17T10:02:20+09:00"
+              }
             }
+          }
         }
-    },
-
-    "definitions": {
-         "HumidityResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "type": "object",
-                    "required": [
-                        "humidity"
-                    ],
-                    "properties": {
-                        "humidity": {
-                            "type": "number",
-                            "title": "湿度",
-                            "description": "湿度センサーが検知した湿度を通知する。<br>範囲: 0.0 ~ 1.0",
-                            "minimum": 0.0,
-                            "maximum": 1.0
-                        },
-                        "timeStamp": {
-                            "type": "integer",
-                            "format": "int64",
-                            "title": "湿度のタイムスタンプ",
-                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
-                        },
-                        "timeStampString": {
-							"type": "string",
-							"format": "date-time",
-                            "title": "湿度のタイムスタンプ文字列",
-                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
-                        }
-                    }
-                }
-            ]
-        },
-        "CommonResponse": {
-            "type": "object",
-            "required": [
-                "result",
-                "product",
-                "version"
-            ],
-            "properties": {
-                "result": {
-                    "type": "integer",
-                    "title": "処理結果",
-                    "description": "0:正常応答<br>0以外:異常応答"
-                },
-                "product": {
-                    "type": "string",
-                    "title": "システム名",
-                    "description": "DeviceConnectシステムの名前。"
-                },
-                "version": {
-                    "type": "string",
-                    "title": "システムバージョン",
-                    "description": "DeviceConnectシステムのバージョン名。"
-                },
-                "hmac": {
-                    "type": "string",
-                    "title": "署名",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
-                }
-            }
-        }
+      }
     }
+  },
+  "definitions": {
+    "HumidityResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "humidity"
+          ],
+          "properties": {
+            "humidity": {
+              "type": "number",
+              "title": "湿度",
+              "description": "湿度センサーが検知した湿度を通知する。<br> 範囲: 0.0 ~ 1.0",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "timeStamp": {
+              "type": "integer",
+              "format": "int64",
+              "title": "湿度のタイムスタンプ",
+              "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+            },
+            "timeStampString": {
+              "type": "string",
+              "format": "date-time",
+              "title": "湿度のタイムスタンプ文字列",
+              "description": "タイムスタンプと同じタイムスタンプを RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。"
+            }
+          }
+        }
+      ]
+    },
+    "CommonResponse": {
+      "type": "object",
+      "required": [
+        "result",
+        "product",
+        "version"
+      ],
+      "properties": {
+        "result": {
+          "type": "integer",
+          "title": "処理結果",
+          "description": "0:正常応答<br> 0以外:異常応答"
+        },
+        "product": {
+          "type": "string",
+          "title": "システム名",
+          "description": "DeviceConnectシステムの名前。"
+        },
+        "version": {
+          "type": "string",
+          "title": "システムバージョン",
+          "description": "DeviceConnectシステムのバージョン名。"
+        },
+        "hmac": {
+          "type": "string",
+          "title": "署名",
+          "description": "レスポンスに対する署名。 アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+        }
+      }
+    }
+  }
 }

@@ -1,683 +1,682 @@
 {
-    "swagger": "2.0",
-    "basePath": "/gotapi/file",
-    "info": {
-        "title": "File Profile",
-        "version": "2.0.0",
-        "description": "スマートデバイスに対してのファイル操作機能を提供するAPI。"
-    },
-    "consumes": [
-        "application/x-www-form-urlencoded",
-        "multipart/form-data"
-    ],
-    "paths": {
-        "/": {
-            "get": {
-                "operationId": "fileGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスへの、テキスト（歩数、消費カロリー、睡眠時間などのバイナリーの任意のデータ）や画像、音声、動画（リソースも含む）を受け取る。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "path",
-                        "description": "ファイルパス。ファイル名とパス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/FileSendResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "mimeType": "image/png",
-                                "uri": "http://localhost:4035/gotapi/files?uri=content%3A%2F%2FTest.png"
-                            }
-                        }
-                    }
-                }
+  "swagger": "2.0",
+  "basePath": "/gotapi/file",
+  "info": {
+    "title": "File Profile",
+    "version": "2.0.0",
+    "description": "スマートデバイスに対してのファイル操作機能を提供するAPI。"
+  },
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "fileGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスへの、 テキスト（歩数、消費カロリー、睡眠時間などのバイナリーの任意のデータ）や 画像、音声、動画（リソースも含む）を受け取る。",
+        "description": "このリクエストのレスポンスでURLを返し、 そのURLにアクセスすることでリソースにアクセスできるようにすること。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "ファイルパス。ファイル名とパス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "スマートデバイスに保存されているファイルをブラウザで取得するためのURLを返す。 ファイルのURLの取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/FileSendResponse"
             },
-            "post": {
-                "operationId": "filePost",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスに対して、テキストや画像、音声、動画（リソースも含む）を渡す。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "path",
-                        "description": "ファイルパス。ファイル名とパス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mimeType",
-                        "description": "MimeType。送信するファイルのMimeType",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "uri",
-                        "description": "URI。このURIに送信するデータを格納する。dataと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "data",
-                        "description": "ファイルのbinary。送信するファイルのbinary。uriと同時に省略することはできない。両方指定した場合はdataが優先され、uriは無視される。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "file"
-                    },
-                    {
-                        "name": "forceOverwrite",
-                        "description": "上書きフラグ。<br>true : 既にpath名と同じファイルがある場合は上書きされる。<br>false : 既にpath名と同じファイルがある場合は上書きされない。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "boolean"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/FileReceiveResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "operationId": "filePut",
-                "x-type": "one-shot",
-                "summary": "ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）の名前を変更、移動をする。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oldPath",
-                        "description": "移動前のファイル名を含んだファイルパス。ファイル名を含む。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "newPath",
-                        "description": "移動先のファイル名を含んだファイルパス。ファイル名を含まなくても良い。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "forceOverwrite",
-                        "description": "上書きフラグ。<br>true : 既にpath名と同じファイルがある場合は上書きされる。<br>false : 既にpath名と同じファイルがある場合は上書きされない。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "boolean"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/FileMoveResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "operationId": "fileDelete",
-                "x-type": "one-shot",
-                "summary": "ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）を削除する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "path",
-                        "description": "ファイルパス。ファイル名とパス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/FileRemoveResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "mimeType": "image/png",
+                "uri": "http://localhost:4035/gotapi/files?uri=content%3A%2F%2FTest.png"
+              }
             }
-
-        },
-        "/list": {
-            "get": {
-                "operationId": "fileListGet",
-                "x-type": "one-shot",
-                "summary": "保存されているファイルの一覧を取得する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "path",
-                        "description": "パス。検索対象のディレクトリ。省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。 例)/files/test/",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mimeType",
-                        "description": "MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)image/png",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "order",
-                        "description": "取得ファイルの並び順。取得する一覧のエントリの並び順。昇順はascで、降順はdescを後ろに指定する。並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。例)updateDate,asc",
-                        "in": "query",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "offset",
-                        "description": "取得件数の始まり。取得できるファイル数が多いときに、表示開始位置を指定できる。例)4",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "minimum": 0
-                    },
-                    {
-                        "name": "limit",
-                        "description": "取得件数の制限。取得できるファイル数を制限するときに、その件数を指定できる。例)30",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "minimum": 0
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/FileListResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "count": 2,
-                                "file": [
-                                    {
-                                        "path" : "/test/file1.txt",
-                                        "fileName" : "file1.txt",
-                                        "mimeType": "text/plain",
-                                        "updateDate":"2015-05-17T10:02:20+09:00",
-                                        "fileSize": 123,
-                                        "fileType": 0
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/directory": {
-            "get": {
-                "operationId": "fileDirectoryGet",
-                "x-type": "one-shot",
-                "summary": "保存されているファイルの一覧を取得する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "path",
-                        "description": "パス。検索対象のディレクトリ。省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。 例)/files/test/",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "mimeType",
-                        "description": "MimeType。情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する 例)image/png",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "order",
-                        "description": "取得ファイルの並び順。取得する一覧のエントリの並び順。昇順はascで、降順はdescを後ろに指定する。並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。例)updateDate,asc",
-                        "in": "query",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "offset",
-                        "description": "取得件数の始まり。取得できるファイル数が多いときに、表示開始位置を指定できる。例)4",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "minimum": 0
-                    },
-                    {
-                        "name": "limit",
-                        "description": "取得件数の制限。取得できるファイル数を制限するときに、その件数を指定できる。例)30",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "minimum": 0
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/FileListResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "count": 2,
-                                "file": [
-                                    {
-                                        "path" : "/test/file1.txt",
-                                        "fileName" : "file1.txt",
-                                        "mimeType": "text/plain",
-                                        "updateDate":"2015-05-17T10:02:20+09:00",
-                                        "fileSize": 123,
-                                        "fileType": 0
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "operationId": "fileDirectoryPost",
-                "x-type": "one-shot",
-                "summary": "ディレクトリの作成要求を渡す。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "path",
-                        "description": "パス。作成するディレクトリのパス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/MakeDirectoryResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "operationId": "fileDirectoryPut",
-                "x-type": "one-shot",
-                "summary": "ディレクトリの名前の変更、移動要求を渡す。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oldPath",
-                        "description": "移動前のディレクトリパス。ファイル名を含まない",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "newPath",
-                        "description": "移動先のディレクトリパス。ファイル名を含まない",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/MoveDirectoryResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "operationId": "fileDirectoryDelete",
-                "x-type": "one-shot",
-                "summary": "ディレクトリの削除要求を渡す。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "path",
-                        "description": "パス。削除するディレクトリのパス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "forceRemove",
-                        "description": "強制削除フラグ。trueが指定された場合には、空ではないディレクトリも削除する。falseが指定された場合には、空でないディレクトリは削除できない。省略された場合には、falseと同じ動作となる。",
-                        "in": "query",
-                        "required": false,
-                        "type": "boolean"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/RemoveDirectoryResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            }
+          }
         }
-    },
-    "definitions": {
-        "FileSendResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "type": "object",
-                    "required": [
-                        "mimeType",
-                        "uri"
-                    ],
-                    "properties": {
-                        "mimeType": {
-                            "type": "string",
-                            "title": "MimeType",
-                            "description": "URIデータのMimeType"
-                        },
-                        "uri": {
-                            "type": "string",
-                            "title": "URI",
-                            "description": "ContentProviderのURI<br>このURIからデータを読み込む"
-                        }
-                    }
-                }
-            ]
-        },
-        "FileReceiveResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "FileMoveResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "FileRemoveResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "FileListResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "type": "object",
-                    "required": [
-                        "count",
-                        "file"
-                    ],
-                    "properties": {
-                        "count": {
-                            "type": "integer",
-                            "title": "検索結果数",
-                            "description": "検索結果のファイル数"
-                        },
-                        "file": {
-                            "type": "array",
-                            "title": "検索にヒットしたファイルの情報リスト",
-                            "description": "検索にヒットしたファイルの情報を持つオブジェクト(object)の配列。",
-                            "items": {
-                                "type": "object",
-                                "required": [
-                                    "path",
-                                    "mimeType",
-                                    "fileType",
-                                    "fileName",
-                                    "updateDate",
-                                    "fileSize"
-                                ],
-                                "properties": {
-                                    "path": {
-                                        "type": "string",
-                                        "title": "ファイルパス",
-                                        "description": "ファイル名を含めたファイルの存在するパス。"
-                                    },
-                                    "mimeType": {
-                                        "type": "string",
-                                        "title": "MimeType",
-                                        "description": "fileのエンコードするタイプ。"
-                                    },
-                                    "fileType": {
-                                        "type": "integer",
-                                        "title": "ファイルの種別",
-                                        "description": "0: ファイル<br>1: ディレクトリ",
-                                        "enum": [
-                                            0, 1
-                                        ]
-                                    },
-                                    "fileName": {
-                                        "type": "string",
-                                        "title": "ファイルの名前",
-                                        "description": ""
-                                    },
-                                    "updateDate": {
-										"type": "string",
-										"format": "date-time",
-                                        "title": "更新時間",
-                                        "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
-                                    },
-                                    "fileSize": {
-                                        "type": "integer",
-                                        "title": "ファイルサイズ",
-                                        "description": "単位はbyte。"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        "MakeDirectoryResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "MoveDirectoryResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "RemoveDirectoryResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "CommonResponse": {
-            "type": "object",
-            "required": [
-                "result",
-                "product",
-                "version"
-            ],
-            "properties": {
-                "result": {
-                    "type": "integer",
-                    "title": "処理結果",
-                    "description": "0: 正常応答<br>0以外: 異常応答"
-                },
-                "product": {
-                    "type": "string",
-                    "title": "システム名",
-                    "description": "DeviceConnectシステムの名前。"
-                },
-                "version": {
-                    "type": "string",
-                    "title": "システムバージョン",
-                    "description": "DeviceConnectシステムのバージョン名。"
-                },
-                "hmac": {
-                    "type": "string",
-                    "title": "署名",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
-                }
+      },
+      "post": {
+        "operationId": "filePost",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスに対して、テキストや画像、音声、動画（リソースも含む）を渡す。",
+        "description": "マルチパート形式でファイルを送信する。 ファイルの容量制限に関しては、スマートデバイスごとにより異なる。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "ファイルパス。ファイル名とパス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mimeType",
+            "description": "MimeType。送信するファイルのMimeType",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "description": "URI。このURIに送信するデータを格納する。<br> dataと同時に省略することはできない。<br> 両方指定した場合はdataが優先され、uriは無視される。",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "description": "ファイルのbinary。送信するファイルのbinary。<br> uriと同時に省略することはできない。<br> 両方指定した場合はdataが優先され、uriは無視される。",
+            "in": "formData",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "forceOverwrite",
+            "description": "上書きフラグ。<br> true : 既にpath名と同じファイルがある場合は上書きされる。<br> false : 既にpath名と同じファイルがある場合は上書きされない。",
+            "in": "formData",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ファイルの送信結果を返す。 失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/FileReceiveResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
             }
+          }
         }
+      },
+      "put": {
+        "operationId": "filePut",
+        "x-type": "one-shot",
+        "summary": "ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）の名前を 変更、ファイルの移動をする。",
+        "description": "ディレクトリの移動を行いたい場合は、 同プロファイルのPUT /file/directoryを使用すること。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "oldPath",
+            "description": "移動前のファイル名を含んだファイルパス。<br> ファイル名を含む。",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPath",
+            "description": "移動先のファイル名を含んだファイルパス。<br> ファイル名を含まなくても良い。",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "forceOverwrite",
+            "description": "上書きフラグ。<br> true : 既にpath名と同じファイルがある場合は上書きされる。<br> false : 既にpath名と同じファイルがある場合は上書きされない。",
+            "in": "formData",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ファイルの移動結果を返す。 移動に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/FileMoveResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "fileDelete",
+        "x-type": "one-shot",
+        "summary": "ファイルパスで指定したテキストや画像、音声、動画（リソースも含む）を削除する。",
+        "description": "ディレクトリの削除を行いたい場合は、 同プロファイルのDELETE /file/directoryを使用すること。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "ファイルパス。ファイル名とパス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ファイルの削除結果を返す。 削除に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/FileRemoveResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/list": {
+      "get": {
+        "operationId": "fileListGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスに保存されているファイルの一覧を取得する。",
+        "description": "GET /file/directoryと同じ動作を行う。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "パス。検索対象のディレクトリ。<br> 省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。<br> 例)/files/test/",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "mimeType",
+            "description": "MimeType。<br> 情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する。<br> 例)image/png",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "取得ファイルの並び順。<br> 取得する一覧のエントリの並び順。<br> 昇順はascで、降順はdescを後ろに指定する。<br> 並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。<br> 例)updateDate,asc",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "description": "取得件数の始まり。<br> 取得できるファイル数が多いときに、表示開始位置を指定できる。<br> 例)4",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "name": "limit",
+            "description": "取得件数の制限。<br> 取得できるファイル数を制限するときに、その件数を指定できる。例)30",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "minimum": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ファイル一覧取得の結果を返す。 取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/FileListResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "count": 2,
+                "file": [
+                  {
+                    "path": "/test/file1.txt",
+                    "fileName": "file1.txt",
+                    "mimeType": "text/plain",
+                    "updateDate": "2015-05-17T10:02:20+09:00",
+                    "fileSize": 123,
+                    "fileType": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/directory": {
+      "get": {
+        "operationId": "fileDirectoryGet",
+        "x-type": "one-shot",
+        "summary": "保存されているファイルの一覧を取得する。",
+        "description": "/file/listと同じ動作をする。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "パス。検索対象のディレクトリ。<br> 省略されたらそのデバイスプラグインのアプリがもつディレクトリのルートディレクトリを指定する。<br> 例)/files/test/",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "mimeType",
+            "description": "MimeType。<br> 情報を取得するファイルの種別ごとに区切りたい場合は、mimeTypeを指定する。<br> 例)image/png",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "取得ファイルの並び順。<br> 取得する一覧のエントリの並び順。<br> 昇順はascで、降順はdescを後ろに指定する。<br> 並び順として選択する行をカンマ区切りでレスポンスの物理名を選択する。<br> 例)updateDate,asc",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "description": "取得件数の始まり。<br> 取得できるファイル数が多いときに、表示開始位置を指定できる。<br> 例)4",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "name": "limit",
+            "description": "取得件数の制限。<br> 取得できるファイル数を制限するときに、その件数を指定できる。<br> 例)30",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "minimum": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ファイル一覧取得の結果を返す。 取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/FileListResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "count": 2,
+                "file": [
+                  {
+                    "path": "/test/file1.txt",
+                    "fileName": "file1.txt",
+                    "mimeType": "text/plain",
+                    "updateDate": "2015-05-17T10:02:20+09:00",
+                    "fileSize": 123,
+                    "fileType": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "fileDirectoryPost",
+        "x-type": "one-shot",
+        "summary": "ディレクトリの作成要求を渡す。",
+        "description": "ディレクトリの作成は、スマートデバイス上で行う。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "パス。作成するディレクトリのパス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ディレクトリ作成結果を返す。 作成に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/MakeDirectoryResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "fileDirectoryPut",
+        "x-type": "one-shot",
+        "summary": "ディレクトリの名前の変更、移動要求を渡す。",
+        "description": "移動するディレクトリ内にファイルがある場合に移動処理を行うかどうかは、 スマートデバイスおよびデバイスプラグインの仕様に依存する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "oldPath",
+            "description": "移動前のディレクトリパス。ファイル名を含まない",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPath",
+            "description": "移動先のディレクトリパス。ファイル名を含まない",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ディレクトリの名前の変更、ディレクトリの移動要求の結果を返す。 移動に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/MoveDirectoryResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "fileDirectoryDelete",
+        "x-type": "one-shot",
+        "summary": "ディレクトリの削除要求を渡す。",
+        "description": "削除するディレクトリ内にファイルがある場合に削除処理を行うかどうかは、 スマートデバイスおよびデバイスプラグインの仕様に依存する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "パス。削除するディレクトリのパス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "forceRemove",
+            "description": "強制削除フラグ。<br> trueが指定された場合には、空ではないディレクトリも削除する。<br> falseが指定された場合には、空でないディレクトリは削除できない。<br> 省略された場合には、falseと同じ動作となる。",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ディレクトリ削除要求の結果を返す。 削除に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/RemoveDirectoryResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
     }
-
+  },
+  "definitions": {
+    "FileSendResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "mimeType",
+            "uri"
+          ],
+          "properties": {
+            "mimeType": {
+              "type": "string",
+              "title": "MimeType",
+              "description": "URIデータのMimeType"
+            },
+            "uri": {
+              "type": "string",
+              "title": "URI",
+              "description": "ContentProviderのURI<br> このURIからデータを読み込む"
+            }
+          }
+        }
+      ]
+    },
+    "FileReceiveResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "FileMoveResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "FileRemoveResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "FileListResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "count",
+            "file"
+          ],
+          "properties": {
+            "count": {
+              "type": "integer",
+              "title": "検索結果数",
+              "description": "検索結果のファイル数"
+            },
+            "file": {
+              "type": "array",
+              "title": "検索にヒットしたファイルの情報リスト",
+              "description": "検索にヒットしたファイルの情報を持つオブジェクト(object)の配列。",
+              "items": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "mimeType",
+                  "fileType",
+                  "fileName",
+                  "updateDate",
+                  "fileSize"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "title": "ファイルパス",
+                    "description": "ファイル名を含めたファイルの存在するパス。"
+                  },
+                  "mimeType": {
+                    "type": "string",
+                    "title": "MimeType",
+                    "description": "fileのエンコードするタイプ。"
+                  },
+                  "fileType": {
+                    "type": "integer",
+                    "title": "ファイルの種別",
+                    "description": "0: ファイル<br> 1: ディレクトリ",
+                    "enum": [
+                      0,
+                      1
+                    ]
+                  },
+                  "fileName": {
+                    "type": "string",
+                    "title": "ファイルの名前",
+                    "description": "拡張子を含む。ディレクトリ名は含まない。"
+                  },
+                  "updateDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "title": "更新時間",
+                    "description": "RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。"
+                  },
+                  "fileSize": {
+                    "type": "integer",
+                    "title": "ファイルサイズ",
+                    "description": "単位はbyte。"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "MakeDirectoryResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "MoveDirectoryResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "RemoveDirectoryResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "CommonResponse": {
+      "type": "object",
+      "required": [
+        "result",
+        "product",
+        "version"
+      ],
+      "properties": {
+        "result": {
+          "type": "integer",
+          "title": "処理結果",
+          "description": "0: 正常応答<br> 0以外: 異常応答"
+        },
+        "product": {
+          "type": "string",
+          "title": "システム名",
+          "description": "DeviceConnectシステムの名前。"
+        },
+        "version": {
+          "type": "string",
+          "title": "システムバージョン",
+          "description": "DeviceConnectシステムのバージョン名。"
+        },
+        "hmac": {
+          "type": "string",
+          "title": "署名",
+          "description": "レスポンスに対する署名。 アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+        }
+      }
+    }
+  }
 }

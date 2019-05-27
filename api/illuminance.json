@@ -1,113 +1,115 @@
 {
-    "swagger": "2.0",
-    "basePath": "/gotapi/illuminance",
-    "info": {
-        "title": "Illuminance Profile",
-        "version": "2.0.0",
-        "description": "スマートデバイスが計測した照度を取得する機能を提供するAPI。"
-    },
-    "consumes": [],
-    "paths": {
-        "/": {
-            "get": {
-                "operationId": "illuminanceGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの照度を取得する機能を提供する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/IlluminanceResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "illuminance": 240,
-                                "timeStamp": 1431856940275,
-                                "timeStampString": "2015-05-17T10:02:20+09:00"
-                            }
-                        }
-                    }
-                }
+  "swagger": "2.0",
+  "basePath": "/gotapi/illuminance",
+  "info": {
+    "title": "Illuminance Profile",
+    "version": "2.0.0",
+    "description": "スマートデバイスが計測した照度を取得する機能を提供するAPI。"
+  },
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "illuminanceGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの照度を取得する機能を提供する。",
+        "description": "照度の値はデバイスプラグイン側で0.0〜1.0の範囲に正規化して返すこと。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "照度の値を返す。照度の値が取得できなかった場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/IlluminanceResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "illuminance": 240,
+                "timeStamp": 1431856940275,
+                "timeStampString": "2015-05-17T10:02:20+09:00"
+              }
             }
+          }
         }
-    },
-
-    "definitions": {
-         "IlluminanceResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "type": "object",
-                    "required": [
-                        "illuminance"
-                    ],
-                    "properties": {
-                        "illuminance": {
-                            "type": "number",
-                            "title": "照度",
-                            "description": "照度センサーが検知した照度。単位はルクス(lx)。"
-                        },
-                        "timeStamp": {
-                            "type": "integer",
-                            "format": "int64",
-                            "title": "照度のタイムスタンプ",
-                            "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
-                        },
-                        "timeStampString": {
-							"type": "string",
-							"format": "date-time",
-                            "title": "照度のタイムスタンプ文字列",
-                            "description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
-                        }
-                    }
-                }
-            ]
-        },
-        "CommonResponse": {
-            "type": "object",
-            "required": [
-                "result",
-                "product",
-                "version"
-            ],
-            "properties": {
-                "result": {
-                    "type": "integer",
-                    "title": "処理結果",
-                    "description": "0:正常応答<br>0以外:異常応答"
-                },
-                "product": {
-                    "type": "string",
-                    "title": "システム名",
-                    "description": "DeviceConnectシステムの名前。"
-                },
-                "version": {
-                    "type": "string",
-                    "title": "システムバージョン",
-                    "description": "DeviceConnectシステムのバージョン名。"
-                },
-                "hmac": {
-                    "type": "string",
-                    "title": "署名",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
-                }
-            }
-        }
+      }
     }
+  },
+  "definitions": {
+    "IlluminanceResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "illuminance"
+          ],
+          "properties": {
+            "illuminance": {
+              "type": "number",
+              "title": "照度",
+              "description": "照度センサーが検知した照度。単位はルクス(lx)。"
+            },
+            "timeStamp": {
+              "type": "integer",
+              "format": "int64",
+              "title": "照度のタイムスタンプ",
+              "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+            },
+            "timeStampString": {
+              "type": "string",
+              "format": "date-time",
+              "title": "照度のタイムスタンプ文字列",
+              "description": "タイムスタンプと同じタイムスタンプを RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。"
+            }
+          }
+        }
+      ]
+    },
+    "CommonResponse": {
+      "type": "object",
+      "required": [
+        "result",
+        "product",
+        "version"
+      ],
+      "properties": {
+        "result": {
+          "type": "integer",
+          "title": "処理結果",
+          "description": "0:正常応答<br> 0以外:異常応答"
+        },
+        "product": {
+          "type": "string",
+          "title": "システム名",
+          "description": "DeviceConnectシステムの名前。"
+        },
+        "version": {
+          "type": "string",
+          "title": "システムバージョン",
+          "description": "DeviceConnectシステムのバージョン名。"
+        },
+        "hmac": {
+          "type": "string",
+          "title": "署名",
+          "description": "レスポンスに対する署名。 アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+        }
+      }
+    }
+  }
 }
