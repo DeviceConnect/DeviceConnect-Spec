@@ -1,176 +1,193 @@
 {
-    "swagger": "2.0",
-    "basePath": "/gotapi/temperature",
-    "info": {
-        "title": "Temperature Profile",
-        "version": "2.0.0",
-        "description": "スマートデバイスの計測または管理している温度を提供するプロファイル。"
-    },
-    "consumes": [
-        "application/x-www-form-urlencoded",
-        "multipart/form-data"
-    ],
-    "paths": {
-        "/": {
-            "get": {
-                "operationId": "temperatureGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの温度設定値を取得する。",
-                "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "type",
-                        "description": "1:摂氏、2:華氏",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "enum": [1, 2]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/GetTemperatureResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "product": "Example System",
-                                "version": "1.0",
-                                "result": 0,
-                                "temperature":25,
-                                "type":1,
-                                "timeStamp": 1431856940275,
-                                "timeStampString": "2015-05-17T10:02:20+09:00"
-                            }
-                        }
-                    }
-                }
+  "swagger": "2.0",
+  "basePath": "/gotapi/temperature",
+  "info": {
+    "title": "Temperature Profile",
+    "version": "2.0.0",
+    "description": "スマートデバイスの計測または管理している温度を提供するプロファイル。"
+  },
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "temperatureGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの温度設定値を取得する。",
+        "description": "typeはそれぞれ<br> 1:摂氏<br> 2:華氏<br> を表している。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "1:摂氏<br> 2:華氏",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "温度設定値を返す。 設定値の取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/GetTemperatureResponse"
             },
-            "put": {
-                "operationId": "temperaturePut",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの温度設定値を設定する。",
-                "description": "typeはそれぞれ、1:摂氏、2:華氏を表している。<br>temperatureに設定できる値は、摂氏の場合は0以上50以下, 華氏の場合は32以上122以下。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "temperature",
-                        "description": "温度の値。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "type",
-                        "description": "1:摂氏、2:華氏",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "enum": [1, 2]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/PutTemperatureResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "product": "Example System",
-                                "version": "1.0",
-                                "result": 0
-                            }
-                        }
-                    }
-                }
+            "examples": {
+              "application/json": {
+                "product": "Example System",
+                "version": "1.0",
+                "result": 0,
+                "temperature": 25,
+                "type": 1,
+                "timeStamp": 1431856940275,
+                "timeStampString": "2015-05-17T10:02:20+09:00"
+              }
             }
+          }
         }
-    },
-    "definitions": {
-        "GetTemperatureResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
-            },{
-                "type": "object",
-                "required": ["tempareture", "type"],
-                "properties": {
-                    "tempareture": {
-                        "type": "number",
-                        "title": "温度",
-                        "description": "温度の値。"
-                    },
-                    "type": {
-                        "type": "integer",
-                        "title": "単位",
-                        "enum": [1, 2],
-                        "description": "1:摂氏、2:華氏"
-                    },
-					"timeStamp": {
-						"type": "integer",
-						"format": "int64",
-						"title": "温度のタイムスタンプ",
-						"description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
-					},
-					"timeStampString": {
-						"type": "string",
-						"format": "date-time",
-						"title": "温度のタイムスタンプ文字列",
-						"description": "タイムスタンプと同じタイムスタンプをRFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式で返す。"
-					}
-                }
-            }]
-        },
-        "PutTemperatureResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
-            }]
-        },
-        "CommonResponse": {
-            "type": "object",
-            "required": [
-                "result",
-                "product",
-                "version"
-            ],
-            "properties": {
-                "result": {
-                    "type": "integer",
-                    "title": "処理結果",
-                    "description": "0:正常応答<br>0以外:異常応答"
-                },
-                "product": {
-                    "type": "string",
-                    "title": "システム名",
-                    "description": "DeviceConnectシステムの名前。"
-                },
-                "version": {
-                    "type": "string",
-                    "title": "システムバージョン",
-                    "description": "DeviceConnectシステムのバージョン名。"
-                },
-                "hmac": {
-                    "type": "string",
-                    "title": "署名",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
-                }
+      },
+      "put": {
+        "operationId": "temperaturePut",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの温度設定値を設定する。",
+        "description": "typeはそれぞれ<br> 1:摂氏<br> 2:華氏<br> を表している。<br> temperatureに設定できる値は、摂氏の場合は0以上50以下, 華氏の場合は32以上122以下。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "temperature",
+            "description": "温度の値。",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "description": "1:摂氏<br> 2:華氏",
+            "in": "formData",
+            "required": false,
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "温度設定値の設定結果を返す。 設定に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/PutTemperatureResponse"
+            },
+            "examples": {
+              "application/json": {
+                "product": "Example System",
+                "version": "1.0",
+                "result": 0
+              }
             }
+          }
         }
+      }
     }
+  },
+  "definitions": {
+    "GetTemperatureResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "tempareture",
+            "type"
+          ],
+          "properties": {
+            "tempareture": {
+              "type": "number",
+              "title": "温度",
+              "description": "温度の値。"
+            },
+            "type": {
+              "type": "integer",
+              "title": "単位",
+              "enum": [
+                1,
+                2
+              ],
+              "description": "1:摂氏<br> 2:華氏"
+            },
+            "timeStamp": {
+              "type": "integer",
+              "format": "int64",
+              "title": "温度のタイムスタンプ",
+              "description": "測定が行われた測定時間。ミリ秒のUnixタイムスタンプで返す。"
+            },
+            "timeStampString": {
+              "type": "string",
+              "format": "date-time",
+              "title": "温度のタイムスタンプ文字列",
+              "description": "タイムスタンプと同じタイムスタンプを RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。"
+            }
+          }
+        }
+      ]
+    },
+    "PutTemperatureResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "CommonResponse": {
+      "type": "object",
+      "required": [
+        "result",
+        "product",
+        "version"
+      ],
+      "properties": {
+        "result": {
+          "type": "integer",
+          "title": "処理結果",
+          "description": "0:正常応答<br> 0以外:異常応答"
+        },
+        "product": {
+          "type": "string",
+          "title": "システム名",
+          "description": "DeviceConnectシステムの名前。"
+        },
+        "version": {
+          "type": "string",
+          "title": "システムバージョン",
+          "description": "DeviceConnectシステムのバージョン名。"
+        },
+        "hmac": {
+          "type": "string",
+          "title": "署名",
+          "description": "レスポンスに対する署名。<br> アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+        }
+      }
+    }
+  }
 }

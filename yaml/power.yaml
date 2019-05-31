@@ -1,0 +1,136 @@
+swagger: '2.0'
+basePath: /gotapi/power
+info:
+  title: Power Profile
+  version: 2.0.0
+  description: スマートデバイスの電源状態を操作する。
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /:
+    get:
+      operationId: powerGet
+      x-type: one-shot
+      summary: 機器の電源の状態を取得する。
+      description: 状態が不明の場合はUNKNOWNを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            電源の状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/PowerStatusGetResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              powerstatus: 'OFF'
+    put:
+      operationId: powerPut
+      x-type: one-shot
+      summary: 機器の電源をONにする。
+      description: 既にONの場合はエラーを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            電源をONにした結果を返す。
+            ONにしようとして失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/PowerOnResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    delete:
+      operationId: powerDelete
+      x-type: one-shot
+      summary: 機器の電源をOFFにする。
+      description: 既にOFFの場合はエラーを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            電源をOFFにした結果を返す。
+            OFFにしようとして失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/PowerOffResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+definitions:
+  PowerStatusGetResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - powerstatus
+        properties:
+          powerstatus:
+            type: string
+            title: 電源状態
+            description: >-
+              ON:電源オン<br>
+              OFF:電源オフ<br>
+              UNKNOWN:不明
+            enum:
+              - 'ON'
+              - 'OFF'
+              - UNKNOWN
+  PowerOnResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  PowerOffResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

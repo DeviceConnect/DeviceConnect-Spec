@@ -1,0 +1,431 @@
+swagger: '2.0'
+basePath: /gotapi/tv
+info:
+  title: TV Profile
+  version: 2.0.0
+  description: >-
+    スマートデバイスが持つTV機器を操作する機能を提供するAPI。<br>
+    ※TV:television
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /:
+    get:
+      operationId: tvGet
+      x-type: one-shot
+      summary: スマートデバイスの電源状態を取得する。
+      description: 状態が不明の場合はUNKNOWNを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            電源の状態を返す。
+            状態の取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GetPowerStatusResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    put:
+      operationId: tvPut
+      x-type: one-shot
+      summary: スマートデバイスの電源をオンにする。
+      description: 既にONの場合はエラーを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            電源をONにした結果を返す。
+            ONにしようとして失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/PowerOnResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    delete:
+      operationId: tvDelete
+      x-type: one-shot
+      summary: スマートデバイスの電源をオフにする。
+      description: 既にOFFの場合はエラーを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            電源をOFFにした結果を返す。
+            OFFにしようとして失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/PowerOffResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /channel:
+    put:
+      operationId: tvChannelPut
+      x-type: one-shot
+      summary: スマートデバイスのチャンネルを変更する。
+      description: >-
+        チャンネル番号の拡張についてはデバイスプラグイン側に依存する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: tuning
+          description: 選局。1〜12：チャンネル番号
+          in: formData
+          required: false
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+        - name: control
+          description: >-
+            操作。<br>
+            next : 次局選局<br>
+            previous : 前局選局
+          in: formData
+          required: false
+          type: string
+          enum:
+            - next
+            - previous
+      responses:
+        '200':
+          description: >-
+            チャンネルの変更結果を返す。
+            変更に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/SetChannelResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /volume:
+    put:
+      operationId: tvVolumePut
+      x-type: one-shot
+      summary: スマートデバイスの音量を変更する。
+      description: 変更できる音量の範囲については、デバイスの仕様に合わせる。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: control
+          description: >-
+            操作。<br>
+            up : 音量を上げる<br>
+            down : 音量を下げる
+          in: formData
+          required: true
+          type: string
+          enum:
+            - up
+            - down
+      responses:
+        '200':
+          description: >-
+            音量変更結果を返す。変更に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/SetVolumeResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /broadcastWave:
+    put:
+      operationId: tvBroadcastWavePut
+      x-type: one-shot
+      summary: スマートデバイスの選択放送波を変更する。
+      description: 対応する放送波に関してはデバイス依存とする。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: select
+          description: >-
+            放送波選択。<br>
+            DTV : 地上波デジタル放送<br>
+            BS : BS放送波<br>
+            CS : CS放送波
+          in: formData
+          required: true
+          type: string
+          enum:
+            - DTV
+            - BS
+            - CS
+      responses:
+        '200':
+          description: >-
+            放送波の変更結果を返す。変更に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/SetBroadcastResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /mute:
+    put:
+      operationId: tvMutePut
+      x-type: one-shot
+      summary: スマートデバイスのミュートをONにする。
+      description: すでにミュートがONになっている場合はエラーを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            ミュートをONにした結果を返す。ONにするのに失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/MuteOnResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    delete:
+      operationId: tvMuteDelete
+      x-type: one-shot
+      summary: スマートデバイスのミュートをOFFにする。
+      description: すでにミュートがOFFになっている場合はエラーを返す。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            ミュートをOFFにした結果を返す。OFFにするのに失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/MuteOffResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+  /enlProperty:
+    get:
+      operationId: tvEnlPropertyGet
+      x-type: one-shot
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite 機器オブジェクトプロパティの
+        設定内容を取得する（必須プロパティのみ）。
+      description: '※enlproperty:ECHONET Lite Propertyのこと。'
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: query
+          required: true
+          type: string
+        - name: epc
+          description: 取得プロパティのEPC。取得するプロパティのEPCをカンマ区切りで列挙。
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: >-
+            ECHONET Lite機器オブジェクトのプロパティ設定値を返す。
+            設定値取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GetEnlPropertyResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              properties:
+                - epc: OperationStatus
+                  value: '49'
+                - epc: InstallationLocation
+                  value: '0'
+    put:
+      operationId: tvEnlPropertyPut
+      x-type: one-shot
+      summary: >-
+        スマートデバイスがサポートしているECHONET Lite機器オブジェクトプロパティに
+        設定を行う（必須プロパティのみ）。
+      description: '※enlproperty:ECHONET Lite Propertyのこと。'
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: epc
+          description: EPC。<br>ECHONET Property Code
+          in: formData
+          required: true
+          type: string
+        - name: value
+          description: EPCの設定値。
+          in: formData
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            ECHONET Lite機器オブジェクトのプロパティ設定結果を返す。
+            設定に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/SetEnlPropertyResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              epc: OperationStatus
+              value: '49'
+definitions:
+  GetPowerStatusResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - powerstatus
+        properties:
+          powerstatus:
+            type: string
+            title: 電源状態
+            description: >-
+              ON:電源オン<br>
+              OFF:電源オフ<br>
+              UNKNOWN:不明
+            enum:
+              - 'ON'
+              - 'OFF'
+              - UNKNOWN
+  PowerOnResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  PowerOffResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  SetChannelResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  SetVolumeResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  SetBroadcastResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  MuteOnResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  MuteOffResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  GetEnlPropertyResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - properties
+        properties:
+          properties:
+            type: array
+            title: EPCのリスト
+            description: 指定されたEPCの配列。
+            items:
+              type: object
+              required:
+                - epc
+                - value
+              properties:
+                epc:
+                  type: string
+                  title: EPC
+                  description: ECHONET Property Code
+                value:
+                  type: string
+                  title: 設定値
+                  description: ECHONET Property Codeの設定値。
+  SetEnlPropertyResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

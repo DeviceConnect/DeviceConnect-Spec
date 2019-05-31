@@ -1,0 +1,926 @@
+swagger: '2.0'
+basePath: /gotapi/videoChat
+info:
+  title: Video Chat Profile
+  version: 2.0.0
+  description: スマートデバイスが持つビデオチャットを操作する機能を提供するプロファイル。
+consumes:
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+paths:
+  /profile:
+    get:
+      operationId: videoChatProfileGet
+      x-type: one-shot
+      summary: プロフィール情報を取得する。
+      description: WebRTCサービスによって情報の内容が違ってくる。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            プロフィール情報取得結果を返す。
+            取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GetProfileResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+              name: WebRTC Service
+              addressId: xxxxx
+    put:
+      operationId: videoChatProfilePut
+      x-type: one-shot
+      summary: プロフィールを更新する。
+      description: WebRTCサービスによって情報の内容が違ってくる。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: formData
+          required: true
+          type: string
+        - name: name
+          description: デバイスに付ける新規の名前
+          in: formData
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列
+          in: formData
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            プロフィールの更新結果を返す。
+            更新に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/PutProfileResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+  /address:
+    get:
+      operationId: videoChatAddressGet
+      x-type: one-shot
+      summary: 接続先のアドレス一覧を取得する。
+      description: WebRTCサービスによって情報の内容が違ってくる。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+        - name: addressId
+          description: >-
+            アドレスID。指定しない場合は、接続できるすべてのアドレスを返却する。<br>
+            指定した場合は、接続先アドレスに対応する情報のみ取得できる。
+          in: query
+          required: false
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            接続先のアドレス一覧を返す。
+            一覧の取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GetAddressResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+              addresses:
+                - name: Sample 1
+                  addressId: xxxxxx
+                  status: idle
+                - name: Sample 2
+                  addressId: xxxxx
+                  status: calling
+                - name: Sample 3
+                  addressId: xxxxx
+                  status: talking
+  /call:
+    post:
+      operationId: videoChatCallPost
+      x-type: one-shot
+      summary: VideoChatの接続を行う。
+      description: WebRTCサービスによって挙動が違ってくる。
+      parameters:
+        - name: serviceId
+          description: サービスID
+          in: formData
+          required: true
+          type: string
+        - name: addressId
+          description: 接続先のアドレス。
+          in: formData
+          required: true
+          type: string
+        - name: video
+          description: >-
+            映像リソースURI。<br>
+            <ul>
+            <li>true: デバイス標準のカメラから取得できる映像を利用する。</li>
+            <li>false: 映像リソースを利用しない。</li>
+            <li>URI: 指定されたURIの映像リソースを利用する。</li>
+            </ul><br>
+            省略された場合は、trueと同じ扱い。
+          in: formData
+          required: false
+          type: string
+        - name: audio
+          description: >-
+            音声リソースURI。<br>
+            <ul>
+            <li>true: デバイス標準のマイクから取得できる映像を利用する。</li>
+            <li>false: 音声リソースを利用しない。</li>
+            <li>URL: 指定されたURIの音声リソースを利用する。</li>
+            </ul><br>
+            省略された場合は、trueと同じ扱い。
+          in: formData
+          required: false
+          type: string
+        - name: config
+          description: >-
+            コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。<br>
+            必要に応じてAPIキーなどを格納する任意の文字列。
+          in: query
+          required: false
+          type: string
+        - name: outputs
+          description: >-
+            出力設定。<br>
+            <ul>
+            <li>host: HOST表示</li>
+            <li>app: アプリケーション表示</li>
+            </ul><br>
+            ホストデバイスの画面上に表示する場合はhostを指定する。<br>
+            省略された場合はhost指定として動作する。<br>
+            アプリケーション等でURIを参照して表示する場合は、appを指定する。
+          in: formData
+          required: false
+          type: string
+          enum:
+            - host
+            - app
+        - name: audioSampleRate
+          description: >-
+            サンプリング周波数。<br>
+            <ul>
+            <li>48000</li>
+            <li>44100</li>
+            <li>32000</li>
+            <li>22050</li>
+            </ul><br>
+            サンプリング周波数を設定する。省略された場合は48000。
+          in: formData
+          required: false
+          type: integer
+          enum:
+            - 48000
+            - 44100
+            - 32000
+            - 22050
+        - name: audioBitDepth
+          description: >-
+            量子化ビット数。<br>
+            <ul>
+            <li>PCM_8BIT</li>
+            <li>PCM_16BIT</li>
+            <li>PCM_FLOAT</li>
+            </ul><br>
+            量子化ビット数を設定する。省略された場合はPCM_FLOAT。
+          in: formData
+          required: false
+          type: string
+          enum:
+            - PCM_8BIT
+            - PCM_16BIT
+            - PCM_FLOAT
+        - name: audioChannel
+          description: >-
+            チャンネル数。<br>
+            <ul>
+            <li>Monaural</li>
+            <li>Stereo</li>
+            </ul><br>
+            チャンネル数を設定する。省略され場合は、Monaural。
+          in: formData
+          required: false
+          type: string
+          enum:
+            - Monaural
+            - Stereo
+      responses:
+        '200':
+          description: >-
+            VideoChatの接続結果を返す。
+            接続に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/PostCallResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+    delete:
+      operationId: videoChatCallDelete
+      x-type: one-shot
+      summary: 接続中の VideoChat の切断を行う。
+      description: WebRTCサービスによって挙動が違ってくる。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+        - name: addressId
+          description: 接続先のアドレス。
+          in: query
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            VideoChatの切断結果を返す。
+            切断に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/DeleteCallResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+  /onIncoming:
+    get:
+      operationId: videoChatOnIncomingGet
+      x-type: one-shot
+      summary: 他デバイスからの着信イベントを取得する。
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            現在の着信情報を返す。
+            現在の着信情報が取得できない場合は、キャッシュしている最新の着信情報を返す。
+            着信情報の取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/OnIncommingResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+              incoming:
+                name: xxxx
+                addressId: xxxx
+    put:
+      operationId: videoChatOnIncomingPut
+      x-type: event
+      summary: 他デバイスからの着信イベントの通知を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: formData
+          required: true
+          type: string
+        - name: config
+          description: イベント受信間隔。単位：mSec
+          in: formData
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            着信イベントの通知の開始結果を返す。
+            開始に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/EventRegistrationResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+      x-event:
+        schema:
+          $ref: '#/definitions/OnIncommingEvent'
+        examples:
+          application/json:
+            servieId: xxxxx
+            profile: videochat
+            attribute: incoming
+            incoming:
+              name: xxxx
+              addressId: xxxx
+    delete:
+      operationId: videoChatOnIncomingDelete
+      x-type: event
+      summary: 他デバイスからの着信イベントの通知を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            着信イベントの通知の停止結果を返す。
+            停止に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/EventUnregistrationResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+  /onCall:
+    get:
+      operationId: videoChatOnCallGet
+      x-type: one-shot
+      summary: 通話開始イベントを取得する。
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            現在の通話開始情報を返す。
+            現在の通話開始情報が取得できない場合は、キャッシュしている最新の通話開始情報を返す。
+            通話開始情報の取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/OnCallResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+              oncall:
+                - name: xxxx
+                  addressId: xxxx
+    put:
+      operationId: videoChatOnCallPut
+      x-type: event
+      summary: 通話開始イベントの受信を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: formData
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: formData
+          required: false
+          type: string
+        - name: interval
+          description: イベント受信間隔。単位：mSec
+          in: formData
+          required: false
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: >-
+            通話開始イベントの通知の開始結果を返す。
+            開始に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/EventRegistrationResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+      x-event:
+        schema:
+          $ref: '#/definitions/OnCallEvent'
+        examples:
+          application/json:
+            servieId: xxxxx
+            profile: videochat
+            attribute: oncall
+            oncall:
+              - name: xxxx
+                addressId: xxxx
+    delete:
+      operationId: videoChatOnCallDelete
+      x-type: event
+      summary: 通話開始イベントの受信を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            通話開始イベントの通知の停止結果を返す。
+            停止に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/EventUnregistrationResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+  /onHangup:
+    get:
+      operationId: videoChatOnHangupGet
+      x-type: one-shot
+      summary: VideoChatの切断イベントを取得する。
+      description: プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。
+      parameters:
+        - name: serviceId
+          description: サービスID
+          in: query
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            現在の通話切断情報を返す。
+            現在の通話切断情報が取得できない場合は、キャッシュしている最新の通話切断情報を返す。
+            通話開切断情報の取得に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/OnHangUpResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+              hangup:
+                addressId: xxxx
+    put:
+      operationId: videoChatOnHangupPut
+      x-type: event
+      summary: VideoChatの切断イベントの受信を開始する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: formData
+          required: true
+          type: string
+        - name: config
+          description: コンフィグ。必要に応じてAPIキーなどを格納する任意の文字列。
+          in: formData
+          required: false
+          type: string
+        - name: interval
+          description: イベント受信間隔。単位：mSec
+          in: formData
+          required: false
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: >-
+            通話切断イベントの通知の開始結果を返す。
+            開始に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/EventRegistrationResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+      x-event:
+        schema:
+          $ref: '#/definitions/OnHangUpEvent'
+        examples:
+          application/json:
+            servieId: xxxxx
+            profile: videochat
+            attribute: hangup
+            hangup:
+              addressId: xxxx
+    delete:
+      operationId: videoChatOnHangupDelete
+      x-type: event
+      summary: VideoChatの切断イベントの受信を停止する。
+      description: >-
+        スマートデバイスでサポートしていないパラメータがある場合には、
+        そのパラメータを省略する。
+      parameters:
+        - name: serviceId
+          description: サービスID。
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: >-
+            通話切断イベントの通知の停止結果を返す。
+            停止に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/EventUnregistrationResponse'
+          examples:
+            application/json:
+              product: Example System
+              version: '1.0'
+              result: 0
+definitions:
+  GetProfileResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - name
+          - addressId
+        properties:
+          name:
+            type: string
+            title: 名前
+            description: デバイス自身の名前。
+          addressId:
+            type: string
+            title: アドレスID
+            description: デバイス自身のアドレスID。
+  PutProfileResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  GetAddressResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - addresses
+        properties:
+          addresses:
+            type: array
+            title: アドレス一覧
+            items:
+              type: object
+              required:
+                - name
+                - addressId
+                - status
+              properties:
+                name:
+                  type: string
+                  title: デバイス名
+                  description: 接続先のデバイス名。
+                addressId:
+                  type: string
+                  title: アドレスID
+                  description: 接続先のアドレスID。
+                status:
+                  type: string
+                  enum:
+                    - idle
+                    - calling
+                    - talking
+                  title: 状態
+                  description: >-
+                    デバイスの状態<br>
+                    <ul>
+                    <li>idle: 待機状態</li>
+                    <li>calling: 発信状態</li>
+                    <li>talking: 通話中</li>
+                    </ul>
+  PostCallResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  DeleteCallResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  OnIncommingResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - $ref: '#/definitions/OnIncomingInfo'
+  OnIncommingEvent:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonEvent'
+      - $ref: '#/definitions/OnIncomingInfo'
+  OnIncomingInfo:
+    type: object
+    required:
+      - incoming
+    properties:
+      incoming:
+        type: object
+        title: 発信元情報
+        description: 発信元デバイスの情報を格納したオブジェクト。
+        required:
+          - name
+          - addressId
+        properties:
+          name:
+            type: string
+            title: デバイス名
+            description: 発信元のデバイス名。
+          addressId:
+            type: string
+            title: アドレスID
+            description: 発信元のアドレスID。
+  OnCallResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - $ref: '#/definitions/OnCallInfo'
+  OnCallEvent:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonEvent'
+      - $ref: '#/definitions/OnCallInfo'
+  OnCallInfo:
+    type: object
+    required:
+      - oncall
+    properties:
+      oncall:
+        type: object
+        title: 発信元情報
+        required:
+          - name
+          - addressId
+        properties:
+          name:
+            type: string
+            title: デバイス名
+            description: 発信元のデバイス名。
+          addressId:
+            type: string
+            title: アドレスID
+            description: 発信元のアドレスID。
+          remote:
+            type: object
+            title: 相手局リソース情報
+            description: 相手局リソース情報
+            properties:
+              video:
+                type: object
+                title: 映像関連情報
+                description: 映像関連情報
+                properties:
+                  uri:
+                    type: string
+                    title: 映像リソースURI
+                    description: >-
+                      映像のリソースURI。省略された場合は映像無し。<br>
+                      但し、videoとaudioの両方が省略されることは無い
+                  mimeType:
+                    type: string
+                    title: MIMEタイプ
+                    description: 映像リソースのMIMEタイプ。
+                  frameRate:
+                    type: number
+                    title: フレームレート
+                    description: 映像リソースのフレームレート。
+                  width:
+                    type: integer
+                    title: 幅
+                    description: 通知時点での幅（可変）
+                  height:
+                    type: integer
+                    title: 高さ
+                    description: 通知時点での高さ（可変）
+              audio:
+                type: object
+                title: 音声関連情報
+                description: 音声関連情報
+                properties:
+                  uri:
+                    type: string
+                    title: 音声リソースURI
+                    description: >-
+                      音声のリソースURI。省略された場合は音声無し。<br>
+                      但し、videoとaudioの両方が省略されることは無い。
+                  mimeType:
+                    type: string
+                    title: MIMEタイプ
+                    description: 音声リソースのMIMEタイプ。
+                  sampleRate:
+                    type: integer
+                    title: サンプルレート
+                    description: 音声リソースのサンプルレート。
+                  channels:
+                    type: integer
+                    title: チャンネル数
+                    description: 音声リソースのチャンネル数。
+                  sampleSize:
+                    type: integer
+                    title: サンプルサイズ
+                    description: 音声リソースのサンプルサイズ。
+                  blockSize:
+                    type: integer
+                    title: ブロックサイズ
+                    description: 音声リソースのブロックサイズ。
+          local:
+            type: object
+            title: 自局リソース情報
+            description: 自局リソース情報
+            properties:
+              video:
+                type: object
+                title: 映像関連情報
+                description: 映像関連情報
+                properties:
+                  uri:
+                    type: string
+                    title: 映像リソースURI
+                    description: >-
+                      映像のリソースURI。省略された場合は映像無し。<br>
+                      但し、videoとaudioの両方が省略されることは無い
+                  mimeType:
+                    type: string
+                    title: MIMEタイプ
+                    description: 映像リソースのMIMEタイプ。
+                  frameRate:
+                    type: number
+                    title: フレームレート
+                    description: 映像リソースのフレームレート。
+                  width:
+                    type: integer
+                    title: 幅
+                    description: 通知時点での幅（可変）
+                  height:
+                    type: integer
+                    title: 高さ
+                    description: 通知時点での高さ（可変）
+              audio:
+                type: object
+                title: 音声関連情報
+                description: 音声関連情報
+                properties:
+                  uri:
+                    type: string
+                    title: 音声リソースURI
+                    description: >-
+                      音声のリソースURI。省略された場合は音声無し。<br>
+                      但し、videoとaudioの両方が省略されることは無い。
+                  mimeType:
+                    type: string
+                    title: MIMEタイプ
+                    description: 音声リソースのMIMEタイプ。
+                  sampleRate:
+                    type: integer
+                    title: サンプルレート
+                    description: 音声リソースのサンプルレート。
+                  channels:
+                    type: integer
+                    title: チャンネル数
+                    description: 音声リソースのチャンネル数。
+                  sampleSize:
+                    type: integer
+                    title: サンプルサイズ
+                    description: 音声リソースのサンプルサイズ。
+                  blockSize:
+                    type: integer
+                    title: ブロックサイズ
+                    description: 音声リソースのブロックサイズ。
+  OnHangUpResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - $ref: '#/definitions/OnHangUpInfo'
+  OnHangUpEvent:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonEvent'
+      - $ref: '#/definitions/OnHangUpInfo'
+  OnHangUpInfo:
+    type: object
+    required:
+      - hangup
+    properties:
+      hangup:
+        type: object
+        title: 接続先情報
+        description: 接続先のデバイスの情報を格納したオブジェクト。
+        required:
+          - addressId
+        properties:
+          addressId:
+            type: string
+            title: アドレス
+            description: 接続先のアドレスID。
+  EventRegistrationResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  EventUnregistrationResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: >-
+          0:正常応答<br>
+          0以外:異常応答
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: >-
+          レスポンスに対する署名。<br>
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。
+  CommonEvent:
+    type: object
+    required:
+      - serviceId
+      - profile
+      - interface
+      - attribute
+    properties:
+      serviceId:
+        type: string
+        title: サービスID
+        description: イベントを送信したサービスのID
+      profile:
+        type: string
+        title: プロファイル名
+        description: プロファイル名。
+      interface:
+        type: string
+        title: インターフェース名
+        description: インターフェース名。
+      attribute:
+        type: string
+        title: アトリビュート名
+        description: アトリビュート名。
