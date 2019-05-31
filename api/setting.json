@@ -1,425 +1,461 @@
 {
-    "swagger": "2.0",
-    "basePath": "/gotapi/setting",
-    "info": {
-        "title": "Setting Profile",
-        "version": "2.0.0",
-        "description": "スマートデバイスの各種設定状態の取得および設定機能を提供するプロファイル。"
-    },
-    "consumes": [
-        "application/x-www-form-urlencoded",
-        "multipart/form-data"
-    ],
-    "paths": {
-        "/sound/volume": {
-            "get": {
-                "operationId": "settingSoundVolumeGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの音量を取得する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "kind",
-                        "in": "query",
-                        "required": true,
-                        "type": "integer",
-                        "description": "|Value|Description|\n|:-----|:-----|\n|1|Alarm|\n|2|Voice Volume|\n|3|Ring Alert|\n|4|Incoming Mail Alert|\n|5|Media Player|\n|6|Other|",
-                        "enum": [1, 2, 3, 4, 5, 6]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/GetVolumeSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "level": 1
-                            }
-                        }
-                    }
-                }
+  "swagger": "2.0",
+  "basePath": "/gotapi/setting",
+  "info": {
+    "title": "Setting Profile",
+    "version": "2.0.0",
+    "description": "スマートデバイスの各種設定状態の取得および設定機能を提供するプロファイル。"
+  },
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/sound/volume": {
+      "get": {
+        "operationId": "settingSoundVolumeGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの音量を取得する。",
+        "description": "音量値については、デバイスプラグイン側で0.0〜1.0の間に正規化を行うこと。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "description": "|Value|Description|\n|:-----|:-----|\n|1|Alarm|\n|2|Voice Volume|\n|3|Ring Alert|\n|4|Incoming Mail Alert|\n|5|Media Player|\n|6|Other|",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "音量の値を返す。値の取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/GetVolumeSettingResponse"
             },
-            "put": {
-                "operationId": "settingSoundVolumePut",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの音量の設定依頼を送る。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "kind",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "description": "|Value|Description|\n|:-----|:-----|\n|1|Alarm|\n|2|Voice Volume|\n|3|Ring Alert|\n|4|Incoming Mail Alert|\n|5|Media Player|\n|6|Other|",
-                        "enum": [1, 2, 3, 4, 5, 6]
-                    },
-                    {
-                        "name": "level",
-                        "description": "音量を割合で示す。(0.0 <= level <= 1.0)",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/PutSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "level": 1
+              }
             }
-        },
-        "/date": {
-            "get": {
-                "operationId": "settingDateGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの日時を取得する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/GetDateSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "date": "2015-05-17T10:02:20+09:00"
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "operationId": "settingDatePut",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの日時の設定依頼を送る。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "date",
-                        "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。 例: 2015-05-17T10:02:20+09:00",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/PutSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/display/brightness": {
-            "get": {
-                "operationId": "settingDisplayBrightnessGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスのライト明度を取得する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/GetDisplayBrightnessSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "level": 0.5
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "operationId": "settingDisplayBrightnessPut",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスのライト明度の設定依頼を送る。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "level",
-                        "description": "ディスプレイの輝度を割合で示す 範囲 (0.0 <= level <= 1.0)",
-                        "in": "formData",
-                        "required": true,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/PutSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/display/sleep": {
-            "get": {
-                "operationId": "settingDisplaySleepGet",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの画面消灯設定を取得する。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/GetDisplaySleepSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "time": 120000
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "operationId": "settingDisplaySleepPut",
-                "x-type": "one-shot",
-                "summary": "スマートデバイスの画面消灯設定依頼を送る。",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "time",
-                        "description": "ディスプレイが消灯するまでの時間 (ミリ秒)",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/PutSettingResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                }
-            }
+          }
         }
-    },
-    "definitions": {
-        "GetVolumeSettingResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
-            }, {
-                "type": "object",
-                "required": ["level"],
-                "properties": {
-                    "level": {
-                        "type": "number",
-                        "title": "音量",
-                        "description": "音量を割合で示す。(0.0 <= level <= 1.0)",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    }
-                }
-            }]
-        },
-        "GetDateSettingResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
-            }, {
-                "type": "object",
-                "required": ["date"],
-                "properties": {
-                    "date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "title": "日付",
-                        "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。 例: 2015-05-17T10:02:20+09:00"
-                    }
-                }
-            }]
-        },
-        "GetDisplayBrightnessSettingResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
-            }, {
-                "type": "object",
-                "required": ["level"],
-                "properties": {
-                    "level": {
-                        "type": "number",
-                        "title": "輝度",
-                        "description": "ディスプレイの輝度を割合で示す 範囲 (0.0 <= level <= 1.0)",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    }
-                }
-            }]
-        },
-        "GetDisplaySleepSettingResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
-            }, {
-                "type": "object",
-                "required": ["time"],
-                "properties": {
-                    "time": {
-                        "type": "integer",
-                        "format": "int64",
-                        "title": "消灯するまでの時間",
-                        "description": "ディスプレイが消灯するまでの時間 (ミリ秒)"
-                    }
-                }
-            }]
-        },
-        "PutSettingResponse": {
-            "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/CommonResponse"
-            }]
-        },
-        "CommonResponse": {
-            "type": "object",
-            "required": [
-                "result",
-                "product",
-                "version"
-            ],
-            "properties": {
-                "result": {
-                    "type": "integer",
-                    "title": "処理結果",
-                    "description": "0:正常応答<br>0以外:異常応答"
-                },
-                "product": {
-                    "type": "string",
-                    "title": "システム名",
-                    "description": "DeviceConnectシステムの名前。"
-                },
-                "version": {
-                    "type": "string",
-                    "title": "システムバージョン",
-                    "description": "DeviceConnectシステムのバージョン名。"
-                },
-                "hmac": {
-                    "type": "string",
-                    "title": "署名",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
-                }
+      },
+      "put": {
+        "operationId": "settingSoundVolumePut",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの音量の設定リクエストを送る。",
+        "description": "音量値については、デバイスプラグイン側で0.0〜1.0の値をデバイスに合う値に変換すること。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "kind",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "description": "|Value|Description|\n|:-----|:-----|\n|1|Alarm|\n|2|Voice Volume|\n|3|Ring Alert|\n|4|Incoming Mail Alert|\n|5|Media Player|\n|6|Other|",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "name": "level",
+            "description": "音量を割合で示す。(0.0 <= level <= 1.0)",
+            "in": "formData",
+            "required": true,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "音量の設定リクエストの送信結果を返す。 送信に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/PutSettingResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
             }
+          }
         }
+      }
+    },
+    "/date": {
+      "get": {
+        "operationId": "settingDateGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの日時を取得する。",
+        "description": "デバイス側の日時の取り扱いがRFC3339になっていない場合は、 なるべくデバイスプラグイン側でRFC3339形式に変換するようにする。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "日時を返す。日時の取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/GetDateSettingResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "date": "2015-05-17T10:02:20+09:00"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "settingDatePut",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの日時の設定リクエストを送る。",
+        "description": "デバイス側の日時の取り扱いがRFC3339になっていない場合は、 なるべくデバイスプラグイン側でRFC3339形式に変換するようにする。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。 例: 2015-05-17T10:02:20+09:00",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "日時の設定リクエストの送信結果を返す。 送信に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/PutSettingResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/display/brightness": {
+      "get": {
+        "operationId": "settingDisplayBrightnessGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスのライト明度を取得する。",
+        "description": "明度については、デバイスプラグイン側で0.0〜1.0の値をデバイスに合う値に変換すること。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ライト明度を返す。明度の取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/GetDisplayBrightnessSettingResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "level": 0.5
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "settingDisplayBrightnessPut",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスのライト明度の設定リクエストを送る。",
+        "description": "明度については、デバイスプラグイン側で0.0〜1.0の値をデバイスに合う値に変換すること。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "level",
+            "description": "ディスプレイの輝度を割合で示す 範囲 (0.0 <= level <= 1.0)",
+            "in": "formData",
+            "required": true,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ライト明度の設定リクエストの送信結果を返す。 送信に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/PutSettingResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/display/sleep": {
+      "get": {
+        "operationId": "settingDisplaySleepGet",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの画面消灯時間の設定値を取得する。",
+        "description": "消灯時間の単位はミリ秒とする。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "画面消灯時間を返す。取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/GetDisplaySleepSettingResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "time": 120000
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "settingDisplaySleepPut",
+        "x-type": "one-shot",
+        "summary": "スマートデバイスの画面消灯設定リクエストを送る。",
+        "description": "消灯時間の単位はミリ秒とする。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "time",
+            "description": "ディスプレイが消灯するまでの時間 (ミリ秒)",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "画面消灯時間の設定結果を返す。 設定に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/PutSettingResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
     }
+  },
+  "definitions": {
+    "GetVolumeSettingResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "level"
+          ],
+          "properties": {
+            "level": {
+              "type": "number",
+              "title": "音量",
+              "description": "音量を割合で示す。(0.0 <= level <= 1.0)",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    },
+    "GetDateSettingResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "date"
+          ],
+          "properties": {
+            "date": {
+              "type": "string",
+              "format": "date-time",
+              "title": "日付",
+              "description": "RFC3339「yyyy-MM-dd'T'HH:mm:ssZZZZZ」の形式の日付。 例: 2015-05-17T10:02:20+09:00"
+            }
+          }
+        }
+      ]
+    },
+    "GetDisplayBrightnessSettingResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "level"
+          ],
+          "properties": {
+            "level": {
+              "type": "number",
+              "title": "輝度",
+              "description": "ディスプレイの輝度を割合で示す。 範囲 (0.0 <= level <= 1.0)",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    },
+    "GetDisplaySleepSettingResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "type": "object",
+          "required": [
+            "time"
+          ],
+          "properties": {
+            "time": {
+              "type": "integer",
+              "format": "int64",
+              "title": "消灯するまでの時間",
+              "description": "ディスプレイが消灯するまでの時間 (ミリ秒)"
+            }
+          }
+        }
+      ]
+    },
+    "PutSettingResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "CommonResponse": {
+      "type": "object",
+      "required": [
+        "result",
+        "product",
+        "version"
+      ],
+      "properties": {
+        "result": {
+          "type": "integer",
+          "title": "処理結果",
+          "description": "0:正常応答<br> 0以外:異常応答"
+        },
+        "product": {
+          "type": "string",
+          "title": "システム名",
+          "description": "DeviceConnectシステムの名前。"
+        },
+        "version": {
+          "type": "string",
+          "title": "システムバージョン",
+          "description": "DeviceConnectシステムのバージョン名。"
+        },
+        "hmac": {
+          "type": "string",
+          "title": "署名",
+          "description": "レスポンスに対する署名。<br> アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+        }
+      }
+    }
+  }
 }

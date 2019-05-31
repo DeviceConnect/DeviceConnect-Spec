@@ -1,0 +1,165 @@
+swagger: '2.0'
+basePath: /gotapi/authorization
+info:
+  title: Authorization Profile
+  version: 2.0.0
+  description: Local OAuthのクライアントを操作する機能を提供するAPI。
+consumes:
+    - application/x-www-form-urlencoded
+paths:
+  /grant:
+    get:
+      operationId: authorizationGrantGet
+      x-type: one-shot
+      summary: Device Connect ManagerにLocal OAuthを行うためのクライアントの作成要求を行う。
+      description: >-
+        同じオリジンから送信された場合には、以前のクライアントを削除して新たにクライアントを作成する。<br>
+        それに伴い、クライアントに紐づいていたアクセストークンもすべて破棄される。
+      parameters: []
+      responses:
+        '200':
+          description: >-
+            Device Connect ManagerにLocal OAuthを行うためのクライアントの作成要求結果を返す。
+            失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/GrantResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              clientId: d94da8f1-3826-4ed5-a729-2d9499e842c9
+  /accessToken:
+    get:
+      operationId: authorizationAccessTokenGet
+      x-type: one-shot
+      summary: DeviceConnectManagerにLocal OAuthを行うためのアクセストークンの作成要求を行う。
+      description: >-
+        各プロファイルにアクセスするためには、このAPIで作成したアクセストークンが必要になる。<br>
+        また、アクセストークンには有効期限が存在するので、
+        有効期限が切れた場合には再度アクセストークンを作成し直す必要がある。
+      parameters:
+        - name: clientId
+          description: >-
+            クライアントID。
+            Authorization Create Client APIで取得したclientIdを使用する。
+          in: query
+          required: true
+          type: string
+        - name: applicationName
+          description: >-
+            アプリケーション名。承認確認画面に表示するアプリケーション名を指定する。<br>
+            例:「Twitterイベントプラグイン」と指定した場合は、
+            「TwitterイベントプラグインがdConnectにアクセスする許可をしますか？」と
+            確認メッセージが表示される。
+          in: query
+          required: true
+          type: string
+        - name: scope
+          description: >-
+            スコープ。使用するプロファイルの一覧をカンマ区切りで定義する。<br>
+            例)file,notification,vibration'
+          in: query
+          required: true
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: >-
+            DeviceConnectManagerにLocal OAuthを行うためのアクセストークンの作成要求結果を返す。
+            失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/AccessTokenResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+              accessToken: >-
+                0a93ac0aade4e046ed63eb24d1172f5f35c88ca60daa901547c28d5827cb418a5de1d7c5f9e62405
+              scopes:
+                - scope: file
+                  expirePeriod: 15552000
+                - scope: creditcard
+                  expirePeriod: 0
+              expire: 1431856940275
+definitions:
+  GrantResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - clientId
+        properties:
+          clientId:
+            type: string
+            title: クライアントID
+            description: クライアントを識別するためのID。
+  AccessTokenResponse:
+    type: object
+    allOf:
+      - $ref: '#/definitions/CommonResponse'
+      - type: object
+        required:
+          - accessToken
+          - expire
+          - scopes
+        properties:
+          accessToken:
+            type: string
+            title: アクセストークン
+            description: 各プロファイルにアクセスする場合に必要になる。
+          expire:
+            type: number
+            title: 失効日時
+            description: スコープ毎のアクセストークンの失効時刻のうち、直近の時刻(UNIX時間)。
+          scopes:
+            type: array
+            title: スコープ配列
+            description: スコープの有効期限一覧を格納する配列。
+            items:
+              type: object
+              required:
+                - scope
+                - expirePeriod
+              properties:
+                scope:
+                  type: string
+                  title: スコープ
+                  description: スコープのプロファイル名。
+                expirePeriod:
+                  type: number
+                  title: スコープの有効期限
+                  description: >-
+                    アクセストークンの有効期限。スコープ毎に設定されている。<br>
+                    アクセストークンが作成されてから使用できる間の時間(秒)を返す。<br>
+                    この時間を過ぎるとアクセストークンが使用できなくなる。
+  CommonResponse:
+    type: object
+    required:
+      - result
+      - product
+      - version
+    properties:
+      result:
+        type: integer
+        title: 処理結果
+        description: >-
+          0: 正常応答<br>
+          0以外: 異常応答
+      product:
+        type: string
+        title: システム名
+        description: DeviceConnectシステムの名前。
+      version:
+        type: string
+        title: システムバージョン
+        description: DeviceConnectシステムのバージョン名。
+      hmac:
+        type: string
+        title: 署名
+        description: >-
+          レスポンスに対する署名。
+          アプリケーション側から事前にHMACキーを共有されていた場合は必須。

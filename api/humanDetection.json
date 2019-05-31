@@ -1,1645 +1,1640 @@
 {
-    "swagger": "2.0",
-    "basePath": "/gotapi/humanDetection",
-    "info": {
-        "title": "Human Detection Profile",
-        "version": "2.0.0",
-        "description": "スマートデバイスの人体検出機能を提供するAPI。"
-    },
-    "consumes": [
-        "application/x-www-form-urlencoded",
-        "multipart/form-data"
-    ],
-    "paths": {
-        "/onDetection": {
-            "get": {
-                "operationId": "humanDetectionOnDetectionGet",
-                "x-type": "one-shot",
-                "summary": "人を検出したときの通知イベントを取得する。",
-                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/HumanDetectionResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "humanDetect": {
-                                    "exist": true
-                                }
-                            }
-                        }
-                    }
-                }
+  "swagger": "2.0",
+  "basePath": "/gotapi/humanDetection",
+  "info": {
+    "title": "Human Detection Profile",
+    "version": "2.0.0",
+    "description": "スマートデバイスの人体検出機能を提供するAPI。"
+  },
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/onDetection": {
+      "get": {
+        "operationId": "humanDetectionOnDetectionGet",
+        "x-type": "one-shot",
+        "summary": "人を検出したときの通知イベントを取得する。",
+        "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "人を検出したときの検出結果を返す。 検出に失敗した場合は、エラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/HumanDetectionResponse"
             },
-            "put": {
-                "operationId": "humanDetectionOnDetectionPut",
-                "x-type": "event",
-                "summary": "人を検出したときの通知イベントを開始する。",
-                "description": "当該イベントの通知を開始する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "interval",
-                        "description": "デバイスプラグインがイベントを送信する間隔。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventRegistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-
-                    }
-                },
-                "x-event": {
-                    "schema": {
-                        "$ref": "#/definitions/HumanDetectionEvent"
-                    },
-                    "examples": {
-                        "application/json": {
-                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
-                            "profile": "humandetection",
-                            "attribute": "ondetection",
-                            "humanDetect": {
-                                "exist": true
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "operationId": "humanDetectionOnDetectionDelete",
-                "x-type": "event",
-                "summary": "人を検出したときの通知イベントを停止する。",
-                "description": "当該イベントの通知を停止する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventUnregistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-
-                    }
-                }
-            }
-        },
-        "/onBodyDetection": {
-            "get": {
-                "operationId": "humanDetectionOnBodyDetectionGet",
-                "x-type": "one-shot",
-                "summary": "体を検出したときの通知イベントを取得する。",
-                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "threshold",
-                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minWidth",
-                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minHeight",
-                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxWidth",
-                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxHeight",
-                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
-                        "in": "query",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/BodyDetectionResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "bodyDetects": [
-                                    {
-                                        "x": 0.47291666666666665,
-                                        "y": 0.6712962962962963,
-                                        "width": 0.271875,
-                                        "height": 0.48333333333333334,
-                                        "confidence": 0.907
-                                    },
-                                    {
-                                        "x": 0.034375,
-                                        "y": 0.8925925925925926,
-                                        "width": 0.036458333333333336,
-                                        "height": 0.06481481481481481,
-                                        "confidence": 0.746
-                                    },
-                                    {
-                                        "x": 0.9515625,
-                                        "y": 0.9592592592592593,
-                                        "width": 0.03177083333333333,
-                                        "height": 0.05648148148148148,
-                                        "confidence": 0.619
-                                    }
-                                ]
-                            }
-                        }
-
-
-                    }
-                }
-            },
-            "put": {
-                "operationId": "humanDetectionOnBodyDetectionPut",
-                "x-type": "event",
-                "summary": "体を検出したときの通知イベントを開始する。",
-                "description": "当該イベントの通知を停止する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "threshold",
-                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minWidth",
-                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minHeight",
-                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxWidth",
-                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxHeight",
-                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "interval",
-                        "description": "デバイスプラグインがイベントを送信する間隔。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventRegistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-
-                    }
-                },
-                "x-event": {
-                    "schema": {
-                        "$ref": "#/definitions/BodyDetectionEvent"
-                    },
-                    "examples": {
-                        "application/json": {
-                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
-                            "profile": "humandetection",
-                            "attribute": "onbodydetection",
-                            "bodyDetects": [
-                                {
-                                    "x": 0.47291666666666665,
-                                    "y": 0.6712962962962963,
-                                    "width": 0.271875,
-                                    "height": 0.48333333333333334,
-                                    "confidence": 0.907
-                                },
-                                {
-                                    "x": 0.034375,
-                                    "y": 0.8925925925925926,
-                                    "width": 0.036458333333333336,
-                                    "height": 0.06481481481481481,
-                                    "confidence": 0.746
-                                },
-                                {
-                                    "x": 0.9515625,
-                                    "y": 0.9592592592592593,
-                                    "width": 0.03177083333333333,
-                                    "height": 0.05648148148148148,
-                                    "confidence": 0.619
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "operationId": "humanDetectionOnBodyDetectionDelete",
-                "x-type": "event",
-                "summary": "体を検出したときの通知イベントを停止する。",
-                "description": "当該イベントの通知を停止する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventUnregistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-
-                    }
-                }
-            }
-        },
-        "/onHandDetection": {
-            "get": {
-                "operationId": "humanDetectionOnHandDetectionGet",
-                "x-type": "one-shot",
-                "summary": "手を検出したときの通知イベントを取得する。",
-                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "threshold",
-                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minWidth",
-                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minHeight",
-                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxWidth",
-                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxHeight",
-                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
-                        "in": "query",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/HandDetectionResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "handDetects": [
-                                    {
-                                        "x": 0.5114583333333333,
-                                        "y": 0.6018518518518519,
-                                        "width": 0.15833333333333333,
-                                        "height": 0.2814814814814815,
-                                        "confidence": 0.962
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "operationId": "humanDetectionOnHandDetectionPut",
-                "x-type": "event",
-                "summary": "手を検出したときの通知イベントを開始する。",
-                "description": "当該イベントの通知を開始する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "threshold",
-                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minWidth",
-                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minHeight",
-                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxWidth",
-                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxHeight",
-                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "interval",
-                        "description": "デバイスプラグインがイベントを送信する間隔。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションは無し。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventRegistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-
-                    }
-                },
-                "x-event": {
-                    "schema": {
-                        "$ref": "#/definitions/HandDetectionEvent"
-                    },
-                    "examples": {
-                        "application/json": {
-                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
-                            "profile": "humandetection",
-                            "attribute": "onhanddetection",
-                            "handDetects": [
-                                {
-                                    "x": 0.5114583333333333,
-                                    "y": 0.6018518518518519,
-                                    "width": 0.15833333333333333,
-                                    "height": 0.2814814814814815,
-                                    "confidence": 0.962
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "operationId": "humanDetectionOnHandDetectionDelete",
-                "x-type": "event",
-                "summary": "手を検出したときの通知イベントを停止する。",
-                "description": "当該イベントの通知を停止する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventUnregistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-
-                    }
-                }
-            }
-        },
-        "/onFaceDetection": {
-            "get": {
-                "operationId": "humanDetectionOnFaceDetectionGet",
-                "x-type": "one-shot",
-                "summary": "顔を検出したときの通知イベントを取得する。",
-                "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "threshold",
-                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minWidth",
-                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minHeight",
-                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxWidth",
-                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxHeight",
-                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "eyeThreshold",
-                        "description": "目の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "noseThreshold",
-                        "description": "鼻の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "mouthThreshold",
-                        "description": "口の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "blinkThreshold",
-                        "description": "目つむり検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "ageThreshold",
-                        "description": "年齢推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "genderThreshold",
-                        "description": "性別推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "faceDirectionThreshold",
-                        "description": "顔向き推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "gazeThreshold",
-                        "description": "視線推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "expressionThreshold",
-                        "description": "表情推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "query",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションはデバイスプラグインによって違う。<br>例)eye, nose, mouth, blink,age,gender,faceDirection,gaze,expressionをカンマ区切りで指定することで、それぞれの検出値がある場合はレスポンスに含めることができる。ただし、デバイスによって対応していない値がある。",
-                        "in": "query",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/FaceDetectionResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0",
-                                "faceDetects": [
-                                    {
-                                      "x": 0.9515625,
-                                      "y": 0.9592592592592593,
-                                      "width": 0.03177083333333333,
-                                      "height": 0.05648148148148148,
-                                      "confidence": 0.619,
-                                       "ageResults":{
-                                           "age":"35",
-                                           "confidence":"0.82"
-                                       },
-                                       "genderResults":{
-                                           "gender":"male",
-                                           "confidence":"0.75"
-                                       },
-                                       "expressionResults":{
-                                           "expression":"surprise",
-                                           "confidence":"0.69"
-                                       }
-                                    }
-                                ]
-                            }
-                        }
-
-                    }
-                }
-            },
-            "put": {
-                "operationId": "humanDetectionOnFaceDetectionPut",
-                "x-type": "event",
-                "summary": "顔を検出したときの通知イベントを開始する。",
-                "description": "当該イベントの通知を開始する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "threshold",
-                        "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minWidth",
-                        "description": "検出最小サイズ(w)。minHeight < maxHeightとすること、省略時デバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "minHeight",
-                        "description": "検出最小サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxWidth",
-                        "description": "検出最大サイズ(w)。minWidth < maxWidthとすること、省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "maxHeight",
-                        "description": "検出最大サイズ(h)。minHeight < maxHeightとすること、省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "eyeThreshold",
-                        "description": "目の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "noseThreshold",
-                        "description": "鼻の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "mouthThreshold",
-                        "description": "口の座標検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "blinkThreshold",
-                        "description": "目つむり検出しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "ageThreshold",
-                        "description": "年齢推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "genderThreshold",
-                        "description": "性別推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "faceDirectionThreshold",
-                        "description": "顔向き推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "gazeThreshold",
-                        "description": "視線推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "expressionThreshold",
-                        "description": "表情推定しきい値。省略時はデバイス初期値。<br>設定できる値の範囲:0.0~1.0",
-                        "in": "formData",
-                        "required": false,
-                        "type": "number",
-                        "minimum": 0.0,
-                        "maximum": 1.0
-                    },
-                    {
-                        "name": "interval",
-                        "description": "デバイスプラグインがイベントを送信する間隔。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "name": "options",
-                        "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。省略時は指定なし。<br>※使用できるオプションはデバイスプラグインによって違う。<br>例)eye, nose, mouth, blink,age,gender,faceDirection,gaze,expressionをカンマ区切りで指定することで、それぞれの検出値がある場合はレスポンスに含めることができる。ただし、デバイスによって対応していない値がある。",
-                        "in": "formData",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventRegistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-                    }
-                },
-                "x-event": {
-                    "schema": {
-                        "$ref": "#/definitions/FaceDetectionEvent"
-                    },
-                    "examples": {
-                        "application/json": {
-                            "serviceId": "Host.dummyId.localhost.deviceconnect.org",
-                            "profile": "humandetection",
-                            "attribute": "onfacedetection",
-                            "faceDetects": [
-                                {
-                                  "x": 0.9515625,
-                                  "y": 0.9592592592592593,
-                                  "width": 0.03177083333333333,
-                                  "height": 0.05648148148148148,
-                                  "confidence": 0.619,
-                                   "ageResults":{
-                                       "age":"35",
-                                       "confidence":"0.82"
-                                   },
-                                   "genderResults":{
-                                       "gender":"male",
-                                       "confidence":"0.75"
-                                   },
-                                   "expressionResults":{
-                                       "expression":"surprise",
-                                       "confidence":"0.69"
-                                   }
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "operationId": "humanDetectionOnFaceDetectionDelete",
-                "x-type": "event",
-                "summary": "顔を検出したときの通知イベントを停止する。",
-                "description": "当該イベントの通知を停止する。",
-                "parameters": [
-                    {
-                        "name": "serviceId",
-                        "description": "サービスID。取得対象スマートデバイス",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/EventUnregistrationResponse"
-                        },
-                        "examples": {
-                            "application/json": {
-                                "result": 0,
-                                "product": "Example System",
-                                "version": "1.0.0"
-                            }
-                        }
-
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-         "HumanDetectionResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "$ref": "#/definitions/HumanDetectionInfo"
-                }
-            ]
-        },
-        "HumanDetectionEvent": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonEvent"
-                },
-                {
-                    "$ref": "#/definitions/HumanDetectionInfo"
-                }
-            ]
-        },
-        "HumanDetectionInfo": {
-            "type": "object",
-            "required": [
-                "humanDetect"
-            ],
-            "properties": {
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
                 "humanDetect": {
-                    "type": "object",
-                    "title": "人検出情報",
-                    "required": [
-                        "exist"
-                    ],
-                    "properties": {
-                        "exist": {
-                            "type": "boolean",
-                            "title": "人検出フラグ",
-                            "description": "検出された : true<br>検出されない : false"
-                        }
-                    }
+                  "exist": true
                 }
+              }
             }
-        },
-         "BodyDetectionResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "$ref": "#/definitions/BodyDetectionInfo"
-                }
-            ]
-        },
-        "BodyDetectionEvent": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonEvent"
-                },
-                {
-                    "$ref": "#/definitions/BodyDetectionInfo"
-                }
-            ]
-        },
-        "BodyDetectionInfo": {
-            "type": "object",
-            "required": [
-                "bodyDetects"
-            ],
-            "properties": {
-                "bodyDetects": {
-                    "type": "array",
-                    "title": "人体検出リスト",
-                    "description": "検出された数分出現する。",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "x",
-                            "y",
-                            "confidence"
-                        ],
-                        "properties": {
-                            "x": {
-                                "type": "number",
-                                "title": "検出領域の中心X座標",
-                                "description": "0.0~1.0"
-                            },
-                            "y": {
-                                "type": "number",
-                                "title": "検出領域の中心Y座標",
-                                "description": "0.0~1.0"
-                            },
-                            "width": {
-                                "type": "number",
-                                "title": "検出領域のX方向の幅",
-                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                            },
-                            "height": {
-                                "type": "number",
-                                "title": "検出領域のY方向の幅",
-                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                            },
-                            "confidence": {
-                                "type": "number",
-                                "title": "解析の信頼度",
-                                "description": "0.0~1.0"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-         "HandDetectionResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "$ref": "#/definitions/HandDetectionInfo"
-                }
-            ]
-        },
-        "HandDetectionEvent": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonEvent"
-                },
-                {
-                    "$ref": "#/definitions/HandDetectionInfo"
-                }
-            ]
-        },
-        "HandDetectionInfo": {
-            "type": "object",
-            "required": [
-                "handDetects"
-            ],
-            "properties": {
-                "handDetects": {
-                    "type": "array",
-                    "title": "手検出リスト",
-                    "description": "検出された数分出現する。",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "x",
-                            "y",
-                            "confidence"
-                        ],
-                        "properties": {
-                            "x": {
-                                "type": "number",
-                                "title": "検出領域の中心X座標",
-                                "description": "0.0~1.0"
-                            },
-                            "y": {
-                                "type": "number",
-                                "title": "検出領域の中心Y座標",
-                                "description": "0.0~1.0"
-                            },
-                            "width": {
-                                "type": "number",
-                                "title": "検出領域のX方向の幅",
-                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                            },
-                            "height": {
-                                "type": "number",
-                                "title": "検出領域のY方向の幅",
-                                "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                            },
-                            "confidence": {
-                                "type": "number",
-                                "title": "解析の信頼度",
-                                "description": "0.0~1.0"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-         "FaceDetectionResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                },
-                {
-                    "$ref": "#/definitions/FaceDetectionInfo"
-                }
-            ]
-        },
-        "FaceDetectionEvent": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonEvent"
-                },
-                {
-                    "$ref": "#/definitions/FaceDetectionInfo"
-                }
-            ]
-        },
-        "FaceDetectionInfo": {
-            "type": "object",
-            "required": [
-                "faceDetects"
-            ],
-            "properties": {
-                "faceDetects": {
-                    "type": "array",
-                    "title": "顔検出リスト",
-                    "description": "検出された数分出現する。",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "x",
-                            "y",
-                            "confidence"
-                        ],
-                        "properties": {
-                          "x": {
-                              "type": "number",
-                              "title": "検出領域の中心X座標",
-                              "description": "0.0~1.0"
-                          },
-                          "y": {
-                              "type": "number",
-                              "title": "検出領域の中心Y座標",
-                              "description": "0.0~1.0"
-                          },
-                          "width": {
-                              "type": "number",
-                              "title": "検出領域のX方向の幅",
-                              "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                          },
-                          "height": {
-                              "type": "number",
-                              "title": "検出領域のY方向の幅",
-                              "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                          },
-                          "confidence": {
-                              "type": "number",
-                              "title": "解析の信頼度",
-                              "description": "0.0~1.0"
-                          },
-                          "eyePoints": {
-                              "type": "object",
-                              "title": "目検出情報",
-                              "properties": {
-                                  "leftEyeX": {
-                                      "type": "number",
-                                      "title": "左目の中心座標(x)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "leftEyeY": {
-                                      "type": "number",
-                                      "title": "左目の中心座標(y)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "leftEyeWidth": {
-                                      "type": "number",
-                                      "title": "左目の領域幅(w)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "leftEyeHeight": {
-                                      "type": "number",
-                                      "title": "左目の領域幅(h)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "rightEyeX": {
-                                      "type": "number",
-                                      "title": "右目の中心座標(x)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "rightEyeY": {
-                                      "type": "number",
-                                      "title": "右目の中心座標(y)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "rightEyeWidth": {
-                                      "type": "number",
-                                      "title": "右目の領域幅(w)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "rightEyeHeight": {
-                                      "type": "number",
-                                      "title": "右目の領域幅(h)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "nosePoints": {
-                              "type": "object",
-                              "title": "鼻検出情報",
-                              "properties": {
-                                  "noseX": {
-                                      "type": "number",
-                                      "title": "鼻の中心座標(x)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "noseY": {
-                                      "type": "number",
-                                      "title": "鼻の中心座標(y)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "noseWidth": {
-                                      "type": "number",
-                                      "title": "鼻の領域幅(w)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "noseHeight": {
-                                      "type": "number",
-                                      "title": "鼻の領域幅(h)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "mouthPoints": {
-                              "type": "object",
-                              "title": "口検出情報",
-                              "properties": {
-                                  "mouthX": {
-                                      "type": "number",
-                                      "title": "口の中心座標(x)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "mouthY": {
-                                      "type": "number",
-                                      "title": "口の中心座標(y)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "mouthWidth": {
-                                      "type": "number",
-                                      "title": "口の領域幅(w)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "mouthHeight": {
-                                      "type": "number",
-                                      "title": "口の領域幅(h)",
-                                      "description": "※領域幅が提供できない場合は出現しない。<br>0.0~1.0"
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "blinkResults": {
-                              "type": "object",
-                              "title": "まばたき検出情報",
-                              "properties": {
-                                  "leftEye": {
-                                      "type": "number",
-                                      "title": "目つむり度合(左)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "rightEye": {
-                                      "type": "number",
-                                      "title": "目つむり度合(右)",
-                                      "description": "0.0~1.0"
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "ageResults": {
-                              "type": "object",
-                              "title": "年齢判定結果",
-                              "properties": {
-                                  "age": {
-                                      "type": "integer",
-                                      "title": "年齢",
-                                      "description": ""
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "genderResults": {
-                              "type": "object",
-                              "title": "性別判定結果",
-                              "properties": {
-                                  "gender": {
-                                      "type": "string",
-                                      "title": "性別",
-                                      "description": "male : 男性<br>female : 女性",
-                                      "enum": [
-                                              "male", "female"
-                                      ]
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "faceDirectionResults": {
-                              "type": "object",
-                              "title": "顔の向き判定結果",
-                              "properties": {
-                                  "yaw": {
-                                      "type": "integer",
-                                      "title": "左右方向角度",
-                                      "description": "-180~180[degree]"
-                                  },
-                                  "pitch": {
-                                      "type": "integer",
-                                      "title": "上下方向角度",
-                                      "description": "-180~180[degree]"
-                                  },
-                                  "roll": {
-                                      "type": "integer",
-                                      "title": "顔傾き角度",
-                                      "description": "-180~180[degree]"
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "gazeResults": {
-                              "type": "object",
-                              "title": "目の向き判定結果",
-                              "properties": {
-                                  "gazeLR": {
-                                      "type": "integer",
-                                      "title": "左右角度",
-                                      "description": "-90~90[degree]"
-                                  },
-                                  "gateUD": {
-                                      "type": "integer",
-                                      "title": "上下角度",
-                                      "description": "-90~90[degree]"
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          },
-                          "expressionResults": {
-                              "type": "object",
-                              "title": "表情判定結果",
-                              "properties": {
-                                  "expression": {
-                                      "type": "string",
-                                      "title": "左右角度",
-                                      "description": "unknown : 無表情<br>smile : 笑 い/喜び<br>surprise : 驚き<br>mad : 怒り<br>sad : 悲しみ",
-                                      "enum": [
-                                              "unknown", "smile", "surprise", "mad", "sad"
-                                      ]
-                                  },
-                                  "confidence": {
-                                      "type": "number",
-                                      "title": "解析の信頼度",
-                                      "description": "0.0~1.0"
-                                  }
-                              }
-                          }
-                        }
-                    }
-                }
-            }
-        },
-        "CommonResponse": {
-            "type": "object",
-            "required": [
-                "result",
-                "product",
-                "version"
-            ],
-            "properties": {
-                "result": {
-                    "type": "integer",
-                    "title": "処理結果",
-                    "description": "0:正常応答<br>0以外:異常応答"
-                },
-                "product": {
-                    "type": "string",
-                    "title": "システム名",
-                    "description": "DeviceConnectシステムの名前。"
-                },
-                "version": {
-                    "type": "string",
-                    "title": "システムバージョン",
-                    "description": "DeviceConnectシステムのバージョン名。"
-                },
-                "hmac": {
-                    "type": "string",
-                    "title": "署名",
-                    "description": "レスポンスに対する署名。アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
-                }
-            }
-        },
-        "EventRegistrationResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "EventUnregistrationResponse": {
-            "type": "object",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/CommonResponse"
-                }
-            ]
-        },
-        "CommonEvent": {
-            "type": "object",
-            "required": [
-                "serviceId",
-                "profile",
-                "interface",
-                "attribute"
-            ],
-            "properties": {
-                "serviceId": {
-                    "type": "string",
-                    "title": "サービスID",
-                    "description": "イベントを送信したサービスのID"
-                },
-                "profile": {
-                    "type": "string",
-                    "title": "プロファイル名",
-                    "description": "プロファイル名。"
-                },
-                "interface": {
-                    "type": "string",
-                    "title": "インターフェース名",
-                    "description": "インターフェース名。"
-                },
-                "attribute": {
-                    "type": "string",
-                    "title": "アトリビュート名",
-                    "description": "アトリビュート名。"
-                }
-            }
+          }
         }
+      },
+      "put": {
+        "operationId": "humanDetectionOnDetectionPut",
+        "x-type": "event",
+        "summary": "人を検出したときの通知イベントを開始する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "interval",
+            "description": "デバイスプラグインがイベントを送信する間隔。",
+            "in": "formData",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "人を検出したときのイベントの開始結果を返す。 イベント開始に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventRegistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        },
+        "x-event": {
+          "schema": {
+            "$ref": "#/definitions/HumanDetectionEvent"
+          },
+          "examples": {
+            "application/json": {
+              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "profile": "humandetection",
+              "attribute": "ondetection",
+              "humanDetect": {
+                "exist": true
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "humanDetectionOnDetectionDelete",
+        "x-type": "event",
+        "summary": "人を検出したときの通知イベントを停止する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "人を検出した時の通知イベントの停止結果を返す。 停止に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventUnregistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/onBodyDetection": {
+      "get": {
+        "operationId": "humanDetectionOnBodyDetectionGet",
+        "x-type": "one-shot",
+        "summary": "体を検出したときの通知イベントを取得する。",
+        "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "threshold",
+            "description": "検出しきい値。省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minWidth",
+            "description": "検出最小サイズ(w)。<br> minHeight < maxHeightとすること、省略時デバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minHeight",
+            "description": "検出最小サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxWidth",
+            "description": "検出最大サイズ(w)。<br> minWidth < maxWidthとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxHeight",
+            "description": "検出最大サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "options",
+            "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br> 省略時は指定なし。<br> ※使用できるオプションは無し。",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "体を検知した時の情報を返す。 検知した情報の取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/BodyDetectionResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "bodyDetects": [
+                  {
+                    "x": 0.47291666666666665,
+                    "y": 0.6712962962962963,
+                    "width": 0.271875,
+                    "height": 0.48333333333333334,
+                    "confidence": 0.907
+                  },
+                  {
+                    "x": 0.034375,
+                    "y": 0.8925925925925926,
+                    "width": 0.036458333333333336,
+                    "height": 0.06481481481481481,
+                    "confidence": 0.746
+                  },
+                  {
+                    "x": 0.9515625,
+                    "y": 0.9592592592592593,
+                    "width": 0.03177083333333333,
+                    "height": 0.05648148148148148,
+                    "confidence": 0.619
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "humanDetectionOnBodyDetectionPut",
+        "x-type": "event",
+        "summary": "体を検出したときの通知イベントを開始する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "threshold",
+            "description": "検出しきい値。省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minWidth",
+            "description": "検出最小サイズ(w)。<br> minHeight < maxHeightとすること、省略時デバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minHeight",
+            "description": "検出最小サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxWidth",
+            "description": "検出最大サイズ(w)。<br> minWidth < maxWidthとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxHeight",
+            "description": "検出最大サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "interval",
+            "description": "デバイスプラグインがイベントを送信する間隔。",
+            "in": "formData",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "options",
+            "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br> 省略時は指定なし。<br> ※使用できるオプションは無し。",
+            "in": "formData",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "体を検知した時の通知イベントの開始結果を返す。 イベントの開始に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventRegistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        },
+        "x-event": {
+          "schema": {
+            "$ref": "#/definitions/BodyDetectionEvent"
+          },
+          "examples": {
+            "application/json": {
+              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "profile": "humandetection",
+              "attribute": "onbodydetection",
+              "bodyDetects": [
+                {
+                  "x": 0.47291666666666665,
+                  "y": 0.6712962962962963,
+                  "width": 0.271875,
+                  "height": 0.48333333333333334,
+                  "confidence": 0.907
+                },
+                {
+                  "x": 0.034375,
+                  "y": 0.8925925925925926,
+                  "width": 0.036458333333333336,
+                  "height": 0.06481481481481481,
+                  "confidence": 0.746
+                },
+                {
+                  "x": 0.9515625,
+                  "y": 0.9592592592592593,
+                  "width": 0.03177083333333333,
+                  "height": 0.05648148148148148,
+                  "confidence": 0.619
+                }
+              ]
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "humanDetectionOnBodyDetectionDelete",
+        "x-type": "event",
+        "summary": "体を検出したときの通知イベントを停止する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "体を検知した時の通知イベントの停止結果を返す。 イベントの停止に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventUnregistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/onHandDetection": {
+      "get": {
+        "operationId": "humanDetectionOnHandDetectionGet",
+        "x-type": "one-shot",
+        "summary": "手を検出したときの通知イベントを取得する。",
+        "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "threshold",
+            "description": "検出しきい値。省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minWidth",
+            "description": "検出最小サイズ(w)。<br> minHeight < maxHeightとすること、省略時デバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minHeight",
+            "description": "検出最小サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxWidth",
+            "description": "検出最大サイズ(w)。<br> minWidth < maxWidthとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0'",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxHeight",
+            "description": "検出最大サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "options",
+            "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br> 省略時は指定なし。<br> ※使用できるオプションは無し。",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "手を検出したときの情報を返す。 情報を取得できなかった時はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/HandDetectionResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "handDetects": [
+                  {
+                    "x": 0.5114583333333333,
+                    "y": 0.6018518518518519,
+                    "width": 0.15833333333333333,
+                    "height": 0.2814814814814815,
+                    "confidence": 0.962
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "humanDetectionOnHandDetectionPut",
+        "x-type": "event",
+        "summary": "手を検出したときの通知イベントを開始する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "threshold",
+            "description": "検出しきい値。省略時はデバイス初期値<br>設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minWidth",
+            "description": "検出最小サイズ(w)。<br> minHeight < maxHeightとすること、省略時デバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minHeight",
+            "description": "検出最小サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxWidth",
+            "description": "検出最大サイズ(w)。<br> minWidth < maxWidthとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxHeight",
+            "description": "検出最大サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "interval",
+            "description": "デバイスプラグインがイベントを送信する間隔。",
+            "in": "formData",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "options",
+            "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br> 省略時は指定なし。<br> ※使用できるオプションは無し。",
+            "in": "formData",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "手を検出したときの通知イベントの開始結果を返す。 開始に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventRegistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        },
+        "x-event": {
+          "schema": {
+            "$ref": "#/definitions/HandDetectionEvent"
+          },
+          "examples": {
+            "application/json": {
+              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "profile": "humandetection",
+              "attribute": "onhanddetection",
+              "handDetects": [
+                {
+                  "x": 0.5114583333333333,
+                  "y": 0.6018518518518519,
+                  "width": 0.15833333333333333,
+                  "height": 0.2814814814814815,
+                  "confidence": 0.962
+                }
+              ]
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "humanDetectionOnHandDetectionDelete",
+        "x-type": "event",
+        "summary": "手を検出したときの通知イベントを停止する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "手を検出したときの通知イベントの停止結果を返す。 停止に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventUnregistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/onFaceDetection": {
+      "get": {
+        "operationId": "humanDetectionOnFaceDetectionGet",
+        "x-type": "one-shot",
+        "summary": "顔を検出したときの通知イベントを取得する。",
+        "description": "プラグイン側でキャッシュしている最新のイベントメッセージを1つ取得する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "threshold",
+            "description": "検出しきい値。省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minWidth",
+            "description": "検出最小サイズ(w)。<br> minHeight < maxHeightとすること、省略時デバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minHeight",
+            "description": "検出最小サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxWidth",
+            "description": "検出最大サイズ(w)。<br> minWidth < maxWidthとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxHeight",
+            "description": "検出最大サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "eyeThreshold",
+            "description": "目の座標検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "noseThreshold",
+            "description": "鼻の座標検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "mouthThreshold",
+            "description": "口の座標検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "blinkThreshold",
+            "description": "目つむり検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "ageThreshold",
+            "description": "年齢推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "genderThreshold",
+            "description": "性別推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "faceDirectionThreshold",
+            "description": "顔向き推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "gazeThreshold",
+            "description": "視線推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "expressionThreshold",
+            "description": "表情推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "options",
+            "description": "利用するオプション機能。利用するオプション機能を指定する。複数指定可能。<br> 省略時は指定なし。<br> ※使用できるオプションはデバイスプラグインによって違う。<br> 例)<br> eye,nose, mouth,blink,age,gender,faceDirection,gaze,expression<br> をカンマ区切りで指定することで、 それぞれの検出値がある場合はレスポンスに含めることができる。<br> ただし、デバイスによって対応していない値がある。",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "顔を検出したときの情報を返す。 情報の取得に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/FaceDetectionResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0",
+                "faceDetects": [
+                  {
+                    "x": 0.9515625,
+                    "y": 0.9592592592592593,
+                    "width": 0.03177083333333333,
+                    "height": 0.05648148148148148,
+                    "confidence": 0.619,
+                    "ageResults": {
+                      "age": "35",
+                      "confidence": "0.82"
+                    },
+                    "genderResults": {
+                      "gender": "male",
+                      "confidence": "0.75"
+                    },
+                    "expressionResults": {
+                      "expression": "surprise",
+                      "confidence": "0.69"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "humanDetectionOnFaceDetectionPut",
+        "x-type": "event",
+        "summary": "顔を検出したときの通知イベントを開始する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "threshold",
+            "description": "検出しきい値。省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minWidth",
+            "description": "検出最小サイズ(w)。<br> minHeight < maxHeightとすること、省略時デバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "minHeight",
+            "description": "検出最小サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxWidth",
+            "description": "検出最大サイズ(w)。<br> minWidth < maxWidthとすること、省略時はデバイス初期値<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "maxHeight",
+            "description": "検出最大サイズ(h)。<br> minHeight < maxHeightとすること、省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "eyeThreshold",
+            "description": "目の座標検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "noseThreshold",
+            "description": "鼻の座標検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "mouthThreshold",
+            "description": "口の座標検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "blinkThreshold",
+            "description": "目つむり検出しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "ageThreshold",
+            "description": "年齢推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "genderThreshold",
+            "description": "性別推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "faceDirectionThreshold",
+            "description": "顔向き推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "gazeThreshold",
+            "description": "視線推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "expressionThreshold",
+            "description": "表情推定しきい値。省略時はデバイス初期値。<br> 設定できる値の範囲:0.0~1.0",
+            "in": "formData",
+            "required": false,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          {
+            "name": "interval",
+            "description": "デバイスプラグインがイベントを送信する間隔。",
+            "in": "formData",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "options",
+            "description": "利用するオプション機能。利用するオプション機能を指定する。<br> 複数指定可能。省略時は指定なし。<br> ※使用できるオプションはデバイスプラグインによって違う。<br> 例)<br> eye,nose, mouth,blink,age,gender,faceDirection,gaze,expression<br> をカンマ区切りで指定することで、 それぞれの検出値がある場合はレスポンスに含めることができる。<br> ただし、デバイスによって対応していない値がある。",
+            "in": "formData",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "顔を検出したときの通知イベントの開始結果を返す。 イベントの開始に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventRegistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        },
+        "x-event": {
+          "schema": {
+            "$ref": "#/definitions/FaceDetectionEvent"
+          },
+          "examples": {
+            "application/json": {
+              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "profile": "humandetection",
+              "attribute": "onfacedetection",
+              "faceDetects": [
+                {
+                  "x": 0.9515625,
+                  "y": 0.9592592592592593,
+                  "width": 0.03177083333333333,
+                  "height": 0.05648148148148148,
+                  "confidence": 0.619,
+                  "ageResults": {
+                    "age": "35",
+                    "confidence": "0.82"
+                  },
+                  "genderResults": {
+                    "gender": "male",
+                    "confidence": "0.75"
+                  },
+                  "expressionResults": {
+                    "expression": "surprise",
+                    "confidence": "0.69"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "humanDetectionOnFaceDetectionDelete",
+        "x-type": "event",
+        "summary": "顔を検出したときの通知イベントを停止する。",
+        "description": "スマートデバイスでサポートしていないパラメータがある場合には、 そのパラメータを省略する。",
+        "parameters": [
+          {
+            "name": "serviceId",
+            "description": "サービスID。取得対象スマートデバイス",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "顔を検出したときの通知イベントの停止結果を返す。 イベントの停止に失敗した場合はエラーを返す。",
+            "schema": {
+              "$ref": "#/definitions/EventUnregistrationResponse"
+            },
+            "examples": {
+              "application/json": {
+                "result": 0,
+                "product": "Example System",
+                "version": "1.0.0"
+              }
+            }
+          }
+        }
+      }
     }
+  },
+  "definitions": {
+    "HumanDetectionResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "$ref": "#/definitions/HumanDetectionInfo"
+        }
+      ]
+    },
+    "HumanDetectionEvent": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonEvent"
+        },
+        {
+          "$ref": "#/definitions/HumanDetectionInfo"
+        }
+      ]
+    },
+    "HumanDetectionInfo": {
+      "type": "object",
+      "required": [
+        "humanDetect"
+      ],
+      "properties": {
+        "humanDetect": {
+          "type": "object",
+          "title": "人検出情報",
+          "required": [
+            "exist"
+          ],
+          "properties": {
+            "exist": {
+              "type": "boolean",
+              "title": "人検出フラグ",
+              "description": "検出された : true<br> 検出されない : false'"
+            }
+          }
+        }
+      }
+    },
+    "BodyDetectionResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "$ref": "#/definitions/BodyDetectionInfo"
+        }
+      ]
+    },
+    "BodyDetectionEvent": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonEvent"
+        },
+        {
+          "$ref": "#/definitions/BodyDetectionInfo"
+        }
+      ]
+    },
+    "BodyDetectionInfo": {
+      "type": "object",
+      "required": [
+        "bodyDetects"
+      ],
+      "properties": {
+        "bodyDetects": {
+          "type": "array",
+          "title": "人体検出リスト",
+          "description": "検出された数分出現する。",
+          "items": {
+            "type": "object",
+            "required": [
+              "x",
+              "y",
+              "confidence"
+            ],
+            "properties": {
+              "x": {
+                "type": "number",
+                "title": "検出領域の中心X座標",
+                "description": "0.0~1.0"
+              },
+              "y": {
+                "type": "number",
+                "title": "検出領域の中心Y座標",
+                "description": "0.0~1.0"
+              },
+              "width": {
+                "type": "number",
+                "title": "検出領域のX方向の幅",
+                "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+              },
+              "height": {
+                "type": "number",
+                "title": "検出領域のY方向の幅",
+                "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+              },
+              "confidence": {
+                "type": "number",
+                "title": "解析の信頼度",
+                "description": "0.0~1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "HandDetectionResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "$ref": "#/definitions/HandDetectionInfo"
+        }
+      ]
+    },
+    "HandDetectionEvent": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonEvent"
+        },
+        {
+          "$ref": "#/definitions/HandDetectionInfo"
+        }
+      ]
+    },
+    "HandDetectionInfo": {
+      "type": "object",
+      "required": [
+        "handDetects"
+      ],
+      "properties": {
+        "handDetects": {
+          "type": "array",
+          "title": "手検出リスト",
+          "description": "検出された数分出現する。",
+          "items": {
+            "type": "object",
+            "required": [
+              "x",
+              "y",
+              "confidence"
+            ],
+            "properties": {
+              "x": {
+                "type": "number",
+                "title": "検出領域の中心X座標",
+                "description": "0.0~1.0"
+              },
+              "y": {
+                "type": "number",
+                "title": "検出領域の中心Y座標",
+                "description": "0.0~1.0"
+              },
+              "width": {
+                "type": "number",
+                "title": "検出領域のX方向の幅",
+                "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+              },
+              "height": {
+                "type": "number",
+                "title": "検出領域のY方向の幅",
+                "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+              },
+              "confidence": {
+                "type": "number",
+                "title": "解析の信頼度",
+                "description": "0.0~1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "FaceDetectionResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        },
+        {
+          "$ref": "#/definitions/FaceDetectionInfo"
+        }
+      ]
+    },
+    "FaceDetectionEvent": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonEvent"
+        },
+        {
+          "$ref": "#/definitions/FaceDetectionInfo"
+        }
+      ]
+    },
+    "FaceDetectionInfo": {
+      "type": "object",
+      "required": [
+        "faceDetects"
+      ],
+      "properties": {
+        "faceDetects": {
+          "type": "array",
+          "title": "顔検出リスト",
+          "description": "検出された数分出現する。",
+          "items": {
+            "type": "object",
+            "required": [
+              "x",
+              "y",
+              "confidence"
+            ],
+            "properties": {
+              "x": {
+                "type": "number",
+                "title": "検出領域の中心X座標",
+                "description": "0.0~1.0"
+              },
+              "y": {
+                "type": "number",
+                "title": "検出領域の中心Y座標",
+                "description": "0.0~1.0"
+              },
+              "width": {
+                "type": "number",
+                "title": "検出領域のX方向の幅",
+                "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+              },
+              "height": {
+                "type": "number",
+                "title": "検出領域のY方向の幅",
+                "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+              },
+              "confidence": {
+                "type": "number",
+                "title": "解析の信頼度",
+                "description": "0.0~1.0"
+              },
+              "eyePoints": {
+                "type": "object",
+                "title": "目検出情報",
+                "properties": {
+                  "leftEyeX": {
+                    "type": "number",
+                    "title": "左目の中心座標(x)",
+                    "description": "0.0~1.0"
+                  },
+                  "leftEyeY": {
+                    "type": "number",
+                    "title": "左目の中心座標(y)",
+                    "description": "0.0~1.0"
+                  },
+                  "leftEyeWidth": {
+                    "type": "number",
+                    "title": "左目の領域幅(w)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "leftEyeHeight": {
+                    "type": "number",
+                    "title": "左目の領域幅(h)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "rightEyeX": {
+                    "type": "number",
+                    "title": "右目の中心座標(x)",
+                    "description": "0.0~1.0"
+                  },
+                  "rightEyeY": {
+                    "type": "number",
+                    "title": "右目の中心座標(y)",
+                    "description": "0.0~1.0"
+                  },
+                  "rightEyeWidth": {
+                    "type": "number",
+                    "title": "右目の領域幅(w)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "rightEyeHeight": {
+                    "type": "number",
+                    "title": "右目の領域幅(h)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "nosePoints": {
+                "type": "object",
+                "title": "鼻検出情報",
+                "properties": {
+                  "noseX": {
+                    "type": "number",
+                    "title": "鼻の中心座標(x)",
+                    "description": "0.0~1.0"
+                  },
+                  "noseY": {
+                    "type": "number",
+                    "title": "鼻の中心座標(y)",
+                    "description": "0.0~1.0"
+                  },
+                  "noseWidth": {
+                    "type": "number",
+                    "title": "鼻の領域幅(w)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "noseHeight": {
+                    "type": "number",
+                    "title": "鼻の領域幅(h)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "mouthPoints": {
+                "type": "object",
+                "title": "口検出情報",
+                "properties": {
+                  "mouthX": {
+                    "type": "number",
+                    "title": "口の中心座標(x)",
+                    "description": "0.0~1.0"
+                  },
+                  "mouthY": {
+                    "type": "number",
+                    "title": "口の中心座標(y)",
+                    "description": "0.0~1.0"
+                  },
+                  "mouthWidth": {
+                    "type": "number",
+                    "title": "口の領域幅(w)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "mouthHeight": {
+                    "type": "number",
+                    "title": "口の領域幅(h)",
+                    "description": "※領域幅が提供できない場合は出現しない。<br> 0.0~1.0"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "blinkResults": {
+                "type": "object",
+                "title": "まばたき検出情報",
+                "properties": {
+                  "leftEye": {
+                    "type": "number",
+                    "title": "目つむり度合(左)",
+                    "description": "0.0~1.0"
+                  },
+                  "rightEye": {
+                    "type": "number",
+                    "title": "目つむり度合(右)",
+                    "description": "0.0~1.0"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "ageResults": {
+                "type": "object",
+                "title": "年齢判定結果",
+                "properties": {
+                  "age": {
+                    "type": "integer",
+                    "title": "年齢",
+                    "description": ""
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "genderResults": {
+                "type": "object",
+                "title": "性別判定結果",
+                "properties": {
+                  "gender": {
+                    "type": "string",
+                    "title": "性別",
+                    "description": "male : 男性<br> female : 女性",
+                    "enum": [
+                      "male",
+                      "female"
+                    ]
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "faceDirectionResults": {
+                "type": "object",
+                "title": "顔の向き判定結果",
+                "properties": {
+                  "yaw": {
+                    "type": "integer",
+                    "title": "左右方向角度",
+                    "description": "-180~180[degree]"
+                  },
+                  "pitch": {
+                    "type": "integer",
+                    "title": "上下方向角度",
+                    "description": "-180~180[degree]"
+                  },
+                  "roll": {
+                    "type": "integer",
+                    "title": "顔傾き角度",
+                    "description": "-180~180[degree]"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "gazeResults": {
+                "type": "object",
+                "title": "目の向き判定結果",
+                "properties": {
+                  "gazeLR": {
+                    "type": "integer",
+                    "title": "左右角度",
+                    "description": "-90~90[degree]"
+                  },
+                  "gateUD": {
+                    "type": "integer",
+                    "title": "上下角度",
+                    "description": "-90~90[degree]"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              },
+              "expressionResults": {
+                "type": "object",
+                "title": "表情判定結果",
+                "properties": {
+                  "expression": {
+                    "type": "string",
+                    "title": "左右角度",
+                    "description": "unknown : 無表情<br> smile : 笑い/喜び<br> surprise : 驚き<br> mad : 怒り<br> sad : 悲しみ",
+                    "enum": [
+                      "unknown",
+                      "smile",
+                      "surprise",
+                      "mad",
+                      "sad"
+                    ]
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "title": "解析の信頼度",
+                    "description": "0.0~1.0"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "CommonResponse": {
+      "type": "object",
+      "required": [
+        "result",
+        "product",
+        "version"
+      ],
+      "properties": {
+        "result": {
+          "type": "integer",
+          "title": "処理結果",
+          "description": "0:正常応答<br> 0以外:異常応答"
+        },
+        "product": {
+          "type": "string",
+          "title": "システム名",
+          "description": "DeviceConnectシステムの名前。"
+        },
+        "version": {
+          "type": "string",
+          "title": "システムバージョン",
+          "description": "DeviceConnectシステムのバージョン名。"
+        },
+        "hmac": {
+          "type": "string",
+          "title": "署名",
+          "description": "レスポンスに対する署名。<br> アプリケーション側から事前にHMACキーを共有されていた場合は必須。"
+        }
+      }
+    },
+    "EventRegistrationResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "EventUnregistrationResponse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommonResponse"
+        }
+      ]
+    },
+    "CommonEvent": {
+      "type": "object",
+      "required": [
+        "serviceId",
+        "profile",
+        "interface",
+        "attribute"
+      ],
+      "properties": {
+        "serviceId": {
+          "type": "string",
+          "title": "サービスID",
+          "description": "イベントを送信したサービスのID"
+        },
+        "profile": {
+          "type": "string",
+          "title": "プロファイル名",
+          "description": "プロファイル名。"
+        },
+        "interface": {
+          "type": "string",
+          "title": "インターフェース名",
+          "description": "インターフェース名。"
+        },
+        "attribute": {
+          "type": "string",
+          "title": "アトリビュート名",
+          "description": "アトリビュート名。"
+        }
+      }
+    }
+  }
 }
