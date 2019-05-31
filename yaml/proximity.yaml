@@ -162,7 +162,7 @@ paths:
           format: int64
       responses:
         '200':
-          description:>-
+          description: >-
             近接センサーの人体を検知したイベントの開始結果を返す。
             開始に失敗した場合はエラーを返す。
           schema:
