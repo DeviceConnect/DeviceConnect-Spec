@@ -727,6 +727,77 @@ paths:
               result: 0
               product: Example System
               version: 1.0.0
+  /preview/mute:
+    put:
+      operationId: mediaStreamRecordingPreviewMutePut
+      x-type: one-shot
+      summary: >-
+        音声が付加されているPreview映像に対し、
+        その映像の音声をミュート状態にするリクエストを送る。
+      description: >-
+        例えば、Preview映像がRTSPの場合に、このAPIにより音声をミュート状態にする。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: target
+          description: >-
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+          in: formData
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            Previewの音声をミュート状態にするリクエストを送った結果を返す。
+            ミュートリクエストの送信に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/RecorderControlResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
+    delete:
+      operationId: mediaStreamRecordingPreviewMuteDelete
+      x-type: one-shot
+      summary: >-
+        音声が付加されているPreview映像に対し、
+        その映像の音声のミュート状態を解除するリクエストを送る。
+      description: >-
+        例えば、Preview映像がRTSPの場合に、このAPIにより音声のミュート状態を解除する。
+      parameters:
+        - name: serviceId
+          description: サービスID。取得対象スマートデバイス
+          in: formData
+          required: true
+          type: string
+        - name: target
+          description: >-
+            ターゲット。レコーダーを識別するID。<br>
+            省略された場合にはデフォルトのレコーダーを使用する。<br>
+            デバイスが音声・動画の両方のレコーダーをサポートする場合、
+            どちらのレコーダーが使用されるかどうかはデバイスプラグイン依存とする。
+          in: formData
+          required: false
+          type: string
+      responses:
+        '200':
+          description: >-
+            Previewの音声のミュート状態を解除するリクエストを送った結果を返す。
+            ミュート解除リクエストの送信に失敗した場合はエラーを返す。
+          schema:
+            $ref: '#/definitions/RecorderControlResponse'
+          examples:
+            application/json:
+              result: 0
+              product: Example System
+              version: 1.0.0
   /onRecordingChange:
     get:
       operationId: mediaStreamRecordingOnRecordingChangeGet
