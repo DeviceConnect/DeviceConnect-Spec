@@ -50,50 +50,6 @@ paths:
               type: 1
               timeStamp: 1431856940275
               timeStampString: '2015-05-17T10:02:20+09:00'
-    put:
-      operationId: temperaturePut
-      x-type: one-shot
-      summary: スマートデバイスの温度設定値を設定する。
-      description: >-
-        typeはそれぞれ<br>
-        1:摂氏<br>
-        2:華氏<br>
-        を表している。<br>
-        temperatureに設定できる値は、摂氏の場合は0以上50以下,
-        華氏の場合は32以上122以下。
-      parameters:
-        - name: serviceId
-          description: サービスID。
-          in: formData
-          required: true
-          type: string
-        - name: temperature
-          description: 温度の値。
-          in: formData
-          required: true
-          type: integer
-        - name: type
-          description: >-
-            1:摂氏<br>
-            2:華氏
-          in: formData
-          required: false
-          type: integer
-          enum:
-            - 1
-            - 2
-      responses:
-        '200':
-          description: >-
-            温度設定値の設定結果を返す。
-            設定に失敗した場合はエラーを返す。
-          schema:
-            $ref: '#/definitions/PutTemperatureResponse'
-          examples:
-            application/json:
-              product: Example System
-              version: '1.0'
-              result: 0
 definitions:
   GetTemperatureResponse:
     type: object
@@ -129,10 +85,6 @@ definitions:
             description: >-
               タイムスタンプと同じタイムスタンプを
               RFC3339「yyyy-MM-dd''T''HH:mm:ssZZZZZ」の形式で返す。
-  PutTemperatureResponse:
-    type: object
-    allOf:
-      - $ref: '#/definitions/CommonResponse'
   CommonResponse:
     type: object
     required:

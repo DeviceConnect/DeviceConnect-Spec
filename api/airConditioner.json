@@ -290,7 +290,7 @@
         }
       }
     },
-    "/temperature": {
+    "/targetTemperature": {
       "get": {
         "operationId": "airConditionerTemperatureGet",
         "x-type": "one-shot",
