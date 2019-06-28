@@ -230,7 +230,7 @@ paths:
               product: Example System
               version: 1.0.0
               roomtemperature: '25'
-  /temperature:
+  /targetTemperature:
     get:
       operationId: airConditionerTemperatureGet
       x-type: one-shot
