@@ -12,11 +12,11 @@ Device Connect API の作成ガイドラインは[こちら](https://github.com/
 * Java
 * cURL
 
-[DeviceConnect-Experiments](https://github.com/DeviceConnect/DeviceConnect-Experiments) から DeviceConnect Codegen をダウンロードします。
+[DeviceConnect-Codegen](https://github.com/DeviceConnect/DeviceConnect-Codegen) から DeviceConnect Codegen をダウンロードします。
 
 ```
-$ curl -LkO https://github.com/DeviceConnect/DeviceConnect-Experiments/releases/download/codegen-v1.8.3/deviceconnect-codegen-project-1.8.3-dist.zip
-$ unzip deviceconnect-codegen-project-1.8.3-dist.zip
+$ curl -LkO https://github.com/DeviceConnect/DeviceConnect-Codegen/releases/download/codegen-v1.9.1/deviceconnect-codegen-project-1.9.1-dist.zip
+$ unzip deviceconnect-codegen-project-1.9.1-dist.zip
 ```
 
 DeviceConnect-Spec から最新の定義ファイルをダウンロードします。
@@ -29,7 +29,7 @@ $ unzip DeviceConnect-Spec.zip
 ダウンロードした定義ファイルからドキュメントを作成します。
 
 ```
-$ java -Dfile.encoding=UTF-8 -jar ./deviceconnect-codegen-project-1.8.3/bin/deviceconnect-codegen.jar \
+$ java -Dfile.encoding=UTF-8 -jar ./deviceconnect-codegen-project-1.9.1/bin/deviceconnect-codegen.jar \
         --lang deviceConnectHtmlDocs \
         --display-name Device_Connect_RESTful_API_Specification \
         --input-spec-dir ./DeviceConnect-Spec-master/api \
@@ -53,4 +53,4 @@ $ java -Dfile.encoding=UTF-8 -jar ./deviceconnect-codegen-project-1.8.3/bin/devi
 > `--display-name`
 > > ドキュメントのタイトルを指定します。
 
-上記に記載したオプションが知りたい場合には[こちら](https://github.com/DeviceConnect/DeviceConnect-Experiments/tree/master/DeviceConnectCodegen)を参照してください。
+上記に記載したオプションが知りたい場合には[こちら](https://github.com/DeviceConnect/DeviceConnect-Codegen)を参照してください。
