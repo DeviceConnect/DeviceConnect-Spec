@@ -53,4 +53,4 @@ $ java -Dfile.encoding=UTF-8 -jar ./deviceconnect-codegen-project-1.9.1/bin/devi
 > `--display-name`
 > > ドキュメントのタイトルを指定します。
 
-上記に記載したオプションが知りたい場合には[こちら](https://github.com/DeviceConnect/DeviceConnect-Codegen)を参照してください。
+上記に記載したオプションが知りたい場合には[こちら](https://github.com/DeviceConnect/DeviceConnect-Codegen/blob/master/MANUAL.md)を参照してください。
