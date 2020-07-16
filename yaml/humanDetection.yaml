@@ -70,7 +70,7 @@ paths:
           $ref: '#/definitions/HumanDetectionEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: humandetection
             attribute: ondetection
             humanDetect:
@@ -294,7 +294,7 @@ paths:
           $ref: '#/definitions/BodyDetectionEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: humandetection
             attribute: onbodydetection
             bodyDetects:
@@ -521,7 +521,7 @@ paths:
           $ref: '#/definitions/HandDetectionEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: humandetection
             attribute: onhanddetection
             handDetects:
@@ -920,7 +920,7 @@ paths:
           $ref: '#/definitions/FaceDetectionEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: humandetection
             attribute: onfacedetection
             faceDetects:

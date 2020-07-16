@@ -88,7 +88,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "humandetection",
               "attribute": "ondetection",
               "humanDetect": {
@@ -336,7 +336,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "humandetection",
               "attribute": "onbodydetection",
               "bodyDetects": [
@@ -590,7 +590,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "humandetection",
               "attribute": "onhanddetection",
               "handDetects": [
@@ -1004,7 +1004,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "humandetection",
               "attribute": "onfacedetection",
               "faceDetects": [

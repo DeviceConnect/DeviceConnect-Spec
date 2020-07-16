@@ -181,7 +181,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "connect",
               "attribute": "onwifichange",
               "connectStatus": {
@@ -392,7 +392,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "connect",
               "attribute": "onbluetoothchange",
               "connectStatus": {
@@ -665,7 +665,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "connect",
               "attribute": "onnfcchange",
               "connectStatus": {
@@ -876,7 +876,7 @@
           },
           "examples": {
             "application/json": {
-              "serviceId": "Host.dummyId.localhost.deviceconnect.org",
+              "serviceId": "Host.exampleId.localhost.deviceconnect.org",
               "profile": "connect",
               "attribute": "onblechange",
               "connectStatus": {

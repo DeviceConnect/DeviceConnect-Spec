@@ -593,7 +593,7 @@ paths:
             $ref: '#/definitions/PlayerStatusResponse'
           examples:
             application/json:
-              serviceId: Host.dummyId.localhost.deviceconnect.org
+              serviceId: Host.exampleId.localhost.deviceconnect.org
               profile: mediaplayer
               attribute: onstatuschange
               mediaPlayer:
@@ -641,7 +641,7 @@ paths:
           $ref: '#/definitions/PlayerStatusEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: mediaplayer
             attribute: onstatuschange
             mediaPlayer:
