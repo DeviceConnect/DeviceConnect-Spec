@@ -39,7 +39,7 @@ paths:
               result: 0
               product: Example System
               version: 1.0.0
-              uri: Dummy Preview URI
+              uri: Example Preview URI
     delete:
       operationId: omnidirectionalImageRoiDelete
       x-type: streaming

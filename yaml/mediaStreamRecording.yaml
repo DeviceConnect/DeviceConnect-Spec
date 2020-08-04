@@ -37,7 +37,7 @@ paths:
               version: 1.0.0
               recorders:
                 - id: photo_0
-                  name: Dummy Camera Recorder - back
+                  name: Example Camera Recorder - back
                   state: inactive
                   imageWidth: 3264
                   imageHeight: 2448
@@ -47,7 +47,7 @@ paths:
                   mimeType: image/png
                   config: ''
                 - id: photo_1
-                  name: Dummy Camera Recorder - front
+                  name: Example Camera Recorder - front
                   state: inactive
                   imageWidth: 1280
                   imageHeight: 960
@@ -57,26 +57,26 @@ paths:
                   mimeType: image/png
                   config: ''
                 - id: video_0
-                  name: Dummy Video Recorder - back
+                  name: Example Video Recorder - back
                   state: inactive
                   imageWidth: 640
                   imageHeight: 480
                   mimeType: video/3gp
                   config: ''
                 - id: video_1
-                  name: Dummy Video Recorder - front
+                  name: Example Video Recorder - front
                   state: inactive
                   imageWidth: 640
                   imageHeight: 480
                   mimeType: video/3gp
                   config: ''
                 - id: audio
-                  name: Dummy Audio Recorder
+                  name: Example Audio Recorder
                   state: inactive
                   mimeType: audio/3gp
                   config: ''
                 - id: screen
-                  name: Dummy Screen
+                  name: Example Screen
                   state: inactive
                   imageWidth: 1080
                   imageHeight: 1776
@@ -120,8 +120,8 @@ paths:
               result: 0
               product: Example System
               version: 1.0.0
-              uri: Dummy URI
-              path: Dummy Path
+              uri: Example URI
+              path: Example Path
   /record:
     post:
       operationId: mediaStreamRecordingRecordPost
@@ -169,8 +169,8 @@ paths:
               result: 0
               product: Example System
               version: 1.0.0
-              uri: Dummy URI
-              path: Dummy Path
+              uri: Example URI
+              path: Example Path
   /pause:
     put:
       operationId: mediaStreamRecordingPausePut
@@ -544,8 +544,8 @@ paths:
               result: 0
               product: Example System
               version: 1.0.0
-              uri: Dummy URI
-              path: Dummy Path
+              uri: Example URI
+              path: Example Path
     put:
       operationId: mediaStreamRecordingOnPhotoPut
       x-type: event
@@ -586,8 +586,8 @@ paths:
             profile: mediastreamrecording
             attribute: onphoto
             photo:
-              uri: Dummy URI
-              path: Dummy Path
+              uri: Example URI
+              path: Example Path
               mimeType: image/png
     delete:
       operationId: mediaStreamRecordingOnPhotoDelete
@@ -650,7 +650,7 @@ paths:
               result: 0
               product: Example System
               version: 1.0.0
-              uri: Dummy Preview URI
+              uri: Example Preview URI
     put:
       operationId: mediaStreamRecordingPreviewPut
       x-type: streaming
@@ -691,7 +691,7 @@ paths:
               result: 0
               product: Example System
               version: 1.0.0
-              uri: Dummy Preview URI
+              uri: Example Preview URI
     delete:
       operationId: mediaStreamRecordingPreviewDelete
       x-type: streaming
@@ -826,7 +826,7 @@ paths:
               version: 1.0.0
               media:
                 status: stop
-                path: Dummy Path
+                path: Example Path
                 mimeType: video/3gp
     put:
       operationId: mediaStreamRecordingOnRecordingChangePut
@@ -871,7 +871,7 @@ paths:
             attribute: onrecordingchange
             media:
               status: stop
-              path: Dummy Path
+              path: Example Path
               mimeType: image/png
     delete:
       operationId: mediaStreamRecordingOnRecordingChangeDelete
