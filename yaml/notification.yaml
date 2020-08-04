@@ -179,7 +179,7 @@ paths:
           $ref: '#/definitions/ClickNotificationEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: notification
             attribute: onclick
             notificationId: 123456
@@ -275,7 +275,7 @@ paths:
           $ref: '#/definitions/ShowNotificationEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: notification
             attribute: onshow
             notificationId: 123456
@@ -372,7 +372,7 @@ paths:
           $ref: '#/definitions/CloseNotificationEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: notification
             attribute: onclose
             notificationId: 123456
@@ -468,7 +468,7 @@ paths:
           $ref: '#/definitions/ErrorNotificationEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: notification
             attribute: onerror
             notificationId: 123456

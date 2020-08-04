@@ -79,7 +79,7 @@ paths:
           $ref: '#/definitions/OnTouchEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: touch
             attribute: ontouch
             touch:
@@ -185,7 +185,7 @@ paths:
           $ref: '#/definitions/OnTouchStartEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: touch
             attribute: ontouchstart
             touch:
@@ -290,7 +290,7 @@ paths:
           $ref: '#/definitions/OnTouchEndEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: touch
             attribute: ontouchend
             touch:
@@ -395,7 +395,7 @@ paths:
           $ref: '#/definitions/OnTouchMoveEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: touch
             attribute: ontouchmove
             touch:
@@ -500,7 +500,7 @@ paths:
           $ref: '#/definitions/OnTouchCancelEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: touch
             attribute: ontouchcancel
             touch:
@@ -605,7 +605,7 @@ paths:
           $ref: '#/definitions/OnDoubleTapEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: touch
             attribute: ondoubletap
             touch:
@@ -710,7 +710,7 @@ paths:
           $ref: '#/definitions/OnTouchChangeEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: touch
             attribute: ondoubletap
             touch:

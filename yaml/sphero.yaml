@@ -73,7 +73,7 @@ paths:
           $ref: '#/definitions/QuaternionEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: sphero
             interface: quaternion
             attribute: onquaternion
@@ -172,7 +172,7 @@ paths:
           $ref: '#/definitions/LocatorEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: sphero
             interface: locator
             attribute: onlocator
@@ -280,7 +280,7 @@ paths:
           $ref: '#/definitions/CollisionEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: sphero
             interface: collision
             attribute: oncollision

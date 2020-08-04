@@ -61,15 +61,15 @@ paths:
                   timeStamp: 1483241696789
                   timeStampString: '2015-05-17T10:02:20+09:00'
                 device:
-                  productName: DUMMY DEVICE
-                  manufacturerName: DUMMY MANUFACTURE NAME
-                  modelNumber: DUMMY MODEL NUMBER
-                  firmwareRevision: DUMMY FIRMWARE REVISION
-                  serialNumber: DUMMY SERIAL NUMBER
-                  softwareRevision: DUMMY SOFTWARE REVISION
-                  hardwareRevision: DUMMY HARDWARE REVISION
-                  partNumber: DUMMY PART NUMBER
-                  protocolRevision: DUMMY PROTOCOL REVISION
+                  productName: EXAMPLE DEVICE
+                  manufacturerName: EXAMPLE MANUFACTURE NAME
+                  modelNumber: EXAMPLE MODEL NUMBER
+                  firmwareRevision: EXAMPLE FIRMWARE REVISION
+                  serialNumber: EXAMPLE SERIAL NUMBER
+                  softwareRevision: EXAMPLE SOFTWARE REVISION
+                  hardwareRevision: EXAMPLE HARDWARE REVISION
+                  partNumber: EXAMPLE PART NUMBER
+                  protocolRevision: EXAMPLE PROTOCOL REVISION
                   systemId: '0x0'
                   batteryLevel: -1
     put:
@@ -108,7 +108,7 @@ paths:
           $ref: '#/definitions/HeartEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: health
             attribute: heart
             heart:
@@ -140,15 +140,15 @@ paths:
                 timeStamp: 1483241696789
                 timeStampString: '2015-05-17T10:02:20+09:00'
               device:
-                productName: DUMMY DEVICE
-                manufacturerName: DUMMY MANUFACTURE NAME
-                modelNumber: DUMMY MODEL NUMBER
-                firmwareRevision: DUMMY FIRMWARE REVISION
-                serialNumber: DUMMY SERIAL NUMBER
-                softwareRevision: DUMMY SOFTWARE REVISION
-                hardwareRevision: DUMMY HARDWARE REVISION
-                partNumber: DUMMY PART NUMBER
-                protocolRevision: DUMMY PROTOCOL REVISION
+                productName: EXAMPLE DEVICE
+                manufacturerName: EXAMPLE MANUFACTURE NAME
+                modelNumber: EXAMPLE MODEL NUMBER
+                firmwareRevision: EXAMPLE FIRMWARE REVISION
+                serialNumber: EXAMPLE SERIAL NUMBER
+                softwareRevision: EXAMPLE SOFTWARE REVISION
+                hardwareRevision: EXAMPLE HARDWARE REVISION
+                partNumber: EXAMPLE PART NUMBER
+                protocolRevision: EXAMPLE PROTOCOL REVISION
                 systemId: '0x0'
                 batteryLevel: -1
     delete:
@@ -229,15 +229,15 @@ paths:
                   timeStamp: 1483241696789
                   timeStampString: '2015-05-17T10:02:20+09:00'
                 device:
-                  productName: DUMMY DEVICE
-                  manufacturerName: DUMMY MANUFACTURE NAME
-                  modelNumber: DUMMY MODEL NUMBER
-                  firmwareRevision: DUMMY FIRMWARE REVISION
-                  serialNumber: DUMMY SERIAL NUMBER
-                  softwareRevision: DUMMY SOFTWARE REVISION
-                  hardwareRevision: DUMMY HARDWARE REVISION
-                  partNumber: DUMMY PART NUMBER
-                  protocolRevision: DUMMY PROTOCOL REVISION
+                  productName: EXAMPLE DEVICE
+                  manufacturerName: EXAMPLE MANUFACTURE NAME
+                  modelNumber: EXAMPLE MODEL NUMBER
+                  firmwareRevision: EXAMPLE FIRMWARE REVISION
+                  serialNumber: EXAMPLE SERIAL NUMBER
+                  softwareRevision: EXAMPLE SOFTWARE REVISION
+                  hardwareRevision: EXAMPLE HARDWARE REVISION
+                  partNumber: EXAMPLE PART NUMBER
+                  protocolRevision: EXAMPLE PROTOCOL REVISION
                   systemId: '0x0'
                   batteryLevel: -1
     put:
@@ -276,7 +276,7 @@ paths:
           $ref: '#/definitions/HeartEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: health
             attribute: heart
             heart:
@@ -308,15 +308,15 @@ paths:
                 timeStamp: 1483241696789
                 timeStampString: '2015-05-17T10:02:20+09:00'
               device:
-                productName: DUMMY DEVICE
-                manufacturerName: DUMMY MANUFACTURE NAME
-                modelNumber: DUMMY MODEL NUMBER
-                firmwareRevision: DUMMY FIRMWARE REVISION
-                serialNumber: DUMMY SERIAL NUMBER
-                softwareRevision: DUMMY SOFTWARE REVISION
-                hardwareRevision: DUMMY HARDWARE REVISION
-                partNumber: DUMMY PART NUMBER
-                protocolRevision: DUMMY PROTOCOL REVISION
+                productName: EXAMPLE DEVICE
+                manufacturerName: EXAMPLE MANUFACTURE NAME
+                modelNumber: EXAMPLE MODEL NUMBER
+                firmwareRevision: EXAMPLE FIRMWARE REVISION
+                serialNumber: EXAMPLE SERIAL NUMBER
+                softwareRevision: EXAMPLE SOFTWARE REVISION
+                hardwareRevision: EXAMPLE HARDWARE REVISION
+                partNumber: EXAMPLE PART NUMBER
+                protocolRevision: EXAMPLE PROTOCOL REVISION
                 systemId: '0x0'
                 batteryLevel: -1
     delete:
@@ -406,7 +406,7 @@ paths:
           $ref: '#/definitions/HeartRateEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: health
             attribute: heartrate
             heartRate: 80

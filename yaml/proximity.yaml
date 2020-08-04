@@ -76,7 +76,7 @@ paths:
           $ref: '#/definitions/DeviceProximityEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: proximity
             attribute: ondeviceproximity
             proximity:
@@ -177,7 +177,7 @@ paths:
           $ref: '#/definitions/UserProximityEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: proximity
             attribute: onuserproximity
             proximity:
