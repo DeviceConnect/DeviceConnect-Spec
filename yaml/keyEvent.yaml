@@ -71,7 +71,7 @@ paths:
           $ref: '#/definitions/KeyEventDownEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: keyevent
             attribute: ondown
             keyevent:
@@ -165,7 +165,7 @@ paths:
           $ref: '#/definitions/KeyEventUpEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: keyevent
             attribute: onup
             keyevent:
@@ -254,7 +254,7 @@ paths:
           $ref: '#/definitions/KeyEventChangeEvent'
         examples:
           application/json:
-            serviceId: Host.dummyId.localhost.deviceconnect.org
+            serviceId: Host.exampleId.localhost.deviceconnect.org
             profile: keyevent
             attribute: onkeychange
             keyevent:
