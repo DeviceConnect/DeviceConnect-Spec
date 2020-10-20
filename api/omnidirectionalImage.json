@@ -41,6 +41,16 @@
             },
             "examples": {
               "application/json": {
+                "streams": [
+                  {
+                    "mimeType": "video/x-mjpeg",
+                    "uri": "http://localhost:9000/xxxxxx"
+                  },
+                  {
+                    "mimeType": "video/x-mjpeg",
+                    "uri": "https://localhost:9100/xxxxxx"
+                  }
+                ],
                 "result": 0,
                 "product": "Example System",
                 "version": "1.0.0",
@@ -246,6 +256,30 @@
               "type": "string",
               "title": "ROI画像配信サーバURI",
               "description": "ROI画像を配信するサーバのURIを示す。<br> 配信される画像の形式はMotionJPEGとする。"
+            },
+            "streams": {
+              "type": "array",
+              "title": "ストリームのリスト",
+              "description": "ストリーム情報の配列。",
+              "items": {
+                "type": "object",
+                "required": [
+                  "mimeType",
+                  "uri"
+                ],
+                "properties": {
+                  "mimeType": {
+                    "type": "string",
+                    "title": "ストリームのMIMEType",
+                    "description": "ストリームのMIMEType。"
+                  },
+                  "uri": {
+                    "type": "string",
+                    "title": "ストリームのURI",
+                    "description": "ストリームのURI。"
+                  }
+                }
+              }
             }
           }
         }
